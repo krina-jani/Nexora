@@ -1,0 +1,97 @@
+/* Placement Workflow Section Styles */
+.placement-process-section {
+  padding: 100px 0;
+  background: var(--bg-soft);
+}
+
+.process-timeline-flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 60px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.process-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 140px;
+  gap: 12px;
+}
+
+.process-dot {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: var(--white);
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  box-shadow: var(--glow);
+}
+
+.process-node h4 {
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.process-line {
+  flex: 1;
+  height: 2px;
+  background: var(--border);
+  min-width: 30px;
+}
+
+@media (max-width: 991px) {
+  .process-timeline-flex {
+    justify-content: center;
+  }
+  .process-line {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .process-timeline-flex {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 30px;
+    margin-top: 40px;
+    padding-left: 20px;
+    position: relative;
+  }
+  
+  .process-timeline-flex::before {
+    content: '';
+    position: absolute;
+    left: 42px; /* 20px padding-left + 22px (half of 44px dot) */
+    top: 10px;
+    bottom: 10px;
+    width: 2px;
+    background: var(--border);
+    z-index: 1;
+  }
+
+  .process-node {
+    flex-direction: row;
+    align-items: center;
+    text-align: left;
+    width: 100%;
+    gap: 20px;
+    z-index: 2;
+  }
+
+  .process-dot {
+    flex-shrink: 0;
+  }
+
+  .process-node h4 {
+    font-size: 1.1rem;
+    margin: 0;
+  }
+}
+

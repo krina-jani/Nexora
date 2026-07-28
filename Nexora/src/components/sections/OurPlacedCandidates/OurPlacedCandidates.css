@@ -1,0 +1,95 @@
+/* Our Placed Candidates Section Styles */
+.success-stories-section {
+  padding: 100px 0;
+}
+
+.testimonials-carousel-box {
+  max-width: 900px;
+  margin: 50px auto 0;
+  padding: 50px 60px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  position: relative;
+}
+
+.carousel-nav-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--white);
+  border: 1px solid var(--border);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.carousel-nav-btn:hover {
+  background: var(--primary);
+  color: var(--white);
+  border-color: var(--primary);
+}
+
+.testimonial-active-content {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+}
+
+.candidate-photo-wrapper {
+  flex-shrink: 0;
+}
+
+.active-candidate-img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--primary-light);
+}
+
+.active-candidate-details {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.package-tag {
+  align-self: flex-start;
+  background: var(--primary-light);
+  color: var(--primary-dark);
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.active-candidate-details h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.candidate-role-text {
+  font-weight: 600;
+  color: var(--text-light);
+}
+
+.feedback-body {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  font-style: italic;
+  color: var(--text);
+}
+
+@media (max-width: 991px) {
+  .testimonial-active-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  .package-tag {
+    align-self: center;
+  }
+}

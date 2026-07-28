@@ -1,0 +1,130 @@
+.site-background{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:-5;
+
+    overflow:hidden;
+
+    background:#FCFFFC;
+
+}
+
+/* =======================
+   MAIN GRADIENT
+======================= */
+
+.bg-gradient{
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+
+    radial-gradient(circle at 20% 20%,
+    rgba(72,201,44,.15),
+    transparent 35%),
+
+    radial-gradient(circle at 80% 20%,
+    rgba(220,255,228,.9),
+    transparent 45%),
+
+    radial-gradient(circle at 50% 100%,
+    rgba(170,255,180,.12),
+    transparent 40%);
+
+}
+
+/* =======================
+   GRID
+======================= */
+
+.bg-grid{
+
+    position:absolute;
+
+    inset:0;
+
+    background-image:
+
+        linear-gradient(
+        rgba(72,201,44,.06) 1px,
+        transparent 1px),
+
+        linear-gradient(
+        90deg,
+        rgba(72,201,44,.06) 1px,
+        transparent 1px);
+
+    background-size:70px 70px;
+
+    opacity:.6;
+
+}
+
+/* =======================
+   GLOW 1
+======================= */
+
+.bg-radial{
+
+    position:absolute;
+
+    width:600px;
+
+    height:600px;
+
+    border-radius:50%;
+
+    filter:blur(140px);
+
+    animation:floatGlow 14s ease-in-out infinite;
+
+}
+
+.one{
+
+    left:-180px;
+
+    top:-180px;
+
+    background:#C9FFD5;
+
+}
+
+.two{
+
+    right:-180px;
+
+    bottom:-180px;
+
+    background:#B8FFC8;
+
+    animation-delay:6s;
+
+}
+
+@keyframes floatGlow{
+
+    0%{
+
+        transform:translateY(0);
+
+    }
+
+    50%{
+
+        transform:translateY(80px);
+
+    }
+
+    100%{
+
+        transform:translateY(0);
+
+    }
+
+}

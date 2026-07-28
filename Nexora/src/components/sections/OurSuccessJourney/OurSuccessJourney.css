@@ -1,0 +1,213 @@
+/* =====================================================
+   EXPERIENCE TIMELINE SECTION
+===================================================== */
+
+.experience-section {
+  position: relative;
+  width: 100%;
+  padding: 120px 0;
+  overflow: hidden;
+  background: var(--bg-soft);
+}
+
+.experience-intro {
+  margin-bottom: 80px;
+}
+
+.section-tag {
+  font-family: var(--body-font);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--primary);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.experience-title {
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--heading);
+  letter-spacing: -0.5px;
+}
+
+/* =====================================================
+   TIMELINE WRAP & LINE
+===================================================== */
+
+.timeline-wrap {
+  position: relative;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 0;
+}
+
+/* Vertical timeline track line */
+.timeline-line-track {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--border);
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+/* Vertical filled line using GSAP scroll animation */
+.timeline-line-fill {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, var(--primary-light), var(--primary));
+  transform-origin: top center;
+  box-shadow: var(--glow);
+}
+
+/* =====================================================
+   TIMELINE ITEMS
+===================================================== */
+
+.timeline-items {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+.timeline-item {
+  position: relative;
+  width: 50%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Alternating Left / Right positions */
+.timeline-item.left {
+  left: 0;
+  padding-right: 45px;
+}
+
+.timeline-item.right {
+  left: 50%;
+  padding-left: 45px;
+  justify-content: flex-start;
+}
+
+/* Center timeline dots */
+.timeline-dot {
+  position: absolute;
+  top: 28px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--white);
+  border: 3px solid var(--primary);
+  z-index: 5;
+  box-shadow: 0 0 0 6px rgba(72, 201, 44, 0.15);
+  transition: var(--transition);
+}
+
+.timeline-item.left .timeline-dot {
+  right: -8px;
+}
+
+.timeline-item.right .timeline-dot {
+  left: -8px;
+}
+
+/* Content cards styles */
+.timeline-content {
+  width: 100%;
+  max-width: 480px;
+  padding: 35px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  transition: var(--transition);
+  background: var(--white);
+  position: relative;
+}
+
+.timeline-item:hover .timeline-content {
+  border-color: var(--primary);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-4px);
+}
+
+.timeline-item:hover .timeline-dot {
+  background: var(--primary);
+  transform: scale(1.15);
+  box-shadow: 0 0 12px var(--primary);
+}
+
+.timeline-period {
+  font-family: var(--body-font);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--primary-dark);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.timeline-role {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--heading);
+  margin-bottom: 6px;
+}
+
+.timeline-company {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-light);
+  margin-bottom: 16px;
+}
+
+.timeline-desc {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text);
+  margin: 0;
+}
+
+/* =====================================================
+   RESPONSIVE DESIGN Breakpoints
+===================================================== */
+
+@media (max-width: 900px) {
+  .timeline-line-track {
+    left: 20px;
+    transform: none;
+  }
+
+  .timeline-item {
+    width: 100%;
+    padding-left: 50px !important;
+    padding-right: 0 !important;
+    justify-content: flex-start !important;
+  }
+
+  .timeline-item.right {
+    left: 0;
+  }
+
+  .timeline-dot {
+    left: 12px !important;
+  }
+
+  .timeline-content {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .experience-title {
+    font-size: 2.2rem;
+  }
+  .timeline-content {
+    padding: 25px;
+  }
+}

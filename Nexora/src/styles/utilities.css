@@ -1,0 +1,46 @@
+.glass{
+
+    /* background:var(--glass-bg); */
+
+    backdrop-filter:blur(22px);
+
+    -webkit-backdrop-filter:blur(22px);
+
+    border:1px solid rgba(255,255,255,.6);
+
+    border-radius:28px;
+
+    box-shadow:var(--shadow-md);
+
+    background-color: rgb(255, 255, 255);
+
+}
+
+.btn-primary{
+
+    background:var(--primary);
+
+    color:#fff;
+
+    padding:16px 34px;
+
+    border-radius:18px;
+
+    border:none;
+
+    cursor:pointer;
+
+    transition:.35s;
+
+    box-shadow:var(--glow);
+
+}
+
+.btn-primary:hover{
+
+    background:var(--primary-hover);
+
+    transform:translateY(-4px);
+
+}
+

@@ -1,0 +1,8 @@
+export { default as OurSuccessJourney } from "./sections/OurSuccessJourney/OurSuccessJourney";
+export { default as WhyChooseNexora } from "./sections/WhyChooseNexora/WhyChooseNexora";
+export { default as OurCoreServices } from "./sections/OurCoreServices/OurCoreServices";
+export { default as TargetPlacementsBySector } from "./sections/TargetPlacementsBySector/TargetPlacementsBySector";
+export { default as FeaturedCareerPathways } from "./sections/FeaturedCareerPathways/FeaturedCareerPathways";
+export { default as OurPlacedCandidates } from "./sections/OurPlacedCandidates/OurPlacedCandidates";
+export { default as PlacementWorkflow } from "./sections/PlacementWorkflow/PlacementWorkflow";
+export { default as FAQ } from "./sections/FAQ/FAQ";

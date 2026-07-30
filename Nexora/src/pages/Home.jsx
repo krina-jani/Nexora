@@ -495,7 +495,7 @@ const Home = () => {
           display: inline-flex;
           align-items: center;
           padding: 14px 32px;
-          background: #ffffffff;
+          background: #df830d;
           color: #111b15;
           font-weight: 700;
           border-radius: 50px;
@@ -703,6 +703,8 @@ const Home = () => {
         /* About Intro */
         .about-intro-section {
           padding: 100px 0;
+          background-color: #F9C33A;
+          color: #000000;
         }
         .about-intro-grid {
           display: grid;
@@ -715,9 +717,10 @@ const Home = () => {
           font-weight: 800;
           line-height: 1.2;
           margin-bottom: 24px;
+          color: #000000;
         }
         .about-intro-left p {
-          color: var(--text);
+          color: #000000;
           line-height: 1.6;
           margin-bottom: 30px;
         }
@@ -741,7 +744,7 @@ const Home = () => {
         .about-stat-item p {
           margin: 0;
           font-size: 0.95rem;
-          color: var(--text-light);
+          color: #333333;
         }
         .visual-media-box {
           height: 380px;

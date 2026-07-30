@@ -70,12 +70,12 @@
 .service-card h3 {
   font-size: 1.3rem;
   font-weight: 700;
-  color: var(--heading);
+  color: #000000;
   margin: 0;
 }
 
 .service-card p {
-  color: var(--text);
+  color: #444444;
   font-size: 0.95rem;
   line-height: 1.6;
   margin: 0;

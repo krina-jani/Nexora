@@ -4,26 +4,26 @@
      PRIMARY BRAND COLORS
   =========================== */
 
-  --primary: #48C92C;
-  --primary-hover: #3EB425;
-  --primary-dark: #2D9620;
-  --primary-light: #8DF67A;
+  --primary: #df830d;
+  --primary-hover: #b96a09;
+  --primary-dark: #6e3517;
+  --primary-light: #F9C33A;
 
   /* ===========================
      ACCENT COLORS
   =========================== */
 
-  --accent: #C7FFD6;
-  --accent-light: #ECFFF2;
-  --accent-dark: #B0F4C2;
+  --accent: #F9C33A;
+  --accent-light: rgba(249, 195, 58, 0.2);
+  --accent-dark: #df830d;
 
   /* ===========================
      BACKGROUND COLORS
   =========================== */
 
-  --bg: #FCFFFC;
-  --bg-soft: #F5FFF4;
-  --bg-secondary: #F0FFF0;
+  --bg: linear-gradient(134deg, #df830d, #6e3517, #F9C33A);
+  --bg-soft: linear-gradient(134deg, rgba(223, 131, 13, 0.9), rgba(110, 53, 23, 0.9), rgba(249, 195, 58, 0.9));
+  --bg-secondary: linear-gradient(134deg, rgba(223, 131, 13, 0.8), rgba(110, 53, 23, 0.8), rgba(249, 195, 58, 0.8));
   --bg-dark: #0F1211;
 
   /* ===========================
@@ -39,9 +39,9 @@
      TEXT
   =========================== */
 
-  --heading: #101010;
-  --text: #4F5552;
-  --text-light: #7A837E;
+  --heading: #FFFFFF;
+  --text: rgba(255, 255, 255, 0.85);
+  --text-light: rgba(255, 255, 255, 0.65);
   --white: #FFFFFF;
 
   /* ===========================
@@ -64,9 +64,9 @@
   =========================== */
 
   --glow:
-      0 0 15px rgba(72,201,44,.18),
-      0 0 30px rgba(72,201,44,.12),
-      0 0 60px rgba(72,201,44,.08);
+      0 0 15px rgba(223, 131, 13, 0.2),
+      0 0 30px rgba(223, 131, 13, 0.15),
+      0 0 60px rgba(223, 131, 13, 0.1);
 
   /* ===========================
      GLASS

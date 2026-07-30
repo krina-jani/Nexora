@@ -144,18 +144,22 @@ const Services = () => {
           
           <div className="process-grid">
             <div className="process-step">
+
               <h4>Discovery & Audit</h4>
               <p>We analyze your current profile, skills, and career goals to identify gaps and opportunities.</p>
             </div>
             <div className="process-step">
+
               <h4>Strategic Planning</h4>
               <p>Our experts craft a personalized roadmap, including resume revamps and upskilling plans.</p>
             </div>
             <div className="process-step">
+
               <h4>Execution & Prep</h4>
               <p>You undergo rigorous mock interviews, branding exercises, and technical assessments.</p>
             </div>
             <div className="process-step">
+
               <h4>Placement & Growth</h4>
               <p>We leverage our network to land you interviews and help negotiate your best offer.</p>
             </div>
@@ -329,7 +333,6 @@ const Services = () => {
           gap: 80px;
           align-items: center;
         }
-        
         .alt-layout .detailed-service-grid {
           direction: rtl; /* simple trick to swap columns */
         }
@@ -356,7 +359,6 @@ const Services = () => {
           line-height: 1.6;
           font-size: 0.95rem;
         }
-        
         .service-title {
           font-size: 2.5rem;
           font-weight: 800;
@@ -479,7 +481,6 @@ const Services = () => {
         .process-step:hover::before {
           background-position: 100% 100%;
         }
-        
         .process-step:hover {
           transform: translateY(-5px);
           box-shadow: var(--shadow-md);

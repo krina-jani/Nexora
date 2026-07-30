@@ -16,20 +16,6 @@ const Navbar = () => {
   });
   const location = useLocation();
 
-  useEffect(() => {
-    if (isDarkMode) {
-      document.documentElement.setAttribute('data-theme', 'dark');
-      localStorage.setItem('theme', 'dark');
-    } else {
-      document.documentElement.removeAttribute('data-theme');
-      localStorage.setItem('theme', 'light');
-    }
-  }, [isDarkMode]);
-
-  const toggleTheme = () => {
-    setIsDarkMode(prev => !prev);
-  };
-
   const handleDropdownClick = (e, hash) => {
     setDropdownOpen(false);
     setMenuOpen(false); // close mobile menu too just in case
@@ -45,6 +31,22 @@ const Navbar = () => {
       }
     }
   };
+
+  useEffect(() => {
+    if (isDarkMode) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.documentElement.removeAttribute('data-theme');
+      localStorage.setItem('theme', 'light');
+    }
+  }, [isDarkMode]);
+
+  const toggleTheme = () => {
+    setIsDarkMode(prev => !prev);
+  };
+
+
 
   useEffect(() => {
     const handleScroll = () => {

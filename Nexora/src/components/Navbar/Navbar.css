@@ -56,7 +56,7 @@
 
 .logo-sub {
 
-  color: #FAC42C;
+  color: #000000;
   margin-left: 1px;
   padding-left: 4px;
   font-size: 1.1rem;
@@ -76,7 +76,7 @@
 .navbar-links a {
   font-size: 0.95rem;
   font-weight: 500;
-  color: var(--text);
+  color: #000000;
   position: relative;
   padding: 8px 0;
   transition: var(--transition);
@@ -204,7 +204,7 @@
     font-size: 1.1rem;
     display: block;
     width: 100%;
-    color: #333333;
+    color: #000000;
     font-weight: 500;
   }
 
@@ -244,7 +244,7 @@
   font-family:'Inter', sans-serif;
   font-size: 0.95rem;
   font-weight: 500;
-  color: var(--text);
+  color: #000000;
   padding: 8px 0;
   cursor: pointer;
   display: flex;
@@ -279,7 +279,8 @@
   left: 0;
   width: max-content;
   min-width: 260px;
-  background: var(--surface-solid);
+  /* background: var(--surface-solid); */
+  background-color: white;
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-lg);
@@ -319,9 +320,9 @@
   display: block;
   padding: 12px 24px !important;
   font-size: 0.95rem;
-  color: var(--text);
+  color: #333333;
   text-align: left;
-  font-weight: 400;
+  font-weight: 500;
   transition: all 0.2s ease;
 }
 

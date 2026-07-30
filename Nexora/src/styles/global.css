@@ -2,8 +2,8 @@
 
 body {
   font-family: var(--body-font);
-  background: var(--white);
-  color: var(--secondary);
+  background: var(--bg);
+  color: var(--text);
   overflow-x: hidden;
 }
 

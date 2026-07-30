@@ -27,6 +27,19 @@ const Testimonials = () => {
         duration: 0.8,
         ease: "power2.out"
       });
+
+      // Honest Feedback Cards
+      gsap.from(".feedback-card", {
+        scrollTrigger: {
+          trigger: ".feedback-grid",
+          start: "top 85%"
+        },
+        y: 50,
+        opacity: 0,
+        stagger: 0.2,
+        duration: 0.8,
+        ease: "power2.out"
+      });
     }, pageRef);
 
     return () => ctx.revert();
@@ -37,6 +50,31 @@ const Testimonials = () => {
     { label: "Highest Package", val: "64 LPA" },
     { label: "Placement Rate", val: "98.2%" },
     { label: "Mentors from FAANG", val: "140+" }
+  ];
+
+  const honestFeedbackData = [
+    {
+      type: "praise",
+      client: "Sarah J., Frontend Dev",
+      content: "Nexora's mentorship completely changed my approach. The mock interviews were rigorous and prepared me perfectly for my role at Amazon."
+    },
+    {
+      type: "constructive",
+      client: "Michael T., Data Analyst",
+      content: "Initially, I felt the pace of the curriculum was too fast and overwhelming.",
+      resolution: "I brought this up with my mentor, and they immediately adjusted my timeline, adding 1-on-1 sessions to help me catch up. The support was incredible!"
+    },
+    {
+      type: "praise",
+      client: "Elena R., UX Designer",
+      content: "The portfolio reviews were brutal but necessary. Thanks to the honest feedback, my case studies now attract recruiters automatically."
+    },
+    {
+      type: "constructive",
+      client: "David K., Backend Engineer",
+      content: "There was a delay in getting my resume reviewed during the holiday season, which frustrated me.",
+      resolution: "Nexora's team apologized and assigned a senior FAANG engineer to do a deep-dive review over the weekend to make up for the lost time. Got an offer 3 weeks later!"
+    }
   ];
 
   return (
@@ -111,6 +149,35 @@ const Testimonials = () => {
               <h3>Aarav Sharma | Crack Google SDE</h3>
               <p>Aarav details the coding mock loops, technical roadmaps, and behavioral rounds that got him into Google.</p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Honest Feedback Section */}
+      <section className="honest-feedback-section">
+        <div className="container">
+          <div className="text-center section-header" style={{ marginBottom: "50px" }}>
+            <h2 style={{ fontSize: "2.5rem", fontWeight: "800", marginBottom: "15px" }}>Honest Feedback</h2>
+            <p className="text-light" style={{ maxWidth: "700px", margin: "0 auto", fontSize: "1.1rem" }}>
+              We believe in absolute transparency. Here is what our clients say, including the challenges they faced and how we resolved them together.
+            </p>
+          </div>
+          
+          <div className="feedback-grid">
+            {honestFeedbackData.map((item, idx) => (
+              <div key={idx} className={`feedback-card glass ${item.type}`}>
+                <div className="feedback-badge">
+                  {item.type === "praise" ? "⭐️ Praise" : "🛠 Constructive"}
+                </div>
+                <p className="feedback-content">"{item.content}"</p>
+                {item.resolution && (
+                  <div className="feedback-resolution">
+                    <strong>How we improved:</strong> {item.resolution}
+                  </div>
+                )}
+                <div className="feedback-client">— {item.client}</div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -276,6 +343,96 @@ const Testimonials = () => {
           .video-grid {
             grid-template-columns: 1fr;
           }
+          .feedback-grid {
+            grid-template-columns: 1fr;
+          }
+        }
+
+        /* Honest Feedback Styles */
+        .honest-feedback-section {
+          padding: 80px 0 100px;
+        }
+        .feedback-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 30px;
+        }
+        .feedback-card {
+          padding: 40px;
+          border-radius: var(--radius-lg);
+          border: 1px solid var(--border);
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .feedback-card:hover {
+          transform: translateY(-5px);
+          box-shadow: var(--shadow-lg);
+        }
+        
+        .feedback-card.praise {
+          background: linear-gradient(145deg, rgba(72, 201, 44, 0.05), rgba(255,255,255,0.01));
+          border-left: 4px solid var(--primary);
+        }
+        .feedback-card.constructive {
+          background: linear-gradient(145deg, rgba(255, 165, 0, 0.05), rgba(255,255,255,0.01));
+          border-left: 4px solid #FFA500;
+        }
+        
+        [data-theme='dark'] .feedback-card.praise {
+          background: linear-gradient(145deg, rgba(72, 201, 44, 0.08), rgba(0,0,0,0.2));
+        }
+        [data-theme='dark'] .feedback-card.constructive {
+          background: linear-gradient(145deg, rgba(255, 165, 0, 0.08), rgba(0,0,0,0.2));
+        }
+
+        .feedback-badge {
+          display: inline-block;
+          padding: 6px 14px;
+          border-radius: 20px;
+          font-size: 0.85rem;
+          font-weight: 700;
+          width: fit-content;
+        }
+        .feedback-card.praise .feedback-badge {
+          background: rgba(72, 201, 44, 0.15);
+          color: var(--primary-dark);
+        }
+        .feedback-card.constructive .feedback-badge {
+          background: rgba(255, 165, 0, 0.15);
+          color: #d98c00;
+        }
+        
+        [data-theme='dark'] .feedback-card.praise .feedback-badge {
+          color: var(--primary);
+        }
+        [data-theme='dark'] .feedback-card.constructive .feedback-badge {
+          color: #FFA500;
+        }
+
+        .feedback-content {
+          font-size: 1.1rem;
+          line-height: 1.6;
+          color: var(--heading);
+          font-style: italic;
+        }
+        .feedback-resolution {
+          background: var(--surface);
+          padding: 16px;
+          border-radius: var(--radius-sm);
+          font-size: 0.95rem;
+          color: var(--text);
+          border-left: 2px solid var(--primary);
+          line-height: 1.5;
+        }
+        .feedback-client {
+          margin-top: auto;
+          font-weight: 700;
+          color: var(--text-light);
+          text-align: right;
+          font-size: 0.9rem;
         }
       `}</style>
     </div>

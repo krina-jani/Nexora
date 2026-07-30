@@ -1,12 +1,50 @@
 import { useState, useEffect } from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, Link, useLocation } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
+import { LuChevronDown } from "react-icons/lu";
+import logo from "../../assets/icons/nexoralogo.png";
+import brightness from "../../assets/icons/brightness.png";
+import darkness from "../../assets/icons/darkness.png";
 import "./Navbar.css";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    return localStorage.getItem('theme') === 'dark';
+  });
   const location = useLocation();
+
+  useEffect(() => {
+    if (isDarkMode) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.documentElement.removeAttribute('data-theme');
+      localStorage.setItem('theme', 'light');
+    }
+  }, [isDarkMode]);
+
+  const toggleTheme = () => {
+    setIsDarkMode(prev => !prev);
+  };
+
+  const handleDropdownClick = (e, hash) => {
+    setDropdownOpen(false);
+    setMenuOpen(false); // close mobile menu too just in case
+    
+    if (location.pathname === "/services") {
+      e.preventDefault();
+      // change URL hash without jumping instantly
+      window.history.pushState(null, '', `/services${hash}`);
+      const el = document.getElementById(hash.replace('#', ''));
+      if (el) {
+        const y = el.getBoundingClientRect().top + window.scrollY - 120;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      }
+    }
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -31,7 +69,9 @@ const Navbar = () => {
     <header className={`navbar-header ${scrolled ? "scrolled" : ""}`}>
       <div className="navbar-glass-container">
         <NavLink to="/" className="navbar-logo">
-          <span className="logo-accent">N</span>exora <span className="logo-sub">Career</span>
+          <img src={logo} alt="Nexora Logo" className="logo-image" />
+           <span className="logo-main">Nexora</span>
+          <span className="logo-sub">Career</span>
         </NavLink>
 
         <nav className={`navbar-nav ${menuOpen ? "open" : ""}`}>
@@ -46,10 +86,45 @@ const Navbar = () => {
                 About
               </NavLink>
             </li>
-            <li>
-              <NavLink to="/services" className={({ isActive }) => (isActive ? "active" : "")}>
-                Services
-              </NavLink>
+            <li 
+              className="navbar-item-dropdown"
+              onMouseEnter={() => setDropdownOpen(true)}
+              onMouseLeave={() => setDropdownOpen(false)}
+            >
+              <button 
+                className={`dropdown-trigger ${location.pathname === "/services" ? "active" : ""}`}
+                onClick={() => setDropdownOpen(!dropdownOpen)}
+              >
+                Services <LuChevronDown className={`chevron ${dropdownOpen ? "open" : ""}`} />
+              </button>
+              
+              <ul className={`simple-dropdown ${dropdownOpen ? "show" : ""}`}>
+                <li>
+                  <Link to="/services#rpo" onClick={(e) => handleDropdownClick(e, '#rpo')}>
+                    Recruitment Process Outsourcing
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/services#career-support" onClick={(e) => handleDropdownClick(e, '#career-support')}>
+                    Career Support Services
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/services#career-growth" onClick={(e) => handleDropdownClick(e, '#career-growth')}>
+                    Career Growth Packages
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/services#pro-services" onClick={(e) => handleDropdownClick(e, '#pro-services')}>
+                    Pro Services
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/services#custom-services" onClick={(e) => handleDropdownClick(e, '#custom-services')}>
+                    Custom Services
+                  </Link>
+                </li>
+              </ul>
             </li>
             <li>
               <NavLink to="/industries" className={({ isActive }) => (isActive ? "active" : "")}>
@@ -70,10 +145,14 @@ const Navbar = () => {
         </nav>
 
         <div className="navbar-actions">
+          <button className="theme-toggle" onClick={toggleTheme} style={{ background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center' }}>
+            <img src={isDarkMode ? darkness : brightness} alt="Toggle Theme" style={{ width: '24px', height: '24px' }} />
+          </button>
+          
           <NavLink to="/contact" className="btn-primary navbar-cta">
             Book Free Consultation
           </NavLink>
-          
+
           <button className="mobile-toggle" onClick={() => setMenuOpen(!menuOpen)}>
             {menuOpen ? <FaTimes /> : <FaBars />}
           </button>

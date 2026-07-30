@@ -4,6 +4,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SplitType from "split-type";
 import { FaArrowRight, FaGithub, FaLinkedin, FaEnvelope, FaInstagram } from "react-icons/fa";
+import heroBgImage from "../assets/images/perfect-hero.png";
 // Common Components
 import Marquee from "../components/common/Marquee";
 
@@ -20,6 +21,49 @@ import {
 } from "../components";
 
 gsap.registerPlugin(ScrollTrigger);
+
+const Typewriter = ({ texts, typingSpeed = 75, deletingSpeed = 50, pauseDuration = 1500, loop = true }) => {
+  const [text, setText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [loopNum, setLoopNum] = useState(0);
+
+  useEffect(() => {
+    let timer;
+    const i = loopNum % texts.length;
+    const fullText = texts[i];
+
+    const handleTyping = () => {
+      setText(
+        isDeleting
+          ? fullText.substring(0, text.length - 1)
+          : fullText.substring(0, text.length + 1)
+      );
+
+      let typeSpeed = isDeleting ? deletingSpeed : typingSpeed;
+
+      if (!isDeleting && text === fullText) {
+        typeSpeed = pauseDuration;
+        setIsDeleting(true);
+      } else if (isDeleting && text === "") {
+        setIsDeleting(false);
+        setLoopNum(loopNum + 1);
+        typeSpeed = 500;
+      }
+
+      timer = setTimeout(handleTyping, typeSpeed);
+    };
+
+    timer = setTimeout(handleTyping, typingSpeed);
+    return () => clearTimeout(timer);
+  }, [text, isDeleting, loopNum, texts, typingSpeed, deletingSpeed, pauseDuration]);
+
+  return (
+    <span className="text-type">
+      {text}
+      <span className="cursor">_</span>
+    </span>
+  );
+};
 
 const Home = () => {
   const homeRef = useRef(null);
@@ -78,52 +122,10 @@ const Home = () => {
         });
       });
 
-      // 3. Horizontal Scroll Animation
-      const textElement = document.querySelector('.Horizontal__text');
-      const container = document.querySelector('.Horizontal__container');
-      
-      if (textElement && container) {
-        // We attach splitInstance to textElement so we can clean it up
-        textElement.splitInstance = new SplitType(textElement, { types: 'chars,words' });
-        
-        const wrapper = document.querySelector('.Horizontal');
-        
-        const scrollTween = gsap.to(container, {
-          x: () => -(container.scrollWidth - window.innerWidth + window.innerWidth * 0.1),
-          ease: "none",
-          scrollTrigger: {
-            trigger: wrapper,
-            pin: true,
-            end: "+=5000px",
-            scrub: true,
-          }
-        });
-
-        textElement.splitInstance.chars.forEach((char) => {
-          gsap.from(char, {
-            yPercent: gsap.utils.random(-200, 200),
-            opacity: 0,
-            rotation: gsap.utils.random(-20, 20),
-            scale: 0.5,
-            ease: "back.out(1.2)",
-            scrollTrigger: {
-              trigger: char,
-              containerAnimation: scrollTween,
-              start: "left 90%",
-              end: "left 20%",
-              scrub: 1,
-            }
-          });
-        });
-      }
     }, homeRef);
 
     return () => {
       ctx.revert();
-      const textElement = document.querySelector('.Horizontal__text');
-      if (textElement && textElement.splitInstance) {
-        textElement.splitInstance.revert();
-      }
     };
   }, []);
 
@@ -134,7 +136,7 @@ const Home = () => {
   return (
     <div ref={homeRef} className="home-container">
       {/* SECTION 1: HERO */}
-      <section className="hero-section">
+      <section className="hero-section" style={{ backgroundImage: `url(${heroBgImage})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
         <div className="hero-bg-glow"></div>
         <div className="container hero-grid">
           {/* Left Column */}
@@ -158,19 +160,19 @@ const Home = () => {
           {/* Right Column */}
           <div className="hero-right">
             {/* Dark Profile Card */}
-            <div className="profile-card">
-              <div className="profile-avatar">
+            <div className="profile">
+              {/* <div className="profile-avatar">
                 <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&auto=format&fit=crop&q=80" alt="Advisor" />
-              </div>
-              <div className="profile-info">
+              </div> */}
+              {/* <div className="profile-info">
                 <h4>Sarah Jenkins</h4>
                 <p>FAANG Tech Recruiter</p>
                 <Link to="/contact" className="profile-link">Get in Touch</Link>
-              </div>
+              </div> */}
             </div>
 
             {/* Resume Card */}
-            <div className="resume-card-box">
+            {/* <div className="resume-card-box">
               <div className="resume-meta">
                 <span className="meta-badge">RESUME</span>
                 <span className="meta-size">PDF • 2.4 MB</span>
@@ -180,7 +182,7 @@ const Home = () => {
               <Link to="/services" className="btn-cv">
                 Check Resume
               </Link>
-            </div>
+            </div> */}
 
             {/* Vertical Socials */}
             <div className="vertical-socials">
@@ -285,77 +287,144 @@ const Home = () => {
       {/* SECTION 12: FAQ */}
       <FAQ />
 
-      {/* SECTION 13: HORIZONTAL SCROLL CTA */}
-      <section className="Horizontal">
-        <div className="Horizontal__container">
-          <h3 className="Horizontal__text">
-            READY TO LAUNCH YOUR CAREER? THE WORLD'S MOST INNOVATIVE TEAMS ARE WAITING FOR YOU.
-          </h3>
-        </div>
-        
-        <div className="Horizontal__fixed-cta">
-          <Link to="/contact" className="btn-primary" style={{ background: '#ffffff', color: '#0f172a', borderColor: '#ffffff', fontSize: 'clamp(0.9rem, 1.5vw, 1.1rem)', padding: '12px 24px', borderRadius: '50px', whiteSpace: 'nowrap' }}>
-            Book Free Consultation
-          </Link>
-          <Link to="/services" className="btn-primary btn-secondary" style={{ background: 'transparent', color: '#ffffff', border: '1.5px solid #ffffff', fontSize: 'clamp(0.9rem, 1.5vw, 1.1rem)', padding: '12px 24px', borderRadius: '50px', whiteSpace: 'nowrap' }}>
-            Explore Services
-          </Link>
+      {/* SECTION 13: FINAL CTA */}
+      <section className="final-cta-section">
+        <div className="container">
+          <div className="cta-box glass text-center">
+            <h2 className="cta-heading">
+              <Typewriter 
+                texts={[
+                  "Are you ready to launch your career in Nexora ?",
+                  "Join the world's most innovative teams.",
+                ]} 
+              />
+            </h2>
+            <p className="cta-subheading">
+              Join thousands of professionals who have transformed their careers with our global placement engine.
+            </p>
+            <div className="cta-buttons">
+              <Link to="/contact" className="btn-primary" style={{ padding: '16px 32px', fontSize: '1.1rem' }}>
+                Book Free Consultation
+              </Link>
+              <Link to="/services" className="btn-primary" style={{ padding: '16px 32px', fontSize: '1.1rem', border: '2px solid var(--primary)', background: 'transparent', color: 'var(--text)' }}>
+                Explore Services
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Inline styles for Home Page elements (Remaining main sections) */}
       <style>{`
-        .Horizontal {
-          overflow: hidden;
-          height: 100vh;
-          display: flex;
-          align-items: center;
-          padding: 2rem;
-          background: #0f172a;
-          color: #f8fafc;
+        .final-cta-section {
+          padding: 80px 0 120px 0;
           position: relative;
         }
         
-        .Horizontal__container {
-          width: max-content;
+        .cta-box {
+          padding: 80px 60px;
+          border-radius: var(--radius-xl);
+          max-width: 1100px;
+          margin: 0 auto;
+          border: 1px solid var(--border);
+          position: relative;
+          overflow: hidden;
+        }
+
+        .cta-box::before {
+          content: "";
+          position: absolute;
+          top: -50%;
+          left: -50%;
+          width: 200%;
+          height: 200%;
+          background: radial-gradient(circle at center, rgba(72, 201, 44, 0.05), transparent 70%);
+          z-index: 0;
+          pointer-events: none;
+        }
+
+        .cta-heading {
+          font-size: clamp(2.5rem, 5vw, 3.5rem);
+          font-weight: 800;
+          margin-bottom: 24px;
+          color: var(--heading);
+          position: relative;
+          z-index: 1;
+          min-height: 120px; /* Prevent layout shift during typing */
           display: flex;
           align-items: center;
-          gap: clamp(40px, 8vw, 100px);
-          will-change: transform;
+          justify-content: center;
         }
 
-        .Horizontal__text {
+        .text-type {
+          white-space: pre-wrap;
+        }
+
+        .cursor {
           display: inline-block;
-          width: max-content;
-          white-space: nowrap;
-          font-size: clamp(3rem, 12vw, 10rem);
-          font-weight: 700;
-          letter-spacing: -0.02em;
-          line-height: 1.1;
-          margin: 0;
-          font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+          margin-left: 5px;
+          animation: blink 0.75s infinite;
+          color: var(--primary);
         }
 
-        .Horizontal__text .char {
-          display: inline-block;
-          will-change: transform, opacity;
+        @keyframes blink {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0; }
         }
 
-        .Horizontal__fixed-cta {
-          position: absolute;
-          bottom: 2rem;
-          right: 2rem;
+        .cta-subheading {
+          font-size: 1.1rem;
+          color: var(--text);
+          margin: 0 auto 40px;
+          max-width: 600px;
+          position: relative;
+          z-index: 1;
+        }
+
+        .cta-buttons {
           display: flex;
-          gap: 16px;
-          z-index: 10;
+          gap: 20px;
+          justify-content: center;
+          position: relative;
+          z-index: 1;
+        }
+
+        @media (max-width: 1024px) {
+          .cta-box {
+            padding: 60px 40px;
+          }
+          .cta-heading {
+            font-size: 2.8rem;
+            min-height: 110px;
+          }
         }
 
         @media (max-width: 768px) {
-          .Horizontal__fixed-cta {
-            bottom: 1.5rem;
-            right: 1.5rem;
+          .final-cta-section {
+            padding: 60px 0 80px 0;
+          }
+          .cta-box {
+            padding: 40px 24px;
+            border-radius: var(--radius-lg);
+          }
+          .cta-heading {
+            font-size: 2.2rem;
+            min-height: 120px;
+          }
+          .cta-subheading {
+            font-size: 1rem;
+            margin-bottom: 30px;
+          }
+          .cta-buttons {
             flex-direction: column;
-            gap: 12px;
+            gap: 16px;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .cta-heading {
+            font-size: 1.8rem;
+            min-height: 100px;
           }
         }
 
@@ -372,6 +441,7 @@ const Home = () => {
           position: relative;
           padding: 80px 0;
           background: radial-gradient(circle at 10% 20%, #ffffffff 0%, #c7ffd6 40%, #c7ffd6 100%);
+          
           overflow: hidden;
         }
         .hero-bg-glow {
@@ -396,7 +466,7 @@ const Home = () => {
           font-size: 0.75rem;
           text-transform: uppercase;
           letter-spacing: 2px;
-          color: #2F8E1C;
+          color: #000000ff;
           font-weight: 700;
           margin-bottom: 24px;
         }
@@ -410,7 +480,7 @@ const Home = () => {
           margin-bottom: 30px;
         }
         .text-gradient {
-          background: linear-gradient(135deg, #48C92C, #2E8E1B);
+          background: linear-gradient(134deg, #df830d, #6e3517);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
         }
@@ -425,7 +495,7 @@ const Home = () => {
           display: inline-flex;
           align-items: center;
           padding: 14px 32px;
-          background: #48C92C;
+          background: #ffffffff;
           color: #111b15;
           font-weight: 700;
           border-radius: 50px;
@@ -435,7 +505,7 @@ const Home = () => {
           cursor: pointer;
         }
         .btn-primary-pill:hover {
-          background: #53D131;
+          background: #000000ff;
           transform: translateY(-2px);
         }
         
@@ -564,11 +634,13 @@ const Home = () => {
 
         /* Vertical Socials */
         .vertical-socials {
+          position: absolute;
+          bottom: 40px;
+          right: 40px;
           display: flex;
           flex-direction: column;
-          align-items: flex-end;
+          align-items: center;
           gap: 16px;
-          margin-right: 16px;
           z-index: 10;
         }
         .vertical-socials a {
@@ -794,10 +866,10 @@ const Home = () => {
         }
 
         /* Responsive Breakpoints */
-        @media (max-width: 991px) {
+        @media (max-width: 1024px) {
           .hero-section {
             min-height: auto;
-            padding: 120px 0 60px;
+            padding: 140px 0 80px;
           }
           .hero-grid {
             grid-template-columns: 1fr;
@@ -854,6 +926,18 @@ const Home = () => {
           .cta-reveal-layer h2,
           .cta-mask-layer h2 {
             font-size: 2rem;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .hero-title {
+            font-size: 2.2rem;
+          }
+          .hero-badge {
+            font-size: 0.65rem;
+          }
+          .hero-subtext {
+            font-size: 1rem;
           }
         }
 

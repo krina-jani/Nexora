@@ -2,11 +2,11 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import Accordion from "../components/common/Accordion";
 import faq from "../data/faq";
-import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaClock } from "react-icons/fa";
+import { FaPaperPlane } from "react-icons/fa";
 
 const Contact = () => {
   const pageRef = useRef(null);
-  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [formData, setFormData] = useState({ name: "", email: "", phone: "", company: "", role: "", message: "", agree: false });
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -18,19 +18,13 @@ const Contact = () => {
         ease: "power3.out"
       });
 
-      // Form & Info panels
-      gsap.from(".contact-box-left", {
-        x: -50,
+      // Form entrance
+      gsap.from(".new-contact-form-container", {
+        y: 50,
         opacity: 0,
         duration: 0.8,
-        ease: "power2.out"
-      });
-
-      gsap.from(".contact-form-glass", {
-        x: 50,
-        opacity: 0,
-        duration: 0.8,
-        ease: "power2.out"
+        ease: "power2.out",
+        delay: 0.2
       });
     }, pageRef);
 
@@ -39,8 +33,12 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!formData.agree) {
+      alert("Please agree to the Privacy Policy before submitting.");
+      return;
+    }
     alert(`Thank you, ${formData.name}! We will contact you soon.`);
-    setFormData({ name: "", email: "", message: "" });
+    setFormData({ name: "", email: "", phone: "", company: "", role: "", message: "", agree: false });
   };
 
   return (
@@ -57,88 +55,116 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* Main Form & details */}
+      {/* Main Form Section */}
       <section className="contact-main-section">
-        <div className="container contact-grid">
+        <div className="container">
           
-          {/* Info Side */}
-          <div className="contact-box-left">
-            <h2>Office Information</h2>
-            <p className="contact-intro">
-              Whether you want to visit our offices or hop on a video consultation, our team is always ready to guide you.
-            </p>
-            <div className="contact-info-list">
-              <div className="info-item">
-                <FaMapMarkerAlt className="info-icon" />
-                <div>
-                  <h4>Global HQ</h4>
-                  <p>180 Orchard Road, Suite 400, Singapore</p>
-                </div>
-              </div>
-              <div className="info-item">
-                <FaPhoneAlt className="info-icon" />
-                <div>
-                  <h4>Phone Support</h4>
-                  <p>+65 6789 0123</p>
-                </div>
-              </div>
-              <div className="info-item">
-                <FaEnvelope className="info-icon" />
-                <div>
-                  <h4>Email Support</h4>
-                  <p>admissions@nexoracareer.com</p>
-                </div>
-              </div>
-              <div className="info-item">
-                <FaClock className="info-icon" />
-                <div>
-                  <h4>Business Hours</h4>
-                  <p>Monday - Friday: 9:00 AM - 6:00 PM (SGT)</p>
-                </div>
-              </div>
-            </div>
+          <div className="text-center contact-header-new">
+            <h2>Contact Form</h2>
+            <p>For the fastest response about our recruitment solutions or career support, please fill out the form below.</p>
           </div>
 
-          {/* Form Side */}
-          <form className="contact-form-glass glass" onSubmit={handleSubmit}>
-            <h3>Send Us a Message</h3>
-            <div className="form-group">
-              <label>Full Name</label>
-              <input
-                type="text"
-                required
-                value={formData.name}
-                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                placeholder="John Doe"
-                className="glass-input"
-              />
-            </div>
-            <div className="form-group">
-              <label>Email Address</label>
-              <input
-                type="email"
-                required
-                value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                placeholder="john@example.com"
-                className="glass-input"
-              />
-            </div>
-            <div className="form-group">
-              <label>Tell us about your career goals</label>
-              <textarea
-                required
-                rows="5"
-                value={formData.message}
-                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                placeholder="I want to transition from marketing to full stack..."
-                className="glass-input"
-              />
-            </div>
-            <button type="submit" className="btn-primary form-submit-btn">
-              Submit Inquiry
-            </button>
-          </form>
+          <div className="new-contact-form-container glass">
+            <form onSubmit={handleSubmit} className="new-contact-form">
+              
+              <div className="form-row-2col">
+                <div className="form-group-new">
+                  <label>Full Name <span className="req-star">*</span></label>
+                  <input
+                    type="text"
+                    required
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    placeholder="John Doe"
+                    className="glass-input-new"
+                  />
+                </div>
+                <div className="form-group-new">
+                  <label>Email Address <span className="req-star">*</span></label>
+                  <input
+                    type="email"
+                    required
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    placeholder="john@company.com"
+                    className="glass-input-new"
+                  />
+                </div>
+              </div>
+
+              <div className="form-row-2col">
+                <div className="form-group-new">
+                  <label>Phone Number</label>
+                  <input
+                    type="tel"
+                    value={formData.phone}
+                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                    placeholder="+91 7634897546"
+                    className="glass-input-new"
+                  />
+                </div>
+                <div className="form-group-new">
+                  <label>Company/Organization (if applicable)</label>
+                  <input
+                    type="text"
+                    value={formData.company}
+                    onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                    placeholder="Your Company"
+                    className="glass-input-new"
+                  />
+                </div>
+              </div>
+
+              <div className="form-row-1col">
+                <div className="form-group-new">
+                  <label>I am: <span className="req-star">*</span></label>
+                  <select 
+                    required
+                    value={formData.role}
+                    onChange={(e) => setFormData({ ...formData, role: e.target.value })}
+                    className="glass-input-new select-new"
+                  >
+                    <option value="" disabled>Select one</option>
+                    <option value="student">Student / Job Seeker</option>
+                    <option value="employer">Employer / Hiring Manager</option>
+                    <option value="partner">Potential Partner</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+              </div>
+
+              <div className="form-row-1col">
+                <div className="form-group-new">
+                  <label>Message <span className="req-star">*</span></label>
+                  <textarea
+                    required
+                    rows="5"
+                    value={formData.message}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                    placeholder="Tell us about your recruitment needs or career goals..."
+                    className="glass-input-new"
+                  />
+                </div>
+              </div>
+
+              <div className="form-row-1col checkbox-row">
+                <label className="checkbox-label">
+                  <input 
+                    type="checkbox" 
+                    required 
+                    checked={formData.agree}
+                    onChange={(e) => setFormData({ ...formData, agree: e.target.checked })}
+                  />
+                  <span>I have read and agree to the Nexora Privacy Policy and Terms of Service.</span>
+                </label>
+              </div>
+
+              <button type="submit" className="btn-primary form-submit-btn-new">
+                <FaPaperPlane className="submit-icon" /> Submit Message &rarr;
+              </button>
+
+            </form>
+          </div>
 
         </div>
       </section>
@@ -182,86 +208,143 @@ const Contact = () => {
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
         }
-        .contact-grid {
-          display: grid;
-          grid-template-columns: 1fr 1.2fr;
-          gap: 60px;
-          margin-top: 40px;
+        .contact-main-section {
+          padding: 60px 0 100px;
         }
-        .contact-box-left h2 {
-          font-size: 1.8rem;
-          margin-bottom: 16px;
+        .contact-header-new {
+          margin-bottom: 40px;
+        }
+        .contact-header-new h2 {
+          font-size: 2.5rem;
+          font-weight: 800;
+          margin-bottom: 15px;
           color: var(--heading);
         }
-        .contact-intro {
-          font-size: 1.05rem;
-          line-height: 1.6;
-          margin-bottom: 30px;
+        .contact-header-new p {
+          color: var(--text-light);
+          font-size: 1.1rem;
+          max-width: 600px;
+          margin: 0 auto;
         }
-        .contact-info-list {
+
+        .new-contact-form-container {
+          max-width: 850px;
+          margin: 0 auto;
+          padding: 50px;
+          border-radius: var(--radius-xl);
+          border: 1px solid var(--border);
+          background: var(--surface);
+          box-shadow: var(--shadow-lg);
+        }
+
+        .new-contact-form {
           display: flex;
           flex-direction: column;
           gap: 24px;
         }
-        .info-item {
-          display: flex;
-          gap: 16px;
-          align-items: flex-start;
+
+        .form-row-2col {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 24px;
         }
-        .info-icon {
-          font-size: 1.3rem;
-          color: var(--primary);
-          margin-top: 4px;
-        }
-        .info-item h4 {
-          font-size: 1.05rem;
-          font-weight: 700;
-          margin-bottom: 4px;
-        }
-        .info-item p {
-          color: var(--text-light);
-          font-size: 0.95rem;
-        }
-        .contact-form-glass {
-          padding: 40px;
-          border-radius: var(--radius-lg);
-          border: 1px solid var(--border);
+        
+        .form-row-1col {
           display: flex;
           flex-direction: column;
-          gap: 20px;
         }
-        .contact-form-glass h3 {
-          font-size: 1.4rem;
-          font-weight: 700;
-          margin-bottom: 10px;
-        }
-        .form-group {
+
+        .form-group-new {
           display: flex;
           flex-direction: column;
           gap: 8px;
         }
-        .form-group label {
-          font-size: 0.9rem;
+
+        .form-group-new label {
+          font-size: 0.95rem;
           font-weight: 600;
           color: var(--heading);
         }
-        .glass-input {
-          background: rgba(255, 255, 255, 0.4);
-          border: 1px solid var(--border);
-          border-radius: var(--radius-xs);
-          padding: 12px 16px;
-          font-size: 0.95rem;
-          outline: none;
-          transition: var(--transition);
+
+        .req-star {
+          color: #ff4d4f;
+          margin-left: 4px;
         }
-        .glass-input:focus {
-          border-color: var(--primary);
-          background: var(--white);
-        }
-        .form-submit-btn {
+
+        .glass-input-new {
           width: 100%;
-          padding: 14px;
+          padding: 14px 16px;
+          border-radius: var(--radius-sm);
+          border: 1px solid var(--border);
+          background: rgba(255, 255, 255, 0.5);
+          color: var(--text);
+          font-family: inherit;
+          font-size: 1rem;
+          transition: all 0.3s ease;
         }
+        
+        [data-theme="dark"] .glass-input-new {
+          background: rgba(0, 0, 0, 0.2);
+        }
+
+        .glass-input-new:focus {
+          outline: none;
+          border-color: var(--primary);
+          background: rgba(255, 255, 255, 0.8);
+          box-shadow: 0 0 0 4px rgba(72, 201, 44, 0.1);
+        }
+        
+        [data-theme="dark"] .glass-input-new:focus {
+          background: rgba(0, 0, 0, 0.4);
+        }
+        
+        .select-new {
+          appearance: none;
+          background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23333%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+          background-repeat: no-repeat;
+          background-position: right 16px center;
+          background-size: 10px auto;
+        }
+        
+        [data-theme="dark"] .select-new {
+          background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23fff%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+        }
+
+        .checkbox-row {
+          margin: 10px 0;
+        }
+
+        .checkbox-label {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          cursor: pointer;
+          font-size: 0.95rem;
+          color: var(--text);
+        }
+
+        .checkbox-label input {
+          width: 18px;
+          height: 18px;
+          accent-color: var(--primary);
+          cursor: pointer;
+        }
+
+        .form-submit-btn-new {
+          width: 100%;
+          padding: 16px;
+          font-size: 1.1rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
+          margin-top: 10px;
+        }
+        
+        .submit-icon {
+          font-size: 1rem;
+        }
+
         .map-placeholder-section {
           padding: 80px 0;
           background: var(--bg-soft);
@@ -281,9 +364,12 @@ const Contact = () => {
           padding: 100px 0;
         }
         @media (max-width: 768px) {
-          .contact-grid {
+          .form-row-2col {
             grid-template-columns: 1fr;
-            gap: 40px;
+            gap: 20px;
+          }
+          .new-contact-form-container {
+            padding: 30px 20px;
           }
         }
       `}</style>

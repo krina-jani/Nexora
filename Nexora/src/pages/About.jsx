@@ -63,9 +63,9 @@ const About = () => {
   ];
 
   return (
-    <div ref={pageRef} className="about-page-wrapper">
+    <div ref={pageRef} className="about-page-wrapper overflow-hidden">
       {/* Hero */}
-      <section className="about-hero-section text-center">
+      <section className="about-hero-section text-center overflow-hidden">
         <div className="container">
           <h1 className="about-hero-title">
             <span>Redefining Global</span> <br />
@@ -78,7 +78,7 @@ const About = () => {
       </section>
 
       {/* Story & Vision */}
-      <section className="about-story-section">
+      <section className="about-story-section overflow-hidden">
         <div className="container about-cards-grid">
           <div className="about-card glass">
             <h2>Our Story</h2>
@@ -96,7 +96,7 @@ const About = () => {
       </section>
 
       {/* Stats/Achievements */}
-      <section className="about-achievements">
+      <section className="about-achievements overflow-hidden">
         <div className="container">
           <h2 className="text-center section-title">Key Milestones</h2>
           <div className="achievements-row">
@@ -125,7 +125,7 @@ const About = () => {
       </section>
 
       {/* Timeline */}
-      <section className="about-timeline-section">
+      <section className="about-timeline-section overflow-hidden">
         <div className="container">
           <h2 className="text-center section-title">Our Growth Timeline</h2>
           <div className="timeline-flow">
@@ -143,7 +143,7 @@ const About = () => {
       </section>
 
       {/* Team */}
-      <section className="about-team-section">
+      <section className="about-team-section overflow-hidden">
         <div className="container">
           <h2 className="text-center section-title">Meet The Experts</h2>
           <div className="team-grid">
@@ -218,15 +218,76 @@ const About = () => {
           gap: 30px;
           text-align: center;
         }
+        .ach-item {
+          --gh-bg: var(--white);
+          --gh-br: var(--radius-md);
+          --gh-border: var(--border);
+          --gh-angle: -30deg;
+          --gh-duration: 800ms;
+          --gh-size: 300%;
+          --gh-rgba: rgba(72, 201, 44, 0.25);
+          
+          background: var(--gh-bg);
+          border-radius: var(--gh-br);
+          border: 1px solid var(--gh-border);
+          padding: 40px 20px;
+          overflow: hidden;
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          cursor: pointer;
+          box-shadow: var(--shadow-sm);
+        }
+        
+        [data-theme='dark'] .ach-item {
+          --gh-bg: var(--bg-soft);
+          --gh-rgba: rgba(255,255,255, 0.1);
+        }
+
+        .ach-item::before {
+          content: "";
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(
+              var(--gh-angle),
+              transparent 60%,
+              var(--gh-rgba) 70%,
+              transparent 80%,
+              transparent 100%
+          );
+          background-size: var(--gh-size) var(--gh-size);
+          background-repeat: no-repeat;
+          background-position: -100% -100%;
+          transition: background-position var(--gh-duration) ease;
+          pointer-events: none;
+          z-index: 1;
+        }
+
+        .ach-item:hover::before {
+          background-position: 100% 100%;
+        }
+
         .ach-icon {
-          font-size: 2.5rem;
+          font-size: 3rem;
           color: var(--primary);
-          margin-bottom: 15px;
+          margin-bottom: 20px;
+          position: relative;
+          z-index: 2;
         }
         .ach-item h3 {
-          font-size: 2rem;
+          font-size: 2.2rem;
           font-weight: 700;
           margin-bottom: 8px;
+          position: relative;
+          z-index: 2;
+          color: var(--heading);
+        }
+        .ach-item p {
+          position: relative;
+          z-index: 2;
+          color: var(--text);
         }
         .about-timeline-section {
           padding: 80px 0;
@@ -292,12 +353,36 @@ const About = () => {
           font-size: 0.9rem;
           color: var(--text-light);
         }
+        @media (max-width: 1024px) {
+          .achievements-row {
+            grid-template-columns: 1fr 1fr;
+            row-gap: 40px;
+          }
+          .team-grid {
+            grid-template-columns: 1fr 1fr;
+          }
+          .about-hero-title {
+            font-size: 2.8rem;
+          }
+        }
+        
         @media (max-width: 768px) {
           .about-cards-grid, .achievements-row, .team-grid {
             grid-template-columns: 1fr;
           }
           .about-hero-title {
             font-size: 2.2rem;
+          }
+          .timeline-item-row {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 12px;
+          }
+          .about-hero-section {
+            padding: 40px 0;
+          }
+          .about-achievements, .about-timeline-section, .about-team-section {
+            padding: 60px 0;
           }
         }
       `}</style>

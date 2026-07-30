@@ -1,4 +1,5 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Loader from "../common/Loader/Loader";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
@@ -9,6 +10,19 @@ import Lenis from "lenis";
 
 const Layout = () => {
   const [loading, setLoading] = useState(true);
+  const location = useLocation();
+
+  useEffect(() => {
+    // Scroll to top and refresh GSAP ScrollTrigger on route change
+    window.scrollTo(0, 0);
+    const timer1 = setTimeout(() => ScrollTrigger.refresh(), 100);
+    const timer2 = setTimeout(() => ScrollTrigger.refresh(), 500);
+    
+    return () => {
+      clearTimeout(timer1);
+      clearTimeout(timer2);
+    };
+  }, [location.pathname]);
 
   useEffect(() => {
     // Initialize Lenis Smooth Scroll

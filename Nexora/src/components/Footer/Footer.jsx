@@ -1,93 +1,96 @@
-import { Link } from "react-router-dom";
-import { FaLinkedinIn, FaTwitter, FaInstagram, FaFacebookF, FaPaperPlane } from "react-icons/fa";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { FaInstagram, FaLinkedin, FaFacebook, FaGithub } from "react-icons/fa";
 import "./Footer.css";
 
+gsap.registerPlugin(ScrollTrigger);
+
 const Footer = () => {
-  const handleNewsletterSubmit = (e) => {
-    e.preventDefault();
-    alert("Subscribed successfully!");
-  };
+  const footerRef = useRef(null);
+  const bgTextRef = useRef(null);
+  const contentRef = useRef(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Background Text Parallax
+      gsap.fromTo(
+        bgTextRef.current,
+        { y: -50, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: footerRef.current,
+            start: "top bottom",
+            end: "bottom bottom",
+            scrub: 1,
+          },
+        }
+      );
+
+      // Content Fade In
+      gsap.fromTo(
+        ".footer-content-element",
+        { y: 30, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          stagger: 0.1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: footerRef.current,
+            start: "top 90%",
+          },
+        }
+      );
+    }, footerRef);
+
+    return () => ctx.revert();
+  }, []);
 
   return (
-    <footer className="footer-section">
-      <div className="container footer-grid-container">
-        {/* Brand Information */}
-        <div className="footer-col brand-col">
-          <Link to="/" className="footer-logo">
-            <span className="logo-accent">N</span>exora <span className="logo-sub">Career</span>
-          </Link>
-          <p className="brand-description">
-            Building global careers beyond borders. We empower builders, innovators, and professionals to secure high-growth career placements globally.
-          </p>
-          <div className="social-links-wrapper">
-            <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="social-icon-btn">
-              <FaLinkedinIn />
-            </a>
-            <a href="https://twitter.com" target="_blank" rel="noreferrer" className="social-icon-btn">
-              <FaTwitter />
-            </a>
-            <a href="https://instagram.com" target="_blank" rel="noreferrer" className="social-icon-btn">
-              <FaInstagram />
-            </a>
-            <a href="https://facebook.com" target="_blank" rel="noreferrer" className="social-icon-btn">
-              <FaFacebookF />
-            </a>
-          </div>
-        </div>
-
-        {/* Quick Links */}
-        <div className="footer-col">
-          <h3 className="footer-title">Company</h3>
-          <ul className="footer-links">
-            <li><Link to="/about">About Us</Link></li>
-            <li><Link to="/testimonials">Success Stories</Link></li>
-            <li><a href="#careers">Careers</a></li>
-            <li><a href="#blog">Blog & Articles</a></li>
-          </ul>
-        </div>
-
-        {/* Services Links */}
-        <div className="footer-col">
-          <h3 className="footer-title">Services</h3>
-          <ul className="footer-links">
-            <li><Link to="/services">Resume Writing</Link></li>
-            <li><Link to="/services">Interview Prep</Link></li>
-            <li><Link to="/services">LinkedIn Profile Opt</Link></li>
-            <li><Link to="/services">Overseas Career Support</Link></li>
-          </ul>
-        </div>
-
-        {/* Contact/Newsletter */}
-        <div className="footer-col newsletter-col">
-          <h3 className="footer-title">Stay Updated</h3>
-          <p className="newsletter-text">
-            Get the latest career tips, industry insights, and remote global job listings sent to your inbox.
-          </p>
-          <form className="newsletter-form-container" onSubmit={handleNewsletterSubmit}>
-            <input
-              type="email"
-              placeholder="Enter your email"
-              required
-              className="newsletter-email-input glass"
-            />
-            <button type="submit" className="newsletter-submit-btn">
-              <FaPaperPlane />
-            </button>
-          </form>
-        </div>
+    <footer ref={footerRef} className="premium-footer">
+      <div className="footer-bg-text-wrapper">
+        <h1 ref={bgTextRef} className="footer-bg-text">NEXORA</h1>
       </div>
 
-      {/* Footer Bottom Bar */}
-      <div className="footer-bottom-bar">
-        <div className="container bottom-inner-container">
-          <p className="copyright-text">
-            © {new Date().getFullYear()} Nexora Career. All rights reserved.
+      <div ref={contentRef} className="container premium-footer-container">
+        
+        {/* Left Section */}
+        <div className="premium-footer-left footer-content-element">
+          <div className="footer-stars">
+            ⭐⭐⭐⭐⭐
+          </div>
+          <p className="footer-testimonial">
+            "Building intelligent digital experiences with creativity and precision."
+            <br />
+            <span className="footer-author">— Team Nexora</span>
           </p>
-          <div className="bottom-links">
-            <a href="#privacy">Privacy Policy</a>
-            <a href="#terms">Terms of Service</a>
+          <div className="footer-socials">
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"><FaInstagram /></a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"><FaLinkedin /></a>
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer"><FaFacebook /></a>
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer"><FaGithub /></a>
           </div>
         </div>
+
+        {/* Center Section */}
+        <div className="premium-footer-center footer-content-element">
+          <p className="footer-tagline">
+            Transforming Ideas into Smart Digital Solutions.
+          </p>
+        </div>
+
+        {/* Right Section */}
+        <div className="premium-footer-right footer-content-element">
+          <p className="footer-copyright">
+            © 2026 NEXORA. ALL RIGHTS RESERVED.
+          </p>
+        </div>
+
       </div>
     </footer>
   );

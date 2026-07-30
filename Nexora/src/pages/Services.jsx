@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { useLocation } from "react-router-dom";
 import gsap from "gsap";
 import services from "../data/services";
 import Accordion from "../components/common/Accordion";
@@ -6,6 +7,21 @@ import faq from "../data/faq";
 
 const Services = () => {
   const pageRef = useRef(null);
+  const location = useLocation();
+
+  // Scroll to hash on mount
+  useEffect(() => {
+    if (location.hash) {
+      setTimeout(() => {
+        const id = location.hash.replace('#', '');
+        const element = document.getElementById(id);
+        if (element) {
+          const y = element.getBoundingClientRect().top + window.scrollY - 120;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        }
+      }, 500); // Wait for GSAP and render
+    }
+  }, [location.hash]);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -17,17 +33,33 @@ const Services = () => {
         ease: "power3.out"
       });
 
-      // Cards staggered reveal
-      gsap.from(".service-list-card", {
-        scrollTrigger: {
-          trigger: ".services-list-grid",
-          start: "top 80%"
-        },
-        y: 40,
-        opacity: 0,
-        stagger: 0.1,
-        duration: 0.8,
-        ease: "power2.out"
+      // Cards reveal as they enter viewport
+      gsap.utils.toArray(".detailed-service-content").forEach((content) => {
+        gsap.from(content, {
+          scrollTrigger: {
+            trigger: content,
+            start: "top 85%"
+          },
+          x: -50,
+          opacity: 0,
+          duration: 0.8,
+          ease: "power2.out",
+          clearProps: "all"
+        });
+      });
+
+      gsap.utils.toArray(".detailed-service-image").forEach((img) => {
+        gsap.from(img, {
+          scrollTrigger: {
+            trigger: img,
+            start: "top 85%"
+          },
+          x: 50,
+          opacity: 0,
+          duration: 0.8,
+          ease: "power2.out",
+          clearProps: "all"
+        });
       });
 
       // Pricing layout reveal
@@ -102,22 +134,124 @@ const Services = () => {
         </div>
       </section>
 
-      {/* Services List Grid */}
-      <section className="services-list-section">
+      {/* How It Works / Process Section */}
+      <section className="process-section">
         <div className="container">
-          <div className="services-list-grid">
-            {services.map((svc) => (
-              <div key={svc.id} className="service-list-card glass">
-                <div className="service-icon-box">
-                  <span className="dot-indicator"></span>
-                </div>
-                <h3>{svc.title}</h3>
-                <p>{svc.description}</p>
-              </div>
-            ))}
+          <div className="text-center section-header">
+            <h2 className="section-title">Our Proven Process</h2>
+            <p className="text-light">A strategic, step-by-step approach to elevate your career.</p>
+          </div>
+          
+          <div className="process-grid">
+            <div className="process-step">
+              <div className="step-number">01</div>
+              <h4>Discovery & Audit</h4>
+              <p>We analyze your current profile, skills, and career goals to identify gaps and opportunities.</p>
+            </div>
+            <div className="process-step">
+              <div className="step-number">02</div>
+              <h4>Strategic Planning</h4>
+              <p>Our experts craft a personalized roadmap, including resume revamps and upskilling plans.</p>
+            </div>
+            <div className="process-step">
+              <div className="step-number">03</div>
+              <h4>Execution & Prep</h4>
+              <p>You undergo rigorous mock interviews, branding exercises, and technical assessments.</p>
+            </div>
+            <div className="process-step">
+              <div className="step-number">04</div>
+              <h4>Placement & Growth</h4>
+              <p>We leverage our network to land you interviews and help negotiate your best offer.</p>
+            </div>
           </div>
         </div>
       </section>
+
+      {/* Why Choose Us Section */}
+      <section className="why-choose-us">
+        <div className="container">
+          <div className="why-grid">
+            <div className="why-content">
+              <h2 className="section-title">Why Professionals Choose Nexora</h2>
+              <p className="text-light">
+                We don't just give advice; we partner with you to achieve tangible results. Our data-driven methodologies and exclusive industry connections give you an unfair advantage in the job market.
+              </p>
+              <ul className="why-list">
+                <li>
+                  <span className="check-icon">✓</span>
+                  <div>
+                    <strong>Elite Industry Mentors</strong>
+                    <p>Learn directly from professionals at top-tier global companies.</p>
+                  </div>
+                </li>
+                <li>
+                  <span className="check-icon">✓</span>
+                  <div>
+                    <strong>Data-Driven Strategies</strong>
+                    <p>We use market analytics to position you exactly where demand is highest.</p>
+                  </div>
+                </li>
+                <li>
+                  <span className="check-icon">✓</span>
+                  <div>
+                    <strong>Global Hiring Network</strong>
+                    <p>Direct referrals to fast-growing startups and Fortune 500 enterprises.</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div className="why-image-wrapper">
+              <div className="glass why-image-card">
+                <div className="stat-item">
+                  <h3 className="text-gradient">93%</h3>
+                  <p>Placement Rate</p>
+                </div>
+                <div className="stat-item">
+                  <h3 className="text-gradient">40%</h3>
+                  <p>Average Salary Hike</p>
+                </div>
+                <div className="stat-item">
+                  <h3 className="text-gradient">500+</h3>
+                  <p>Hiring Partners</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Detailed Services Sections (Mapped to Dropdown IDs) */}
+      <div className="detailed-services-wrapper">
+        {services.map((svc, index) => (
+          <section key={svc.id} id={svc.id} className={`detailed-service-section ${index % 2 !== 0 ? 'alt-layout' : ''}`}>
+            <div className="container">
+              <div className="detailed-service-grid">
+                
+                <div className="detailed-service-content">
+                  <div className="service-icon-box">
+                    <span className="dot-indicator"></span>
+                  </div>
+                  <h2 className="service-title">{svc.title}</h2>
+                  <p className="service-desc">{svc.description}</p>
+                  <ul className="service-benefits-list">
+                    <li><span className="check">✓</span> Comprehensive Analysis & Strategy</li>
+                    <li><span className="check">✓</span> Dedicated Expert Support</li>
+                    <li><span className="check">✓</span> Result-Oriented Execution</li>
+                  </ul>
+                  <button className="btn-primary mt-4">Get Started</button>
+                </div>
+                
+                <div className="detailed-service-image-col">
+                  <div className="detailed-service-image glass">
+                    <img src={svc.image} alt={svc.title} className="service-actual-image" />
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </section>
+        ))}
+      </div>
 
       {/* Pricing wrapper */}
       <section className="pricing-wrapper">
@@ -174,50 +308,233 @@ const Services = () => {
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
         }
-        .services-list-grid {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 30px;
-          margin-top: 40px;
+        
+        /* Detailed Services Section */
+        .detailed-services-wrapper {
+          padding: 60px 0;
         }
-        .service-list-card {
-          padding: 30px;
-          border-radius: var(--radius-md);
+        
+        .detailed-service-section {
+          padding: 100px 0;
+          border-bottom: 1px solid var(--border);
+        }
+        
+        .detailed-service-section:last-child {
+          border-bottom: none;
+        }
+        
+        .detailed-service-section.alt-layout {
+          background: var(--bg-soft);
+        }
+        
+        .detailed-service-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 80px;
+          align-items: center;
+        }
+        
+        .alt-layout .detailed-service-grid {
+          direction: rtl; /* simple trick to swap columns */
+        }
+        
+        .alt-layout .detailed-service-content,
+        .alt-layout .detailed-service-image-col {
+          direction: ltr;
+        }
+        
+        .service-title {
+          font-size: 2.5rem;
+          font-weight: 800;
+          margin-bottom: 20px;
+          color: var(--heading);
+        }
+        
+        .service-desc {
+          font-size: 1.1rem;
+          line-height: 1.7;
+          color: var(--text-light);
+          margin-bottom: 30px;
+        }
+        
+        .service-benefits-list {
+          list-style: none;
+          margin-bottom: 40px;
+          display: flex;
+          flex-direction: column;
+          gap: 15px;
+        }
+        
+        .service-benefits-list li {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          font-size: 1rem;
+          color: var(--text);
+          font-weight: 500;
+        }
+        
+        .check {
+          color: var(--primary);
+          font-weight: bold;
+          font-size: 1.2rem;
+        }
+        
+        .detailed-service-image {
+          aspect-ratio: 4/3;
+          border-radius: var(--radius-lg);
           border: 1px solid var(--border);
+          position: relative;
+          overflow: hidden;
+          background: var(--bg-soft);
+        }
+        
+        .service-actual-image {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+          transition: transform 0.5s ease;
+        }
+        
+        .detailed-service-section:hover .service-actual-image {
+          transform: scale(1.05);
+        }
+        
+        .mt-4 {
+          margin-top: 2rem;
+        }
+        .section-header {
+          margin-bottom: 50px;
+        }
+        
+        .process-section {
+          padding: 100px 0;
+          background: var(--bg-soft);
+        }
+        
+        .process-grid {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 30px;
+          position: relative;
+        }
+        
+        .process-step {
+          background: var(--surface-solid);
+          padding: 40px 30px;
+          border-radius: var(--radius-lg);
+          border: 1px solid var(--border);
+          position: relative;
           transition: var(--transition);
         }
-        .service-list-card:hover {
-          border-color: var(--primary);
+        
+        .process-step:hover {
           transform: translateY(-5px);
           box-shadow: var(--shadow-md);
+          border-color: var(--primary);
         }
-        .service-icon-box {
-          width: 44px;
-          height: 44px;
-          border-radius: 50%;
-          background: var(--bg-soft);
+        
+        .step-number {
+          font-size: 3.5rem;
+          font-weight: 900;
+          color: var(--primary);
+          opacity: 0.15;
+          position: absolute;
+          top: 20px;
+          right: 30px;
+          line-height: 1;
+        }
+        
+        .process-step h4 {
+          font-size: 1.2rem;
+          margin-bottom: 15px;
+          color: var(--heading);
+          position: relative;
+          z-index: 2;
+        }
+        
+        .process-step p {
+          color: var(--text-light);
+          font-size: 0.95rem;
+          line-height: 1.6;
+          position: relative;
+          z-index: 2;
+        }
+        
+        .why-choose-us {
+          padding: 100px 0;
+        }
+        
+        .why-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 60px;
+          align-items: center;
+        }
+        
+        .why-list {
+          list-style: none;
+          margin-top: 40px;
+          display: flex;
+          flex-direction: column;
+          gap: 25px;
+        }
+        
+        .why-list li {
+          display: flex;
+          gap: 20px;
+          align-items: flex-start;
+        }
+        
+        .check-icon {
           display: flex;
           align-items: center;
           justify-content: center;
-          margin-bottom: 20px;
-        }
-        .dot-indicator {
-          width: 10px;
-          height: 10px;
-          background: var(--primary);
+          min-width: 30px;
+          height: 30px;
+          background: rgba(72, 201, 44, 0.15);
+          color: var(--primary);
           border-radius: 50%;
-          box-shadow: var(--glow);
+          font-weight: bold;
+          font-size: 0.9rem;
         }
-        .service-list-card h3 {
-          font-size: 1.3rem;
-          margin-bottom: 12px;
+        
+        .why-list strong {
+          display: block;
+          font-size: 1.1rem;
           color: var(--heading);
+          margin-bottom: 6px;
         }
-        .service-list-card p {
-          color: var(--text);
+        
+        .why-list p {
+          color: var(--text-light);
           font-size: 0.95rem;
-          line-height: 1.6;
+          line-height: 1.5;
         }
+        
+        .why-image-card {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 30px;
+          padding: 50px;
+          border-radius: var(--radius-lg);
+          border: 1px solid var(--border);
+          text-align: center;
+        }
+        
+        .stat-item h3 {
+          font-size: 3rem;
+          font-weight: 800;
+          margin-bottom: 10px;
+        }
+        
+        .stat-item p {
+          color: var(--text);
+          font-size: 1.1rem;
+          font-weight: 500;
+        }
+
         .pricing-wrapper {
           padding: 100px 0;
           background: var(--bg-soft);
@@ -297,19 +614,33 @@ const Services = () => {
           padding: 100px 0;
         }
         @media (max-width: 991px) {
-          .pricing-grid {
+          .pricing-grid, .why-grid {
             grid-template-columns: 1fr;
             gap: 40px;
+          }
+          .process-grid {
+            grid-template-columns: 1fr 1fr;
+          }
+          .detailed-service-grid, .alt-layout .detailed-service-grid {
+            grid-template-columns: 1fr;
+            gap: 40px;
+            direction: ltr; /* Reset swap */
+          }
+          .service-title {
+            font-size: 2rem;
+          }
+          .detailed-service-section {
+            padding: 60px 0;
           }
           .pricing-card.popular {
             transform: none;
           }
           .services-list-grid {
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
           }
         }
         @media (max-width: 576px) {
-          .services-list-grid {
+          .process-grid {
             grid-template-columns: 1fr;
           }
         }

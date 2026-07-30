@@ -125,7 +125,7 @@ const About = () => {
       </section>
 
       {/* Timeline */}
-      <section className="about-timeline-section">
+      <section className="about-timeline-section overflow-hidden">
         <div className="container">
           <h2 className="text-center section-title">Our Growth Timeline</h2>
           <div className="timeline-flow">
@@ -292,12 +292,36 @@ const About = () => {
           font-size: 0.9rem;
           color: var(--text-light);
         }
+        @media (max-width: 1024px) {
+          .achievements-row {
+            grid-template-columns: 1fr 1fr;
+            row-gap: 40px;
+          }
+          .team-grid {
+            grid-template-columns: 1fr 1fr;
+          }
+          .about-hero-title {
+            font-size: 2.8rem;
+          }
+        }
+        
         @media (max-width: 768px) {
           .about-cards-grid, .achievements-row, .team-grid {
             grid-template-columns: 1fr;
           }
           .about-hero-title {
             font-size: 2.2rem;
+          }
+          .timeline-item-row {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 12px;
+          }
+          .about-hero-section {
+            padding: 40px 0;
+          }
+          .about-achievements, .about-timeline-section, .about-team-section {
+            padding: 60px 0;
           }
         }
       `}</style>

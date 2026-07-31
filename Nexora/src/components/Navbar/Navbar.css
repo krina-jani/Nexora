@@ -43,7 +43,7 @@
   margin: 0 auto;
   height: 80px;
   padding: 0 40px;
-  background: var(--glass-bg);
+  background: #ffffff;
   border: 1px solid var(--glass-border);
   backdrop-filter: var(--glass-blur);
   -webkit-backdrop-filter: var(--glass-blur);
@@ -54,7 +54,7 @@
 
 .navbar-header.scrolled .navbar-glass-container {
   height: 68px;
-  background: rgba(252, 255, 252, 0.85);
+  background: #ffffff;
   box-shadow: var(--shadow-lg);
 }
 

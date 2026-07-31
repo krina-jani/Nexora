@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { FaGraduationCap, FaBriefcase, FaGlobe, FaTrophy } from "react-icons/fa";
-import aboutBgImage from "../assets/images/about-image.png";
+import aboutBgImage from "../assets/images/about.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -76,8 +76,8 @@ const About = () => {
         }}
       >
         {/* Hero */}
-        <section className="about-hero-section text-center overflow-hidden">
-          <div className="container">
+        <section className="about-hero-section overflow-hidden">
+          <div className="container" style={{ textAlign: 'right' }}>
             <h1 className="about-hero-title">
               <span>Building Excellence </span> <br />
               <span className="text-gradient">Through Innovation</span>
@@ -90,17 +90,17 @@ const About = () => {
 
         {/* Story & Vision */}
         <section className="about-story-section overflow-hidden">
-          <div className="container about-cards-grid">
-            <div className="about-card glass">
-              <h2>Our Story</h2>
-              <p>
-                Nexora Career was established by a group of industry professionals who recognized that talent is distributed globally, but opportunities are often localized. We set out to level the playing field by preparing candidates for rigorous international standards.
-              </p>
-            </div>
+          <div className="container about-cards-grid-stacked">
             <div className="about-card glass">
               <h2>Our Vision & Mission</h2>
               <p>
-                To create a borderless ecosystem where top talent can land their dream careers regardless of geographic coordinates. We aim to equip 100,000+ professionals with premium career skills by 2030.
+                Our vision is to build a borderless world where exceptional talent meets limitless opportunity. We are on a mission to empower over 100,000 professionals by 2030, equipping them with the premium skills and global connections needed to land their dream careers, regardless of where they call home.
+              </p>
+            </div>
+            <div className="about-card glass">
+              <h2>Our Story</h2>
+              <p>
+                Born from the collective expertise of industry veterans, Nexora Career was founded on a simple realization: while brilliance is distributed evenly across the globe, opportunity is not. We set out to dismantle these geographic barriers, creating a rigorous, world-class preparation platform that levels the playing field for ambitious candidates everywhere.
               </p>
             </div>
           </div>
@@ -197,7 +197,7 @@ const About = () => {
         font-weight: 600;
           font-size: 1.2rem;
           max-width: 600px;
-          margin: 0 auto;
+          margin: 0 0 0 auto;
         }
         .text-gradient {
           // background: linear-gradient(90deg, var(--primary), var(--primary-light));
@@ -205,14 +205,17 @@ const About = () => {
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
         }
-        .about-cards-grid {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 40px;
+        .about-cards-grid-stacked {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+          gap: 30px;
           margin-top: 40px;
         }
         .about-card {
-          padding: 40px;
+          width: 100%;
+          max-width: 650px;
+          padding: 30px;
           border-radius: var(--radius-lg);
           border: 1px solid rgba(255, 255, 255, 0.25);
           background: rgb(255 255 255) !important;
@@ -471,7 +474,10 @@ const About = () => {
         }
         
         @media (max-width: 768px) {
-          .about-cards-grid, .achievements-row, .team-grid {
+          .about-cards-grid-stacked {
+            align-items: center;
+          }
+          .achievements-row, .team-grid {
             grid-template-columns: 1fr;
           }
           .about-hero-title {

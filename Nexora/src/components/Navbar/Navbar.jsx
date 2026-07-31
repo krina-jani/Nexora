@@ -105,12 +105,19 @@ const Navbar = () => {
               onMouseEnter={() => setDropdownOpen(true)}
               onMouseLeave={() => setDropdownOpen(false)}
             >
-              <button 
+              <NavLink 
+                to="/services"
                 className={`dropdown-trigger ${location.pathname === "/services" ? "active" : ""}`}
-                onClick={() => setDropdownOpen(!dropdownOpen)}
+                onClick={(e) => {
+                  if (window.innerWidth <= 1024) {
+                    // Let it navigate but also open dropdown if they click it? 
+                    // Actually if it navigates, it might close menu. We just want it to navigate.
+                    setDropdownOpen(!dropdownOpen);
+                  }
+                }}
               >
                 Services <LuChevronDown className={`chevron ${dropdownOpen ? "open" : ""}`} />
-              </button>
+              </NavLink>
               
               <ul className={`simple-dropdown ${dropdownOpen ? "show" : ""}`}>
                 <li>

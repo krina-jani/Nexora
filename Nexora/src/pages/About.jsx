@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { FaGraduationCap, FaBriefcase, FaGlobe, FaTrophy } from "react-icons/fa";
+import aboutBgImage from "../assets/images/about-image.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -64,36 +65,47 @@ const About = () => {
 
   return (
     <div ref={pageRef} className="about-page-wrapper overflow-hidden">
-      {/* Hero */}
-      <section className="about-hero-section text-center overflow-hidden">
-        <div className="container">
-          <h1 className="about-hero-title">
-            <span>Redefining Global</span> <br />
-            <span className="text-gradient">Career Navigation</span>
-          </h1>
-          <p className="about-hero-sub text-light">
-            We bridge the gap between skilled individuals and international opportunity hubs.
-          </p>
-        </div>
-      </section>
+      <div 
+        className="about-hero-story-wrapper"
+        style={{ 
+          backgroundImage: `url(${aboutBgImage})`, 
+          backgroundSize: '100% 100%', 
+          backgroundPosition: 'center', 
+          backgroundRepeat: 'no-repeat',
+          position: 'relative'
+        }}
+      >
+        {/* Hero */}
+        <section className="about-hero-section text-center overflow-hidden">
+          <div className="container">
+            <h1 className="about-hero-title">
+              <span>Building Excellence </span> <br />
+              <span className="text-gradient">Through Innovation</span>
+            </h1>
+            <p className="about-hero-sub text-light">
+              We bridge the gap between skilled individuals and international opportunity hubs.
+            </p>
+          </div>
+        </section>
 
-      {/* Story & Vision */}
-      <section className="about-story-section overflow-hidden">
-        <div className="container about-cards-grid">
-          <div className="about-card glass">
-            <h2>Our Story</h2>
-            <p>
-              Nexora Career was established by a group of industry professionals who recognized that talent is distributed globally, but opportunities are often localized. We set out to level the playing field by preparing candidates for rigorous international standards.
-            </p>
+        {/* Story & Vision */}
+        <section className="about-story-section overflow-hidden">
+          <div className="container about-cards-grid">
+            <div className="about-card glass">
+              <h2>Our Story</h2>
+              <p>
+                Nexora Career was established by a group of industry professionals who recognized that talent is distributed globally, but opportunities are often localized. We set out to level the playing field by preparing candidates for rigorous international standards.
+              </p>
+            </div>
+            <div className="about-card glass">
+              <h2>Our Vision & Mission</h2>
+              <p>
+                To create a borderless ecosystem where top talent can land their dream careers regardless of geographic coordinates. We aim to equip 100,000+ professionals with premium career skills by 2030.
+              </p>
+            </div>
           </div>
-          <div className="about-card glass">
-            <h2>Our Vision & Mission</h2>
-            <p>
-              To create a borderless ecosystem where top talent can land their dream careers regardless of geographic coordinates. We aim to equip 100,000+ professionals with premium career skills by 2030.
-            </p>
-          </div>
-        </div>
-      </section>
+        </section>
+      </div>
 
       {/* Stats/Achievements */}
       <section className="about-achievements overflow-hidden">
@@ -127,7 +139,7 @@ const About = () => {
       {/* Timeline */}
       <section className="about-timeline-section overflow-hidden">
         <div className="container">
-          <h2 className="text-center section-title">Our Growth Timeline</h2>
+          <h2 className="text-center section-title clr-black">Our Growth Timeline</h2>
           <div className="timeline-flow">
             {timelineEvents.map((evt, idx) => (
               <div key={idx} className="timeline-item-row">
@@ -161,6 +173,12 @@ const About = () => {
 
       {/* Styles inline helpers for uniqueness */}
       <style>{`
+        .about-story-section{
+        padding:60px 0px
+      }
+        .clr-black{
+          color: black!important;
+        }
         .about-hero-section {
           padding: 80px 0 40px;
         }
@@ -172,14 +190,18 @@ const About = () => {
         }
         .about-hero-title span {
           display: inline-block;
+           color: black;
         }
         .about-hero-sub {
+        color: #252424;
+        font-weight: 600;
           font-size: 1.2rem;
           max-width: 600px;
           margin: 0 auto;
         }
         .text-gradient {
-          background: linear-gradient(90deg, var(--primary), var(--primary-light));
+          // background: linear-gradient(90deg, var(--primary), var(--primary-light));
+          background: linear-gradient(134deg, #df830d, #6e3517);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
         }
@@ -192,25 +214,33 @@ const About = () => {
         .about-card {
           padding: 40px;
           border-radius: var(--radius-lg);
-          border: 1px solid var(--border);
+          border: 1px solid rgba(255, 255, 255, 0.25);
+          background: rgb(255 255 255) !important;
+          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(10px);
+          box-shadow: var(--shadow-md);
         }
         .about-card h2 {
           font-size: 1.8rem;
           margin-bottom: 20px;
-          color: var(--heading);
+          color: #0f172a !important;
         }
         .about-card p {
-          color: var(--text);
+          color: #334155 !important;
           line-height: 1.6;
         }
         .about-achievements {
           background: var(--bg-soft);
           padding: 80px 0;
-          margin: 60px 0;
+          // margin: 60px 0;
         }
         .section-title {
           font-size: 2.2rem;
           margin-bottom: 50px;
+          color: #ffffffff;
+        }
+        [data-theme='dark'] .section-title {
+          color: #f8fafc;
         }
         .achievements-row {
           display: grid;
@@ -282,15 +312,22 @@ const About = () => {
           margin-bottom: 8px;
           position: relative;
           z-index: 2;
-          color: var(--heading);
+          color: #0f172a !important;
         }
         .ach-item p {
           position: relative;
           z-index: 2;
-          color: var(--text);
+          color: #475569 !important;
+        }
+        [data-theme='dark'] .ach-item h3 {
+          color: #f8fafc !important;
+        }
+        [data-theme='dark'] .ach-item p {
+          color: #cbd5e1 !important;
         }
         .about-timeline-section {
           padding: 80px 0;
+          background-color: #F9C33A;
         }
         .timeline-flow {
           display: flex;
@@ -317,14 +354,27 @@ const About = () => {
           flex: 1;
           padding: 24px;
           border-radius: var(--radius-sm);
-          border: 1px solid var(--border);
+          border: 1px solid rgba(255, 255, 255, 0.25);
+          background: rgb(255 255 255) !important;
+          box-shadow: var(--shadow-sm);
         }
         .timeline-card h3 {
           font-size: 1.25rem;
           margin-bottom: 8px;
+          color: #0f172a !important;
+        }
+        .timeline-card p {
+          color: #475569 !important;
+        }
+        [data-theme='dark'] .timeline-card h3 {
+          color: #f8fafc !important;
+        }
+        [data-theme='dark'] .timeline-card p {
+          color: #cbd5e1 !important;
         }
         .about-team-section {
           padding: 80px 0;
+          background: linear-gradient(134deg, rgba(223, 131, 13, 0.9), rgba(110, 53, 23, 0.9), rgba(249, 195, 58, 0.9));
         }
         .team-grid {
           display: grid;
@@ -334,7 +384,15 @@ const About = () => {
         .team-card {
           padding: 40px 20px;
           border-radius: var(--radius-lg);
-          border: 1px solid var(--border);
+          border: 1px solid rgba(255, 255, 255, 0.25);
+          background: rgba(255, 255, 255, 1) !important;
+          box-shadow: var(--shadow-sm);
+        }
+        .team-card h3 {
+          color: #0f172a !important;
+        }
+        [data-theme='dark'] .team-card h3 {
+          color: #f8fafc !important;
         }
         .team-avatar {
           width: 120px;
@@ -346,13 +404,59 @@ const About = () => {
         }
         .team-role {
           font-weight: 600;
-          color: var(--primary-dark);
+          color: #1e3a8a !important; /* Rich blue for contrast */
           margin-top: 8px;
         }
         .team-company {
           font-size: 0.9rem;
-          color: var(--text-light);
+          color: #475569 !important;
         }
+        [data-theme='dark'] .team-role {
+          color: var(--primary-light) !important;
+        }
+        [data-theme='dark'] .team-company {
+          color: #cbd5e1 !important;
+        }
+
+        .about-card, .timeline-card, .team-card {
+          position: relative;
+          overflow: hidden;
+          // transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+          cursor: pointer;
+        }
+
+        .about-card::after, .timeline-card::after, .team-card::after {
+          content: '';
+          position: absolute;
+          top: -150%;
+          left: -150%;
+          width: 250%;
+          height: 250%;
+          background: linear-gradient(
+            120deg,
+            transparent 35%,
+            rgba(72, 201, 44, 0.15) 50%,
+            transparent 65%
+          );
+          transform: rotate(25deg);
+          transition: all 1s ease;
+          pointer-events: none;
+          z-index: 1;
+        }
+
+        .about-card:hover::after, .timeline-card:hover::after, .team-card:hover::after {
+          left: 100%;
+          top: 100%;
+        }
+
+        .about-card:hover, .timeline-card:hover, .team-card:hover {
+          border-color: var(--primary) !important;
+          box-shadow:
+            0 0 20px rgba(72, 201, 44, 0.08),
+            0 0 60px rgba(72, 201, 44, 0.05) !important;
+          transform: translateY(-8px);
+        }
+
         @media (max-width: 1024px) {
           .achievements-row {
             grid-template-columns: 1fr 1fr;
@@ -383,6 +487,8 @@ const About = () => {
           }
           .about-achievements, .about-timeline-section, .about-team-section {
             padding: 60px 0;
+            background-color: #F9C33A;
+            
           }
         }
       `}</style>

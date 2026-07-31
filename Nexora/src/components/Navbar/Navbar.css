@@ -1,3 +1,9 @@
+#root {
+  /* background: linear-gradient(135deg, #e47200, #e69b00, #e6b400, #e6cc00); */
+  background: #F9C33A;
+}
+
+
 .navbar-header {
   position: fixed;
   top: 24px;

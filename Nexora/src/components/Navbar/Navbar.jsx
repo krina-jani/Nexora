@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { NavLink, Link, useLocation } from "react-router-dom";
+import { NavLink, Link, useLocation, useNavigate } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { LuChevronDown } from "react-icons/lu";
 import logo from "../../assets/icons/nexoralogo.png";
@@ -15,6 +15,7 @@ const Navbar = () => {
     return localStorage.getItem('theme') === 'dark';
   });
   const location = useLocation();
+  const navigate = useNavigate();
 
   const handleDropdownClick = (e, hash) => {
     setDropdownOpen(false);
@@ -110,9 +111,11 @@ const Navbar = () => {
                 className={`dropdown-trigger ${location.pathname === "/services" ? "active" : ""}`}
                 onClick={(e) => {
                   if (window.innerWidth <= 1024) {
-                    // Let it navigate but also open dropdown if they click it? 
-                    // Actually if it navigates, it might close menu. We just want it to navigate.
                     setDropdownOpen(!dropdownOpen);
+                  } else {
+                    setDropdownOpen(!dropdownOpen);
+                    navigate("/services");
+                    window.scrollTo({ top: 0, behavior: "smooth" });
                   }
                 }}
               >

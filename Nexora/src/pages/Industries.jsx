@@ -2,6 +2,41 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import industries from "../data/industries";
 import { Link } from "react-router-dom";
+import { 
+  FaLaptopCode, 
+  FaBrain, 
+  FaCloud, 
+  FaShieldAlt, 
+  FaHeartbeat, 
+  FaShoppingCart, 
+  FaIndustry, 
+  FaGlobe, 
+  FaBullhorn 
+} from "react-icons/fa";
+
+const iconMap = {
+  it: <FaLaptopCode />,
+  ai: <FaBrain />,
+  cloud: <FaCloud />,
+  cyber: <FaShieldAlt />,
+  health: <FaHeartbeat />,
+  ecommerce: <FaShoppingCart />,
+  manufacturing: <FaIndustry />,
+  gcc: <FaGlobe />,
+  "digital-marketing": <FaBullhorn />
+};
+
+const imageMap = {
+  it: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=300&q=80",
+  ai: "https://images.unsplash.com/photo-1677442136019-21780efad99a?auto=format&fit=crop&w=300&q=80",
+  cloud: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=300&q=80",
+  cyber: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=300&q=80",
+  health: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=300&q=80",
+  ecommerce: "https://images.unsplash.com/photo-1557821314-4b9644db218e?auto=format&fit=crop&w=300&q=80",
+  manufacturing: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=300&q=80",
+  gcc: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=300&q=80",
+  "digital-marketing": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=300&q=80"
+};
 
 const Typewriter = ({ texts, typingSpeed = 75, deletingSpeed = 50, pauseDuration = 1500, loop = true }) => {
   const [text, setText] = useState("");
@@ -130,7 +165,18 @@ const Industries = () => {
           <div className="industries-grid">
             {industries.map((ind) => (
               <div key={ind.id} className="industry-card glass">
-                <div className="ind-dot-accent"></div>
+                <div 
+                  className="card-bg-image" 
+                  style={{ backgroundImage: `url(${imageMap[ind.id]})` }}
+                ></div>
+                
+                <div className="card-top-row">
+                  <div className="ind-icon-box">
+                    {iconMap[ind.id]}
+                  </div>
+                  <div className="ind-dot-accent"></div>
+                </div>
+
                 <h3>{ind.title}</h3>
                 <p className="ind-desc">{ind.description}</p>
                 
@@ -161,7 +207,7 @@ const Industries = () => {
       {/* Case Studies */}
       <section className="case-studies-section">
         <div className="container">
-          <h2 className="text-center section-title">Domain Switch Success Stories</h2>
+          <h2 className="text-center section-title txt-white">Domain Switch Success Stories</h2>
           <div className="case-studies-grid">
             {caseStudies.map((cs, idx) => (
               <div key={idx} className="case-study-card glass">
@@ -212,6 +258,10 @@ const Industries = () => {
           white-space: pre-wrap;
         }
 
+        .txt-white{
+          color: white !important;
+        }
+
         .cursor {
           display: inline-block;
           margin-left: 5px;
@@ -243,7 +293,7 @@ const Industries = () => {
           margin: 0 auto;
         }
         .text-gradient {
-          background: linear-gradient(90deg, var(--primary), var(--primary-light));
+          background: linear-gradient(90deg, var(--primary),#5d543d);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
         }
@@ -279,12 +329,16 @@ const Industries = () => {
           font-weight: 700;
           margin-bottom: 12px;
           color: var(--heading);
+          position: relative;
+          z-index: 2;
         }
         .industry-card .ind-desc {
           font-size: 0.95rem;
           line-height: 1.6;
           color: var(--text);
           margin-bottom: 24px;
+          position: relative;
+          z-index: 2;
         }
         .ind-details {
           margin-top: auto;
@@ -293,6 +347,8 @@ const Industries = () => {
           gap: 20px;
           padding-top: 20px;
           border-top: 1px solid var(--border);
+          position: relative;
+          z-index: 2;
         }
         .ind-roles h4, .ind-skills h4 {
           font-size: 0.9rem;
@@ -408,6 +464,154 @@ const Industries = () => {
           color: var(--text);
           line-height: 1.6;
         }
+
+        /* Hero section text visibility */
+         .section-title {
+          color: #fbfcffff !important;
+        }
+          .ind-hero-title{
+          color:black;}
+        .ind-hero-sub {
+          color: #334155 !important;
+        }
+        [data-theme='dark'] .ind-hero-title, [data-theme='dark'] .section-title {
+          color: #f8fafc !important;
+        }
+        [data-theme='dark'] .ind-hero-sub {
+          color: #cbd5e1 !important;
+        }
+
+        /* Glass Cards visibility and structure */
+        .industry-card, .case-study-card, .ind-cta-box {
+          position: relative;
+          overflow: hidden;
+        }
+        
+        .card-top-row {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 20px;
+          position: relative;
+          z-index: 2;
+        }
+
+        .ind-icon-box {
+          font-size: 1.8rem;
+          color: var(--primary);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: rgba(72, 201, 44, 0.12);
+          padding: 10px;
+          border-radius: 12px;
+          width: fit-content;
+        }
+
+        [data-theme='dark'] .ind-icon-box {
+          color: var(--primary-light);
+          background: rgba(255, 255, 255, 0.05);
+        }
+
+        .card-bg-image {
+          position: absolute;
+          bottom: 0;
+          right: 0;
+          width: 160px;
+          height: 160px;
+          background-size: cover;
+          background-repeat: no-repeat;
+          background-position: center;
+          opacity: 0; /* Very low opacity for clean text readability */
+          pointer-events: none;
+          z-index: 1;
+          border-bottom-right-radius: var(--radius-md);
+          mask-image: linear-gradient(to top left, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 80%);
+          -webkit-mask-image: linear-gradient(to top left, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 80%);
+        }
+
+        .industry-card, .case-study-card, .ind-cta-box {
+          background: rgba(255, 255, 255, 1) !important;
+          border: 1px solid rgba(255, 255, 255, 0.25) !important;
+          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(10px);
+          box-shadow: var(--shadow-sm);
+        }
+
+        /* Hover animation matching other pages */
+        .industry-card, .case-study-card {
+          transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+          cursor: pointer;
+        }
+        .industry-card:hover, .case-study-card:hover {
+          transform: translateY(-8px);
+          box-shadow:
+            0 10px 30px rgba(0, 0, 0, 0.1),
+            0 0 20px rgba(72, 201, 44, 0.08);
+          border-color: var(--primary) !important;
+        }
+
+        /* Text colors inside cards */
+        .industry-card h3,
+        .ind-roles h4,
+        .ind-skills h4,
+        .case-study-card h3,
+        .ind-cta-box h2 {
+          color: #0f172a !important;
+        }
+
+        .industry-card .ind-desc,
+        .ind-roles li,
+        .case-student,
+        .case-text,
+        .ind-cta-box p {
+          color: #334155 !important;
+        }
+
+        .case-pkg {
+          color: #1e3a8a !important; /* Rich blue for placement packages */
+        }
+
+        .skill-tag {
+          background: rgba(0, 0, 0, 0.05) !important;
+          color: #334155 !important;
+          border: 1px solid rgba(0, 0, 0, 0.1) !important;
+        }
+
+        /* Dark mode overrides */
+        [data-theme='dark'] .industry-card, 
+        [data-theme='dark'] .case-study-card, 
+        [data-theme='dark'] .ind-cta-box {
+          background: rgba(15, 23, 42, 0.85) !important;
+          border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        }
+
+        [data-theme='dark'] .industry-card h3,
+        [data-theme='dark'] .ind-roles h4,
+        [data-theme='dark'] .ind-skills h4,
+        [data-theme='dark'] .case-study-card h3,
+        [data-theme='dark'] .ind-cta-box h2 {
+          color: #f8fafc !important;
+        }
+
+        [data-theme='dark'] .industry-card .ind-desc,
+        [data-theme='dark'] .ind-roles li,
+        [data-theme='dark'] .case-student,
+        [data-theme='dark'] .case-text,
+        [data-theme='dark'] .ind-cta-box p {
+          color: #cbd5e1 !important;
+        }
+
+        [data-theme='dark'] .case-pkg {
+          color: var(--primary-light) !important;
+        }
+
+        [data-theme='dark'] .skill-tag {
+          background: rgba(255, 255, 255, 0.08) !important;
+          color: #cbd5e1 !important;
+          border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        }
+
         @media (max-width: 991px) {
           .industries-grid {
             grid-template-columns: repeat(2, 1fr);

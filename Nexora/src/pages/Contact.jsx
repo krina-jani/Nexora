@@ -3,6 +3,7 @@ import gsap from "gsap";
 import Accordion from "../components/common/Accordion";
 import faq from "../data/faq";
 import { FaPaperPlane } from "react-icons/fa";
+import contactBg from "../assets/images/contact-backg.png";
 
 const Contact = () => {
   const pageRef = useRef(null);
@@ -43,131 +44,135 @@ const Contact = () => {
 
   return (
     <div ref={pageRef} className="contact-page-wrapper">
-      {/* Hero */}
-      <section className="contact-hero text-center">
-        <div className="container">
-          <h1 className="contact-hero-title">
-            Connect With Our <span className="text-gradient">Career Advisors</span>
-          </h1>
-          <p className="contact-hero-sub text-light">
-            Have questions about placement tracks, program costs, or corporate partnerships? Get in touch with us today.
-          </p>
-        </div>
-      </section>
+      <div 
+        className="contact-hero-form-wrapper"
+        style={{ 
+          backgroundImage: `url(${contactBg})`, 
+          backgroundSize: 'cover', 
+          backgroundPosition: 'center', 
+          backgroundRepeat: 'no-repeat',
+          position: 'relative'
+        }}
+      >
+        <div className="container contact-grid-layout">
+          {/* Left Column (Empty to keep background image visible) */}
+          <div className="contact-left-spacer"></div>
 
-      {/* Main Form Section */}
-      <section className="contact-main-section">
-        <div className="container">
-          
-          <div className="text-center contact-header-new">
-            <h2>Contact Form</h2>
-            <p>For the fastest response about our recruitment solutions or career support, please fill out the form below.</p>
+          {/* Right Column (Contains Title and Form) */}
+          <div className="contact-right-content">
+            <h1 className="contact-hero-title">
+              Connect With Our <span className="text-gradient">Career Advisors</span>
+            </h1>
+
+            <div className="new-contact-form-container glass">
+              <div className="contact-header-new">
+                <h2>Contact Form</h2>
+                <p>For the fastest response, please fill out the form below.</p>
+              </div>
+
+              <form onSubmit={handleSubmit} className="new-contact-form">
+                
+                <div className="form-row-2col">
+                  <div className="form-group-new">
+                    <label>Full Name <span className="req-star">*</span></label>
+                    <input
+                      type="text"
+                      required
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      placeholder="John Doe"
+                      className="glass-input-new"
+                    />
+                  </div>
+                  <div className="form-group-new">
+                    <label>Email Address <span className="req-star">*</span></label>
+                    <input
+                      type="email"
+                      required
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      placeholder="john@company.com"
+                      className="glass-input-new"
+                    />
+                  </div>
+                </div>
+
+                <div className="form-row-2col">
+                  <div className="form-group-new">
+                    <label>Phone Number</label>
+                    <input
+                      type="tel"
+                      value={formData.phone}
+                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                      placeholder="+91 7634897546"
+                      className="glass-input-new"
+                    />
+                  </div>
+                  <div className="form-group-new">
+                    <label>Company/Organization (if applicable)</label>
+                    <input
+                      type="text"
+                      value={formData.company}
+                      onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                      placeholder="Your Company"
+                      className="glass-input-new"
+                    />
+                  </div>
+                </div>
+
+                <div className="form-row-1col">
+                  <div className="form-group-new">
+                    <label>I am: <span className="req-star">*</span></label>
+                    <select 
+                      required
+                      value={formData.role}
+                      onChange={(e) => setFormData({ ...formData, role: e.target.value })}
+                      className="glass-input-new select-new"
+                    >
+                      <option value="" disabled>Select one</option>
+                      <option value="student">Student / Job Seeker</option>
+                      <option value="employer">Employer / Hiring Manager</option>
+                      <option value="partner">Potential Partner</option>
+                      <option value="other">Other</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div className="form-row-1col">
+                  <div className="form-group-new">
+                    <label>Message <span className="req-star">*</span></label>
+                    <textarea
+                      required
+                      rows="5"
+                      value={formData.message}
+                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                      placeholder="Tell us about your recruitment needs or career goals..."
+                      className="glass-input-new"
+                    />
+                  </div>
+                </div>
+
+                <div className="form-row-1col checkbox-row">
+                  <label className="checkbox-label">
+                    <input 
+                      type="checkbox" 
+                      required 
+                      checked={formData.agree}
+                      onChange={(e) => setFormData({ ...formData, agree: e.target.checked })}
+                    />
+                    <span>I have read and agree to the Nexora Privacy Policy and Terms of Service.</span>
+                  </label>
+                </div>
+
+                <button type="submit" className="btn-primary form-submit-btn-new">
+                  <FaPaperPlane className="submit-icon" /> Submit Message &rarr;
+                </button>
+
+              </form>
+            </div>
           </div>
-
-          <div className="new-contact-form-container glass">
-            <form onSubmit={handleSubmit} className="new-contact-form">
-              
-              <div className="form-row-2col">
-                <div className="form-group-new">
-                  <label>Full Name <span className="req-star">*</span></label>
-                  <input
-                    type="text"
-                    required
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    placeholder="John Doe"
-                    className="glass-input-new"
-                  />
-                </div>
-                <div className="form-group-new">
-                  <label>Email Address <span className="req-star">*</span></label>
-                  <input
-                    type="email"
-                    required
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    placeholder="john@company.com"
-                    className="glass-input-new"
-                  />
-                </div>
-              </div>
-
-              <div className="form-row-2col">
-                <div className="form-group-new">
-                  <label>Phone Number</label>
-                  <input
-                    type="tel"
-                    value={formData.phone}
-                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    placeholder="+91 7634897546"
-                    className="glass-input-new"
-                  />
-                </div>
-                <div className="form-group-new">
-                  <label>Company/Organization (if applicable)</label>
-                  <input
-                    type="text"
-                    value={formData.company}
-                    onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                    placeholder="Your Company"
-                    className="glass-input-new"
-                  />
-                </div>
-              </div>
-
-              <div className="form-row-1col">
-                <div className="form-group-new">
-                  <label>I am: <span className="req-star">*</span></label>
-                  <select 
-                    required
-                    value={formData.role}
-                    onChange={(e) => setFormData({ ...formData, role: e.target.value })}
-                    className="glass-input-new select-new"
-                  >
-                    <option value="" disabled>Select one</option>
-                    <option value="student">Student / Job Seeker</option>
-                    <option value="employer">Employer / Hiring Manager</option>
-                    <option value="partner">Potential Partner</option>
-                    <option value="other">Other</option>
-                  </select>
-                </div>
-              </div>
-
-              <div className="form-row-1col">
-                <div className="form-group-new">
-                  <label>Message <span className="req-star">*</span></label>
-                  <textarea
-                    required
-                    rows="5"
-                    value={formData.message}
-                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    placeholder="Tell us about your recruitment needs or career goals..."
-                    className="glass-input-new"
-                  />
-                </div>
-              </div>
-
-              <div className="form-row-1col checkbox-row">
-                <label className="checkbox-label">
-                  <input 
-                    type="checkbox" 
-                    required 
-                    checked={formData.agree}
-                    onChange={(e) => setFormData({ ...formData, agree: e.target.checked })}
-                  />
-                  <span>I have read and agree to the Nexora Privacy Policy and Terms of Service.</span>
-                </label>
-              </div>
-
-              <button type="submit" className="btn-primary form-submit-btn-new">
-                <FaPaperPlane className="submit-icon" /> Submit Message &rarr;
-              </button>
-
-            </form>
-          </div>
-
         </div>
-      </section>
+      </div>
 
       {/* Map placeholder */}
       <section className="map-placeholder-section">
@@ -196,44 +201,47 @@ const Contact = () => {
         .contact-hero-title {
           font-size: 3.5rem;
           font-weight: 800;
-          margin-bottom: 20px;
-        }
-        .contact-hero-sub {
-          font-size: 1.2rem;
-          max-width: 600px;
-          margin: 0 auto;
+          line-height: 1.2;
+          color: #0f172a !important;
         }
         .text-gradient {
           background: linear-gradient(90deg, var(--primary), var(--primary-light));
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
         }
-        .contact-main-section {
-          padding: 60px 0 100px;
+        .contact-grid-layout {
+          display: grid;
+          grid-template-columns: 1.2fr 1fr;
+          gap: 60px;
+          padding: 80px 0 100px;
+          align-items: flex-start;
+        }
+        .contact-right-content {
+          display: flex;
+          flex-direction: column;
+          gap: 40px;
         }
         .contact-header-new {
-          margin-bottom: 40px;
+          margin-bottom: 20px;
         }
         .contact-header-new h2 {
           font-size: 2.5rem;
           font-weight: 800;
-          margin-bottom: 15px;
-          color: var(--heading);
+          margin-bottom: 10px;
+          color: #0f172a !important;
         }
         .contact-header-new p {
-          color: var(--text-light);
+          color: #334155 !important;
           font-size: 1.1rem;
-          max-width: 600px;
-          margin: 0 auto;
         }
 
         .new-contact-form-container {
-          max-width: 850px;
-          margin: 0 auto;
           padding: 50px;
           border-radius: var(--radius-xl);
-          border: 1px solid var(--border);
-          background: var(--surface);
+          border: 1px solid rgba(255, 255, 255, 0.25) !important;
+          background: rgba(255, 255, 255, 0.85) !important;
+          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(10px);
           box-shadow: var(--shadow-lg);
         }
 
@@ -263,7 +271,7 @@ const Contact = () => {
         .form-group-new label {
           font-size: 0.95rem;
           font-weight: 600;
-          color: var(--heading);
+          color: #0f172a !important;
         }
 
         .req-star {
@@ -275,9 +283,9 @@ const Contact = () => {
           width: 100%;
           padding: 14px 16px;
           border-radius: var(--radius-sm);
-          border: 1px solid var(--border);
-          background: rgba(255, 255, 255, 0.5);
-          color: var(--text);
+          border: 1px solid rgba(0, 0, 0, 0.15) !important;
+          background: rgba(255, 255, 255, 0.9) !important;
+          color: #0f172a !important;
           font-family: inherit;
           font-size: 1rem;
           transition: all 0.3s ease;
@@ -320,7 +328,7 @@ const Contact = () => {
           gap: 12px;
           cursor: pointer;
           font-size: 0.95rem;
-          color: var(--text);
+          color: #334155 !important;
         }
 
         .checkbox-label input {
@@ -362,6 +370,36 @@ const Contact = () => {
         }
         .contact-faq-section {
           padding: 100px 0;
+        }
+        /* Dark mode overrides */
+        [data-theme='dark'] .new-contact-form-container {
+          background: rgba(15, 23, 42, 0.85) !important;
+          border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        }
+        [data-theme='dark'] .contact-hero-title,
+        [data-theme='dark'] .contact-header-new h2,
+        [data-theme='dark'] .form-group-new label {
+          color: #f8fafc !important;
+        }
+        [data-theme='dark'] .contact-header-new p,
+        [data-theme='dark'] .checkbox-label {
+          color: #cbd5e1 !important;
+        }
+        [data-theme='dark'] .glass-input-new {
+          background: rgba(0, 0, 0, 0.3) !important;
+          color: #f8fafc !important;
+          border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        }
+
+        @media (max-width: 991px) {
+          .contact-grid-layout {
+            grid-template-columns: 1fr;
+            gap: 40px;
+            padding: 40px 20px;
+          }
+          .contact-left-spacer {
+            display: none;
+          }
         }
         @media (max-width: 768px) {
           .form-row-2col {

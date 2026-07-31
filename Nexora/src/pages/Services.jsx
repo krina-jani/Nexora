@@ -4,6 +4,7 @@ import gsap from "gsap";
 import services from "../data/services";
 import Accordion from "../components/common/Accordion";
 import faq from "../data/faq";
+import servicesHeroBgImage from "../assets/images/services-bg.png";
 
 const Services = () => {
   const pageRef = useRef(null);
@@ -122,57 +123,64 @@ const Services = () => {
 
   return (
     <div ref={pageRef} className="services-page-wrapper">
-      {/* Hero */}
-      <section className="services-hero text-center">
-        <div className="container">
-          <h1 className="services-hero-title">
-            Our Elite <span className="text-gradient">Career Services</span>
-          </h1>
-          <p className="services-hero-sub text-light">
-            Engineered to refine your professional profile, build technical authority, and guide you directly to job offers.
-          </p>
-        </div>
-      </section>
-
-      {/* How It Works / Process Section */}
-      <section className="process-section">
-        <div className="container">
-          <div className="text-center section-header">
-            <h2 className="section-title">Our Proven Process</h2>
-            <p className="text-light">A strategic, step-by-step approach to elevate your career.</p>
+      <div 
+        className="services-hero-process-wrapper"
+        style={{
+          backgroundImage: `url(${servicesHeroBgImage})`,
+          backgroundSize: '100% 100%',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          position: 'relative'
+        }}
+      >
+        {/* Hero */}
+        <section className="services-hero text-center">
+          <div className="container">
+            <h1 className="services-hero-title">
+             <span> Our Elite Career Services</span>
+            </h1>
+            <p className="services-hero-sub text-light">
+              Engineered to refine your professional profile, build technical authority, and guide you directly to job offers.
+            </p>
           </div>
-          
-          <div className="process-grid">
-            <div className="process-step">
+        </section>
 
-              <h4>Discovery & Audit</h4>
-              <p>We analyze your current profile, skills, and career goals to identify gaps and opportunities.</p>
+        {/* How It Works / Process Section */}
+        <section className="process-section">
+          <div className="container">
+            <div className="text-center section-header">
+              <h1 className="section-title">Our Proven Process</h1>
+              <p className="text-light">A strategic, step-by-step approach to elevate your career.</p>
             </div>
-            <div className="process-step">
-
-              <h4>Strategic Planning</h4>
-              <p>Our experts craft a personalized roadmap, including resume revamps and upskilling plans.</p>
-            </div>
-            <div className="process-step">
-
-              <h4>Execution & Prep</h4>
-              <p>You undergo rigorous mock interviews, branding exercises, and technical assessments.</p>
-            </div>
-            <div className="process-step">
-
-              <h4>Placement & Growth</h4>
-              <p>We leverage our network to land you interviews and help negotiate your best offer.</p>
+            
+            <div className="process-grid">
+              <div className="process-step">
+                <h4>Discovery & Audit</h4>
+                <p>We analyze your current profile, skills, and career goals to identify gaps and opportunities.</p>
+              </div>
+              <div className="process-step">
+                <h4>Strategic Planning</h4>
+                <p>Our experts craft a personalized roadmap, including resume revamps and upskilling plans.</p>
+              </div>
+              <div className="process-step">
+                <h4>Execution & Prep</h4>
+                <p>You undergo rigorous mock interviews, branding exercises, and technical assessments.</p>
+              </div>
+              <div className="process-step">
+                <h4>Placement & Growth</h4>
+                <p>We leverage our network to land you interviews and help negotiate your best offer.</p>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
 
       {/* Why Choose Us Section */}
+              {/* <h2 className="section-title">Why Professionals Choose Nexora</h2>
       <section className="why-choose-us">
         <div className="container">
           <div className="why-grid">
             <div className="why-content">
-              <h2 className="section-title">Why Professionals Choose Nexora</h2>
               <p className="text-light">
                 We don't just give advice; we partner with you to achieve tangible results. Our data-driven methodologies and exclusive industry connections give you an unfair advantage in the job market.
               </p>
@@ -199,7 +207,6 @@ const Services = () => {
                   </div>
                 </li>
               </ul>
-            </div>
             <div className="why-image-wrapper">
               <div className="glass why-image-card">
                 <div className="stat-item">
@@ -219,6 +226,7 @@ const Services = () => {
           </div>
         </div>
       </section>
+        </div> */}
 
       {/* Detailed Services Sections (Mapped to Dropdown IDs) */}
       <div className="detailed-services-wrapper">
@@ -231,13 +239,14 @@ const Services = () => {
                   <div className="service-icon-box">
                     <span className="dot-indicator"></span>
                   </div>
-                  <h2 className="service-title">{svc.title}</h2>
-                  <p className="service-desc">{svc.description}</p>
-                  <ul className="service-benefits-list">
-                    <li><span className="check">✓</span> Comprehensive Analysis & Strategy</li>
-                    <li><span className="check">✓</span> Dedicated Expert Support</li>
-                    <li><span className="check">✓</span> Result-Oriented Execution</li>
+                  <h2 className="service-title txt-white">{svc.title}</h2>
+                  <p className="service-desc txt-white">{svc.description}</p>
+                  <ul className="service-benefits-list ">
+                    <li className="txt-white"><span className="check txt-white" >✓</span> Comprehensive Analysis & Strategy</li>
+                    <li className="txt-white"><span className="check txt-white">✓</span> Dedicated Expert Support</li>
+                    <li className="txt-white"><span className="check txt-white">✓</span> Result-Oriented Execution</li>
                   </ul>
+
                   <button className="btn-primary mt-4">Get Started</button>
                 </div>
                 
@@ -290,6 +299,9 @@ const Services = () => {
 
       {/* Styles */}
       <style>{`
+        .txt-white{
+        color: white!important;
+        }
         .services-hero {
           padding: 80px 0 40px;
         }
@@ -297,11 +309,13 @@ const Services = () => {
           font-size: 3.5rem;
           font-weight: 800;
           margin-bottom: 20px;
+          color: #0f172a !important;
         }
         .services-hero-sub {
           font-size: 1.2rem;
           max-width: 600px;
           margin: 0 auto;
+          color: #334155 !important;
         }
         .text-gradient {
           background: linear-gradient(90deg, var(--primary), var(--primary-light));
@@ -363,13 +377,13 @@ const Services = () => {
           font-size: 2.5rem;
           font-weight: 800;
           margin-bottom: 20px;
-          color: var(--heading);
+          color: #0f172a !important;
         }
         
         .service-desc {
           font-size: 1.1rem;
           line-height: 1.7;
-          color: var(--text-light);
+          color: #334155 !important;
           margin-bottom: 30px;
         }
         
@@ -386,14 +400,28 @@ const Services = () => {
           align-items: center;
           gap: 12px;
           font-size: 1rem;
-          color: var(--text);
+          color: #334155 !important;
           font-weight: 500;
         }
         
         .check {
-          color: var(--primary);
+          color: #df830d !important;
           font-weight: bold;
           font-size: 1.2rem;
+        }
+
+        /* Alt layout (dark background) text color overrides */
+        .detailed-service-section.alt-layout .service-title {
+          color: #ffffff !important;
+        }
+        .detailed-service-section.alt-layout .service-desc {
+          color: #cbd5e1 !important;
+        }
+        .detailed-service-section.alt-layout .service-benefits-list li {
+          color: #ffffff !important;
+        }
+        .detailed-service-section.alt-layout .service-benefits-list li .check {
+          color: var(--primary-light) !important;
         }
         
         .detailed-service-image {
@@ -426,7 +454,7 @@ const Services = () => {
         
         .process-section {
           padding: 100px 0;
-          background: var(--bg-soft);
+          background: transparent !important;
         }
         
         .process-grid {
@@ -437,15 +465,17 @@ const Services = () => {
         }
         
         .process-step {
-          --gh-bg: var(--surface-solid);
+          --gh-bg: rgba(255, 255, 255, 0.85);
           --gh-br: var(--radius-lg);
-          --gh-border: var(--border);
+          --gh-border: rgba(255, 255, 255, 0.25);
           --gh-angle: -30deg;
           --gh-duration: 800ms;
           --gh-size: 300%;
           --gh-rgba: rgba(72, 201, 44, 0.25);
           
           background: var(--gh-bg);
+          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(10px);
           padding: 40px 30px;
           border-radius: var(--gh-br);
           border: 1px solid var(--gh-border);
@@ -456,6 +486,8 @@ const Services = () => {
         }
         
         [data-theme='dark'] .process-step {
+          --gh-bg: rgba(15, 23, 42, 0.85);
+          --gh-border: rgba(255, 255, 255, 0.1);
           --gh-rgba: rgba(255, 255, 255, 0.15);
         }
         
@@ -491,21 +523,52 @@ const Services = () => {
         .process-step h4 {
           font-size: 1.2rem;
           margin-bottom: 15px;
-          color: var(--heading);
+          color: #0f172a !important;
           position: relative;
           z-index: 2;
         }
         
         .process-step p {
-          color: var(--text-light);
+          color: #475569 !important;
           font-size: 0.95rem;
           line-height: 1.6;
           position: relative;
           z-index: 2;
         }
+
+        [data-theme='dark'] .process-step h4 {
+          color: #f8fafc !important;
+        }
+
+        [data-theme='dark'] .process-step p {
+          color: #cbd5e1 !important;
+        }
+
+        .process-section .section-title {
+          color: #0f172a !important;
+        }
+
+        .process-section .text-light {
+          color: #334155 !important;
+        }
+
+        [data-theme='dark'] .process-section .section-title {
+          color: #f8fafc !important;
+        }
+
+        [data-theme='dark'] .process-section .text-light {
+          color: #cbd5e1 !important;
+        }
         
         .why-choose-us {
           padding: 100px 0;
+          background: linear-gradient(134deg, rgba(223, 131, 13, 0.9), rgba(110, 53, 23, 0.9), rgba(249, 195, 58, 0.9)) !important;
+        }
+        .why-choose-us .section-title {
+          color: #ffffff !important;
+        }
+        .why-choose-us .text-light {
+          color: #f1f5f9 !important;
         }
         
         .why-grid {
@@ -545,12 +608,12 @@ const Services = () => {
         .why-list strong {
           display: block;
           font-size: 1.1rem;
-          color: var(--heading);
+          color: #ffffff !important;
           margin-bottom: 6px;
         }
         
         .why-list p {
-          color: var(--text-light);
+          color: #e2e8f0 !important;
           font-size: 0.95rem;
           line-height: 1.5;
         }
@@ -561,8 +624,50 @@ const Services = () => {
           gap: 30px;
           padding: 50px;
           border-radius: var(--radius-lg);
-          border: 1px solid var(--border);
+          border: 1px solid rgba(255, 255, 255, 0.25) !important;
+          background: #ffffff !important;
           text-align: center;
+          position: relative;
+          overflow: hidden;
+          transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+          cursor: pointer;
+        }
+        
+        .why-image-card:hover {
+          transform: translateY(-8px);
+          box-shadow:
+            0 10px 30px rgba(0, 0, 0, 0.1),
+            0 0 20px rgba(72, 201, 44, 0.08);
+          border-color: var(--primary) !important;
+        }
+
+        .why-image-card::after {
+          content: '';
+          position: absolute;
+          top: -150%;
+          left: -150%;
+          width: 250%;
+          height: 250%;
+          background: linear-gradient(
+            120deg,
+            transparent 35%,
+            rgba(72, 201, 44, 0.15) 50%,
+            transparent 65%
+          );
+          transform: rotate(25deg);
+          transition: all 1s ease;
+          pointer-events: none;
+          z-index: 1;
+        }
+
+        .why-image-card:hover::after {
+          left: 100%;
+          top: 100%;
+        }
+
+        [data-theme='dark'] .why-image-card {
+          background: rgba(15, 23, 42, 0.95) !important;
+          border: 1px solid rgba(255, 255, 255, 0.1) !important;
         }
         
         .stat-item h3 {
@@ -572,9 +677,12 @@ const Services = () => {
         }
         
         .stat-item p {
-          color: var(--text);
+          color: #334155 !important;
           font-size: 1.1rem;
           font-weight: 500;
+        }
+        [data-theme='dark'] .stat-item p {
+          color: #cbd5e1 !important;
         }
 
         .pricing-wrapper {
@@ -590,12 +698,16 @@ const Services = () => {
         .pricing-card {
           padding: 45px 35px;
           border-radius: var(--radius-lg);
-          border: 1px solid var(--border);
+          border: 1px solid rgba(255, 255, 255, 0.25) !important;
           position: relative;
           display: flex;
           flex-direction: column;
           gap: 24px;
-          background: var(--white);
+          background: rgba(255, 255, 255, 1) !important;
+          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(10px);
+          box-shadow: var(--shadow-sm);
+          height: 100%;
         }
         .pricing-card.popular {
           border-color: var(--primary);
@@ -616,6 +728,7 @@ const Services = () => {
         .pricing-card h3 {
           font-size: 1.4rem;
           font-weight: 700;
+          color: #0f172a !important;
         }
         .price-amount {
           display: flex;
@@ -624,11 +737,11 @@ const Services = () => {
         .amount {
           font-size: 2.8rem;
           font-weight: 800;
-          color: var(--heading);
+          color: #0f172a !important;
         }
         .period {
           font-size: 0.95rem;
-          color: var(--text-light);
+          color: #475569 !important;
         }
         .plan-features {
           list-style: none;
@@ -636,20 +749,41 @@ const Services = () => {
           flex-direction: column;
           gap: 12px;
           font-size: 0.95rem;
-          color: var(--text);
+          color: #334155 !important;
+        }
+
+        .pricing-wrapper .section-title {
+          // color: #0f172a !important;
+        }
+
+        /* Dark mode overrides for pricing */
+        [data-theme='dark'] .pricing-card {
+          background: rgba(15, 23, 42, 0.85) !important;
+          border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        }
+
+        [data-theme='dark'] .pricing-card h3,
+        [data-theme='dark'] .amount,
+        [data-theme='dark'] .pricing-wrapper .section-title {
+          color: #f8fafc !important;
+        }
+
+        [data-theme='dark'] .period,
+        [data-theme='dark'] .plan-features {
+          color: #cbd5e1 !important;
         }
         .plan-btn {
           margin-top: auto;
           width: 100%;
         }
         .btn-secondary {
-          background: transparent;
+          background: #df830d;
           border: 1.5px solid var(--primary);
-          color: var(--primary);
+          color: white;
           box-shadow: none;
         }
         .btn-secondary:hover {
-          background: var(--primary);
+          background: #b96a09;
           color: var(--white);
         }
         .services-faq-section {

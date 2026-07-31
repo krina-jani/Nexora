@@ -434,6 +434,94 @@ const Testimonials = () => {
           text-align: right;
           font-size: 0.9rem;
         }
+
+        /* Unified Card visibility override for Testimonials */
+        .test-stat-card, .testimonial-grid-card, .video-card, .feedback-card {
+          background: rgba(255, 255, 255, 0.85) !important;
+          border: 1px solid rgba(255, 255, 255, 0.25) !important;
+          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(10px);
+          box-shadow: var(--shadow-md);
+        }
+
+        /* Text colors inside cards */
+        .test-stat-card h3, 
+        .candidate-info-row h3, 
+        .video-card h3,
+        .feedback-content {
+          color: #0f172a !important;
+        }
+
+        .test-stat-card p,
+        .candidate-feedback,
+        .placed-at,
+        .video-card p,
+        .feedback-client {
+          color: #334155 !important;
+        }
+
+        .candidate-role,
+        .candidate-pkg {
+          color: #1e3a8a !important; /* Rich blue contrast */
+        }
+
+        .feedback-resolution {
+          background: rgba(0, 0, 0, 0.05) !important;
+          color: #1e293b !important;
+          border-left: 2px solid var(--primary) !important;
+        }
+
+        /* Page titles and text */
+        .test-hero-title, .section-title, .honest-feedback-section h2 {
+          color: #0f172a !important;
+        }
+        .test-hero-sub, .honest-feedback-section p {
+          color: #334155 !important;
+        }
+
+        /* Dark mode overrides */
+        [data-theme='dark'] .test-stat-card, 
+        [data-theme='dark'] .testimonial-grid-card, 
+        [data-theme='dark'] .video-card, 
+        [data-theme='dark'] .feedback-card {
+          background: rgba(15, 23, 42, 0.85) !important;
+          border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        }
+
+        [data-theme='dark'] .test-stat-card h3, 
+        [data-theme='dark'] .candidate-info-row h3, 
+        [data-theme='dark'] .video-card h3,
+        [data-theme='dark'] .feedback-content {
+          color: #f8fafc !important;
+        }
+
+        [data-theme='dark'] .test-stat-card p,
+        [data-theme='dark'] .candidate-feedback,
+        [data-theme='dark'] .placed-at,
+        [data-theme='dark'] .video-card p,
+        [data-theme='dark'] .feedback-client {
+          color: #cbd5e1 !important;
+        }
+
+        [data-theme='dark'] .candidate-role,
+        [data-theme='dark'] .candidate-pkg {
+          color: var(--primary-light) !important;
+        }
+
+        [data-theme='dark'] .feedback-resolution {
+          background: rgba(255, 255, 255, 0.05) !important;
+          color: #cbd5e1 !important;
+        }
+
+        [data-theme='dark'] .test-hero-title, 
+        [data-theme='dark'] .section-title, 
+        [data-theme='dark'] .honest-feedback-section h2 {
+          color: #f8fafc !important;
+        }
+        [data-theme='dark'] .test-hero-sub, 
+        [data-theme='dark'] .honest-feedback-section p {
+          color: #cbd5e1 !important;
+        }
       `}</style>
     </div>
   );

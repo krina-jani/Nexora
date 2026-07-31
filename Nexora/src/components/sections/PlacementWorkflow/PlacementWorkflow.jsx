@@ -4,7 +4,7 @@ const PlacementWorkflow = () => {
   return (
     <section className="placement-process-section">
       <div className="container">
-        <h2 className="text-center section-title-reveal">The Placement Workflow</h2>
+        <h1 className="text-center section-title-reveal" style={{color: "white"}}>The Placement Workflow</h1>
         <div className="process-timeline-flex">
           <div className="process-node">
             <span className="process-dot">1</span>

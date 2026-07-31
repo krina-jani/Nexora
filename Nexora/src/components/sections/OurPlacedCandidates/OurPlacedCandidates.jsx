@@ -17,7 +17,7 @@ const OurPlacedCandidates = () => {
   return (
     <section className="success-stories-section">
       <div className="container">
-        <h2 className="text-center section-title-reveal">Our Placed Candidates</h2>
+        <h1 className="text-center section-title-reveal" style={{color: "black"}}>Our Placed Candidates</h1>
         
         <div className="testimonials-carousel-box glass">
           <button className="carousel-nav-btn prev" onClick={prevTestimonial}>

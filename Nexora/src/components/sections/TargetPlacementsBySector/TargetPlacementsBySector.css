@@ -1,7 +1,9 @@
 /* Target Placements By Sector Section Styles */
+/* background color */
 .industries-showcase-section {
   padding: 100px 0;
   position: relative;
+  background: #F9C33A;
 }
 
 .gallery-container {

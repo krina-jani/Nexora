@@ -3,14 +3,15 @@
   width: 100%;
   padding: 100px 0;
   overflow: hidden;
-  background: var(--bg-soft);
+  background: #F9C33A;
 }
 
 .why-choose-title {
   font-size: 3rem;
   font-weight: 800;
   margin-bottom: 40px;
-  color: var(--heading);
+  color: black
+  ;
 }
 
 .why-choose-gallery-wrap {

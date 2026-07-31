@@ -79,13 +79,13 @@
 .program-card h3 {
   font-size: 1.2rem;
   font-weight: 700;
-  color: var(--heading);
+  color: black;
   margin: 0;
 }
 
 .prog-dur {
   font-size: 0.9rem;
-  color: var(--text-light);
+  color: black;
   margin: 0;
 }
 

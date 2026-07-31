@@ -67,6 +67,18 @@ const Navbar = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [location]);
 
+  // Lock scroll when mobile menu is open
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [menuOpen]);
+
   return (
     <header className={`navbar-header ${scrolled ? "scrolled" : ""}`}>
       <div className="navbar-glass-container">
@@ -141,6 +153,11 @@ const Navbar = () => {
             <li>
               <NavLink to="/contact" className={({ isActive }) => (isActive ? "active" : "")}>
                 Contact
+              </NavLink>
+            </li>
+            <li className="mobile-cta-item">
+              <NavLink to="/contact" className="btn-primary mobile-nav-cta">
+                Book Free Consultation
               </NavLink>
             </li>
           </ul>

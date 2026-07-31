@@ -544,7 +544,7 @@ const TargetPlacementsBySector = () => {
   return (
     <section className="industries-showcase-section">
       <div className="container">
-        <h2 className="text-center section-title-reveal">Target Placements by Sector</h2>
+        <h1 className="text-center section-title-reveal" style={{color:"#111"}}>Target Placements by Sector</h1>
         <div className="gallery-container">
           <div
             className="circular-gallery"

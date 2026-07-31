@@ -7,7 +7,7 @@ const OurCoreServices = () => {
   return (
     <section className="services-showcase-section">
       <div className="container">
-        <h2 className="text-center section-title-reveal">Our Core Services</h2>
+        <h1 className="text-center section-title-reveal" style={{color: "white"}}>Our Core Services</h1>
         <div className="services-grid">
           {services.slice(0, 6).map((svc) => (
             <div key={svc.id} className="service-card glass">

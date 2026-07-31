@@ -303,10 +303,10 @@ const Home = () => {
               Join thousands of professionals who have transformed their careers with our global placement engine.
             </p>
             <div className="cta-buttons">
-              <Link to="/contact" className="btn-primary" style={{ padding: '16px 32px', fontSize: '1.1rem' }}>
+              <Link to="/contact" className="btn-primary cta-btn-main">
                 Book Free Consultation
               </Link>
-              <Link to="/services" className="btn-primary" style={{ padding: '16px 32px', fontSize: '1.1rem', border: '2px solid var(--primary)', background: 'transparent', color: 'var(--text)' }}>
+              <Link to="/services" className="btn-primary cta-btn-outline">
                 Explore Services
               </Link>
             </div>
@@ -319,6 +319,9 @@ const Home = () => {
         .final-cta-section {
           padding: 80px 0 120px 0;
           position: relative;
+          --bg: linear-gradient(134deg, #df830d, #6e3517, #F9C33A);
+          --bg-soft: linear-gradient(134deg, rgba(223, 131, 13, 0.9), rgba(110, 53, 23, 0.9), rgba(249, 195, 58, 0.9));
+          background: var(--bg);
         }
         
         .cta-box {
@@ -329,6 +332,40 @@ const Home = () => {
           border: 1px solid var(--border);
           position: relative;
           overflow: hidden;
+          background: #ffffff !important;
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .cta-box:hover {
+          border-color: var(--primary);
+          box-shadow:
+            0 0 20px rgba(72, 201, 44, 0.08),
+            0 0 60px rgba(72, 201, 44, 0.05);
+          transform: translateY(-8px);
+        }
+
+        .cta-box::after {
+          content: "";
+          position: absolute;
+          top: -150%;
+          left: -150%;
+          width: 250%;
+          height: 250%;
+          background: linear-gradient(
+            120deg,
+            transparent 35%,
+            rgba(72, 201, 44, 0.25) 50%,
+            transparent 65%
+          );
+          transform: rotate(25deg);
+          transition: all 1s ease;
+          pointer-events: none;
+          z-index: 1;
+        }
+
+        .cta-box:hover::after {
+          left: 100%;
+          top: 100%;
         }
 
         .cta-box::before {
@@ -347,9 +384,9 @@ const Home = () => {
           font-size: clamp(2.5rem, 5vw, 3.5rem);
           font-weight: 800;
           margin-bottom: 24px;
-          color: var(--heading);
+          color: #111;
           position: relative;
-          z-index: 1;
+          z-index: 2;
           min-height: 120px; /* Prevent layout shift during typing */
           display: flex;
           align-items: center;
@@ -374,11 +411,11 @@ const Home = () => {
 
         .cta-subheading {
           font-size: 1.1rem;
-          color: var(--text);
+          color: #333;
           margin: 0 auto 40px;
           max-width: 600px;
           position: relative;
-          z-index: 1;
+          z-index: 2;
         }
 
         .cta-buttons {
@@ -386,7 +423,26 @@ const Home = () => {
           gap: 20px;
           justify-content: center;
           position: relative;
-          z-index: 1;
+          z-index: 2;
+        }
+        
+        .cta-btn-main {
+          padding: 16px 32px !important;
+          font-size: 1.1rem !important;
+        }
+
+        .cta-btn-outline {
+          padding: 16px 32px !important;
+          font-size: 1.1rem !important;
+          border: 2px solid #111 !important;
+          background: transparent !important;
+          color: #111 !important;
+          transition: all 0.3s ease !important;
+        }
+
+        .cta-btn-outline:hover {
+          background: #111 !important;
+          color: #ffffff !important;
         }
 
         @media (max-width: 1024px) {

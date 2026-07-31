@@ -1,10 +1,12 @@
 /* Our Placed Candidates Section Styles */
 .success-stories-section {
   padding: 100px 0;
+  background: #F9C33A;
 }
 
 .testimonials-carousel-box {
-  max-width: 900px;
+  /* max-width: 900px; */
+  height: 400px;
   margin: 50px auto 0;
   padding: 50px 60px;
   border-radius: var(--radius-lg);
@@ -13,6 +15,7 @@
   align-items: center;
   gap: 30px;
   position: relative;
+  background: var(--bg, #ffffff);
 }
 
 .carousel-nav-btn {
@@ -70,6 +73,7 @@
 .active-candidate-details h3 {
   font-size: 1.5rem;
   font-weight: 700;
+  color: var(--heading, #111);
 }
 
 .candidate-role-text {

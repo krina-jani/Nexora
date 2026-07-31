@@ -42,7 +42,7 @@
 .process-line {
   flex: 1;
   height: 2px;
-  background: var(--border);
+  background: black;
   min-width: 30px;
 }
 

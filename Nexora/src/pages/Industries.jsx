@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import industries from "../data/industries";
 import { Link } from "react-router-dom";
 import { 
@@ -13,6 +14,8 @@ import {
   FaGlobe, 
   FaBullhorn 
 } from "react-icons/fa";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const iconMap = {
   it: <FaLaptopCode />,
@@ -92,37 +95,104 @@ const Industries = () => {
         { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" }
       );
 
-      // Cards staggered reveal
-      gsap.fromTo(".industry-card", 
-        { y: 40, opacity: 0 },
-        {
-          scrollTrigger: {
-            trigger: ".industries-grid",
-            start: "top 80%"
-          },
-          y: 0,
-          opacity: 1,
-          stagger: 0.08,
-          duration: 0.8,
-          ease: "power2.out"
-        }
-      );
+      const mm = gsap.matchMedia();
 
-      // Case studies slide in
-      gsap.fromTo(".case-study-card", 
-        { x: -50, opacity: 0 },
-        {
+      // Mobile layout animations (screens <= 991px)
+      mm.add("(max-width: 991px)", () => {
+        // Alternating slide-in animations for industry cards
+        const industryCards = gsap.utils.toArray(".industry-card");
+        industryCards.forEach((card, index) => {
+          const isLeft = index % 2 === 0;
+          gsap.from(card, {
+            scrollTrigger: {
+              trigger: card,
+              start: "top 88%",
+              toggleActions: "play none none none"
+            },
+            x: isLeft ? -80 : 80,
+            opacity: 0,
+            duration: 1.0,
+            ease: "power2.out"
+          });
+        });
+
+        // Alternating slide-in animations for case study cards
+        const caseStudyCards = gsap.utils.toArray(".case-study-card");
+        caseStudyCards.forEach((card, index) => {
+          const isLeft = index % 2 === 0;
+          gsap.from(card, {
+            scrollTrigger: {
+              trigger: card,
+              start: "top 88%",
+              toggleActions: "play none none none"
+            },
+            x: isLeft ? -80 : 80,
+            opacity: 0,
+            duration: 1.0,
+            ease: "power2.out"
+          });
+        });
+
+        // Alternating slide-in animation for CTA box
+        gsap.from(".ind-cta-box", {
           scrollTrigger: {
-            trigger: ".case-studies-section",
-            start: "top 75%"
+            trigger: ".ind-cta-box",
+            start: "top 88%",
+            toggleActions: "play none none none"
           },
-          x: 0,
-          opacity: 1,
-          stagger: 0.15,
+          x: -80,
+          opacity: 0,
+          duration: 1.0,
+          ease: "power2.out"
+        });
+      });
+
+      // Desktop layout animations (screens > 991px)
+      mm.add("(min-width: 992px)", () => {
+        // Cards staggered reveal
+        gsap.fromTo(".industry-card", 
+          { y: 40, opacity: 0 },
+          {
+            scrollTrigger: {
+              trigger: ".industries-grid",
+              start: "top 80%"
+            },
+            y: 0,
+            opacity: 1,
+            stagger: 0.08,
+            duration: 0.8,
+            ease: "power2.out"
+          }
+        );
+
+        // Case studies slide in
+        gsap.fromTo(".case-study-card", 
+          { x: -50, opacity: 0 },
+          {
+            scrollTrigger: {
+              trigger: ".case-studies-section",
+              start: "top 75%"
+            },
+            x: 0,
+            opacity: 1,
+            stagger: 0.15,
+            duration: 0.8,
+            ease: "power2.out"
+          }
+        );
+
+        // CTA Box slide up
+        gsap.from(".ind-cta-box", {
+          scrollTrigger: {
+            trigger: ".ind-cta-box",
+            start: "top 85%"
+          },
+          y: 40,
+          opacity: 0,
           duration: 0.8,
           ease: "power2.out"
-        }
-      );
+        });
+      });
     }, pageRef);
 
     return () => ctx.revert();
@@ -578,39 +648,7 @@ const Industries = () => {
           border: 1px solid rgba(0, 0, 0, 0.1) !important;
         }
 
-        /* Dark mode overrides */
-        [data-theme='dark'] .industry-card, 
-        [data-theme='dark'] .case-study-card, 
-        [data-theme='dark'] .ind-cta-box {
-          background: rgba(15, 23, 42, 0.85) !important;
-          border: 1px solid rgba(255, 255, 255, 0.1) !important;
-        }
 
-        [data-theme='dark'] .industry-card h3,
-        [data-theme='dark'] .ind-roles h4,
-        [data-theme='dark'] .ind-skills h4,
-        [data-theme='dark'] .case-study-card h3,
-        [data-theme='dark'] .ind-cta-box h2 {
-          color: #f8fafc !important;
-        }
-
-        [data-theme='dark'] .industry-card .ind-desc,
-        [data-theme='dark'] .ind-roles li,
-        [data-theme='dark'] .case-student,
-        [data-theme='dark'] .case-text,
-        [data-theme='dark'] .ind-cta-box p {
-          color: #cbd5e1 !important;
-        }
-
-        [data-theme='dark'] .case-pkg {
-          color: var(--primary-light) !important;
-        }
-
-        [data-theme='dark'] .skill-tag {
-          background: rgba(255, 255, 255, 0.08) !important;
-          color: #cbd5e1 !important;
-          border: 1px solid rgba(255, 255, 255, 0.1) !important;
-        }
 
         @media (max-width: 991px) {
           .industries-grid {

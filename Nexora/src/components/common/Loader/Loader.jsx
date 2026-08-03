@@ -7,7 +7,7 @@ const Loader = ({ onComplete }) => {
   const [exitClassCounter, setExitClassCounter] = useState("");
   const [exitClassLogo, setExitClassLogo] = useState("");
   const [exitClassBg, setExitClassBg] = useState("");
-  const [isDarkMode, setIsDarkMode] = useState(true); // Default to dark mode
+  const [isDarkMode, setIsDarkMode] = useState(false); // Default to light mode (white)
   const clippedLogoRef = useRef(null);
 
   // Sync theme with body class
@@ -19,20 +19,20 @@ const Loader = ({ onComplete }) => {
       document.body.classList.add("light");
       document.body.classList.remove("dark");
     }
+    return () => {
+      document.body.classList.remove("dark", "light");
+    };
   }, [isDarkMode]);
 
   useEffect(() => {
-    // Session check to immediately bypass preloader
-    if (sessionStorage.getItem("dzinr-preloader-shown")) {
-      onComplete();
-      return;
-    }
-
     const duration = 3000;
-    const startTime = performance.now();
+    let startTime = null;
     let animationFrameId;
 
     const updatePreloader = (timestamp) => {
+      if (startTime === null) {
+        startTime = timestamp;
+      }
       const elapsed = timestamp - startTime;
       const progress = Math.min(elapsed / duration, 1);
 
@@ -71,7 +71,6 @@ const Loader = ({ onComplete }) => {
       }, 1200);
 
       setTimeout(() => {
-        sessionStorage.setItem("dzinr-preloader-shown", "true");
         onComplete();
       }, 1800);
     };

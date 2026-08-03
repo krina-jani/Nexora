@@ -69,7 +69,7 @@ const About = () => {
         className="about-hero-story-wrapper"
         style={{ 
           backgroundImage: `url(${aboutBgImage})`, 
-          backgroundSize: '100% 100%', 
+          backgroundSize: 'cover', 
           backgroundPosition: 'center', 
           backgroundRepeat: 'no-repeat',
           position: 'relative'
@@ -77,7 +77,7 @@ const About = () => {
       >
         {/* Hero */}
         <section className="about-hero-section overflow-hidden">
-          <div className="container" style={{ textAlign: 'right' }}>
+          <div className="container hero-content-container">
             <h1 className="about-hero-title">
               <span>Building Excellence </span> <br />
               <span className="text-gradient">Through Innovation</span>
@@ -192,15 +192,17 @@ const About = () => {
           display: inline-block;
            color: black;
         }
+        .hero-content-container {
+          text-align: right;
+        }
         .about-hero-sub {
-        color: #252424;
-        font-weight: 600;
+          color: #252424;
+          font-weight: 600;
           font-size: 1.2rem;
           max-width: 600px;
           margin: 0 0 0 auto;
         }
         .text-gradient {
-          // background: linear-gradient(90deg, var(--primary), var(--primary-light));
           background: linear-gradient(134deg, #df830d, #6e3517);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
@@ -474,8 +476,20 @@ const About = () => {
         }
         
         @media (max-width: 768px) {
+          .hero-content-container {
+            text-align: center;
+          }
+          .about-hero-sub {
+            margin: 0 auto;
+          }
           .about-cards-grid-stacked {
             align-items: center;
+          }
+          .about-card {
+            padding: 20px;
+          }
+          .about-card h2 {
+            font-size: 1.5rem;
           }
           .achievements-row, .team-grid {
             grid-template-columns: 1fr;
@@ -489,12 +503,11 @@ const About = () => {
             gap: 12px;
           }
           .about-hero-section {
-            padding: 40px 0;
+            padding: 60px 0 40px;
           }
           .about-achievements, .about-timeline-section, .about-team-section {
             padding: 60px 0;
             background-color: #F9C33A;
-            
           }
         }
       `}</style>

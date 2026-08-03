@@ -46,16 +46,15 @@
   justify-content: center;
   width: 32px;
   height: 32px;
-  border-radius: 50%;
-  background: var(--bg-soft);
+  background: transparent;
   color: var(--primary);
-  font-size: 0.85rem;
+  font-size: 1rem;
   transition: var(--transition);
 }
 
 .accordion-item-box.active .accordion-icon {
-  background: var(--primary);
-  color: var(--white);
+  background: transparent;
+  color: var(--primary);
 }
 
 .accordion-content-wrapper {

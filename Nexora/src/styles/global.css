@@ -86,28 +86,31 @@ section {
 }
 
 
-body{
-    background:var(--bg);
-    color:var(--heading);
-    font-family:var(--body-font);
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--body-font);
+  overflow-x: hidden;
 }
 
-.container{
-    max-width:1350px;
-    margin:auto;
-    padding:0 20px;
+.container {
+  width: 100%;
+  max-width: 1350px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
-section{
-    position:relative;
-    padding:120px 0;
+section {
+  position: relative;
+  padding: 120px 0;
+  overflow: hidden;
 }
 
-img{
-    max-width:100%;
-    display:block;
+img {
+  max-width: 100%;
+  display: block;
 }
 
-a{
-    text-decoration:none;
+a {
+  text-decoration: none;
 }

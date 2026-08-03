@@ -56,22 +56,26 @@ const Testimonials = () => {
     {
       type: "praise",
       client: "Sarah J., Frontend Dev",
+      image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&q=80",
       content: "Nexora's mentorship completely changed my approach. The mock interviews were rigorous and prepared me perfectly for my role at Amazon."
     },
     {
       type: "constructive",
       client: "Michael T., Data Analyst",
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80",
       content: "Initially, I felt the pace of the curriculum was too fast and overwhelming.",
       resolution: "I brought this up with my mentor, and they immediately adjusted my timeline, adding 1-on-1 sessions to help me catch up. The support was incredible!"
     },
     {
       type: "praise",
       client: "Elena R., UX Designer",
+      image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80",
       content: "The portfolio reviews were brutal but necessary. Thanks to the honest feedback, my case studies now attract recruiters automatically."
     },
     {
       type: "constructive",
       client: "David K., Backend Engineer",
+      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80",
       content: "There was a delay in getting my resume reviewed during the holiday season, which frustrated me.",
       resolution: "Nexora's team apologized and assigned a senior FAANG engineer to do a deep-dive review over the weekend to make up for the lost time. Got an offer 3 weeks later!"
     }
@@ -133,7 +137,7 @@ const Testimonials = () => {
       {/* Video review placeholder section */}
       <section className="video-reviews-section">
         <div className="container">
-          <h2 className="text-center section-title">Watch Alumni Video Reviews</h2>
+          <h2 className="text-center" style={{ color: "#ffffffff" }}>Watch Alumni Video Reviews </h2>
           <div className="video-grid">
             <div className="video-card glass">
               <div className="video-thumbnail-mock">
@@ -157,7 +161,7 @@ const Testimonials = () => {
       <section className="honest-feedback-section">
         <div className="container">
           <div className="text-center section-header" style={{ marginBottom: "50px" }}>
-            <h2 style={{ fontSize: "2.5rem", fontWeight: "800", marginBottom: "15px" }}>Honest Feedback</h2>
+            <h2 style={{ fontSize: "2.5rem", fontWeight: "800", marginBottom: "15px", color:"#000000ff"}}>Honest Feedback</h2>
             <p className="text-light" style={{ maxWidth: "700px", margin: "0 auto", fontSize: "1.1rem" }}>
               We believe in absolute transparency. Here is what our clients say, including the challenges they faced and how we resolved them together.
             </p>
@@ -175,7 +179,10 @@ const Testimonials = () => {
                     <strong>How we improved:</strong> {item.resolution}
                   </div>
                 )}
-                <div className="feedback-client">— {item.client}</div>
+                <div className="feedback-client-info">
+                  <span className="feedback-client-name">— {item.client}</span>
+                  <img src={item.image} alt={item.client} className="feedback-client-img" />
+                </div>
               </div>
             ))}
           </div>
@@ -199,7 +206,7 @@ const Testimonials = () => {
           margin: 0 auto;
         }
         .text-gradient {
-          background: linear-gradient(90deg, var(--primary), var(--primary-light));
+          background: linear-gradient(134deg, #df830d, #6e3517);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
         }
@@ -356,9 +363,12 @@ const Testimonials = () => {
           display: grid;
           grid-template-columns: 1fr 1fr;
           gap: 30px;
+          justify-items: center;
         }
         .feedback-card {
-          padding: 40px;
+          width: 100%;
+          max-width: 520px;
+          padding: 25px;
           border-radius: var(--radius-lg);
           border: 1px solid var(--border);
           position: relative;
@@ -427,12 +437,27 @@ const Testimonials = () => {
           border-left: 2px solid var(--primary);
           line-height: 1.5;
         }
-        .feedback-client {
+        .feedback-client-info {
           margin-top: auto;
+          display: flex;
+          align-items: center;
+          justify-content: flex-end;
+          gap: 12px;
+        }
+        .feedback-client-img {
+          width: 48px;
+          height: 48px;
+          border-radius: 50%;
+          object-fit: cover;
+          border: 2px solid rgba(0, 0, 0, 0.1);
+        }
+        [data-theme='dark'] .feedback-client-img {
+          border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+        .feedback-client-name {
           font-weight: 700;
           color: var(--text-light);
-          text-align: right;
-          font-size: 0.9rem;
+          font-size: 0.95rem;
         }
 
         /* Unified Card visibility override for Testimonials */
@@ -456,7 +481,7 @@ const Testimonials = () => {
         .candidate-feedback,
         .placed-at,
         .video-card p,
-        .feedback-client {
+        .feedback-client-name {
           color: #334155 !important;
         }
 
@@ -499,7 +524,7 @@ const Testimonials = () => {
         [data-theme='dark'] .candidate-feedback,
         [data-theme='dark'] .placed-at,
         [data-theme='dark'] .video-card p,
-        [data-theme='dark'] .feedback-client {
+        [data-theme='dark'] .feedback-client-name {
           color: #cbd5e1 !important;
         }
 

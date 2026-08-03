@@ -60,12 +60,12 @@ const Contact = () => {
 
           {/* Right Column (Contains Title and Form) */}
           <div className="contact-right-content">
-            <h1 className="contact-hero-title">
-              Connect With Our <span className="text-gradient">Career Advisors</span>
+            <h1 className="contact-hero-title mar">
+              Connect With Our <h3 className="text-gradient ">Career Advisors</h3>
             </h1>
 
             <div className="new-contact-form-container glass">
-              <div className="contact-header-new">
+              <div className="contact-header-new ">
                 <h2>Contact Form</h2>
                 <p>For the fastest response, please fill out the form below.</p>
               </div>
@@ -174,13 +174,20 @@ const Contact = () => {
         </div>
       </div>
 
-      {/* Map placeholder */}
+      {/* Map Section */}
       <section className="map-placeholder-section">
         <div className="container text-center">
-          <h2 className="section-title">Where to Find Us</h2>
+          <h2 className="section-title text-white mb-4 mar-b">Where to Find Us</h2>
           <div className="map-mock-box glass">
-            <h3>Google Maps Integration</h3>
-            <p>Orchard Rd, Singapore (Map display placeholder)</p>
+            <iframe 
+              src="https://maps.google.com/maps?q=Orchard%20Road,%20Singapore&t=&z=13&ie=UTF8&iwloc=&output=embed" 
+              width="100%" 
+              height="100%" 
+              style={{ border: 0, borderRadius: 'inherit' }} 
+              allowFullScreen="" 
+              loading="lazy" 
+              referrerPolicy="no-referrer-when-downgrade"
+            ></iframe>
           </div>
         </div>
       </section>
@@ -188,13 +195,16 @@ const Contact = () => {
       {/* FAQ */}
       <section className="contact-faq-section">
         <div className="container">
-          <h2 className="text-center section-title">Need Immediate Answers?</h2>
+          <h2 className="text-center section-title" style={{ color: "#000000" }}>Need Immediate Answers?</h2>
           <Accordion items={faq} />
         </div>
       </section>
 
       {/* Styles */}
       <style>{`
+        .mar{
+          margin-left: 117px;
+        }
         .contact-hero {
           padding: 80px 0 40px;
         }
@@ -203,15 +213,16 @@ const Contact = () => {
           font-weight: 800;
           line-height: 1.2;
           color: #0f172a !important;
+          
         }
         .text-gradient {
-          background: linear-gradient(90deg, var(--primary), var(--primary-light));
+          background: linear-gradient(134deg, #df830d, #6e3517);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
         }
         .contact-grid-layout {
           display: grid;
-          grid-template-columns: 1.2fr 1fr;
+          grid-template-columns: 0.8fr 1.2fr;
           gap: 60px;
           padding: 80px 0 100px;
           align-items: flex-start;
@@ -243,6 +254,8 @@ const Contact = () => {
           backdrop-filter: blur(10px);
           -webkit-backdrop-filter: blur(10px);
           box-shadow: var(--shadow-lg);
+          margin-left: 91px;
+          margin-right: -105px;
         }
 
         .new-contact-form {
@@ -256,7 +269,9 @@ const Contact = () => {
           grid-template-columns: 1fr 1fr;
           gap: 24px;
         }
-        
+        .mar-b{
+          margin-bottom: 22px;
+        }
         .form-row-1col {
           display: flex;
           flex-direction: column;
@@ -354,19 +369,26 @@ const Contact = () => {
         }
 
         .map-placeholder-section {
-          padding: 80px 0;
-          background: var(--bg-soft);
-          margin-top: 80px;
+          padding: 100px 0;
+          background: linear-gradient(134deg, rgba(223, 131, 13, 0.9), rgba(110, 53, 23, 0.9), rgba(249, 195, 58, 0.9));
         }
         .map-mock-box {
-          height: 350px;
+          height: 500px;
           border-radius: var(--radius-lg);
-          border: 1px solid var(--border);
+          border: 2px solid rgba(255, 255, 255, 0.2);
+          box-shadow: var(--shadow-lg);
           display: flex;
           flex-direction: column;
           align-items: center;
           justify-content: center;
           color: var(--text-light);
+          padding: 0;
+          overflow: hidden;
+        }
+        .section-title {
+          font-size: 2.5rem;
+          font-weight: 800;
+          color: #ffffff;
         }
         .contact-faq-section {
           padding: 100px 0;
@@ -395,10 +417,17 @@ const Contact = () => {
           .contact-grid-layout {
             grid-template-columns: 1fr;
             gap: 40px;
-            padding: 40px 20px;
+            padding: 40px 0;
           }
           .contact-left-spacer {
             display: none;
+          }
+          .new-contact-form-container {
+            margin: 0;
+          }
+          .mar {
+            margin-left: 0;
+            text-align: center;
           }
         }
         @media (max-width: 768px) {
@@ -408,6 +437,10 @@ const Contact = () => {
           }
           .new-contact-form-container {
             padding: 30px 20px;
+            margin: 0;
+          }
+          .mar {
+            margin-left: 0;
           }
         }
       `}</style>

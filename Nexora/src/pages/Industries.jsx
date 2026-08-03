@@ -293,7 +293,7 @@ const Industries = () => {
           margin: 0 auto;
         }
         .text-gradient {
-          background: linear-gradient(90deg, var(--primary),#5d543d);
+          background: linear-gradient(134deg, #df830d, #6e3517);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
         }

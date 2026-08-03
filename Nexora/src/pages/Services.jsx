@@ -137,7 +137,7 @@ const Services = () => {
         <section className="services-hero text-center">
           <div className="container">
             <h1 className="services-hero-title">
-             <span> Our Elite Career Services</span>
+             <span> Our Elite <span className="text-gradient">Career Services</span></span>
             </h1>
             <p className="services-hero-sub text-light">
               Engineered to refine your professional profile, build technical authority, and guide you directly to job offers.
@@ -318,7 +318,7 @@ const Services = () => {
           color: #334155 !important;
         }
         .text-gradient {
-          background: linear-gradient(90deg, var(--primary), var(--primary-light));
+          background: linear-gradient(134deg, #df830d, #6e3517);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
         }

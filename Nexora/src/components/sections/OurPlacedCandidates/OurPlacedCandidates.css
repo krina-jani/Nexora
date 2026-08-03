@@ -5,8 +5,8 @@
 }
 
 .testimonials-carousel-box {
-  /* max-width: 900px; */
-  height: 400px;
+  min-height: 400px;
+  height: auto;
   margin: 50px auto 0;
   padding: 50px 60px;
   border-radius: var(--radius-lg);
@@ -95,5 +95,44 @@
   }
   .package-tag {
     align-self: center;
+  }
+  .testimonials-carousel-box {
+    padding: 40px 30px;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .testimonials-carousel-box {
+    padding: 30px 20px 80px 20px;
+  }
+  
+  .carousel-nav-btn {
+    position: absolute;
+    bottom: 20px;
+    z-index: 10;
+  }
+  
+  .carousel-nav-btn.prev {
+    left: 50%;
+    transform: translateX(-120%);
+  }
+  
+  .carousel-nav-btn.next {
+    right: 50%;
+    transform: translateX(120%);
+  }
+  
+  .active-candidate-img {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .active-candidate-details h3 {
+    font-size: 1.3rem;
+  }
+  
+  .feedback-body {
+    font-size: 1rem;
   }
 }

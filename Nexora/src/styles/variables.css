@@ -110,29 +110,4 @@
 
 }
 
-[data-theme='dark'] {
-  --bg: #0F1211;
-  --bg-soft: #181A19;
-  --bg-secondary: #212423;
-  --bg-dark: #FCFFFC;
-
-  --surface: rgba(30,30,30,0.70);
-  --surface-light: rgba(40,40,40,0.85);
-  --surface-solid: #181A19;
-  --surface-dark: #FFFFFF;
-
-  --heading: #F5FFF4;
-  --text: #C0C8C3;
-  --text-light: #8C9691;
-  --white: #121413;
-
-  --border: rgba(255,255,255,.1);
-  --border-light: rgba(0,0,0,.45);
-
-  --shadow-sm: 0 8px 25px rgba(0,0,0,.3);
-  --shadow-md: 0 15px 45px rgba(0,0,0,.4);
-  --shadow-lg: 0 30px 80px rgba(0,0,0,.5);
-
-  --glass-bg: rgba(20,20,20,.60);
-  --glass-border: rgba(255,255,255,.1);
-}
+

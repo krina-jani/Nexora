@@ -7,19 +7,7 @@ const Loader = ({ onComplete }) => {
   const [exitClassCounter, setExitClassCounter] = useState("");
   const [exitClassLogo, setExitClassLogo] = useState("");
   const [exitClassBg, setExitClassBg] = useState("");
-  const [isDarkMode, setIsDarkMode] = useState(true); // Default to dark mode
   const clippedLogoRef = useRef(null);
-
-  // Sync theme with body class
-  useEffect(() => {
-    if (isDarkMode) {
-      document.body.classList.add("dark");
-      document.body.classList.remove("light");
-    } else {
-      document.body.classList.add("light");
-      document.body.classList.remove("dark");
-    }
-  }, [isDarkMode]);
 
   useEffect(() => {
     // Session check to immediately bypass preloader
@@ -84,7 +72,7 @@ const Loader = ({ onComplete }) => {
   }, [onComplete]);
 
   return (
-    <div className={`preloader-container ${isDarkMode ? "theme-dark" : "theme-light"}`}>
+    <div className="preloader-container theme-light">
       {/* Background overlay */}
       <div className={`preloader-bg ${exitClassBg}`} />
 
@@ -143,14 +131,7 @@ const Loader = ({ onComplete }) => {
           <span className="wave-bar"></span>
         </div>
 
-        {/* Theme Mode Toggle Button */}
-        <button
-          className="preloader-theme-btn clickable"
-          onClick={() => setIsDarkMode(!isDarkMode)}
-          title="Toggle Light/Dark Theme"
-        >
-          {isDarkMode ? <FaSun /> : <FaMoon />}
-        </button>
+
       </div>
     </div>
   );

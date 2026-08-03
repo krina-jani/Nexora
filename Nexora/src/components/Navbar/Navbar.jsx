@@ -3,17 +3,13 @@ import { NavLink, Link, useLocation, useNavigate } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { LuChevronDown } from "react-icons/lu";
 import logo from "../../assets/icons/nexoralogo.png";
-import brightness from "../../assets/icons/brightness.png";
-import darkness from "../../assets/icons/darkness.png";
 import "./Navbar.css";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(() => {
-    return localStorage.getItem('theme') === 'dark';
-  });
+
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -33,19 +29,7 @@ const Navbar = () => {
     }
   };
 
-  useEffect(() => {
-    if (isDarkMode) {
-      document.documentElement.setAttribute('data-theme', 'dark');
-      localStorage.setItem('theme', 'dark');
-    } else {
-      document.documentElement.removeAttribute('data-theme');
-      localStorage.setItem('theme', 'light');
-    }
-  }, [isDarkMode]);
 
-  const toggleTheme = () => {
-    setIsDarkMode(prev => !prev);
-  };
 
 
 
@@ -81,7 +65,7 @@ const Navbar = () => {
   }, [menuOpen]);
 
   return (
-    <header className={`navbar-header ${scrolled ? "scrolled" : ""}`}>
+    <header className={`navbar-header ${scrolled ? "scrolled" : ""} ${menuOpen ? "menu-open" : ""}`}>
       <div className="navbar-glass-container">
         <NavLink to="/" className="navbar-logo">
           <img src={logo} alt="Nexora Logo" className="logo-image" />
@@ -111,6 +95,7 @@ const Navbar = () => {
                 className={`dropdown-trigger ${location.pathname === "/services" ? "active" : ""}`}
                 onClick={(e) => {
                   if (window.innerWidth <= 1024) {
+                    e.preventDefault();
                     setDropdownOpen(!dropdownOpen);
                   } else {
                     setDropdownOpen(!dropdownOpen);
@@ -125,7 +110,7 @@ const Navbar = () => {
               <ul className={`simple-dropdown ${dropdownOpen ? "show" : ""}`}>
                 <li>
                   <Link to="/services#rpo" onClick={(e) => handleDropdownClick(e, '#rpo')}>
-                    Recruitment Process Outsourcing
+                    Recruitment Process <span className="hide-on-mobile">Outsourcing</span>
                   </Link>
                 </li>
                 <li>
@@ -174,9 +159,7 @@ const Navbar = () => {
         </nav>
 
         <div className="navbar-actions">
-          <button className="theme-toggle" onClick={toggleTheme} style={{ background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center' }}>
-            <img src={isDarkMode ? darkness : brightness} alt="Toggle Theme" style={{ width: '24px', height: '24px' }} />
-          </button>
+
           
           <NavLink to="/contact" className="btn-primary navbar-cta">
             Book Free Consultation

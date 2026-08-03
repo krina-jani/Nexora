@@ -1,6 +1,9 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import testimonials from "../data/testimonials";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Testimonials = () => {
   const pageRef = useRef(null);
@@ -15,30 +18,89 @@ const Testimonials = () => {
         ease: "power3.out"
       });
 
-      // Stagger testimonial cards
-      gsap.from(".testimonial-grid-card", {
-        scrollTrigger: {
-          trigger: ".testimonials-grid",
-          start: "top 80%"
-        },
-        y: 40,
-        opacity: 0,
-        stagger: 0.12,
-        duration: 0.8,
-        ease: "power2.out"
+      const mm = gsap.matchMedia();
+
+      // Mobile layout animations (screens <= 991px)
+      mm.add("(max-width: 991px)", () => {
+        // Alternating slide-in animations for testimonial grid cards
+        const testimonialCards = gsap.utils.toArray(".testimonial-grid-card");
+        testimonialCards.forEach((card, index) => {
+          const isLeft = index % 2 === 0;
+          gsap.from(card, {
+            scrollTrigger: {
+              trigger: card,
+              start: "top 88%",
+              toggleActions: "play none none none"
+            },
+            x: isLeft ? -80 : 80,
+            opacity: 0,
+            duration: 1.0,
+            ease: "power2.out"
+          });
+        });
+
+        // Alternating slide-in animations for video cards
+        const videoCards = gsap.utils.toArray(".video-card");
+        videoCards.forEach((card, index) => {
+          const isLeft = index % 2 === 0;
+          gsap.from(card, {
+            scrollTrigger: {
+              trigger: card,
+              start: "top 88%",
+              toggleActions: "play none none none"
+            },
+            x: isLeft ? -80 : 80,
+            opacity: 0,
+            duration: 1.0,
+            ease: "power2.out"
+          });
+        });
+
+        // Alternating slide-in animations for honest feedback cards
+        const feedbackCards = gsap.utils.toArray(".feedback-card");
+        feedbackCards.forEach((card, index) => {
+          const isLeft = index % 2 === 0;
+          gsap.from(card, {
+            scrollTrigger: {
+              trigger: card,
+              start: "top 88%",
+              toggleActions: "play none none none"
+            },
+            x: isLeft ? -80 : 80,
+            opacity: 0,
+            duration: 1.0,
+            ease: "power2.out"
+          });
+        });
       });
 
-      // Honest Feedback Cards
-      gsap.from(".feedback-card", {
-        scrollTrigger: {
-          trigger: ".feedback-grid",
-          start: "top 85%"
-        },
-        y: 50,
-        opacity: 0,
-        stagger: 0.2,
-        duration: 0.8,
-        ease: "power2.out"
+      // Desktop layout animations (screens > 991px)
+      mm.add("(min-width: 992px)", () => {
+        // Stagger testimonial cards
+        gsap.from(".testimonial-grid-card", {
+          scrollTrigger: {
+            trigger: ".testimonials-grid",
+            start: "top 80%"
+          },
+          y: 40,
+          opacity: 0,
+          stagger: 0.12,
+          duration: 0.8,
+          ease: "power2.out"
+        });
+
+        // Honest Feedback Cards
+        gsap.from(".feedback-card", {
+          scrollTrigger: {
+            trigger: ".feedback-grid",
+            start: "top 85%"
+          },
+          y: 50,
+          opacity: 0,
+          stagger: 0.2,
+          duration: 0.8,
+          ease: "power2.out"
+        });
       });
     }, pageRef);
 
@@ -340,20 +402,7 @@ const Testimonials = () => {
           color: var(--text);
           line-height: 1.6;
         }
-        @media (max-width: 991px) {
-          .test-stats-row {
-            grid-template-columns: 1fr 1fr;
-          }
-          .testimonials-grid {
-            grid-template-columns: 1fr;
-          }
-          .video-grid {
-            grid-template-columns: 1fr;
-          }
-          .feedback-grid {
-            grid-template-columns: 1fr;
-          }
-        }
+
 
         /* Honest Feedback Styles */
         .honest-feedback-section {
@@ -462,7 +511,7 @@ const Testimonials = () => {
 
         /* Unified Card visibility override for Testimonials */
         .test-stat-card, .testimonial-grid-card, .video-card, .feedback-card {
-          background: rgba(255, 255, 255, 0.85) !important;
+          background: #ffffff !important;
           border: 1px solid rgba(255, 255, 255, 0.25) !important;
           backdrop-filter: blur(10px);
           -webkit-backdrop-filter: blur(10px);
@@ -505,39 +554,6 @@ const Testimonials = () => {
         }
 
         /* Dark mode overrides */
-        [data-theme='dark'] .test-stat-card, 
-        [data-theme='dark'] .testimonial-grid-card, 
-        [data-theme='dark'] .video-card, 
-        [data-theme='dark'] .feedback-card {
-          background: rgba(15, 23, 42, 0.85) !important;
-          border: 1px solid rgba(255, 255, 255, 0.1) !important;
-        }
-
-        [data-theme='dark'] .test-stat-card h3, 
-        [data-theme='dark'] .candidate-info-row h3, 
-        [data-theme='dark'] .video-card h3,
-        [data-theme='dark'] .feedback-content {
-          color: #f8fafc !important;
-        }
-
-        [data-theme='dark'] .test-stat-card p,
-        [data-theme='dark'] .candidate-feedback,
-        [data-theme='dark'] .placed-at,
-        [data-theme='dark'] .video-card p,
-        [data-theme='dark'] .feedback-client-name {
-          color: #cbd5e1 !important;
-        }
-
-        [data-theme='dark'] .candidate-role,
-        [data-theme='dark'] .candidate-pkg {
-          color: var(--primary-light) !important;
-        }
-
-        [data-theme='dark'] .feedback-resolution {
-          background: rgba(255, 255, 255, 0.05) !important;
-          color: #cbd5e1 !important;
-        }
-
         [data-theme='dark'] .test-hero-title, 
         [data-theme='dark'] .section-title, 
         [data-theme='dark'] .honest-feedback-section h2 {
@@ -546,6 +562,22 @@ const Testimonials = () => {
         [data-theme='dark'] .test-hero-sub, 
         [data-theme='dark'] .honest-feedback-section p {
           color: #cbd5e1 !important;
+        }
+
+        /* Mobile responsive overrides placed at the end for correct cascading */
+        @media (max-width: 991px) {
+          .test-stats-row {
+            grid-template-columns: 1fr 1fr;
+          }
+          .testimonials-grid {
+            grid-template-columns: 1fr;
+          }
+          .video-grid {
+            grid-template-columns: 1fr;
+          }
+          .feedback-grid {
+            grid-template-columns: 1fr;
+          }
         }
       `}</style>
     </div>

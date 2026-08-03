@@ -15,11 +15,7 @@
 }
 
 /* Light / Dark variable overrides inside Loader */
-.preloader-container.theme-dark {
-  --loader-bg: #020617;
-  --loader-fg: #ffffff;
-  --logo-color: #48C92C;
-}
+
 
 .preloader-container.theme-light {
   --loader-bg: #FCFFFC;

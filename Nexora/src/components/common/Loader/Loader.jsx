@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from "react";
-import { FaSun, FaMoon } from "react-icons/fa";
+
 import "./Loader.css";
 
 const Loader = ({ onComplete }) => {

@@ -5,6 +5,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SplitType from "split-type";
 import { FaArrowRight, FaGithub, FaLinkedin, FaEnvelope, FaInstagram } from "react-icons/fa";
 import heroBgImage from "../assets/images/perfect-hero.png";
+import empowermentImage from "../assets/images/empowerment.png";
 // Common Components
 import Marquee from "../components/common/Marquee";
 
@@ -232,10 +233,12 @@ const Home = () => {
             </Link>
           </div>
           <div className="about-intro-right">
-            <div className="visual-media-box glass">
-              <div className="overlay-radial"></div>
-              <h3>Empowering Placements</h3>
-              <p>98% Successful domain migrations.</p>
+            <div className="visual-media-box glass" style={{ padding: 0 }}>
+              <img src={empowermentImage} alt="Empowering Placements" className="empowerment-image" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 0 }} />
+              <div style={{ position: 'relative', zIndex: 1, padding: '40px', background: 'linear-gradient(to top, rgba(255,255,255,0.9), transparent)' }}>
+                <h3>Empowering Placements</h3>
+                <p>98% Successful domain migrations.</p>
+              </div>
             </div>
           </div>
         </div>
@@ -302,11 +305,11 @@ const Home = () => {
             <p className="cta-subheading">
               Join thousands of professionals who have transformed their careers with our global placement engine.
             </p>
-            <div className="cta-buttons">
-              <Link to="/contact" className="btn-primary cta-btn-main">
+            <div className="cta-buttons" style={{ position: 'relative', zIndex: 100 }}>
+              <Link to="/contact" className="btn-primary cta-btn-main" style={{ cursor: 'pointer', position: 'relative', zIndex: 10 }}>
                 Book Free Consultation
               </Link>
-              <Link to="/services" className="btn-primary cta-btn-outline">
+              <Link to="/services" className="btn-primary cta-btn-outline" style={{ cursor: 'pointer', position: 'relative', zIndex: 10 }}>
                 Explore Services
               </Link>
             </div>

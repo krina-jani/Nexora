@@ -5,16 +5,21 @@ import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 import Background from "../Background/Background";
 import CustomCursor from "../common/CustomCursor";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Lenis from "lenis";
 
 const Layout = () => {
   const [loading, setLoading] = useState(true);
   const location = useLocation();
+  const lenisRef = useRef(null);
 
   useEffect(() => {
     // Scroll to top and refresh GSAP ScrollTrigger on route change
-    window.scrollTo(0, 0);
+    if (lenisRef.current) {
+      lenisRef.current.scrollTo(0, { immediate: true });
+    } else {
+      window.scrollTo(0, 0);
+    }
     const timer1 = setTimeout(() => ScrollTrigger.refresh(), 100);
     const timer2 = setTimeout(() => ScrollTrigger.refresh(), 500);
     
@@ -35,6 +40,7 @@ const Layout = () => {
       wheelMultiplier: 1,
       touchMultiplier: 2,
     });
+    lenisRef.current = lenis;
 
     function raf(time) {
       lenis.raf(time);
@@ -45,6 +51,7 @@ const Layout = () => {
 
     return () => {
       lenis.destroy();
+      lenisRef.current = null;
     };
   }, []);
 

@@ -251,7 +251,7 @@
 }
 
 .simple-dropdown a:hover {
-  background: var(--bg-soft);
+  background: transparent;
   color: var(--primary) !important;
   font-weight: 500;
 }

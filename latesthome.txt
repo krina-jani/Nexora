@@ -175,7 +175,7 @@ const Home = () => {
 
       {/* SECTION 2: TRUSTED BY MARQUEE */}
       <section className="marquee-section">
-        <div className="container text-center">
+        <div className="text-center">
           <p className="marquee-intro">Nexora Graduates Placed at Global Leaders</p>
           <Marquee items={companiesList} />
         </div>
@@ -381,11 +381,12 @@ const Home = () => {
           border-radius: 50px;
           border: none;
           box-shadow: 0 8px 24px rgba(133, 232, 185, 0.3);
-          transition: background 0.3s, transform 0.2s;
+          transition: background 0.3s, color 0.3s, transform 0.2s;
           cursor: pointer;
         }
         .btn-primary-pill:hover {
           background: #53D131;
+          color: #ffffff;
           transform: translateY(-2px);
         }
         
@@ -570,12 +571,13 @@ const Home = () => {
           border-bottom: 1px solid var(--border);
         }
         .marquee-intro {
-          font-size: 0.9rem;
+          font-size: clamp(0.75rem, 2.5vw, 0.9rem);
           text-transform: uppercase;
           letter-spacing: 2px;
           color: var(--text-light);
           margin-bottom: 20px;
           font-weight: 600;
+          padding: 0 16px;
         }
 
         /* About Intro */

@@ -42,6 +42,10 @@ const Layout = () => {
     });
     lenisRef.current = lenis;
 
+    if (loading) {
+      lenis.stop();
+    }
+
     function raf(time) {
       lenis.raf(time);
       requestAnimationFrame(raf);
@@ -54,6 +58,19 @@ const Layout = () => {
       lenisRef.current = null;
     };
   }, []);
+
+  useEffect(() => {
+    if (loading) {
+      document.body.style.overflow = "hidden";
+      if (lenisRef.current) lenisRef.current.stop();
+    } else {
+      document.body.style.overflow = "";
+      if (lenisRef.current) lenisRef.current.start();
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [loading]);
 
   return (
     <>

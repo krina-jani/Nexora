@@ -321,7 +321,7 @@ const Services = () => {
           color: #334155 !important;
         }
         .text-gradient {
-          background: linear-gradient(134deg, #df830d, #6e3517);
+          background: linear-gradient(134deg, #2C5E63, #6B6F4D);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
         }
@@ -565,7 +565,7 @@ const Services = () => {
         
         .why-choose-us {
           padding: 100px 0;
-          background: linear-gradient(134deg, rgba(223, 131, 13, 0.9), rgba(110, 53, 23, 0.9), rgba(249, 195, 58, 0.9)) !important;
+          background: linear-gradient(134deg, rgba(44, 94, 99, 0.9), rgba(166, 184, 183, 0.9), rgba(107, 111, 77, 0.9)) !important;
         }
         .why-choose-us .section-title {
           color: #ffffff !important;

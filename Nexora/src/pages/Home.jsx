@@ -137,7 +137,7 @@ const Home = () => {
   return (
     <div ref={homeRef} className="home-container">
       {/* SECTION 1: HERO */}
-      <section className="hero-section" style={{ backgroundImage: `url(${heroBgImage})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
+      <section className="hero-section" >
         <div className="hero-bg-glow"></div>
         <div className="container hero-grid">
           {/* Left Column */}
@@ -322,8 +322,8 @@ const Home = () => {
         .final-cta-section {
           padding: 80px 0 120px 0;
           position: relative;
-          --bg: linear-gradient(134deg, #df830d, #6e3517, #F9C33A);
-          --bg-soft: linear-gradient(134deg, rgba(223, 131, 13, 0.9), rgba(110, 53, 23, 0.9), rgba(249, 195, 58, 0.9));
+          --bg: linear-gradient(134deg, #2C5E63, #A6B8B7, #6B6F4D);
+          --bg-soft: linear-gradient(134deg, rgba(44, 94, 99, 0.9), rgba(166, 184, 183, 0.9), rgba(107, 111, 77, 0.9));
           background: var(--bg);
         }
         
@@ -539,7 +539,7 @@ const Home = () => {
           margin-bottom: 30px;
         }
         .text-gradient {
-          background: linear-gradient(134deg, #df830d, #6e3517);
+          background: linear-gradient(134deg, #2C5E63, #6B6F4D);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
         }
@@ -554,18 +554,18 @@ const Home = () => {
           display: inline-flex;
           align-items: center;
           padding: 14px 32px;
-          background: #df830d;
-          color: #111b15;
+          background: #2C5E63;
+          color: #E7E6D8;
           font-weight: 700;
           border-radius: 50px;
           border: none;
-          box-shadow: 0 8px 24px rgba(133, 232, 185, 0.3);
-          transition: background 0.3s, color 0.3s, transform 0.2s;
+          box-shadow: 0 8px 24px rgba(44, 94, 99, 0.3);
+          transition: background 0.3s, transform 0.2s;
           cursor: pointer;
         }
         .btn-primary-pill:hover {
-          background: #000000ff;
-          color: #ffffff;
+          background: #6B6F4D;
+          color: #E7E6D8;
           transform: translateY(-2px);
         }
         
@@ -909,7 +909,7 @@ const Home = () => {
           margin-bottom: 24px;
         }
         .cta-mask-layer .text-gradient-mask {
-          background: linear-gradient(90deg, #48C92C, #00d2ff);
+          background: linear-gradient(90deg, #2C5E63, #A6B8B7);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
         }

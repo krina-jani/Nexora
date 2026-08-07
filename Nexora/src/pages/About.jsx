@@ -294,7 +294,7 @@ const About = () => {
           margin: 0 0 0 auto;
         }
         .text-gradient {
-          background: linear-gradient(134deg, #df830d, #6e3517);
+          background: linear-gradient(134deg, #2C5E63, #6B6F4D);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
         }
@@ -467,7 +467,6 @@ const About = () => {
         [data-theme='dark'] .timeline-card p {
           color: #cbd5e1 !important;
         }
-        
         /* Placement Support Styles (No cards, matching image) */
         .about-support-section {
           padding: 100px 0;

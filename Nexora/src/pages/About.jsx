@@ -1,7 +1,22 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { FaGraduationCap, FaBriefcase, FaGlobe, FaTrophy } from "react-icons/fa";
+import { 
+  FaGraduationCap, 
+  FaBriefcase, 
+  FaGlobe, 
+  FaTrophy, 
+  FaCompass, 
+  FaFileSignature, 
+  FaSearch, 
+  FaLinkedin, 
+  FaBullseye, 
+  FaCalendarCheck, 
+  FaComments, 
+  FaCode, 
+  FaShieldAlt, 
+  FaMapMarkerAlt 
+} from "react-icons/fa";
 import aboutBgImage from "../assets/images/about.png";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -23,7 +38,7 @@ const About = () => {
       // Cards staggered fade-in
       gsap.from(".about-card", {
         scrollTrigger: {
-          trigger: ".about-cards-grid",
+          trigger: ".about-cards-grid-stacked",
           start: "top 80%"
         },
         y: 50,
@@ -45,6 +60,19 @@ const About = () => {
         duration: 1,
         ease: "power3.out"
       });
+
+      // Support items staggered fade-in
+      gsap.from(".support-item", {
+        scrollTrigger: {
+          trigger: ".support-grid",
+          start: "top 85%"
+        },
+        y: 30,
+        opacity: 0,
+        stagger: 0.1,
+        duration: 0.8,
+        ease: "power2.out"
+      });
     }, pageRef);
 
     return () => ctx.revert();
@@ -57,10 +85,67 @@ const About = () => {
     { year: "2025", title: "AI Learning Integration", desc: "Embedded custom AI-feedback bots to review portfolio projects in real-time." }
   ];
 
-  const team = [
-    { name: "Vikram Sen", role: "Founder & CEO", company: "Ex-Google", img: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=300&q=80" },
-    { name: "Alisha Roy", role: "Head of Placement", company: "Ex-Deloitte HR", img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=300&q=80" },
-    { name: "Kunal Gupta", role: "Lead Tech Mentor", company: "Ex-Amazon SDE", img: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=300&q=80" }
+  const supportSteps = [
+    {
+      title: "Career Guidance",
+      desc: "We begin with a personal career consultation. Our experts assess your goals, domain, skills, and experience to guide you toward high-demand roles and trending technologies.",
+      icon: <FaCompass />,
+      color: "#ea580c" // Orange
+    },
+    {
+      title: "Resume Crafting",
+      desc: "We don't just update resumes, we rebuild them. Our writers create recruiter-ready, keyword-optimized, and ATS-compliant resumes that showcase your true potential.",
+      icon: <FaFileSignature />,
+      color: "#2563eb" // Blue
+    },
+    {
+      title: "Resume Understanding",
+      desc: "We explain your resume in detail, so when you're in an interview, you know how to present it with clarity and confidence.",
+      icon: <FaSearch />,
+      color: "#dc2626" // Crimson
+    },
+    {
+      title: "LinkedIn Optimization",
+      desc: "Our specialists rework your LinkedIn profile to increase visibility, improve recruiter outreach, and reflect your brand. This includes headlines, summaries, skill sections, and SEO rich keywords.",
+      icon: <FaLinkedin />,
+      color: "#0077b5" // LinkedIn Blue
+    },
+    {
+      title: "Profile Marketing",
+      desc: "We submit and promote your profile to hundreds of recruiters across platforms including Dice, Monster, Indeed, CareerBuilder, and our own proprietary network.",
+      icon: <FaBullseye />,
+      color: "#ea580c" // Orange
+    },
+    {
+      title: "Interview Scheduling",
+      desc: "We actively coordinate interview calls for you ensuring timely follow-ups and minimizing delays in communication between you and clients.",
+      icon: <FaCalendarCheck />,
+      color: "#2563eb" // Blue
+    },
+    {
+      title: "Interview Preparation and Support",
+      desc: "We conduct mock interviews, share relevant Q&A formats, and offer behavioral coaching to boost your readiness and confidence before every interview.",
+      icon: <FaComments />,
+      color: "#dc2626" // Crimson
+    },
+    {
+      title: "Technical Training",
+      desc: "Need to brush up on trending tools or technologies? Our curated training resources help you stay competitive in domains like AWS, Selenium, Java, Python, and more.",
+      icon: <FaCode />,
+      color: "#2563eb" // Blue
+    },
+    {
+      title: "Compliance, Onboarding & BGV",
+      desc: "We assist with end-to-end documentation support including onboarding forms, compliance verification, background checks, and employer coordination.",
+      icon: <FaShieldAlt />,
+      color: "#ea580c" // Orange
+    },
+    {
+      title: "Post-Placement Support",
+      desc: "Our relationship doesn't end at placement. We continue to assist you with onboarding challenges, timesheet submissions, and ongoing career moves.",
+      icon: <FaMapMarkerAlt />,
+      color: "#2563eb" // Blue
+    }
   ];
 
   return (
@@ -154,17 +239,23 @@ const About = () => {
         </div>
       </section>
 
-      {/* Team */}
-      <section className="about-team-section overflow-hidden">
+      {/* Placement Support Section */}
+      <section className="about-support-section overflow-hidden">
         <div className="container">
-          <h2 className="text-center section-title">Meet The Experts</h2>
-          <div className="team-grid">
-            {team.map((member, idx) => (
-              <div key={idx} className="team-card glass text-center">
-                <img src={member.img} alt={member.name} className="team-avatar" />
-                <h3>{member.name}</h3>
-                <p className="team-role">{member.role}</p>
-                <p className="team-company">{member.company}</p>
+          <h2 className="support-section-title">
+            We offer comprehensive, step-by-step support for <br />
+            every phase of your <span className="text-red">placement journey:</span>
+          </h2>
+          <div className="support-grid">
+            {supportSteps.map((step, idx) => (
+              <div key={idx} className="support-item">
+                <div className="support-icon-wrap" style={{ color: step.color }}>
+                  {step.icon}
+                </div>
+                <div className="support-item-info">
+                  <h3>{step.title}</h3>
+                  <p>{step.desc}</p>
+                </div>
               </div>
             ))}
           </div>
@@ -174,8 +265,8 @@ const About = () => {
       {/* Styles inline helpers for uniqueness */}
       <style>{`
         .about-story-section{
-        padding:60px 0px
-      }
+          padding:60px 0px
+        }
         .clr-black{
           color: black!important;
         }
@@ -190,7 +281,7 @@ const About = () => {
         }
         .about-hero-title span {
           display: inline-block;
-           color: black;
+          color: black;
         }
         .hero-content-container {
           text-align: right;
@@ -237,7 +328,6 @@ const About = () => {
         .about-achievements {
           background: var(--bg-soft);
           padding: 80px 0;
-          // margin: 60px 0;
         }
         .section-title {
           font-size: 2.2rem;
@@ -377,60 +467,69 @@ const About = () => {
         [data-theme='dark'] .timeline-card p {
           color: #cbd5e1 !important;
         }
-        .about-team-section {
-          padding: 80px 0;
-          background: linear-gradient(134deg, rgba(223, 131, 13, 0.9), rgba(110, 53, 23, 0.9), rgba(249, 195, 58, 0.9));
+        
+        /* Placement Support Styles (No cards, matching image) */
+        .about-support-section {
+          padding: 100px 0;
+          background: #ffffff;
         }
-        .team-grid {
+        .support-section-title {
+          font-family: "Poppins", sans-serif;
+          font-size: 2.5rem;
+          font-weight: 800;
+          line-height: 1.25;
+          color: #0e0b03;
+          margin-bottom: 60px;
+          text-align: left;
+        }
+        .support-section-title .text-red {
+          color: #b91c1c; /* Crimson Red matching placement journey: */
+        }
+        .support-grid {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
-          gap: 40px;
+          gap: 50px 40px;
         }
-        .team-card {
-          padding: 40px 20px;
-          border-radius: var(--radius-lg);
-          border: 1px solid rgba(255, 255, 255, 0.25);
-          background: rgba(255, 255, 255, 1) !important;
-          box-shadow: var(--shadow-sm);
+        .support-item {
+          display: flex;
+          gap: 20px;
+          align-items: flex-start;
+          transition: transform 0.3s ease;
         }
-        .team-card h3 {
-          color: #0f172a !important;
+        .support-item:hover {
+          transform: translateY(-4px);
         }
-        [data-theme='dark'] .team-card h3 {
-          color: #f8fafc !important;
+        .support-icon-wrap {
+          flex-shrink: 0;
+          font-size: 2.8rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 54px;
+          height: 54px;
         }
-        .team-avatar {
-          width: 120px;
-          height: 120px;
-          border-radius: 50%;
-          object-fit: cover;
-          margin: 0 auto 20px;
-          border: 3px solid var(--primary-light);
+        .support-item-info h3 {
+          font-size: 1.2rem;
+          font-weight: 700;
+          color: #0e0b03;
+          margin-bottom: 12px;
+          line-height: 1.2;
         }
-        .team-role {
-          font-weight: 600;
-          color: #1e3a8a !important; /* Rich blue for contrast */
-          margin-top: 8px;
-        }
-        .team-company {
-          font-size: 0.9rem;
-          color: #475569 !important;
-        }
-        [data-theme='dark'] .team-role {
-          color: var(--primary-light) !important;
-        }
-        [data-theme='dark'] .team-company {
-          color: #cbd5e1 !important;
+        .support-item-info p {
+          font-size: 0.95rem;
+          line-height: 1.6;
+          color: #64748b;
+          font-weight: 400;
         }
 
-        .about-card, .timeline-card, .team-card {
+        /* Hover slide effect for timeline/about cards */
+        .about-card, .timeline-card {
           position: relative;
           overflow: hidden;
-          // transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
           cursor: pointer;
         }
 
-        .about-card::after, .timeline-card::after, .team-card::after {
+        .about-card::after, .timeline-card::after {
           content: '';
           position: absolute;
           top: -150%;
@@ -449,12 +548,12 @@ const About = () => {
           z-index: 1;
         }
 
-        .about-card:hover::after, .timeline-card:hover::after, .team-card:hover::after {
+        .about-card:hover::after, .timeline-card:hover::after {
           left: 100%;
           top: 100%;
         }
 
-        .about-card:hover, .timeline-card:hover, .team-card:hover {
+        .about-card:hover, .timeline-card:hover {
           border-color: var(--primary) !important;
           box-shadow:
             0 0 20px rgba(72, 201, 44, 0.08),
@@ -462,13 +561,28 @@ const About = () => {
           transform: translateY(-8px);
         }
 
+        /* Dark mode overrides */
+        [data-theme='dark'] .about-support-section {
+          background: var(--bg-dark);
+        }
+        [data-theme='dark'] .support-section-title {
+          color: #f8fafc;
+        }
+        [data-theme='dark'] .support-item-info h3 {
+          color: #e2e8f0;
+        }
+        [data-theme='dark'] .support-item-info p {
+          color: #94a3b8;
+        }
+
         @media (max-width: 1024px) {
           .achievements-row {
             grid-template-columns: 1fr 1fr;
             row-gap: 40px;
           }
-          .team-grid {
+          .support-grid {
             grid-template-columns: 1fr 1fr;
+            gap: 40px 30px;
           }
           .about-hero-title {
             font-size: 2.8rem;
@@ -491,8 +605,12 @@ const About = () => {
           .about-card h2 {
             font-size: 1.5rem;
           }
-          .achievements-row, .team-grid {
+          .achievements-row {
             grid-template-columns: 1fr;
+          }
+          .support-grid {
+            grid-template-columns: 1fr;
+            gap: 30px;
           }
           .about-hero-title {
             font-size: 2.2rem;
@@ -505,9 +623,19 @@ const About = () => {
           .about-hero-section {
             padding: 60px 0 40px;
           }
-          .about-achievements, .about-timeline-section, .about-team-section {
+          .about-achievements, .about-timeline-section, .about-support-section {
             padding: 60px 0;
-            background-color: #F9C33A;
+          }
+          .support-section-title {
+            font-size: 1.8rem;
+            text-align: center;
+            line-height: 1.35;
+            margin-bottom: 40px;
+          }
+          .support-item {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
           }
         }
       `}</style>

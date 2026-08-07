@@ -64,6 +64,7 @@ const Services = () => {
       });
 
       // Pricing layout reveal
+      /*
       gsap.from(".pricing-card", {
         scrollTrigger: {
           trigger: ".pricing-wrapper",
@@ -75,6 +76,7 @@ const Services = () => {
         duration: 0.8,
         ease: "power3.out"
       });
+      */
     }, pageRef);
 
     return () => ctx.revert();
@@ -262,7 +264,7 @@ const Services = () => {
         ))}
       </div>
 
-      {/* Pricing wrapper */}
+      {/* Pricing wrapper
       <section className="pricing-wrapper">
         <div className="container">
           <h2 className="text-center section-title">Simple, Transparent Pricing</h2>
@@ -288,6 +290,7 @@ const Services = () => {
           </div>
         </div>
       </section>
+      */}
 
       {/* FAQ */}
       <section className="services-faq-section">
@@ -787,7 +790,8 @@ const Services = () => {
           color: var(--white);
         }
         .services-faq-section {
-          padding: 100px 0;
+          padding-bottom: 100px;
+          padding-top: 0px;
         }
         @media (max-width: 991px) {
           .pricing-grid, .why-grid {

@@ -25,15 +25,7 @@ const OurPlacedCandidates = () => {
           </button>
 
           <div className="testimonial-active-content">
-            <div className="candidate-photo-wrapper">
-              <img 
-                src={testimonials[activeTestimonial].image} 
-                alt={testimonials[activeTestimonial].name} 
-                className="active-candidate-img"
-              />
-            </div>
             <div className="active-candidate-details">
-              <span className="package-tag">{testimonials[activeTestimonial].package}</span>
               <h3>{testimonials[activeTestimonial].name}</h3>
               <p className="candidate-role-text">{testimonials[activeTestimonial].role} at {testimonials[activeTestimonial].company}</p>
               <p className="feedback-body">"{testimonials[activeTestimonial].text}"</p>

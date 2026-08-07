@@ -2,96 +2,235 @@
 .placement-process-section {
   padding: 100px 0;
   background: var(--bg-soft);
+  position: relative;
+  overflow: hidden;
 }
 
-.process-timeline-flex {
+.workflow-timeline-container {
+  position: relative;
+  margin-top: 80px;
+  padding: 20px 0;
+}
+
+/* Background Track Line */
+.timeline-track-bg {
+  position: absolute;
+  top: 48px; /* Centered with the 56px dot (20px padding + 28px half-height) */
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 2px;
+  z-index: 1;
+}
+
+/* Active Progress Line */
+.timeline-track-progress {
+  position: absolute;
+  top: 48px;
+  left: 0;
+  height: 4px;
+  width: var(--progress-width);
+  background: linear-gradient(90deg, var(--accent), #ffffff);
+  border-radius: 2px;
+  z-index: 2;
+  box-shadow: 0 0 15px var(--accent);
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Nodes Container */
+.workflow-nodes-container {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  margin-top: 60px;
-  flex-wrap: wrap;
-  gap: 20px;
+  align-items: flex-start;
+  width: 100%;
+  position: relative;
+  z-index: 3;
 }
 
-.process-node {
+.workflow-node {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  width: 140px;
-  gap: 12px;
+  width: 160px;
+  gap: 20px;
+  cursor: pointer;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
-.process-dot {
-  width: 44px;
-  height: 44px;
+/* Node Dot Styles */
+.node-dot-wrap {
+  position: relative;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.node-dot {
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
-  background: var(--primary);
-  color: var(--white);
+  background: rgba(255, 255, 255, 0.15);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  color: #ffffff;
   display: grid;
   place-items: center;
+  font-size: 1.35rem;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+/* Completed & Active Node States */
+.workflow-node.completed .node-dot {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--primary-dark);
+}
+
+.workflow-node.active .node-dot {
+  background: #ffffff;
+  border-color: var(--accent);
+  color: var(--primary-hover);
+  transform: scale(1.15);
+  box-shadow: 0 0 25px rgba(249, 195, 58, 0.8);
+}
+
+/* Glow Ring Animation for Active Node */
+.node-glow-ring {
+  position: absolute;
+  inset: -8px;
+  border: 2px solid var(--accent);
+  border-radius: 50%;
+  animation: pulseGlow 2s ease-out infinite;
+  pointer-events: none;
+}
+
+@keyframes pulseGlow {
+  0% {
+    transform: scale(0.9);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.4);
+    opacity: 0;
+  }
+}
+
+/* Node Text Styles */
+.node-text {
+  color: rgba(255, 255, 255, 0.7);
+  transition: all 0.4s ease;
+}
+
+.workflow-node.active .node-text {
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.node-text h4 {
+  font-family: var(--heading-font);
+  font-size: 1.1rem;
   font-weight: 700;
-  box-shadow: var(--glow);
+  margin: 0 0 10px 0;
+  transition: color 0.4s ease;
 }
 
-.process-node h4 {
-  font-size: 0.95rem;
-  font-weight: 700;
+.workflow-node.active .node-text h4 {
+  color: var(--accent);
 }
 
-.process-line {
-  flex: 1;
-  height: 2px;
-  background: black;
-  min-width: 30px;
+.node-text p {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  margin: 0;
+  font-family: var(--body-font);
 }
 
+/* Mobile & Tablet Responsive Timeline (Dynamic Vertical Progression) */
 @media (max-width: 991px) {
-  .process-timeline-flex {
-    justify-content: center;
+  .workflow-timeline-container {
+    padding-left: 40px;
+    padding-right: 20px;
+    margin-top: 50px;
   }
-  .process-line {
-    display: none;
-  }
-}
 
-@media (max-width: 767px) {
-  .process-timeline-flex {
+  /* Vertical Background Track */
+  .timeline-track-bg {
+    top: 0;
+    bottom: 0;
+    left: 48px; /* Align with node dot centers */
+    width: 4px;
+    height: 100%;
+    transform: none;
+  }
+
+  /* Vertical Progress Indicator */
+  .timeline-track-progress {
+    top: 0;
+    left: 48px;
+    width: 4px;
+    height: var(--progress-height);
+    background: linear-gradient(180deg, var(--accent), #ffffff);
+    transform: none;
+    transition: height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .workflow-nodes-container {
     flex-direction: column;
-    align-items: flex-start;
-    gap: 30px;
-    margin-top: 40px;
-    padding-left: 20px;
-    position: relative;
-  }
-  
-  .process-timeline-flex::before {
-    content: '';
-    position: absolute;
-    left: 42px; /* 20px padding-left + 22px (half of 44px dot) */
-    top: 10px;
-    bottom: 10px;
-    width: 2px;
-    background: var(--border);
-    z-index: 1;
+    gap: 40px;
   }
 
-  .process-node {
+  .workflow-node {
     flex-direction: row;
     align-items: center;
     text-align: left;
     width: 100%;
-    gap: 20px;
-    z-index: 2;
+    gap: 28px;
   }
 
-  .process-dot {
-    flex-shrink: 0;
+  .node-text {
+    flex: 1;
   }
 
-  .process-node h4 {
-    font-size: 1.1rem;
-    margin: 0;
+  .node-text h4 {
+    font-size: 1.2rem;
+    margin-bottom: 6px;
+  }
+
+  .node-text p {
+    font-size: 0.9rem;
+    max-width: 600px;
   }
 }
 
+@media (max-width: 767px) {
+  .workflow-timeline-container {
+    padding-left: 20px;
+    padding-right: 10px;
+  }
+
+  .timeline-track-bg {
+    left: 28px;
+  }
+
+  .timeline-track-progress {
+    left: 28px;
+  }
+
+  .workflow-node {
+    gap: 20px;
+  }
+
+  .node-text h4 {
+    font-size: 1.1rem;
+  }
+
+  .node-text p {
+    font-size: 0.85rem;
+  }
+}

@@ -257,7 +257,7 @@ const Home = () => {
       <TargetPlacementsBySector />
 
       {/* SECTION 8: FEATURED PROGRAMS */}
-      <FeaturedCareerPathways />
+      {/* <FeaturedCareerPathways /> */}
 
       {/* SECTION 9: STATISTICS */}
       <section className="stats-counters-section">

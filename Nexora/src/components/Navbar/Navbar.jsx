@@ -140,11 +140,11 @@ const Navbar = () => {
                 Industries
               </NavLink>
             </li>
-            <li>
+            {/* <li>
               <NavLink to="/testimonials" className={({ isActive }) => (isActive ? "active" : "")}>
                 Success Stories
               </NavLink>
-            </li>
+            </li> */}
             <li>
               <NavLink to="/contact" className={({ isActive }) => (isActive ? "active" : "")}>
                 Contact

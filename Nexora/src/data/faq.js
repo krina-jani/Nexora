@@ -1,28 +1,28 @@
 export const faq = [
   {
     id: 1,
-    question: "Who is eligible for Nexora Career programs?",
-    answer: "Our programs are open to college students, fresh graduates, and working professionals looking to transition, switch domains, or accelerate their current career paths."
+    question: "How does Nexora Career's success fee model work?",
+    answer: "Our success fee model means you only pay when you secure a job in the US. We charge a percentage (typically 10-15%) of your first year's salary, payable after you start working. This aligns our incentives with your success - we're motivated to help you get the best possible position and compensation."
   },
   {
     id: 2,
-    question: "How does the placement assistance work?",
-    answer: "We offer end-to-end support, including resume writing, LinkedIn optimization, mock interviews, and direct referral partners. We work closely with you until you successfully secure your offer letter."
+    question: "What makes your resume services different from others?",
+    answer: "Our resume experts specialize in adapting professional profiles for the US market. We don't just format your resume - we help reframe your experience to highlight transferable skills, optimize for ATS systems, and present your background in ways that resonate with American hiring managers. Each resume is customized by a specialist in your target industry."
   },
   {
     id: 3,
-    question: "Are these programs online or offline?",
-    answer: "All counseling, mentorship, and mock interviews are conducted virtually, allowing you to learn and connect with global mentors from the comfort of your home."
+    question: "How long does the typical job search process take?",
+    answer: "The timeline varies based on your profile, target roles, and visa requirements. On average, candidates who work with us secure positions within 3-6 months. Our comprehensive preparation upfront helps accelerate the process once applications begin. We'll provide a personalized timeline after your initial consultation."
   },
   {
     id: 4,
-    question: "Can I join if I have a non-tech background?",
-    answer: "Absolutely! A significant percentage of our successful graduates come from non-technical backgrounds (arts, commerce, administration) and are now working as engineers and designers in top companies."
+    question: "Do you help with visa sponsorship?",
+    answer: "While we're not immigration lawyers, we provide strategic guidance on visa options (H-1B, L-1, TN, etc.) and help you present yourself as a strong sponsorship candidate. We work with employers who understand the sponsorship process and can recommend trusted immigration attorneys when needed."
   },
   {
     id: 5,
-    question: "Is there a refund policy or a placement guarantee?",
-    answer: "We stand behind the quality of our coaching. We offer dedicated career counseling and milestones to guide you. Contact our advisors for specific terms regarding enrollment options."
+    question: "What industries and roles do you specialize in?",
+    answer: "We primarily focus on technology roles (software development, data science, cloud engineering, etc.), but also work with professionals in finance, healthcare, engineering, and other fields where there's strong US demand for international talent. See our \"Demanded IT Roles\" section for specific positions we frequently place."
   }
 ];
 

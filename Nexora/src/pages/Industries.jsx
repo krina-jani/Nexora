@@ -643,6 +643,18 @@ const Industries = () => {
           .industries-grid {
             grid-template-columns: 1fr;
           }
+          .ind-hero-title {
+            font-size: 2.2rem !important;
+          }
+          .ind-hero-sub {
+            font-size: 1.05rem !important;
+          }
+          .ind-cta-box h2 {
+            font-size: 1.6rem !important;
+          }
+          .ind-cta-box {
+            padding: 40px 20px !important;
+          }
         }
       `}</style>
     </div>

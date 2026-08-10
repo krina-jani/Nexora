@@ -21,14 +21,10 @@ const About = () => {
         ease: "power4.out"
       });
 
-      // Cards staggered fade-in
+      // Cards staggered fade-in (on page load to ensure visibility)
       gsap.from(".about-card", {
-        scrollTrigger: {
-          trigger: ".about-cards-grid-stacked",
-          start: "top 80%"
-        },
         y: 50,
-        opacity: 0,
+        // opacity: 0,
         stagger: 0.15,
         duration: 0.8,
         ease: "power2.out"
@@ -82,61 +78,43 @@ const About = () => {
       <div 
         className="about-hero-story-wrapper"
         style={{ 
-          background: '#000000', 
-          position: 'relative'
+          backgroundImage: `url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1920&auto=format&fit=crop')`, 
+          backgroundSize: 'cover', 
+          backgroundPosition: 'center', 
+          backgroundRepeat: 'no-repeat',
+          position: 'relative',
+          padding: '120px 0'
         }}
       >
-        {/* Hero */}
-        <section className="about-hero-section overflow-hidden" style={{ position: "relative", zIndex: 2 }}>
-          <div style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", zIndex: 1 }}>
-            <GradientWaves
-              horizonColor="#000000ff"
-              waveColor="#2D5C9D"
-              crestColor="#ffffffff"
-              speed={0.4}
-              amplitude={2.5}
-              waveScale={0.6}
-              waveRatio={0.9}
-              swell={35}
-              turbulence={20}
-              tilt={1.11}
-              zoom={1.0}
-              height={5.5}
-              fogDepth={15}
-              detail="medium"
-              brightness={1.0}
-              opacity={1.0}
-              mouseInteraction={true}
-              parallaxStrength={0.5}
-              grain={true}
-              grainIntensity={0.05}
-            />
-          </div>
-          <div className="container hero-content-container" style={{ position: "relative", zIndex: 2 }}>
-            <h1 className="about-hero-title">
-              <span>Building Excellence </span> <br />
-              <span className="text-gradient">Through Innovation</span>
-            </h1>
-            <p className="about-hero-sub text-light">
-              We bridge the gap between skilled individuals and international opportunity hubs.
-            </p>
-          </div>
-        </section>
 
-        {/* Story & Vision */}
-        <section className="about-story-section overflow-hidden">
-          <div className="container about-cards-grid-stacked">
-            <div className="about-card glass">
-              <h2>Our Vision & Mission</h2>
-              <p>
-                Our vision is to build a borderless world where exceptional talent meets limitless opportunity. We are on a mission to empower over 100,000 professionals by 2030, equipping them with the premium skills and global connections needed to land their dream careers, regardless of where they call home.
+        {/* Story & Vision & Hero combined */}
+        <section className="about-story-section overflow-hidden" style={{ position: "relative", zIndex: 2 }}>
+          <div className="container about-grid-two-column">
+            {/* Left Column: Hero Content */}
+            <div className="about-hero-content-left">
+              <h1 className="about-hero-title">
+                <span>Building Excellence </span> <br />
+                <span className="sk">Through Innovation</span>
+              </h1>
+              <p className="about-hero-sub text-light">
+                We bridge the gap between skilled individuals and international opportunity hubs.
               </p>
             </div>
-            <div className="about-card glass">
-              <h2>Our Story</h2>
-              <p>
-                Born from the collective expertise of industry veterans, Nexora Career was founded on a simple realization: while brilliance is distributed evenly across the globe, opportunity is not. We set out to dismantle these geographic barriers, creating a rigorous, world-class preparation platform that levels the playing field for ambitious candidates everywhere.
-              </p>
+
+            {/* Right Column: Cards */}
+            <div className="about-cards-grid-stacked">
+              <div className="about-card glass">
+                <h2>Our Vision & Mission</h2>
+                <p>
+                  Our vision is to build a borderless world where exceptional talent meets limitless opportunity. We are on a mission to empower over 100,000 professionals by 2030, equipping them with the premium skills and global connections needed to land their dream careers, regardless of where they call home.
+                </p>
+              </div>
+              <div className="about-card glass">
+                <h2>Our Story</h2>
+                <p>
+                  Born from the collective expertise of industry veterans, Nexora Career was founded on a simple realization: while brilliance is distributed evenly across the globe, opportunity is not. We set out to dismantle these geographic barriers, creating a rigorous, world-class preparation platform that levels the playing field for ambitious candidates everywhere.
+                </p>
+              </div>
             </div>
           </div>
         </section>
@@ -207,7 +185,7 @@ const About = () => {
         </div>
       </section>
 
-      {/* Timeline */}
+      {/* Timeline 
       <section className="about-timeline-section overflow-hidden">
         <div className="container">
           <h2 className="text-center section-title">Our Growth Timeline</h2>
@@ -224,8 +202,9 @@ const About = () => {
           </div>
         </div>
       </section>
+      */}
 
-      {/* Team */}
+      {/* Team 
       <section className="about-team-section overflow-hidden">
         <div className="container">
           <h2 className="text-center section-title">Meet The Experts</h2>
@@ -241,44 +220,47 @@ const About = () => {
           </div>
         </div>
       </section>
+      */}
 
       {/* Styles inline helpers for uniqueness */}
       <style>{`
         .about-story-section {
           padding: 60px 0px;
-          background: #000000 !important;
         }
-        .about-hero-section {
-          padding: 120px 0 80px;
-          background: #000000 !important;
-          min-height: 50vh;
-          display: flex;
+        .about-grid-two-column {
+          display: grid;
+          grid-template-columns: 1.1fr 0.9fr;
+          gap: 50px;
           align-items: center;
+        }
+
+        .sk{
+          color: #DFBD69;
+        }
+        .about-hero-content-left {
+          text-align: left;
         }
         .about-hero-title {
           font-size: 3.8rem;
           font-weight: 800;
           line-height: 1.2;
           margin-bottom: 20px;
+          text-shadow: 0 4px 12px rgba(0, 0, 0, 0.9);
         }
         .about-hero-title span {
           display: inline-block;
           color: #ffffff;
         }
-        .hero-content-container {
-          text-align: right;
-          position: relative;
-          z-index: 2;
-        }
         .about-hero-sub {
-          color: #cccccc !important;
-          font-weight: 500;
+          color: #ffffff !important;
+          font-weight: 600;
           font-size: 1.25rem;
           max-width: 600px;
-          margin: 0 0 0 auto;
+          margin: 0;
+          text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
         }
         .text-gradient {
-          background: linear-gradient(134deg, #df830d, #f59e0b);
+          background:#DFBD69;
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
         }
@@ -287,7 +269,7 @@ const About = () => {
           flex-direction: column;
           align-items: flex-end;
           gap: 30px;
-          margin-top: 40px;
+          margin-top: 0;
         }
         .about-card {
           width: 100%;
@@ -401,7 +383,7 @@ const About = () => {
         .about-why-overlay {
           position: absolute;
           inset: 0;
-          background: linear-gradient(135deg, rgba(15, 18, 17, 0.93) 0%, rgba(223, 189, 105, 0.5) 100%);
+          background: rgba(255, 251, 251, 0);
           z-index: 2;
         }
 
@@ -416,15 +398,17 @@ const About = () => {
           font-weight: 800;
           color: #ffffff;
           margin-bottom: 24px;
+          text-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
         }
 
         .why-sub {
           font-size: 1.25rem;
-          color: #cbd5e1;
+          color: #ffffff;
           margin-bottom: 60px;
           max-width: 800px;
           margin-inline: auto;
           line-height: 1.6;
+          text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
         }
 
         .why-cards-grid {

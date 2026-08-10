@@ -1,10 +1,13 @@
+import rpoFlowImg from "../assets/images/rpo-flow.jpg";
+import proServiceImg from "../assets/images/pro-service.jpg";
+
 export const services = [
   {
     id: "rpo",
     title: "Recruitment Process Outsourcing",
     description: "End-to-end talent acquisition solutions, sourcing the best candidates seamlessly so you can focus on core business operations.",
     icon: "rpo",
-    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=800&auto=format&fit=crop"
+    image: rpoFlowImg
   },
   {
     id: "career-support",
@@ -25,7 +28,7 @@ export const services = [
     title: "Pro Services",
     description: "Exclusive, personalized coaching for executives and senior professionals looking to transition into top-tier leadership roles globally.",
     icon: "overseas",
-    image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=800&auto=format&fit=crop"
+    image: proServiceImg
   },
   {
     id: "custom-services",

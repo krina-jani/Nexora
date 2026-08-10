@@ -72,7 +72,7 @@ const Services = () => {
 
 
   return (
-    <div ref={pageRef} className="services-page-wrapper">
+    <div ref={pageRef} className="services-page-wrapper" style={{ background: "#000000" }}>
 
       {/* ── ScrollExpand Hero ── */}
       <div className="services-scroll-expand-hero">
@@ -109,14 +109,11 @@ const Services = () => {
         </ScrollExpand>
       </div>
 
-      {/* ── Process Section (kept on the original bg) ── */}
+      {/* ── Process Section ── */}
       <div 
         className="services-hero-process-wrapper"
         style={{
-          backgroundImage: `url(${servicesHeroBgImage})`,
-          backgroundSize: '100% 100%',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
+          background: '#1e2630ff',
           position: 'relative'
         }}
       >
@@ -204,7 +201,7 @@ const Services = () => {
         </div> */}
 
       {/* Detailed Services Sections (Mapped to Dropdown IDs) */}
-      <div className="detailed-services-wrapper">
+      <div className="detailed-services-wrapper" style={{ background: "#000000" }}>
         {services.map((svc, index) => (
           <section key={svc.id} id={svc.id} className={`detailed-service-section ${index % 2 !== 0 ? 'alt-layout' : ''}`}>
             <div className="container">
@@ -358,7 +355,8 @@ const Services = () => {
         
         .detailed-service-section {
           padding: 100px 0;
-          border-bottom: 1px solid var(--border);
+          border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+          background: #000000 !important;
         }
         
         .detailed-service-section:last-child {
@@ -366,7 +364,7 @@ const Services = () => {
         }
         
         .detailed-service-section.alt-layout {
-          background: var(--bg-soft);
+          background: #1e2630ff !important;
         }
         
         .detailed-service-grid {
@@ -393,11 +391,11 @@ const Services = () => {
           font-size: 1.2rem;
           font-weight: 700;
           margin-bottom: 15px;
-          color: var(--heading);
+          color: #ffffff !important;
         }
         
         .process-step p {
-          color: var(--text-light);
+          color: #cccccc !important;
           line-height: 1.6;
           font-size: 0.95rem;
         }
@@ -405,13 +403,13 @@ const Services = () => {
           font-size: 2.5rem;
           font-weight: 800;
           margin-bottom: 20px;
-          color: #0f172a !important;
+          color: #ffffff !important;
         }
         
         .service-desc {
           font-size: 1.1rem;
           line-height: 1.7;
-          color: #334155 !important;
+          color: #cccccc !important;
           margin-bottom: 30px;
         }
         
@@ -428,37 +426,26 @@ const Services = () => {
           align-items: center;
           gap: 12px;
           font-size: 1rem;
-          color: #334155 !important;
+          color: #ffffff !important;
           font-weight: 500;
         }
         
         .check {
-          color: #df830d !important;
+          color: #DFBD69 !important;
           font-weight: bold;
           font-size: 1.2rem;
         }
 
-        /* Alt layout (dark background) text color overrides */
-        .detailed-service-section.alt-layout .service-title {
-          color: #ffffff !important;
-        }
-        .detailed-service-section.alt-layout .service-desc {
-          color: #cbd5e1 !important;
-        }
-        .detailed-service-section.alt-layout .service-benefits-list li {
-          color: #ffffff !important;
-        }
-        .detailed-service-section.alt-layout .service-benefits-list li .check {
-          color: var(--primary-light) !important;
-        }
-        
         .detailed-service-image {
           aspect-ratio: 4/3;
           border-radius: var(--radius-lg);
-          border: 1px solid var(--border);
+          border: 1px solid rgba(255, 255, 255, 0.12) !important;
           position: relative;
           overflow: hidden;
-          background: var(--bg-soft);
+          background: rgba(255, 255, 255, 0.05) !important;
+          backdrop-filter: blur(12px) !important;
+          -webkit-backdrop-filter: blur(12px) !important;
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
         }
         
         .service-actual-image {
@@ -493,30 +480,17 @@ const Services = () => {
         }
         
         .process-step {
-          --gh-bg: rgba(255, 255, 255, 0.85);
-          --gh-br: var(--radius-lg);
-          --gh-border: rgba(255, 255, 255, 0.25);
-          --gh-angle: -30deg;
-          --gh-duration: 800ms;
-          --gh-size: 300%;
-          --gh-rgba: rgba(72, 201, 44, 0.25);
-          
-          background: var(--gh-bg);
-          backdrop-filter: blur(10px);
-          -webkit-backdrop-filter: blur(10px);
+          background: rgba(255, 255, 255, 0.05) !important;
+          backdrop-filter: blur(12px) !important;
+          -webkit-backdrop-filter: blur(12px) !important;
           padding: 40px 30px;
-          border-radius: var(--gh-br);
-          border: 1px solid var(--gh-border);
+          border-radius: var(--radius-lg);
+          border: 1px solid rgba(255, 255, 255, 0.12) !important;
           position: relative;
           transition: var(--transition);
           overflow: hidden;
           cursor: pointer;
-        }
-        
-        [data-theme='dark'] .process-step {
-          --gh-bg: rgba(15, 23, 42, 0.85);
-          --gh-border: rgba(255, 255, 255, 0.1);
-          --gh-rgba: rgba(255, 255, 255, 0.15);
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
         }
         
         .process-step::before {
@@ -524,16 +498,16 @@ const Services = () => {
           position: absolute;
           inset: 0;
           background: linear-gradient(
-              var(--gh-angle),
+              -30deg,
               transparent 60%,
-              var(--gh-rgba) 70%,
+              rgba(223, 189, 105, 0.15) 70%,
               transparent 80%,
               transparent 100%
           );
-          background-size: var(--gh-size) var(--gh-size);
+          background-size: 300% 300%;
           background-repeat: no-repeat;
           background-position: -100% -100%;
-          transition: background-position var(--gh-duration) ease;
+          transition: background-position 800ms ease;
           pointer-events: none;
           z-index: 1;
         }
@@ -543,46 +517,31 @@ const Services = () => {
         }
         .process-step:hover {
           transform: translateY(-5px);
-          box-shadow: var(--shadow-md);
-          border-color: var(--primary);
+          box-shadow: 0 10px 30px rgba(223, 189, 105, 0.15);
+          border-color: #DFBD69 !important;
         }
 
-        
         .process-step h4 {
           font-size: 1.2rem;
           margin-bottom: 15px;
-          color: #0f172a !important;
+          color: #ffffff !important;
           position: relative;
           z-index: 2;
         }
         
         .process-step p {
-          color: #475569 !important;
+          color: #cccccc !important;
           font-size: 0.95rem;
           line-height: 1.6;
           position: relative;
           z-index: 2;
         }
 
-        [data-theme='dark'] .process-step h4 {
-          color: #f8fafc !important;
-        }
-
-        [data-theme='dark'] .process-step p {
-          color: #cbd5e1 !important;
-        }
-
         .process-section .section-title {
-          color: #0f172a !important;
+          color: #ffffff !important;
         }
 
         .process-section .text-light {
-          color: #334155 !important;
-        }
-
-        [data-theme='dark'] .process-section .section-title {
-          color: #f8fafc !important;
-        }
 
         [data-theme='dark'] .process-section .text-light {
           color: #cbd5e1 !important;
@@ -716,6 +675,7 @@ const Services = () => {
 
         .services-faq-section {
           padding: 100px 0;
+          background: #000000 !important;
         }
         .services-faq-section .section-title {
           color: #ffffff !important;

@@ -84,7 +84,7 @@ const Layout = () => {
 
       <Navbar />
 
-      <main style={{ minHeight: "80vh", paddingTop: location.pathname === "/services" ? "0px" : "120px" }}>
+      <main style={{ minHeight: "80vh", paddingTop: (location.pathname === "/services" || location.pathname === "/contact" || location.pathname === "/industries") ? "0px" : "120px" }}>
         <Outlet />
       </main>
 

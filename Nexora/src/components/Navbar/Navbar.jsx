@@ -159,7 +159,7 @@ const Navbar = () => {
         </nav>
 
         <div className="navbar-actions">
-          <div className="navbar-cam-status">
+          {/* <div className="navbar-cam-status">
             <img 
               src="https://images.unsplash.com/photo-1616469829581-73993eb86b02?q=80&w=80&auto=format&fit=crop" 
               alt="Live Advisor" 
@@ -167,7 +167,7 @@ const Navbar = () => {
             />
             <span className="navbar-cam-pulse"></span>
             <span className="navbar-cam-label">Advisors Live</span>
-          </div>
+          </div> */}
 
           <NavLink to="/contact" className="btn-primary navbar-cta">
             Book Free Consultation

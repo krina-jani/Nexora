@@ -3,6 +3,8 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import industries from "../data/industries";
 import { Link } from "react-router-dom";
+import LineWaves from "../components/common/LineWaves/LineWaves";
+import industriesHeroBg from "../assets/images/industries-hero.jpg";
 import { 
   FaLaptopCode, 
   FaBrain, 
@@ -216,10 +218,20 @@ const Industries = () => {
   ];
 
   return (
-    <div ref={pageRef} className="industries-page-wrapper">
+    <div ref={pageRef} className="industries-page-wrapper" style={{ background: "#000000" }}>
       {/* Hero */}
-      <section className="industries-hero text-center">
-        <div className="container">
+      <section 
+        className="industries-hero text-center" 
+        style={{ 
+          position: "relative", 
+          overflow: "hidden",
+          backgroundImage: `url(${industriesHeroBg})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat'
+        }}
+      >
+        <div className="container" style={{ position: "relative", zIndex: 1 }}>
           <h1 className="ind-hero-title">
             Global Placement <span className="text-gradient">By Industry</span>
           </h1>
@@ -230,8 +242,25 @@ const Industries = () => {
       </section>
 
       {/* Industry Grid */}
-      <section className="industries-grid-section">
-        <div className="container">
+      <section className="industries-grid-section" style={{ position: "relative", overflow: "hidden" }}>
+        <div style={{ position: "absolute", inset: 0, zIndex: 0, opacity: 0.2 }}>
+          <LineWaves
+            speed={0.15}
+            innerLineCount={36}
+            outerLineCount={40}
+            warpIntensity={0.6}
+            rotation={45}
+            edgeFadeWidth={0.1}
+            colorCycleSpeed={0.3}
+            brightness={0.1}
+            color1="#ffffff"
+            color2="#DFBD69"
+            color3="#ffffff"
+            enableMouseInteraction={true}
+            mouseInfluence={1.0}
+          />
+        </div>
+        <div className="container" style={{ position: "relative", zIndex: 1 }}>
           <div className="industries-grid">
             {industries.map((ind) => (
               <div key={ind.id} className="industry-card glass">
@@ -343,27 +372,29 @@ const Industries = () => {
           0%, 100% { opacity: 1; }
           50% { opacity: 0; }
         }
-
         .industries-hero {
-          padding: 80px 0 40px;
+          padding: 160px 0 60px;
+          background: linear-gradient(rgba(255, 255, 255, 0), rgba(251, 253, 255, 0.14)), url(${industriesHeroBg}) center/cover no-repeat !important;
         }
-          .industries-grid-section{
-          margin-top:-138px;
-          margin-bottom: -139px;
-          }
+        .industries-grid-section {
+          background: #000000 !important;
+          padding: 60px 0 100px;
+        }
         .ind-hero-title {
-          font-size: 3.5rem;
+          font-size: 3.8rem;
           font-weight: 800;
           margin-bottom: 20px;
+          color: #ffffff !important;
         }
          
         .ind-hero-sub {
-          font-size: 1.2rem;
-          max-width: 600px;
+          font-size: 1.25rem;
+          max-width: 650px;
           margin: 0 auto;
+          color: #cccccc !important;
         }
         .text-gradient {
-          background: linear-gradient(134deg, #df830d, #6e3517);
+          background: linear-gradient(134deg, #df830d, #f59e0b);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
         }
@@ -374,38 +405,43 @@ const Industries = () => {
           margin-top: 40px;
         }
         .industry-card {
-          padding: 30px 24px;
+          padding: 35px 24px;
           border-radius: var(--radius-md);
-          border: 1px solid var(--border);
+          border: 1px solid rgba(255, 255, 255, 0.12) !important;
+          background: rgba(255, 255, 255, 0.05) !important;
+          backdrop-filter: blur(12px) !important;
+          -webkit-backdrop-filter: blur(12px) !important;
           position: relative;
-          transition: var(--transition);
+          transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
           display: flex;
           flex-direction: column;
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
         }
         .industry-card:hover {
-          border-color: var(--primary);
-          transform: translateY(-4px);
-          box-shadow: var(--shadow-md);
+          border-color: #DFBD69 !important;
+          transform: translateY(-8px);
+          box-shadow:
+            0 0 20px rgba(223, 189, 105, 0.15),
+            0 0 60px rgba(223, 189, 105, 0.08) !important;
         }
         .ind-dot-accent {
           width: 8px;
           height: 8px;
-          background: var(--primary-light);
+          background: #DFBD69 !important;
           border-radius: 50%;
-          margin-bottom: 16px;
         }
         .industry-card h3 {
-          font-size: 1.25rem;
+          font-size: 1.35rem;
           font-weight: 700;
           margin-bottom: 12px;
-          color: var(--heading);
+          color: #ffffff !important;
           position: relative;
           z-index: 2;
         }
         .industry-card .ind-desc {
           font-size: 0.95rem;
-          line-height: 1.6;
-          color: var(--text);
+          line-height: 1.65;
+          color: #cccccc !important;
           margin-bottom: 24px;
           position: relative;
           z-index: 2;
@@ -416,14 +452,14 @@ const Industries = () => {
           flex-direction: column;
           gap: 20px;
           padding-top: 20px;
-          border-top: 1px solid var(--border);
+          border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
           position: relative;
           z-index: 2;
         }
         .ind-roles h4, .ind-skills h4 {
           font-size: 0.9rem;
           font-weight: 600;
-          color: var(--heading);
+          color: #ffffff !important;
           margin-bottom: 10px;
           text-transform: uppercase;
           letter-spacing: 0.5px;
@@ -435,7 +471,7 @@ const Industries = () => {
         }
         .ind-roles li {
           font-size: 0.9rem;
-          color: var(--text);
+          color: #cccccc !important;
           margin-bottom: 6px;
           display: flex;
           align-items: center;
@@ -443,7 +479,7 @@ const Industries = () => {
         }
         .ind-roles li::before {
           content: '•';
-          color: var(--primary);
+          color: #DFBD69 !important;
           font-weight: bold;
         }
         .skill-tags {
@@ -453,18 +489,16 @@ const Industries = () => {
         }
         .skill-tag {
           font-size: 0.8rem;
-          background: var(--bg-soft);
-          color: var(--text);
+          background: rgba(255, 255, 255, 0.08) !important;
+          color: #ffffff !important;
           padding: 4px 10px;
           border-radius: 4px;
-          border: 1px solid var(--border);
+          border: 1px solid rgba(255, 255, 255, 0.15) !important;
           font-weight: 500;
         }
         .case-studies-section {
           padding: 100px 0;
-          background: var(--bg-soft);
-          background-color: #c7ffd6;
-          margin-top: 80px;
+          background: #1e2630ff !important;
         }
         .case-studies-grid {
           display: grid;
@@ -475,88 +509,90 @@ const Industries = () => {
         .case-study-card {
           padding: 40px;
           border-radius: var(--radius-lg);
-          border: 1px solid var(--border);
-          background: var(--white);
+          border: 1px solid rgba(255, 255, 255, 0.12) !important;
+          background: rgba(255, 255, 255, 0.05) !important;
+          backdrop-filter: blur(12px) !important;
+          -webkit-backdrop-filter: blur(12px) !important;
           display: flex;
           flex-direction: column;
           gap: 16px;
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+          transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+          cursor: pointer;
+        }
+        .case-study-card:hover {
+          transform: translateY(-8px);
+          border-color: #DFBD69 !important;
+          box-shadow:
+            0 0 20px rgba(223, 189, 105, 0.15),
+            0 0 60px rgba(223, 189, 105, 0.08) !important;
         }
         .case-badge {
           align-self: flex-start;
-          background: var(--accent);
-          color: var(--primary-dark);
+          background: #DFBD69 !important;
+          color: #000000 !important;
           padding: 4px 12px;
           border-radius: var(--radius-full);
           font-size: 0.8rem;
           font-weight: 600;
+          box-shadow: 0 0 10px rgba(223, 189, 105, 0.2);
         }
         .case-study-card h3 {
           font-size: 1.4rem;
           font-weight: 700;
+          color: #ffffff !important;
         }
         .case-student {
           font-size: 0.95rem;
-          color: var(--text-light);
+          color: #cccccc !important;
+        }
+        .case-student strong {
+          color: #ffffff !important;
         }
         .case-text {
           font-size: 1rem;
           line-height: 1.6;
+          color: #cccccc !important;
         }
         .case-footer {
           margin-top: auto;
           padding-top: 20px;
-          border-top: 1px solid var(--border);
+          border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
         }
         .case-pkg {
           font-weight: 700;
-          color: var(--primary-dark);
+          color: #DFBD69 !important;
         }
         .ind-cta-section {
           padding: 100px 0;
+          background: #000000 !important;
         }
         .ind-cta-box {
           padding: 60px 40px;
           border-radius: var(--radius-lg);
-          border: 1px solid var(--border);
+          border: 1px solid rgba(255, 255, 255, 0.12) !important;
+          background: rgba(255, 255, 255, 0.05) !important;
+          backdrop-filter: blur(12px) !important;
+          -webkit-backdrop-filter: blur(12px) !important;
           max-width: 900px;
           margin: 0 auto;
           display: flex;
           flex-direction: column;
           align-items: center;
           gap: 20px;
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
         }
         .ind-cta-box h2 {
-          font-size: 2rem;
+          font-size: 2.2rem;
           font-weight: 700;
+          color: #ffffff !important;
         }
         .ind-cta-box p {
           max-width: 600px;
-          color: var(--text);
+          color: #cccccc !important;
           line-height: 1.6;
         }
-
-        /* Hero section text visibility */
-         .section-title {
-          color: #fbfcffff !important;
-        }
-          .ind-hero-title{
-          color:black;}
-        .ind-hero-sub {
-          color: #334155 !important;
-        }
-        [data-theme='dark'] .ind-hero-title, [data-theme='dark'] .section-title {
-          color: #f8fafc !important;
-        }
-        [data-theme='dark'] .ind-hero-sub {
-          color: #cbd5e1 !important;
-        }
-
-        /* Glass Cards visibility and structure */
-        .industry-card, .case-study-card, .ind-cta-box {
-          position: relative;
-          overflow: hidden;
-        }
-        
+ 
         .card-top-row {
           display: flex;
           justify-content: space-between;
@@ -565,24 +601,19 @@ const Industries = () => {
           position: relative;
           z-index: 2;
         }
-
+ 
         .ind-icon-box {
           font-size: 1.8rem;
-          color: var(--primary);
+          color: #DFBD69 !important;
           display: flex;
           align-items: center;
           justify-content: center;
-          background: rgba(72, 201, 44, 0.12);
+          background: rgba(255, 255, 255, 0.05);
           padding: 10px;
           border-radius: 12px;
           width: fit-content;
         }
-
-        [data-theme='dark'] .ind-icon-box {
-          color: var(--primary-light);
-          background: rgba(255, 255, 255, 0.05);
-        }
-
+ 
         .card-bg-image {
           position: absolute;
           bottom: 0;
@@ -592,64 +623,14 @@ const Industries = () => {
           background-size: cover;
           background-repeat: no-repeat;
           background-position: center;
-          opacity: 0; /* Very low opacity for clean text readability */
+          opacity: 0.08; /* Subtle background image integration */
           pointer-events: none;
           z-index: 1;
           border-bottom-right-radius: var(--radius-md);
           mask-image: linear-gradient(to top left, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 80%);
           -webkit-mask-image: linear-gradient(to top left, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 80%);
         }
-
-        .industry-card, .case-study-card, .ind-cta-box {
-          background: rgba(255, 255, 255, 1) !important;
-          border: 1px solid rgba(255, 255, 255, 0.25) !important;
-          backdrop-filter: blur(10px);
-          -webkit-backdrop-filter: blur(10px);
-          box-shadow: var(--shadow-sm);
-        }
-
-        /* Hover animation matching other pages */
-        .industry-card, .case-study-card {
-          transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-          cursor: pointer;
-        }
-        .industry-card:hover, .case-study-card:hover {
-          transform: translateY(-8px);
-          box-shadow:
-            0 10px 30px rgba(0, 0, 0, 0.1),
-            0 0 20px rgba(72, 201, 44, 0.08);
-          border-color: var(--primary) !important;
-        }
-
-        /* Text colors inside cards */
-        .industry-card h3,
-        .ind-roles h4,
-        .ind-skills h4,
-        .case-study-card h3,
-        .ind-cta-box h2 {
-          color: #0f172a !important;
-        }
-
-        .industry-card .ind-desc,
-        .ind-roles li,
-        .case-student,
-        .case-text,
-        .ind-cta-box p {
-          color: #334155 !important;
-        }
-
-        .case-pkg {
-          color: #1e3a8a !important; /* Rich blue for placement packages */
-        }
-
-        .skill-tag {
-          background: rgba(0, 0, 0, 0.05) !important;
-          color: #334155 !important;
-          border: 1px solid rgba(0, 0, 0, 0.1) !important;
-        }
-
-
-
+ 
         @media (max-width: 991px) {
           .industries-grid {
             grid-template-columns: repeat(2, 1fr);

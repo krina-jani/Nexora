@@ -1,10 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap");
 
+html,
 body {
   font-family: var(--body-font);
   background: var(--bg);
   color: var(--text);
   overflow-x: hidden;
+  width: 100%;
 }
 
 h1,
@@ -86,11 +88,13 @@ section {
 }
 
 
+html,
 body {
   background: var(--bg);
   color: var(--text);
   font-family: var(--body-font);
   overflow-x: hidden;
+  width: 100%;
 }
 
 .container {

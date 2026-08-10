@@ -63,63 +63,12 @@ const Services = () => {
         });
       });
 
-      // Pricing layout reveal
-      gsap.from(".pricing-card", {
-        scrollTrigger: {
-          trigger: ".pricing-wrapper",
-          start: "top 85%"
-        },
-        y: 50,
-        opacity: 0,
-        stagger: 0.2,
-        duration: 0.8,
-        ease: "power3.out"
-      });
+
     }, pageRef);
 
     return () => ctx.revert();
   }, []);
 
-  const pricingPlans = [
-    {
-      title: "Basic Review",
-      price: "$199",
-      period: "One-time",
-      features: [
-        "ATS Resume Review & Feedback",
-        "LinkedIn Profile Audit",
-        "1 Mock Interview (60 mins)",
-        "30 Days Email Support"
-      ],
-      popular: false
-    },
-    {
-      title: "Career Placement Pro",
-      price: "$599",
-      period: "Quarterly",
-      features: [
-        "Custom ATS Resume Building",
-        "Full LinkedIn Profile Makeover",
-        "5 Mock Interviews with FAANG Mentors",
-        "Direct Referrals to Partner network",
-        "Dedicated Career Coach Support"
-      ],
-      popular: true
-    },
-    {
-      title: "Global Relocation Elite",
-      price: "$1,499",
-      period: "Until Hired",
-      features: [
-        "Everything in Placement Pro Plan",
-        "Global Job Placement Strategies",
-        "Visa & Work Permit Application Help",
-        "Direct referrals to EU & USA tech hubs",
-        "Unlimited mock interviews"
-      ],
-      popular: false
-    }
-  ];
 
   return (
     <div ref={pageRef} className="services-page-wrapper">
@@ -262,32 +211,6 @@ const Services = () => {
         ))}
       </div>
 
-      {/* Pricing wrapper */}
-      <section className="pricing-wrapper">
-        <div className="container">
-          <h2 className="text-center section-title">Simple, Transparent Pricing</h2>
-          <div className="pricing-grid">
-            {pricingPlans.map((plan, idx) => (
-              <div key={idx} className={`pricing-card glass ${plan.popular ? "popular" : ""}`}>
-                {plan.popular && <span className="popular-badge">Most Popular</span>}
-                <h3>{plan.title}</h3>
-                <div className="price-amount">
-                  <span className="amount">{plan.price}</span>
-                  <span className="period">/{plan.period}</span>
-                </div>
-                <ul className="plan-features">
-                  {plan.features.map((feat, fIdx) => (
-                    <li key={fIdx}>✓ {feat}</li>
-                  ))}
-                </ul>
-                <button className={`btn-primary plan-btn ${!plan.popular ? "btn-secondary" : ""}`}>
-                  Choose Plan
-                </button>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* FAQ */}
       <section className="services-faq-section">
@@ -685,112 +608,12 @@ const Services = () => {
           color: #cbd5e1 !important;
         }
 
-        .pricing-wrapper {
-          padding: 100px 0;
-          background: var(--bg-soft);
-        }
-        .pricing-grid {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 30px;
-          margin-top: 50px;
-        }
-        .pricing-card {
-          padding: 45px 35px;
-          border-radius: var(--radius-lg);
-          border: 1px solid rgba(255, 255, 255, 0.25) !important;
-          position: relative;
-          display: flex;
-          flex-direction: column;
-          gap: 24px;
-          background: rgba(255, 255, 255, 1) !important;
-          backdrop-filter: blur(10px);
-          -webkit-backdrop-filter: blur(10px);
-          box-shadow: var(--shadow-sm);
-          height: 100%;
-        }
-        .pricing-card.popular {
-          border-color: var(--primary);
-          box-shadow: var(--shadow-lg);
-          transform: scale(1.03);
-        }
-        .popular-badge {
-          position: absolute;
-          top: 15px;
-          right: 20px;
-          background: var(--primary);
-          color: var(--white);
-          padding: 4px 12px;
-          border-radius: var(--radius-full);
-          font-size: 0.75rem;
-          font-weight: 600;
-        }
-        .pricing-card h3 {
-          font-size: 1.4rem;
-          font-weight: 700;
-          color: #0f172a !important;
-        }
-        .price-amount {
-          display: flex;
-          align-items: baseline;
-        }
-        .amount {
-          font-size: 2.8rem;
-          font-weight: 800;
-          color: #0f172a !important;
-        }
-        .period {
-          font-size: 0.95rem;
-          color: #475569 !important;
-        }
-        .plan-features {
-          list-style: none;
-          display: flex;
-          flex-direction: column;
-          gap: 12px;
-          font-size: 0.95rem;
-          color: #334155 !important;
-        }
 
-        .pricing-wrapper .section-title {
-          // color: #0f172a !important;
-        }
-
-        /* Dark mode overrides for pricing */
-        [data-theme='dark'] .pricing-card {
-          background: rgba(15, 23, 42, 0.85) !important;
-          border: 1px solid rgba(255, 255, 255, 0.1) !important;
-        }
-
-        [data-theme='dark'] .pricing-card h3,
-        [data-theme='dark'] .amount,
-        [data-theme='dark'] .pricing-wrapper .section-title {
-          color: #f8fafc !important;
-        }
-
-        [data-theme='dark'] .period,
-        [data-theme='dark'] .plan-features {
-          color: #cbd5e1 !important;
-        }
-        .plan-btn {
-          margin-top: auto;
-          width: 100%;
-        }
-        .btn-secondary {
-          background: #df830d;
-          border: 1.5px solid var(--primary);
-          color: white;
-          box-shadow: none;
-        }
-        .btn-secondary:hover {
-          background: #b96a09;
-          color: var(--white);
-        }
         .services-faq-section {
           padding: 100px 0;
         }
         @media (max-width: 991px) {
-          .pricing-grid, .why-grid {
+          .why-grid {
             grid-template-columns: 1fr;
             gap: 40px;
           }
@@ -807,9 +630,6 @@ const Services = () => {
           }
           .detailed-service-section {
             padding: 60px 0;
-          }
-          .pricing-card.popular {
-            transform: none;
           }
           .services-list-grid {
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));

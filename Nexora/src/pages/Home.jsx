@@ -228,11 +228,9 @@ const Home = () => {
       </section>
 
       {/* SECTION 2: TRUSTED BY MARQUEE */}
-      <section className="marquee-section">
-        <div className="container text-center">
-          <p className="marquee-intro">Nexora Graduates Placed at Global Leaders</p>
-          <Marquee items={companiesList} />
-        </div>
+      <section className="marquee-section text-center">
+        <p className="marquee-intro">Nexora Graduates Placed at Global Leaders</p>
+        <Marquee items={companiesList} />
       </section>
 
       {/* SECTION 3: ABOUT NEXORA */}

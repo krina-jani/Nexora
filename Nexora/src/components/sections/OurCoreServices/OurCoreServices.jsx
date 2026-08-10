@@ -14,6 +14,13 @@ const OurCoreServices = () => {
               {/* Premium Glare Layer */}
               <div className="glare"></div>
               
+              {/* Background Light Effect Image */}
+              <div 
+                className="service-card-bg-image" 
+                style={{ backgroundImage: `url(${svc.image})` }}
+              ></div>
+              <div className="service-card-overlay"></div>
+              
               <div className="service-card-content">
                 <h3>{svc.title}</h3>
                 <p>{svc.description}</p>

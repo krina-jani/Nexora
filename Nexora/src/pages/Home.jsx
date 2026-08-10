@@ -306,7 +306,7 @@ const Home = () => {
         .final-cta-section {
           padding: 80px 0 120px 0;
           position: relative;
-          background: #ffffff !important;
+          background: #1e2630 !important;
         }
 
         /* 3-Color Alternating Theme Overrides for Home Page (Blue #2D5C9D, Black #000000, White #ffffff) */
@@ -679,18 +679,20 @@ const Home = () => {
           border-radius: var(--radius-xl);
           max-width: 1100px;
           margin: 0 auto;
-          border: 1px solid var(--border);
+          border: 1px solid rgba(255, 255, 255, 0.12) !important;
           position: relative;
           overflow: hidden;
-          background: #ffffff !important;
+          background: rgba(255, 255, 255, 0.05) !important;
+          backdrop-filter: blur(12px) !important;
+          -webkit-backdrop-filter: blur(12px) !important;
           transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .cta-box:hover {
-          border-color: var(--primary);
+          border-color: #DFBD69 !important;
           box-shadow:
-            0 0 20px rgba(72, 201, 44, 0.08),
-            0 0 60px rgba(72, 201, 44, 0.05);
+            0 0 20px rgba(223, 189, 105, 0.15),
+            0 0 60px rgba(223, 189, 105, 0.08);
           transform: translateY(-8px);
         }
 
@@ -704,7 +706,7 @@ const Home = () => {
           background: linear-gradient(
             120deg,
             transparent 35%,
-            rgba(72, 201, 44, 0.25) 50%,
+            rgba(223, 189, 105, 0.15) 50%,
             transparent 65%
           );
           transform: rotate(25deg);
@@ -725,7 +727,7 @@ const Home = () => {
           left: -50%;
           width: 200%;
           height: 200%;
-          background: radial-gradient(circle at center, rgba(72, 201, 44, 0.05), transparent 70%);
+          background: radial-gradient(circle at center, rgba(223, 189, 105, 0.05), transparent 70%);
           z-index: 0;
           pointer-events: none;
         }
@@ -734,7 +736,7 @@ const Home = () => {
           font-size: clamp(2.5rem, 5vw, 3.5rem);
           font-weight: 800;
           margin-bottom: 24px;
-          color: #111;
+          color: #ffffff !important;
           position: relative;
           z-index: 2;
           min-height: 120px; /* Prevent layout shift during typing */
@@ -751,7 +753,7 @@ const Home = () => {
           display: inline-block;
           margin-left: 5px;
           animation: blink 0.75s infinite;
-          color: var(--primary);
+          color: #DFBD69 !important;
         }
 
         @keyframes blink {
@@ -761,7 +763,7 @@ const Home = () => {
 
         .cta-subheading {
           font-size: 1.1rem;
-          color: #333;
+          color: #cccccc !important;
           margin: 0 auto 40px;
           max-width: 600px;
           position: relative;
@@ -784,15 +786,15 @@ const Home = () => {
         .cta-btn-outline {
           padding: 16px 32px !important;
           font-size: 1.1rem !important;
-          border: 2px solid #111 !important;
+          border: 2px solid #ffffff !important;
           background: transparent !important;
-          color: #111 !important;
+          color: #ffffff !important;
           transition: all 0.3s ease !important;
         }
 
         .cta-btn-outline:hover {
-          background: #111 !important;
-          color: #ffffff !important;
+          background: #ffffff !important;
+          color: #000000 !important;
         }
 
         @media (max-width: 1024px) {
@@ -873,7 +875,7 @@ const Home = () => {
           font-size: 0.75rem;
           text-transform: uppercase;
           letter-spacing: 2px;
-          color: #48C92C;
+          color: #DFBD69;
           font-weight: 700;
           margin-bottom: 24px;
         }
@@ -887,7 +889,7 @@ const Home = () => {
           margin-bottom: 30px;
         }
         .text-gradient {
-          background: linear-gradient(134deg, #df830d, #f59e0b);
+          background: linear-gradient(134deg, #DFBD69, #f7dfa3);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
         }
@@ -902,7 +904,7 @@ const Home = () => {
           display: inline-flex;
           align-items: center;
           padding: 14px 32px;
-          background: #df830d;
+          background: #DFBD69;
           color: #111b15;
           font-weight: 700;
           border-radius: 50px;

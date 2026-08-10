@@ -557,3 +557,16 @@
     display: none;
   }
 }
+
+.navbar-cta, .mobile-nav-cta {
+  background: #DFBD69 !important;
+  color: #000000 !important;
+  border-color: #DFBD69 !important;
+  box-shadow: 0 4px 14px rgba(223, 189, 105, 0.25) !important;
+}
+
+.navbar-cta:hover, .mobile-nav-cta:hover {
+  background: #ffffff !important;
+  color: #000000 !important;
+  border-color: #ffffff !important;
+}

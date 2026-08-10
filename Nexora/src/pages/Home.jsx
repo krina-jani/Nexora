@@ -5,6 +5,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SplitType from "split-type";
 import { FaArrowRight, FaGithub, FaLinkedin, FaEnvelope, FaInstagram } from "react-icons/fa";
 import heroBgImage from "../assets/images/perfect-hero.png";
+import empowermentImg from "../assets/images/empowerment.png";
 // Common Components
 import Marquee from "../components/common/Marquee";
 import GradientWaves from "../components/common/GradientWaves";
@@ -245,6 +246,7 @@ const Home = () => {
           </div>
           <div className="about-intro-right">
             <div className="visual-media-box glass">
+              <img src={empowermentImg} alt="Empowering Placements" className="visual-box-image" />
               <div className="overlay-radial"></div>
               <h3>Empowering Placements</h3>
               <p>98% Successful domain migrations.</p>
@@ -355,6 +357,19 @@ const Home = () => {
           border: 1px solid rgba(255, 255, 255, 0.12) !important;
           backdrop-filter: blur(16px) !important;
           -webkit-backdrop-filter: blur(16px) !important;
+        }
+        .visual-box-image {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          z-index: 0;
+        }
+        .visual-media-box h3,
+        .visual-media-box p {
+          position: relative;
+          z-index: 2;
         }
         .overlay-radial {
           background: radial-gradient(circle at center, transparent 30%, rgba(0,0,0,0.8) 100%) !important;

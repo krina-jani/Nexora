@@ -140,11 +140,11 @@ const Home = () => {
       <section className="hero-section" >
         <div style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", zIndex: 1 }}>
           <GradientWaves
-            horizonColor="#9a7777ff"
-            waveColor="#751a3dff"
-            crestColor="#52525b"
+            horizonColor="#000000ff"
+            waveColor="#2D5C9D"
+            crestColor="#ffffffff"
             speed={0.4}
-            
+
             amplitude={2.5}
             waveScale={0.6}
             waveRatio={0.9}
@@ -185,40 +185,29 @@ const Home = () => {
 
           {/* Right Column */}
           <div className="hero-right">
-            {/* Dark Profile Card */}
-            <div className="profile">
-              {/* <div className="profile-avatar">
-                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&auto=format&fit=crop&q=80" alt="Advisor" />
-              </div> */}
-              {/* <div className="profile-info">
-                <h4>Sarah Jenkins</h4>
-                <p>FAANG Tech Recruiter</p>
-                <Link to="/contact" className="profile-link">Get in Touch</Link>
-              </div> */}
+            <div className="hero-glass-card hero-stat-card">
+              <h2>5,000+</h2>
+              <p>Candidates placed at leading tech companies worldwide.</p>
             </div>
 
-            {/* Resume Card */}
-            {/* <div className="resume-card-box">
-              <div className="resume-meta">
-                <span className="meta-badge">RESUME</span>
-                <span className="meta-size">PDF • 2.4 MB</span>
+            <div className="hero-glass-card hero-testimonial-card">
+              <div className="testimonial-header">
+                <span className="testimonial-company-icon">G</span>
+                <span className="testimonial-company-name">Google</span>
               </div>
-              <h3>ATS Diagnostic CV</h3>
-              <p>Optimize your resume with our global advisors and get selected for top loops.</p>
-              <Link to="/services" className="btn-cv">
-                Check Resume
-              </Link>
-            </div> */}
-
-            {/* Vertical Socials */}
-            <div className="vertical-socials">
-              <a href="https://github.com" target="_blank" rel="noopener noreferrer"><FaGithub /></a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"><FaLinkedin /></a>
-              <a href="mailto:info@nexora.com"><FaEnvelope /></a>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"><FaInstagram /></a>
-            </div>
+              <p className="testimonial-quote">
+                "With Nexora we went from sending cold resumes to landing direct loops at Google, Amazon, and Microsoft."
+              </p>
+              <div className="testimonial-user">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=80&auto=format&fit=crop&q=80" alt="Sarah Jenkins" className="testimonial-avatar" />
+                <div className="testimonial-user-info">
+                  <h4>Sarah Jenkins</h4>
+                  <p>FAANG Recruiter & Advisor</p>
+                </div>
+              </div>
           </div>
         </div>
+      </div>
 
         {/* Scroll Indicator */}
         {/* <div className="hero-scroll-indicator-new">
@@ -316,11 +305,11 @@ const Home = () => {
         <div className="container">
           <div className="cta-box glass text-center">
             <h2 className="cta-heading">
-              <Typewriter 
+              <Typewriter
                 texts={[
                   "Are you ready to launch your career in Nexora ?",
                   "Join the world's most innovative teams.",
-                ]} 
+                ]}
               />
             </h2>
             <p className="cta-subheading">
@@ -343,9 +332,302 @@ const Home = () => {
         .final-cta-section {
           padding: 80px 0 120px 0;
           position: relative;
-          --bg: linear-gradient(134deg, #df830d, #6e3517, #F9C33A);
-          --bg-soft: linear-gradient(134deg, rgba(223, 131, 13, 0.9), rgba(110, 53, 23, 0.9), rgba(249, 195, 58, 0.9));
-          background: var(--bg);
+          background: #ffffff !important;
+        }
+
+        /* Swapped Monochromatic Black-and-White Theme Overrides for Home Page (Hero Section Untouched) */
+        .marquee-section {
+          background: #000000 !important;
+          border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+        }
+        .marquee-intro {
+          color: #ffffff !important;
+        }
+        .marquee-item {
+          color: #cccccc !important;
+        }
+        .marquee-item:hover {
+          color: #ffffff !important;
+        }
+
+        .about-intro-section {
+          background-color: #ffffff !important;
+          color: #000000 !important;
+        }
+        .about-intro-left h2 {
+          color: #000000 !important;
+        }
+        .about-intro-left p {
+          color: #444444 !important;
+        }
+        .about-stat-item {
+          background: #ffffff !important;
+          border: 1px solid #e2e8f0 !important;
+          backdrop-filter: none !important;
+          -webkit-backdrop-filter: none !important;
+        }
+        .about-stat-item h3 {
+          color: #000000 !important;
+        }
+        .about-stat-item p {
+          color: #555555 !important;
+        }
+        .visual-media-box {
+          background: #f8fafc !important;
+          border: 1px solid #e2e8f0 !important;
+          backdrop-filter: none !important;
+          -webkit-backdrop-filter: none !important;
+        }
+        .overlay-radial {
+          background: radial-gradient(circle at center, transparent 30%, rgba(255,255,255,0.8) 100%) !important;
+        }
+        .learn-more-btn {
+          background: #000000 !important;
+          color: #ffffff !important;
+          border: 1px solid #000000 !important;
+        }
+        .learn-more-btn:hover {
+          background: #ffffff !important;
+          color: #000000 !important;
+        }
+
+        .experience-section {
+          background: #000000 !important;
+        }
+        .experience-title {
+          color: #ffffff !important;
+        }
+        .timeline-line-track {
+          background: rgba(255, 255, 255, 0.15) !important;
+        }
+        .timeline-line-fill {
+          background: #ffffff !important;
+          box-shadow: 0 0 10px rgba(255, 255, 255, 0.5) !important;
+        }
+        .timeline-dot {
+          background: #000000 !important;
+          border-color: #ffffff !important;
+          box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.08) !important;
+        }
+        .timeline-item:hover .timeline-dot {
+          background: #ffffff !important;
+          box-shadow: 0 0 12px rgba(255, 255, 255, 0.5) !important;
+        }
+        .timeline-content {
+          background: rgba(255, 255, 255, 0.05) !important;
+          border: 1px solid rgba(255, 255, 255, 0.12) !important;
+          backdrop-filter: blur(12px) !important;
+          -webkit-backdrop-filter: blur(12px) !important;
+        }
+        .timeline-item:hover .timeline-content {
+          border-color: rgba(255, 255, 255, 0.3) !important;
+          box-shadow: 0 10px 30px rgba(255, 255, 255, 0.05) !important;
+        }
+        .timeline-period {
+          color: #cccccc !important;
+        }
+        .timeline-role {
+          color: #ffffff !important;
+        }
+        .timeline-company {
+          color: #aaaaaa !important;
+        }
+        .timeline-desc {
+          color: #dddddd !important;
+        }
+        .section-tag {
+          color: #ffffff !important;
+        }
+
+        .why-choose-parent-section {
+          background: #ffffff !important;
+        }
+        .why-choose-title {
+          color: #000000 !important;
+        }
+        .why-choose-gallery__item {
+          border: 1px solid #e2e8f0 !important;
+        }
+        .why-choose-overlay h3 {
+          color: #ffffff !important;
+        }
+
+        .services-showcase-section {
+          background: #000000 !important;
+        }
+        .services-showcase-section .section-title-reveal {
+          color: #ffffff !important;
+        }
+        .service-card {
+          background: rgba(255, 255, 255, 0.05) !important;
+          border: 1px solid rgba(255, 255, 255, 0.12) !important;
+          backdrop-filter: blur(12px) !important;
+          -webkit-backdrop-filter: blur(12px) !important;
+        }
+        .service-card:hover {
+          border-color: rgba(255, 255, 255, 0.3) !important;
+          box-shadow: 0 10px 30px rgba(255, 255, 255, 0.05) !important;
+        }
+        .service-card h3 {
+          color: #ffffff !important;
+        }
+        .service-card p {
+          color: #cccccc !important;
+        }
+        .service-arrow-link {
+          color: #ffffff !important;
+        }
+        .service-arrow-link:hover {
+          color: #aaaaaa !important;
+        }
+        .glare {
+          background: linear-gradient(120deg, transparent 35%, rgba(255, 255, 255, 0.15) 50%, transparent 65%) !important;
+        }
+
+        .industries-showcase-section {
+          background: #ffffff !important;
+        }
+
+        .programs-section {
+          background: #000000 !important;
+        }
+        .programs-section .section-title-reveal {
+          color: #ffffff !important;
+        }
+        .program-card {
+          background: rgba(255, 255, 255, 0.05) !important;
+          border: 1px solid rgba(255, 255, 255, 0.12) !important;
+          backdrop-filter: blur(12px) !important;
+          -webkit-backdrop-filter: blur(12px) !important;
+        }
+        .program-card:hover {
+          border-color: rgba(255, 255, 255, 0.3) !important;
+          box-shadow: 0 10px 30px rgba(255, 255, 255, 0.05) !important;
+        }
+        .program-card h3 {
+          color: #ffffff !important;
+        }
+        .prog-diff {
+          color: #000000 !important;
+          background: #ffffff !important;
+        }
+        .prog-dur {
+          color: #cccccc !important;
+        }
+        .prog-btn {
+          background: #ffffff !important;
+          color: #000000 !important;
+          border: 1px solid #ffffff !important;
+        }
+        .prog-btn:hover {
+          background: #000000 !important;
+          color: #ffffff !important;
+        }
+
+        .stats-counters-section {
+          background: #ffffff !important;
+          color: #000000 !important;
+          border-top: 1px solid #e2e8f0 !important;
+          border-bottom: 1px solid #e2e8f0 !important;
+        }
+        .stat-counter-box h3 {
+          text-shadow: none !important;
+          color: #000000 !important;
+        }
+        .stat-counter-box p {
+          color: #444444 !important;
+        }
+
+        .success-stories-section {
+          background: #000000 !important;
+        }
+        .testimonials-carousel-box {
+          background: rgba(255, 255, 255, 0.05) !important;
+          border: 1px solid rgba(255, 255, 255, 0.12) !important;
+          backdrop-filter: blur(12px) !important;
+          -webkit-backdrop-filter: blur(12px) !important;
+        }
+        .testimonial-active-content h3 {
+          color: #ffffff !important;
+        }
+        .candidate-role-text {
+          color: #cccccc !important;
+        }
+        .feedback-body {
+          color: #dddddd !important;
+        }
+        .carousel-nav-btn {
+          background: #ffffff !important;
+          color: #000000 !important;
+          border: 1px solid #ffffff !important;
+        }
+        .carousel-nav-btn:hover {
+          background: #000000 !important;
+          color: #ffffff !important;
+        }
+
+        .placement-process-section {
+          background: #ffffff !important;
+        }
+        .timeline-track-bg {
+          background: rgba(0, 0, 0, 0.1) !important;
+        }
+        .timeline-track-progress {
+          background: #000000 !important;
+        }
+        .workflow-node h4 {
+          color: #000000 !important;
+        }
+        .workflow-node p {
+          color: #555555 !important;
+        }
+        .node-dot {
+          background: #ffffff !important;
+          border-color: #cccccc !important;
+          color: #000000 !important;
+        }
+        .workflow-node.active .node-dot {
+          background: #000000 !important;
+          color: #ffffff !important;
+          border-color: #000000 !important;
+        }
+        .workflow-node.completed .node-dot {
+          background: #e2e8f0 !important;
+          color: #000000 !important;
+          border-color: #cbd5e1 !important;
+        }
+        .node-glow-ring {
+          border-color: rgba(0, 0, 0, 0.15) !important;
+        }
+
+        .faq-section-box {
+          background: #000000 !important;
+        }
+        .accordion-item-box {
+          background: rgba(255, 255, 255, 0.05) !important;
+          border: 1px solid rgba(255, 255, 255, 0.12) !important;
+          backdrop-filter: blur(12px) !important;
+          -webkit-backdrop-filter: blur(12px) !important;
+        }
+        .accordion-item-box.active {
+          border-color: rgba(255, 255, 255, 0.3) !important;
+          box-shadow: 0 10px 30px rgba(255, 255, 255, 0.05) !important;
+        }
+        .accordion-trigger {
+          color: #ffffff !important;
+        }
+        .accordion-trigger:hover {
+          color: #cccccc !important;
+        }
+        .accordion-icon {
+          color: #ffffff !important;
+        }
+        .accordion-item-box.active .accordion-icon {
+          color: #ffffff !important;
+        }
+        .accordion-content-inner {
+          color: #dddddd !important;
         }
         
         .cta-box {
@@ -512,6 +794,7 @@ const Home = () => {
           overflow-x: hidden;
         }
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
         .hero-section {
           min-height: 100vh;
@@ -1060,6 +1343,119 @@ const Home = () => {
           .hero-subtext {
             font-size: 1rem;
           }
+        }
+
+        /* Glass Cards in Hero Section */
+        .hero-right {
+          display: flex !important;
+          flex-direction: row !important;
+          align-items: flex-end !important;
+          justify-content: flex-end !important;
+          gap: 24px !important;
+          height: 100% !important;
+          padding-right: 0 !important;
+          padding-bottom: 40px !important;
+        }
+        @media (max-width: 1024px) {
+          .hero-right {
+            flex-direction: column !important;
+            align-items: center !important;
+            justify-content: center !important;
+            padding-bottom: 0 !important;
+          }
+        }
+        .hero-glass-card {
+          width: 300px;
+          height: 240px;
+          padding: 20px 20px;
+          border-radius: 24px;
+          background: rgba(255, 255, 255, 0.05) !important;
+          border: 1px solid rgba(255, 255, 255, 0.12) !important;
+          backdrop-filter: blur(20px) !important;
+          -webkit-backdrop-filter: blur(20px) !important;
+          color: #ffffff !important;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3) !important;
+          transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+          text-align: left;
+        }
+        .hero-glass-card:hover {
+          transform: translateY(-8px) !important;
+          border-color: rgba(255, 255, 255, 0.25) !important;
+          box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4) !important;
+        }
+        .hero-stat-card h2 {
+          font-family: 'Press Start 2P', monospace !important;
+          font-size: 2.0rem !important;
+          font-weight: 400 !important;
+          letter-spacing: -1px;
+          color: #ffffff !important;
+          margin: 0;
+          margin-bottom: 6px;
+        }
+        .hero-stat-card p {
+          font-size: 0.95rem;
+          line-height: 1.5;
+          color: rgba(255, 255, 255, 0.7) !important;
+          margin: 0;
+        }
+        .hero-testimonial-card {
+          gap: 10px;
+        }
+        .testimonial-header {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+        }
+        .testimonial-company-icon {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 28px;
+          height: 28px;
+          border-radius: 6px;
+          background: #ffffff !important;
+          color: #000000 !important;
+          font-weight: 900;
+          font-size: 0.95rem;
+        }
+        .testimonial-company-name {
+          font-weight: 700;
+          font-size: 1.1rem;
+          letter-spacing: 0.5px;
+          color: #ffffff !important;
+        }
+        .testimonial-quote {
+          font-size: 0.95rem;
+          line-height: 1.5;
+          color: rgba(255, 255, 255, 0.75) !important;
+          margin: 0;
+          font-style: italic;
+        }
+        .testimonial-user {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+        }
+        .testimonial-avatar {
+          width: 44px;
+          height: 44px;
+          border-radius: 50%;
+          object-fit: cover;
+          border: 1.5px solid rgba(255, 255, 255, 0.5);
+        }
+        .testimonial-user-info h4 {
+          margin: 0;
+          font-size: 0.95rem;
+          font-weight: 700;
+          color: #ffffff !important;
+        }
+        .testimonial-user-info p {
+          margin: 0;
+          font-size: 0.8rem;
+          color: rgba(255, 255, 255, 0.5) !important;
         }
       `}</style>
     </div>

@@ -525,7 +525,7 @@ const TargetPlacementsBySector = () => {
       activeApp = new App(container, {
         items,
         bend: 1,
-        textColor: '#060606ff',
+        textColor: '#000000',
         borderRadius: 0.05,
         font: 'bold 30px Arial',
         scrollSpeed: 2,

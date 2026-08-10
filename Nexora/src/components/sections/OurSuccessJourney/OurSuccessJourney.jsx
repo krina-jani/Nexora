@@ -16,25 +16,25 @@ const OurSuccessJourney = () => {
       period: "Step 01",
       role: "Connect With Us",
       company: "Discovery Call",
-      desc: "Reach out via call or email, and our career consultants will evaluate your profile and discuss potential opportunities."
+      desc: "Start with a discovery call. Our career counselors review your background, career goals, and target roles to shape your plan."
     },
     {
       period: "Step 02",
       role: "Resume Enhancement",
       company: "Profile Makeover",
-      desc: "We'll upgrade your resume with ATS optimization, professional formatting, and impactful content tailored to US job markets."
+      desc: "Our certified professional resume writers rebuild your resume with ATS optimization, clean formatting, and a matching cover letter."
     },
     {
       period: "Step 03",
       role: "Strategic Applications",
       company: "Network Outreach",
-      desc: "We apply to relevant companies on your behalf, leveraging our network and understanding of the US job market."
+      desc: "We apply to relevant companies on your behalf, using our recruiter network and real hiring market insight."
     },
     {
       period: "Step 04",
       role: "Interview & Success",
       company: "Offer Negotiation",
-      desc: "We prepare you for interviews with mock sessions, cultural training, and negotiation guidance until you land your dream job."
+      desc: "We prepare you with mock interviews, negotiation coaching, and support until you accept the right offer."
     }
   ];
 

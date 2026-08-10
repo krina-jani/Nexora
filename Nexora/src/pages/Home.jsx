@@ -7,6 +7,7 @@ import { FaArrowRight, FaGithub, FaLinkedin, FaEnvelope, FaInstagram } from "rea
 import heroBgImage from "../assets/images/perfect-hero.png";
 // Common Components
 import Marquee from "../components/common/Marquee";
+import GradientWaves from "../components/common/GradientWaves";
 
 // Sections
 import {
@@ -137,6 +138,31 @@ const Home = () => {
     <div ref={homeRef} className="home-container">
       {/* SECTION 1: HERO */}
       <section className="hero-section" >
+        <div style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", zIndex: 1 }}>
+          <GradientWaves
+            horizonColor="#9a7777ff"
+            waveColor="#751a3dff"
+            crestColor="#52525b"
+            speed={0.4}
+            
+            amplitude={2.5}
+            waveScale={0.6}
+            waveRatio={0.9}
+            swell={35}
+            turbulence={20}
+            tilt={1.11}
+            zoom={1.0}
+            height={5.5}
+            fogDepth={15}
+            detail="medium"
+            brightness={1.0}
+            opacity={1.0}
+            mouseInteraction={true}
+            parallaxStrength={0.5}
+            grain={true}
+            grainIntensity={0.05}
+          />
+        </div>
         <div className="hero-bg-glow"></div>
         <div className="container hero-grid">
           {/* Left Column */}
@@ -496,7 +522,7 @@ const Home = () => {
           justify-content: center;
           position: relative;
           padding: 80px 0;
-          background: radial-gradient(circle at 10% 20%, #ffffffff 0%, #c7ffd6 40%, #c7ffd6 100%);
+          background: #000000;
           
           overflow: hidden;
         }
@@ -522,7 +548,7 @@ const Home = () => {
           font-size: 0.75rem;
           text-transform: uppercase;
           letter-spacing: 2px;
-          color: #000000ff;
+          color: #48C92C;
           font-weight: 700;
           margin-bottom: 24px;
         }
@@ -532,18 +558,18 @@ const Home = () => {
           font-weight: 800;
           line-height: 1.05;
           letter-spacing: -2px;
-          color: #111b15;
+          color: #ffffff;
           margin-bottom: 30px;
         }
         .text-gradient {
-          background: linear-gradient(134deg, #df830d, #6e3517);
+          background: linear-gradient(134deg, #df830d, #f59e0b);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
         }
         .hero-subtext {
           font-size: 1.2rem;
           line-height: 1.6;
-          color: #475569;
+          color: #cbd5e1;
           margin-bottom: 40px;
           max-width: 540px;
         }

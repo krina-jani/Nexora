@@ -5,7 +5,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SplitType from "split-type";
 import { FaArrowRight, FaGithub, FaLinkedin, FaEnvelope, FaInstagram } from "react-icons/fa";
 import heroBgImage from "../assets/images/perfect-hero.png";
-import empowermentImage from "../assets/images/empowerment.png";
 // Common Components
 import Marquee from "../components/common/Marquee";
 
@@ -204,7 +203,7 @@ const Home = () => {
 
       {/* SECTION 2: TRUSTED BY MARQUEE */}
       <section className="marquee-section">
-        <div className="text-center">
+        <div className="container text-center">
           <p className="marquee-intro">Nexora Graduates Placed at Global Leaders</p>
           <Marquee items={companiesList} />
         </div>
@@ -233,12 +232,10 @@ const Home = () => {
             </Link>
           </div>
           <div className="about-intro-right">
-            <div className="visual-media-box glass" style={{ padding: 0 }}>
-              <img src={empowermentImage} alt="Empowering Placements" className="empowerment-image" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 0 }} />
-              <div style={{ position: 'relative', zIndex: 1, padding: '40px', background: 'linear-gradient(to top, rgba(255,255,255,0.9), transparent)' }}>
-                <h3>Empowering Placements</h3>
-                <p>98% Successful domain migrations.</p>
-              </div>
+            <div className="visual-media-box glass">
+              <div className="overlay-radial"></div>
+              <h3>Empowering Placements</h3>
+              <p>98% Successful domain migrations.</p>
             </div>
           </div>
         </div>
@@ -257,7 +254,7 @@ const Home = () => {
       <TargetPlacementsBySector />
 
       {/* SECTION 8: FEATURED PROGRAMS */}
-      {/* <FeaturedCareerPathways /> */}
+      <FeaturedCareerPathways />
 
       {/* SECTION 9: STATISTICS */}
       <section className="stats-counters-section">
@@ -305,11 +302,11 @@ const Home = () => {
             <p className="cta-subheading">
               Join thousands of professionals who have transformed their careers with our global placement engine.
             </p>
-            <div className="cta-buttons" style={{ position: 'relative', zIndex: 100 }}>
-              <Link to="/contact" className="btn-primary cta-btn-main" style={{ cursor: 'pointer', position: 'relative', zIndex: 10 }}>
+            <div className="cta-buttons">
+              <Link to="/contact" className="btn-primary cta-btn-main">
                 Book Free Consultation
               </Link>
-              <Link to="/services" className="btn-primary cta-btn-outline" style={{ cursor: 'pointer', position: 'relative', zIndex: 10 }}>
+              <Link to="/services" className="btn-primary cta-btn-outline">
                 Explore Services
               </Link>
             </div>
@@ -322,8 +319,8 @@ const Home = () => {
         .final-cta-section {
           padding: 80px 0 120px 0;
           position: relative;
-          --bg: linear-gradient(134deg, #2C5E63, #A6B8B7, #6B6F4D);
-          --bg-soft: linear-gradient(134deg, rgba(44, 94, 99, 0.9), rgba(166, 184, 183, 0.9), rgba(107, 111, 77, 0.9));
+          --bg: linear-gradient(134deg, #df830d, #6e3517, #F9C33A);
+          --bg-soft: linear-gradient(134deg, rgba(223, 131, 13, 0.9), rgba(110, 53, 23, 0.9), rgba(249, 195, 58, 0.9));
           background: var(--bg);
         }
         
@@ -539,7 +536,7 @@ const Home = () => {
           margin-bottom: 30px;
         }
         .text-gradient {
-          background: linear-gradient(134deg, #2C5E63, #6B6F4D);
+          background: linear-gradient(134deg, #df830d, #6e3517);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
         }
@@ -554,18 +551,17 @@ const Home = () => {
           display: inline-flex;
           align-items: center;
           padding: 14px 32px;
-          background: #2C5E63;
-          color: #E7E6D8;
+          background: #df830d;
+          color: #111b15;
           font-weight: 700;
           border-radius: 50px;
           border: none;
-          box-shadow: 0 8px 24px rgba(44, 94, 99, 0.3);
+          box-shadow: 0 8px 24px rgba(133, 232, 185, 0.3);
           transition: background 0.3s, transform 0.2s;
           cursor: pointer;
         }
         .btn-primary-pill:hover {
-          background: #6B6F4D;
-          color: #E7E6D8;
+          background: #000000ff;
           transform: translateY(-2px);
         }
         
@@ -752,13 +748,12 @@ const Home = () => {
           border-bottom: 1px solid var(--border);
         }
         .marquee-intro {
-          font-size: clamp(0.75rem, 2.5vw, 0.9rem);
+          font-size: 0.9rem;
           text-transform: uppercase;
           letter-spacing: 2px;
           color: var(--text-light);
           margin-bottom: 20px;
           font-weight: 600;
-          padding: 0 16px;
         }
 
         /* About Intro */
@@ -909,7 +904,7 @@ const Home = () => {
           margin-bottom: 24px;
         }
         .cta-mask-layer .text-gradient-mask {
-          background: linear-gradient(90deg, #2C5E63, #A6B8B7);
+          background: linear-gradient(90deg, #48C92C, #00d2ff);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
         }

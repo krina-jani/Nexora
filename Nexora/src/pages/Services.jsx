@@ -64,7 +64,6 @@ const Services = () => {
       });
 
       // Pricing layout reveal
-      /*
       gsap.from(".pricing-card", {
         scrollTrigger: {
           trigger: ".pricing-wrapper",
@@ -76,7 +75,6 @@ const Services = () => {
         duration: 0.8,
         ease: "power3.out"
       });
-      */
     }, pageRef);
 
     return () => ctx.revert();
@@ -264,7 +262,7 @@ const Services = () => {
         ))}
       </div>
 
-      {/* Pricing wrapper
+      {/* Pricing wrapper */}
       <section className="pricing-wrapper">
         <div className="container">
           <h2 className="text-center section-title">Simple, Transparent Pricing</h2>
@@ -290,7 +288,6 @@ const Services = () => {
           </div>
         </div>
       </section>
-      */}
 
       {/* FAQ */}
       <section className="services-faq-section">
@@ -321,7 +318,7 @@ const Services = () => {
           color: #334155 !important;
         }
         .text-gradient {
-          background: linear-gradient(134deg, #2C5E63, #6B6F4D);
+          background: linear-gradient(134deg, #df830d, #6e3517);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
         }
@@ -565,7 +562,7 @@ const Services = () => {
         
         .why-choose-us {
           padding: 100px 0;
-          background: linear-gradient(134deg, rgba(44, 94, 99, 0.9), rgba(166, 184, 183, 0.9), rgba(107, 111, 77, 0.9)) !important;
+          background: linear-gradient(134deg, rgba(223, 131, 13, 0.9), rgba(110, 53, 23, 0.9), rgba(249, 195, 58, 0.9)) !important;
         }
         .why-choose-us .section-title {
           color: #ffffff !important;
@@ -790,8 +787,7 @@ const Services = () => {
           color: var(--white);
         }
         .services-faq-section {
-          padding-bottom: 100px;
-          padding-top: 0px;
+          padding: 100px 0;
         }
         @media (max-width: 991px) {
           .pricing-grid, .why-grid {

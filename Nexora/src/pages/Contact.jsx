@@ -58,9 +58,12 @@ const Contact = () => {
           {/* Left Column (Contains Title) */}
           <div className="contact-left-content">
             <h1 className="contact-hero-title">
-              Connect With Our <br />
-              <span className="text-gradient">Career Advisors</span>
+              Connect With <br />
+              <span className="text-gradient">Our Career Advisors</span>
             </h1>
+            <p className="contact-hero-desc" style={{ marginTop: "30px", color: "#e2e8f0", fontSize: "1.15rem", lineHeight: "1.7", maxWidth: "480px" }}>
+              Whether you require Recruitment Process Outsourcing, Career Support Services, Career Growth Packages , Custom Services team provides dependable solutions tailored to your specific business needs.
+            </p>
           </div>
 
           {/* Right Column (Contains Form) */}
@@ -232,7 +235,7 @@ const Contact = () => {
         }
         .contact-grid-layout {
           display: grid;
-          grid-template-columns: 0.8fr 1.2fr;
+          grid-template-columns: 1fr 1fr;
           gap: 60px;
           padding: 160px 40px 100px;
           align-items: center;
@@ -266,8 +269,8 @@ const Contact = () => {
           backdrop-filter: blur(16px);
           -webkit-backdrop-filter: blur(16px);
           box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
-          margin-left: 91px;
-          margin-right: -55px;
+          margin-left: -7px;
+          margin-right: -83px;
         }
 
         .new-contact-form {
@@ -403,34 +406,40 @@ const Contact = () => {
           padding: 100px 0;
         }
 
+        @media (min-width: 992px) {
+          .contact-left-content h1 span.text-gradient {
+            white-space: nowrap;
+            display: inline-block;
+          }
+        }
+
         @media (max-width: 991px) {
           .contact-grid-layout {
             grid-template-columns: 1fr;
             gap: 40px;
-            padding: 40px 0;
+            padding: 120px 20px 60px;
           }
-          .contact-left-spacer {
-            display: none;
+          .contact-left-content {
+            text-align: center;
+            padding-bottom: 20px;
+          }
+          .contact-hero-title {
+            font-size: 2.5rem !important;
+          }
+          .contact-hero-desc {
+            margin: 20px auto 0 !important;
+            text-align: center;
           }
           .new-contact-form-container {
-            margin: 0;
-          }
-          .mar {
-            margin-left: 0;
-            text-align: center;
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+            padding: 30px 20px;
           }
         }
         @media (max-width: 768px) {
           .form-row-2col {
             grid-template-columns: 1fr;
             gap: 20px;
-          }
-          .new-contact-form-container {
-            padding: 30px 20px;
-            margin: 0;
-          }
-          .mar {
-            margin-left: 0;
           }
         }
       `}</style>

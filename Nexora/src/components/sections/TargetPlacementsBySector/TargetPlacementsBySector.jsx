@@ -111,7 +111,7 @@ function getFontSize(font) {
     return match ? parseInt(match[1], 10) : 30;
 }
 
-function createTextTexture(gl, text, font = 'bold 30px Figtree', color = 'black') {
+function createTextTexture(gl, text, font = 'bold 30px Figtree', color = 'white') {
     const canvas = document.createElement('canvas');
     const context = canvas.getContext('2d');
     context.font = font;
@@ -132,7 +132,7 @@ function createTextTexture(gl, text, font = 'bold 30px Figtree', color = 'black'
 }
 
 class Title {
-    constructor({ gl, plane, renderer, text, textColor = '#545050', font = '30px sans-serif' }) {
+    constructor({ gl, plane, renderer, text, textColor = '#ffffff', font = '30px sans-serif' }) {
         autoBind(this);
         this.gl = gl;
         this.plane = plane;
@@ -525,7 +525,7 @@ const TargetPlacementsBySector = () => {
       activeApp = new App(container, {
         items,
         bend: 1,
-        textColor: '#000000',
+        textColor: '#ffffff',
         borderRadius: 0.05,
         font: 'bold 30px Arial',
         scrollSpeed: 2,
@@ -545,7 +545,7 @@ const TargetPlacementsBySector = () => {
   return (
     <section className="industries-showcase-section">
       <div className="container">
-        <h1 className="text-center section-title-reveal" style={{color:"#111"}}>Target Placements by Sector</h1>
+        <h1 className="text-center section-title-reveal" style={{color:"#ffffff"}}>Target Placements by Sector</h1>
         <div className="gallery-container">
           <div
             className="circular-gallery"

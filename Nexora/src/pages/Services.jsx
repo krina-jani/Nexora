@@ -5,6 +5,7 @@ import services from "../data/services";
 import Accordion from "../components/common/Accordion";
 import faq from "../data/faq";
 import servicesHeroBgImage from "../assets/images/services-bg.png";
+import ScrollExpand from "../components/common/ScrollExpand/ScrollExpand";
 
 const Services = () => {
   const pageRef = useRef(null);
@@ -72,6 +73,43 @@ const Services = () => {
 
   return (
     <div ref={pageRef} className="services-page-wrapper">
+
+      {/* ── ScrollExpand Hero ── */}
+      <div className="services-scroll-expand-hero">
+        <ScrollExpand
+          src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=2400&q=85"
+          alt="Team of professionals collaborating in a modern office"
+          title="Our Elite Career Services"
+          useWindowScroll
+          reverse
+          startWidth={30}
+          startHeight={30}
+          startRadius={8}
+          endRadius={0}
+          mediaZoom={4.20}
+          scrollDistance={1.65}
+          holdDistance={0.25}
+          overlayScrim={0.85}
+        >
+          {/* Overlay content – fades in when fully expanded */}
+          <div className="se-overlay-content">
+            <p className="se-overlay-eyebrow">Nexora · Career Acceleration</p>
+            <h2 className="se-overlay-heading">
+              Engineered to elevate <br />
+              <span className="se-overlay-accent">every professional</span>
+            </h2>
+            <p className="se-overlay-sub">
+              Refine your profile, build technical authority, and land the
+              offers you deserve.
+            </p>
+            <a href="#services-list" className="se-overlay-cta">
+              Explore Services
+            </a>
+          </div>
+        </ScrollExpand>
+      </div>
+
+      {/* ── Process Section (kept on the original bg) ── */}
       <div 
         className="services-hero-process-wrapper"
         style={{
@@ -82,18 +120,6 @@ const Services = () => {
           position: 'relative'
         }}
       >
-        {/* Hero */}
-        <section className="services-hero text-center">
-          <div className="container">
-            <h1 className="services-hero-title">
-             <span> Our Elite <span className="text-gradient">Career Services</span></span>
-            </h1>
-            <p className="services-hero-sub text-light">
-              Engineered to refine your professional profile, build technical authority, and guide you directly to job offers.
-            </p>
-          </div>
-        </section>
-
         {/* How It Works / Process Section */}
         <section className="process-section">
           <div className="container">
@@ -222,6 +248,85 @@ const Services = () => {
 
       {/* Styles */}
       <style>{`
+        /* ── ScrollExpand Hero wrapper ── */
+        .services-scroll-expand-hero {
+          width: 100%;
+          height: 100vh;
+          position: relative;
+          
+          
+        }
+
+        /* ── Overlay content inside ScrollExpand ── */
+        .se-overlay-content {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 18px;
+          max-width: 700px;
+          margin: 0 auto;
+          padding: 100px 24px 0;
+          color: #fff;
+        }
+
+        .se-overlay-eyebrow {
+          font-size: 0.8rem;
+          font-weight: 600;
+          letter-spacing: 0.18em;
+          text-transform: uppercase;
+          color: rgba(249, 195, 58, 0.9);
+          margin: 0;
+        }
+
+        .se-overlay-heading {
+          font-family: var(--heading-font);
+          font-size: clamp(2rem, 5vw, 3.5rem);
+          font-weight: 800;
+          line-height: 1.1;
+          letter-spacing: -0.03em;
+          margin: 0;
+          color: #fff;
+          text-shadow: 0 2px 32px rgba(0,0,0,0.45);
+        }
+
+        .se-overlay-accent {
+          background: linear-gradient(134deg, #df830d, #F9C33A);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+        }
+
+        .se-overlay-sub {
+          font-size: 1.05rem;
+          line-height: 1.65;
+          color: rgba(255,255,255,0.78);
+          margin: 0;
+          max-width: 520px;
+          text-align: center;
+        }
+
+        .se-overlay-cta {
+          display: inline-block;
+          margin-top: 8px;
+          padding: 14px 36px;
+          background: linear-gradient(134deg, #df830d, #6e3517);
+          color: #fff;
+          font-weight: 700;
+          font-size: 0.95rem;
+          border-radius: 999px;
+          text-decoration: none;
+          letter-spacing: 0.04em;
+          box-shadow: 0 8px 32px rgba(223,131,13,0.35);
+          transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .se-overlay-cta:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 12px 40px rgba(223,131,13,0.5);
+        }
+
+        /* ── end ScrollExpand Hero styles ── */
+
         .txt-white{
         color: white!important;
         }
@@ -611,6 +716,9 @@ const Services = () => {
 
         .services-faq-section {
           padding: 100px 0;
+        }
+        .services-faq-section .section-title {
+          color: #ffffff !important;
         }
         @media (max-width: 991px) {
           .why-grid {

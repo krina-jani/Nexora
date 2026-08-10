@@ -195,7 +195,7 @@ const Contact = () => {
       {/* FAQ */}
       <section className="contact-faq-section">
         <div className="container">
-          <h2 className="text-center section-title" style={{ color: "#000000" }}>Need Immediate Answers?</h2>
+          <h2 className="text-center section-title" style={{ color: "var(--text)" }}>Need Immediate Answers?</h2>
           <Accordion items={faq} />
         </div>
       </section>

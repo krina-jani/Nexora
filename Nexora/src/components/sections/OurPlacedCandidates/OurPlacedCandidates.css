@@ -1,7 +1,28 @@
 /* Our Placed Candidates Section Styles */
 .success-stories-section {
   padding: 100px 0;
-  background: #F9C33A;
+  background: #000000;
+}
+
+/* Glassmorphic carousel card on dark wave background */
+.testimonials-glass {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* Gold navigation buttons */
+.testimonials-glass .carousel-nav-btn {
+  background: #DFBD69;
+  color: #000000;
+  border: 1px solid #DFBD69;
+}
+.testimonials-glass .carousel-nav-btn:hover {
+  background: transparent;
+  color: #DFBD69;
+  border-color: #DFBD69;
 }
 
 .testimonials-carousel-box {

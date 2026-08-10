@@ -1,10 +1,13 @@
+import rpoFlowImg from "../assets/images/rpo-flow.jpg";
+import proServiceImg from "../assets/images/pro-service.jpg";
+
 export const services = [
   {
     id: "rpo",
     title: "Recruitment Process Outsourcing",
     description: "Hiring teams get stretched thin fast. We step in to help — running sourcing, screening, and onboarding as part of your team, not as an outside vendor. This is why companies call us one of the best RPO companies they've worked with.",
     icon: "rpo",
-    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=800&auto=format&fit=crop"
+    image: rpoFlowImg
   },
   {
     id: "career-support",
@@ -25,7 +28,7 @@ export const services = [
     title: "Pro Services",
     description: "Senior careers need senior-level advice, not a stretched version of standard coaching. Our career counselors bring real HR coaching experience. They've made hiring decisions at that level themselves — not just watched from the sidelines.",
     icon: "overseas",
-    image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=800&auto=format&fit=crop"
+    image: proServiceImg
   },
   {
     id: "custom-services",

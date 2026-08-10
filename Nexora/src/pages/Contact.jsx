@@ -55,14 +55,16 @@ const Contact = () => {
       >
         <div className="contact-hero-overlay"></div>
         <div className="container contact-grid-layout">
-          {/* Left Column (Empty to keep background image visible) */}
-          <div className="contact-left-spacer"></div>
-
-          {/* Right Column (Contains Title and Form) */}
-          <div className="contact-right-content">
-            <h1 className="contact-hero-title mar">
-              Connect With Our <h3 className="text-gradient ">Career Advisors</h3>
+          {/* Left Column (Contains Title) */}
+          <div className="contact-left-content">
+            <h1 className="contact-hero-title">
+              Connect With Our <br />
+              <span className="text-gradient">Career Advisors</span>
             </h1>
+          </div>
+
+          {/* Right Column (Contains Form) */}
+          <div className="contact-right-content">
 
             <div className="new-contact-form-container glass">
               <div className="contact-header-new ">
@@ -202,8 +204,9 @@ const Contact = () => {
 
       {/* Styles */}
       <style>{`
-        .mar {
-          margin-left: 117px;
+        .contact-left-content {
+          text-align: left;
+          padding-bottom: 150px;
         }
         .contact-hero-form-wrapper {
           position: relative;
@@ -231,8 +234,8 @@ const Contact = () => {
           display: grid;
           grid-template-columns: 0.8fr 1.2fr;
           gap: 60px;
-          padding: 80px 0 100px;
-          align-items: flex-start;
+          padding: 160px 40px 100px;
+          align-items: center;
           position: relative;
           z-index: 2;
         }
@@ -264,7 +267,7 @@ const Contact = () => {
           -webkit-backdrop-filter: blur(16px);
           box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
           margin-left: 91px;
-          margin-right: -105px;
+          margin-right: -55px;
         }
 
         .new-contact-form {
@@ -321,9 +324,9 @@ const Contact = () => {
 
         .glass-input-new:focus {
           outline: none;
-          border-color: var(--primary) !important;
+          border-color: #DFBD69 !important;
           background: rgba(255, 255, 255, 0.15) !important;
-          box-shadow: 0 0 0 4px rgba(223, 131, 13, 0.2);
+          box-shadow: 0 0 0 4px rgba(223, 189, 105, 0.2);
         }
         
         .select-new {
@@ -355,7 +358,7 @@ const Contact = () => {
         .checkbox-label input {
           width: 18px;
           height: 18px;
-          accent-color: var(--primary);
+          accent-color: #DFBD69;
           cursor: pointer;
         }
 
@@ -376,7 +379,7 @@ const Contact = () => {
 
         .map-placeholder-section {
           padding: 100px 0;
-          background: linear-gradient(134deg, rgba(223, 131, 13, 0.9), rgba(110, 53, 23, 0.9), rgba(249, 195, 58, 0.9));
+          background: #1e2630 !important;
         }
         .map-mock-box {
           height: 500px;

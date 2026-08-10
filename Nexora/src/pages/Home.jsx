@@ -266,30 +266,6 @@ const Home = () => {
       {/* SECTION 7: INDUSTRIES */}
       <TargetPlacementsBySector />
 
-      {/* SECTION 8: FEATURED PROGRAMS */}
-      <FeaturedCareerPathways />
-
-      {/* SECTION 9: STATISTICS */}
-      <section className="stats-counters-section">
-        <div className="container stats-flex-grid">
-          <div className="stat-counter-box text-center">
-            <h3>5000+</h3>
-            <p>Students Placed</p>
-          </div>
-          <div className="stat-counter-box text-center">
-            <h3>250+</h3>
-            <p>Hiring Partners</p>
-          </div>
-          <div className="stat-counter-box text-center">
-            <h3>98%</h3>
-            <p>Placement Rate</p>
-          </div>
-          <div className="stat-counter-box text-center">
-            <h3>20+</h3>
-            <p>Global Countries</p>
-          </div>
-        </div>
-      </section>
 
       {/* SECTION 10: SUCCESS STORIES */}
       <OurPlacedCandidates />
@@ -335,63 +311,67 @@ const Home = () => {
           background: #ffffff !important;
         }
 
-        /* Swapped Monochromatic Black-and-White Theme Overrides for Home Page (Hero Section Untouched) */
+        /* 3-Color Alternating Theme Overrides for Home Page (Blue #2D5C9D, Black #000000, White #ffffff) */
+        
+        /* 1. Marquee Section -> Blue #3a3f46ff */
         .marquee-section {
-          background: #000000 !important;
-          border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
-          border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+          background: #1e2630ff !important;
+          border-top: 1px solid rgba(255, 255, 255, 0.15) !important;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.15) !important;
         }
         .marquee-intro {
           color: #ffffff !important;
         }
         .marquee-item {
-          color: #cccccc !important;
+          color: #e2e8f0 !important;
         }
         .marquee-item:hover {
           color: #ffffff !important;
         }
 
+        /* 2. About Intro Section -> Black #000000 */
         .about-intro-section {
-          background-color: #ffffff !important;
-          color: #000000 !important;
+          background-color: #000000 !important;
+          color: #ffffff !important;
         }
         .about-intro-left h2 {
-          color: #000000 !important;
+          color: #ffffff !important;
         }
         .about-intro-left p {
-          color: #444444 !important;
+          color: #cccccc !important;
         }
         .about-stat-item {
-          background: #ffffff !important;
-          border: 1px solid #e2e8f0 !important;
-          backdrop-filter: none !important;
-          -webkit-backdrop-filter: none !important;
+          background: rgba(255, 255, 255, 0.06) !important;
+          border: 1px solid rgba(255, 255, 255, 0.12) !important;
+          backdrop-filter: blur(16px) !important;
+          -webkit-backdrop-filter: blur(16px) !important;
         }
         .about-stat-item h3 {
-          color: #000000 !important;
+          color: #DFBD69 !important;
         }
         .about-stat-item p {
-          color: #555555 !important;
+          color: #aaaaaa !important;
         }
         .visual-media-box {
-          background: #f8fafc !important;
-          border: 1px solid #e2e8f0 !important;
-          backdrop-filter: none !important;
-          -webkit-backdrop-filter: none !important;
+          background: rgba(255, 255, 255, 0.04) !important;
+          border: 1px solid rgba(255, 255, 255, 0.12) !important;
+          backdrop-filter: blur(16px) !important;
+          -webkit-backdrop-filter: blur(16px) !important;
         }
         .overlay-radial {
-          background: radial-gradient(circle at center, transparent 30%, rgba(255,255,255,0.8) 100%) !important;
+          background: radial-gradient(circle at center, transparent 30%, rgba(0,0,0,0.8) 100%) !important;
         }
         .learn-more-btn {
-          background: #000000 !important;
-          color: #ffffff !important;
-          border: 1px solid #000000 !important;
+          background: transparent !important;
+          color: #DFBD69 !important;
+          border: 1px solid #DFBD69 !important;
         }
         .learn-more-btn:hover {
-          background: #ffffff !important;
+          background: #DFBD69 !important;
           color: #000000 !important;
         }
 
+        /* 3. Timeline Section -> Black #000000 with Full WebGL Waves Background */
         .experience-section {
           background: #000000 !important;
         }
@@ -402,23 +382,37 @@ const Home = () => {
           background: rgba(255, 255, 255, 0.15) !important;
         }
         .timeline-line-fill {
-          background: #ffffff !important;
-          box-shadow: 0 0 10px rgba(255, 255, 255, 0.5) !important;
+          background: #DFBD69 !important;
+          box-shadow: 0 0 10px rgba(223, 189, 105, 0.5) !important;
         }
         .timeline-dot {
           background: #000000 !important;
-          border-color: #ffffff !important;
-          box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.08) !important;
+          border-color: #DFBD69 !important;
+          box-shadow: 0 0 0 6px rgba(223, 189, 105, 0.1) !important;
         }
         .timeline-item:hover .timeline-dot {
-          background: #ffffff !important;
-          box-shadow: 0 0 12px rgba(255, 255, 255, 0.5) !important;
+          background: #DFBD69 !important;
+          box-shadow: 0 0 12px rgba(223, 189, 105, 0.6) !important;
         }
+
+        /* Waves container covers the full section background */
+        .timeline-waves-container {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          pointer-events: none;
+          z-index: 1;
+        }
+
+        /* Timeline Cards (All Glassmorphic on the full dark wave background) */
         .timeline-content {
           background: rgba(255, 255, 255, 0.05) !important;
           border: 1px solid rgba(255, 255, 255, 0.12) !important;
           backdrop-filter: blur(12px) !important;
           -webkit-backdrop-filter: blur(12px) !important;
+          color: #ffffff !important;
         }
         .timeline-item:hover .timeline-content {
           border-color: rgba(255, 255, 255, 0.3) !important;
@@ -436,23 +430,87 @@ const Home = () => {
         .timeline-desc {
           color: #dddddd !important;
         }
-        .section-tag {
+
+        /* Duplicate class overrides removed for simpler clean structure */
+        .timeline-item.left .timeline-content,
+        .timeline-item.right .timeline-content {
+          background: rgba(255, 255, 255, 0.05) !important;
+          border: 1px solid rgba(255, 255, 255, 0.12) !important;
+          backdrop-filter: blur(12px) !important;
+          -webkit-backdrop-filter: blur(12px) !important;
+        }
+        .timeline-item.left .timeline-period,
+        .timeline-item.right .timeline-period {
+          color: #cccccc !important;
+        }
+        .timeline-item.left .timeline-role,
+        .timeline-item.right .timeline-role {
           color: #ffffff !important;
         }
+        .timeline-item.left .timeline-company,
+        .timeline-item.right .timeline-company {
+          color: #aaaaaa !important;
+        }
+        .timeline-item.left .timeline-desc,
+        .timeline-item.right .timeline-desc {
+          color: #dddddd !important;
+        }
 
+        .section-tag {
+          color: #DFBD69 !important;
+        }
+
+        /* Responsive timeline overrides for mobile where everything is stacked and uses full waves background */
+        @media (max-width: 768px) {
+          .timeline-waves-container {
+            clip-path: none !important;
+          }
+          .experience-section {
+            background: #000000 !important;
+          }
+          .experience-title {
+            color: #ffffff !important;
+          }
+          .timeline-item.left .timeline-content,
+          .timeline-item.right .timeline-content {
+            background: rgba(255, 255, 255, 0.05) !important;
+            border: 1px solid rgba(255, 255, 255, 0.12) !important;
+            backdrop-filter: blur(12px) !important;
+            -webkit-backdrop-filter: blur(12px) !important;
+          }
+          .timeline-item.left .timeline-period,
+          .timeline-item.right .timeline-period {
+            color: #cccccc !important;
+          }
+          .timeline-item.left .timeline-role,
+          .timeline-item.right .timeline-role {
+            color: #ffffff !important;
+          }
+          .timeline-item.left .timeline-company,
+          .timeline-item.right .timeline-company {
+            color: #aaaaaa !important;
+          }
+          .timeline-item.left .timeline-desc,
+          .timeline-item.right .timeline-desc {
+            color: #dddddd !important;
+          }
+        }
+
+        /* 4. Why Choose Nexora -> Slate #1e2630ff */
         .why-choose-parent-section {
-          background: #ffffff !important;
+          background: #1e2630ff !important;
         }
         .why-choose-title {
-          color: #000000 !important;
+          color: #ffffff !important;
         }
         .why-choose-gallery__item {
-          border: 1px solid #e2e8f0 !important;
+          border: 1px solid rgba(255, 255, 255, 0.15) !important;
         }
         .why-choose-overlay h3 {
           color: #ffffff !important;
         }
 
+        /* 5. Core Services -> Black #000000 */
         .services-showcase-section {
           background: #000000 !important;
         }
@@ -476,77 +534,79 @@ const Home = () => {
           color: #cccccc !important;
         }
         .service-arrow-link {
-          color: #ffffff !important;
+          color: #DFBD69 !important;
         }
         .service-arrow-link:hover {
-          color: #aaaaaa !important;
+          color: #ffffff !important;
         }
         .glare {
           background: linear-gradient(120deg, transparent 35%, rgba(255, 255, 255, 0.15) 50%, transparent 65%) !important;
         }
 
+        /* 6. Target Placements -> Slate #1e2630 */
         .industries-showcase-section {
-          background: #ffffff !important;
+          background: #1e2630 !important;
         }
 
+        /* 7. Featured Career Pathways -> Slate #1e2630ff */
         .programs-section {
-          background: #000000 !important;
+          background: #1e2630ff !important;
         }
         .programs-section .section-title-reveal {
           color: #ffffff !important;
         }
         .program-card {
-          background: rgba(255, 255, 255, 0.05) !important;
-          border: 1px solid rgba(255, 255, 255, 0.12) !important;
+          background: rgba(255, 255, 255, 0.08) !important;
+          border: 1px solid rgba(255, 255, 255, 0.15) !important;
           backdrop-filter: blur(12px) !important;
           -webkit-backdrop-filter: blur(12px) !important;
         }
         .program-card:hover {
-          border-color: rgba(255, 255, 255, 0.3) !important;
-          box-shadow: 0 10px 30px rgba(255, 255, 255, 0.05) !important;
+          border-color: rgba(255, 255, 255, 0.35) !important;
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15) !important;
         }
         .program-card h3 {
           color: #ffffff !important;
         }
         .prog-diff {
-          color: #000000 !important;
+          color: #1e2630ff !important;
           background: #ffffff !important;
         }
         .prog-dur {
-          color: #cccccc !important;
+          color: #e2e8f0 !important;
         }
         .prog-btn {
-          background: #ffffff !important;
-          color: #000000 !important;
-          border: 1px solid #ffffff !important;
+          background: transparent !important;
+          color: #DFBD69 !important;
+          border: 1px solid #DFBD69 !important;
         }
         .prog-btn:hover {
-          background: #000000 !important;
-          color: #ffffff !important;
+          background: #DFBD69 !important;
+          color: #000000 !important;
         }
 
+        /* 8. Statistics Section -> Black #000000 */
         .stats-counters-section {
-          background: #ffffff !important;
-          color: #000000 !important;
-          border-top: 1px solid #e2e8f0 !important;
-          border-bottom: 1px solid #e2e8f0 !important;
+          background: #000000 !important;
+          color: #ffffff !important;
+          border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
         }
         .stat-counter-box h3 {
           text-shadow: none !important;
-          color: #000000 !important;
+          color: #DFBD69 !important;
         }
         .stat-counter-box p {
-          color: #444444 !important;
+          color: #cccccc !important;
         }
 
+        /* 9. Success Stories -> Dark Wave Background */
         .success-stories-section {
-          background: #000000 !important;
+          background: transparent !important;
         }
         .testimonials-carousel-box {
           background: rgba(255, 255, 255, 0.05) !important;
           border: 1px solid rgba(255, 255, 255, 0.12) !important;
-          backdrop-filter: blur(12px) !important;
-          -webkit-backdrop-filter: blur(12px) !important;
         }
         .testimonial-active-content h3 {
           color: #ffffff !important;
@@ -558,49 +618,51 @@ const Home = () => {
           color: #dddddd !important;
         }
         .carousel-nav-btn {
-          background: #ffffff !important;
+          background: #DFBD69 !important;
           color: #000000 !important;
-          border: 1px solid #ffffff !important;
+          border: 1px solid #DFBD69 !important;
         }
         .carousel-nav-btn:hover {
-          background: #000000 !important;
-          color: #ffffff !important;
+          background: transparent !important;
+          color: #DFBD69 !important;
         }
 
+        /* 10. Placement Workflow -> Slate #1e2630ff */
         .placement-process-section {
-          background: #ffffff !important;
+          background: #1e2630ff !important;
         }
         .timeline-track-bg {
-          background: rgba(0, 0, 0, 0.1) !important;
+          background: rgba(255, 255, 255, 0.15) !important;
         }
         .timeline-track-progress {
-          background: #000000 !important;
+          background: #ffffff !important;
         }
         .workflow-node h4 {
-          color: #000000 !important;
+          color: #ffffff !important;
         }
         .workflow-node p {
-          color: #555555 !important;
+          color: #e2e8f0 !important;
         }
         .node-dot {
-          background: #ffffff !important;
-          border-color: #cccccc !important;
-          color: #000000 !important;
+          background: rgba(255, 255, 255, 0.1) !important;
+          border-color: rgba(255, 255, 255, 0.25) !important;
+          color: #ffffff !important;
         }
         .workflow-node.active .node-dot {
-          background: #000000 !important;
-          color: #ffffff !important;
-          border-color: #000000 !important;
+          background: #ffffff !important;
+          color: #1e2630ff !important;
+          border-color: #ffffff !important;
         }
         .workflow-node.completed .node-dot {
-          background: #e2e8f0 !important;
-          color: #000000 !important;
-          border-color: #cbd5e1 !important;
+          background: rgba(255, 255, 255, 0.2) !important;
+          color: #ffffff !important;
+          border-color: rgba(255, 255, 255, 0.3) !important;
         }
         .node-glow-ring {
-          border-color: rgba(0, 0, 0, 0.15) !important;
+          border-color: rgba(255, 255, 255, 0.3) !important;
         }
 
+        /* 11. FAQ Section -> Black #000000 */
         .faq-section-box {
           background: #000000 !important;
         }
@@ -1391,7 +1453,7 @@ const Home = () => {
           font-size: 2.0rem !important;
           font-weight: 400 !important;
           letter-spacing: -1px;
-          color: #ffffff !important;
+          color: #DFBD69 !important;
           margin: 0;
           margin-bottom: 6px;
         }
@@ -1456,6 +1518,35 @@ const Home = () => {
           margin: 0;
           font-size: 0.8rem;
           color: rgba(255, 255, 255, 0.5) !important;
+        }
+
+        /* Hero and Final CTA Gold Overrides */
+        .btn-primary-pill {
+          background: #DFBD69 !important;
+          color: #000000 !important;
+          box-shadow: 0 8px 24px rgba(223, 189, 105, 0.3) !important;
+        }
+        .btn-primary-pill:hover {
+          background: #ffffff !important;
+          color: #000000 !important;
+        }
+        .cta-btn-main {
+          background: #DFBD69 !important;
+          color: #000000 !important;
+          border: none !important;
+        }
+        .cta-btn-main:hover {
+          background: #ffffff !important;
+          color: #000000 !important;
+        }
+        .cta-btn-outline {
+          border: 2px solid #DFBD69 !important;
+          color: #DFBD69 !important;
+          background: transparent !important;
+        }
+        .cta-btn-outline:hover {
+          background: #DFBD69 !important;
+          color: #000000 !important;
         }
       `}</style>
     </div>

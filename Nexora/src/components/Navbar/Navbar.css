@@ -1,6 +1,8 @@
 #root {
   /* background: linear-gradient(135deg, #e47200, #e69b00, #e6b400, #e6cc00); */
   background: #000000;
+  padding: 0%;
+  margin: 0%;
 }
 
 
@@ -12,6 +14,7 @@
   z-index: 1000;
   padding: 0 4%;
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  
 
   /* Core navigation colors mapped to theme */
   --nav-text: #ffffff;
@@ -29,9 +32,9 @@
   --nav-mobile-bg: rgba(0, 0, 0, 0.98);
 }
 
-/* On scroll down, push to top of window, shrink spacing */
+/* On scroll down, maintain same positioning to prevent shrink/grow jump */
 .navbar-header.scrolled {
-  top: 10px;
+  top: 24px;
 }
 
 .navbar-glass-container {
@@ -44,7 +47,7 @@
   height: 80px;
   padding: 0 40px;
   background: rgba(255, 255, 255, 0.08) !important;
-  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  border: 1px solid rgb(209, 180, 180) !important;
   backdrop-filter: blur(20px) !important;
   -webkit-backdrop-filter: blur(20px) !important;
   border-radius: 50px !important;
@@ -53,7 +56,7 @@
 }
 
 .navbar-header.scrolled .navbar-glass-container {
-  height: 68px;
+  height: 80px;
   background: rgba(255, 255, 255, 0.08) !important;
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3) !important;
 }

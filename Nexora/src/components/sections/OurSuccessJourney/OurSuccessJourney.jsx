@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import GradientWaves from "../../common/GradientWaves";
 import "./OurSuccessJourney.css";
 
 // Register ScrollTrigger plugin
@@ -91,8 +92,29 @@ const OurSuccessJourney = () => {
   }, []);
 
   return (
-    <section className="experience-section" ref={containerRef} id="experience">
-      <div className="experience-container container">
+    <section className="experience-section" ref={containerRef} id="experience" style={{ position: "relative", overflow: "hidden" }}>
+      <div className="timeline-waves-container">
+        <GradientWaves
+          horizonColor="#000000ff"
+          waveColor="#1e2630ff"
+          crestColor="#ffffffff"
+          speed={0.4}
+          amplitude={2.5}
+          waveScale={0.6}
+          waveRatio={0.9}
+          swell={35}
+          turbulence={20}
+          tilt={1.11}
+          zoom={1.0}
+          height={5.5}
+          fogDepth={15}
+          detail="medium"
+          brightness={1.0}
+          opacity={1.0}
+          mouseInteraction={true}
+        />
+      </div>
+      <div className="experience-container container" style={{ position: "relative", zIndex: 2 }}>
         <div className="experience-intro text-center">
           <span className="section-tag">SUCCESS ROADMAP</span>
           <h2 className="experience-title">YOUR SUCCESS JOURNEY</h2>

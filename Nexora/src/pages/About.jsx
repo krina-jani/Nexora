@@ -3,6 +3,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { FaGraduationCap, FaBriefcase, FaGlobe, FaTrophy, FaGlobeAmericas, FaUserTie, FaHandshake } from "react-icons/fa";
 import aboutBgImage from "../assets/images/about.png";
+import GradientWaves from "../components/common/GradientWaves";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -23,7 +24,7 @@ const About = () => {
       // Cards staggered fade-in
       gsap.from(".about-card", {
         scrollTrigger: {
-          trigger: ".about-cards-grid",
+          trigger: ".about-cards-grid-stacked",
           start: "top 80%"
         },
         y: 50,
@@ -45,28 +46,73 @@ const About = () => {
         duration: 0.8,
         ease: "power3.out"
       });
+
+      // Timeline items trigger
+      gsap.from(".timeline-card", {
+        scrollTrigger: {
+          trigger: ".timeline-flow",
+          start: "top 75%"
+        },
+        x: (index) => (index % 2 === 0 ? -60 : 60),
+        opacity: 0,
+        stagger: 0.2,
+        duration: 1,
+        ease: "power3.out"
+      });
     }, pageRef);
 
     return () => ctx.revert();
   }, []);
 
+  const timelineEvents = [
+    { year: "2022", title: "Nexora Founded", desc: "Started with a vision to connect local engineering talent with remote global startups." },
+    { year: "2023", title: "Scale to 1000+ Placements", desc: "Expanded training pathways and launched our proprietary mock-interview simulator." },
+    { year: "2024", title: "Global Relocation Channel", desc: "Partnered with EU and US staffing hubs to assist developers in relocation visas." },
+    { year: "2025", title: "AI Learning Integration", desc: "Embedded custom AI-feedback bots to review portfolio projects in real-time." }
+  ];
 
+  const team = [
+    { name: "Vikram Sen", role: "Founder & CEO", company: "Ex-Google", img: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=300&q=80" },
+    { name: "Alisha Roy", role: "Head of Placement", company: "Ex-Deloitte HR", img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=300&q=80" },
+    { name: "Kunal Gupta", role: "Lead Tech Mentor", company: "Ex-Amazon SDE", img: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=300&q=80" }
+  ];
 
   return (
-    <div ref={pageRef} className="about-page-wrapper overflow-hidden">
+    <div ref={pageRef} className="about-page-wrapper overflow-hidden" style={{ background: "#000000" }}>
       <div 
         className="about-hero-story-wrapper"
         style={{ 
-          backgroundImage: `url(${aboutBgImage})`, 
-          backgroundSize: 'cover', 
-          backgroundPosition: 'center', 
-          backgroundRepeat: 'no-repeat',
+          background: '#000000', 
           position: 'relative'
         }}
       >
         {/* Hero */}
-        <section className="about-hero-section overflow-hidden">
-          <div className="container hero-content-container">
+        <section className="about-hero-section overflow-hidden" style={{ position: "relative", zIndex: 2 }}>
+          <div style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", zIndex: 1 }}>
+            <GradientWaves
+              horizonColor="#000000ff"
+              waveColor="#2D5C9D"
+              crestColor="#ffffffff"
+              speed={0.4}
+              amplitude={2.5}
+              waveScale={0.6}
+              waveRatio={0.9}
+              swell={35}
+              turbulence={20}
+              tilt={1.11}
+              zoom={1.0}
+              height={5.5}
+              fogDepth={15}
+              detail="medium"
+              brightness={1.0}
+              opacity={1.0}
+              mouseInteraction={true}
+              parallaxStrength={0.5}
+              grain={true}
+              grainIntensity={0.05}
+            />
+          </div>
+          <div className="container hero-content-container" style={{ position: "relative", zIndex: 2 }}>
             <h1 className="about-hero-title">
               <span>Building Excellence </span> <br />
               <span className="text-gradient">Through Innovation</span>
@@ -101,22 +147,22 @@ const About = () => {
         <div className="container">
           <h2 className="text-center section-title">Key Milestones</h2>
           <div className="achievements-row">
-            <div className="ach-item">
+            <div className="ach-item glass">
               <FaGraduationCap className="ach-icon" />
               <h3>5000+</h3>
               <p>Graduates Coached</p>
             </div>
-            <div className="ach-item">
+            <div className="ach-item glass">
               <FaBriefcase className="ach-icon" />
               <h3>250+</h3>
               <p>Hiring Partners</p>
             </div>
-            <div className="ach-item">
+            <div className="ach-item glass">
               <FaGlobe className="ach-icon" />
               <h3>20+</h3>
               <p>Countries Reached</p>
             </div>
-            <div className="ach-item">
+            <div className="ach-item glass">
               <FaTrophy className="ach-icon" />
               <h3>98%</h3>
               <p>Placement Success</p>
@@ -134,7 +180,7 @@ const About = () => {
             We bridge the gap between talent and American opportunities with personalized career solutions that get results.
           </p>
           <div className="why-cards-grid">
-            <div className="why-card-item">
+            <div className="why-card-item glass">
               <div className="why-icon-wrap">
                 <FaGlobeAmericas className="why-icon-svg" />
               </div>
@@ -142,7 +188,7 @@ const About = () => {
               <p>Deep understanding of American hiring practices and cultural expectations.</p>
             </div>
             
-            <div className="why-card-item">
+            <div className="why-card-item glass">
               <div className="why-icon-wrap">
                 <FaUserTie className="why-icon-svg" />
               </div>
@@ -150,7 +196,7 @@ const About = () => {
               <p>From resume to relocation, we handle every step of your career transition.</p>
             </div>
             
-            <div className="why-card-item">
+            <div className="why-card-item glass">
               <div className="why-icon-wrap">
                 <FaHandshake className="why-icon-svg" />
               </div>
@@ -161,39 +207,78 @@ const About = () => {
         </div>
       </section>
 
+      {/* Timeline */}
+      <section className="about-timeline-section overflow-hidden">
+        <div className="container">
+          <h2 className="text-center section-title">Our Growth Timeline</h2>
+          <div className="timeline-flow">
+            {timelineEvents.map((evt, idx) => (
+              <div key={idx} className="timeline-item-row">
+                <div className="timeline-badge">{evt.year}</div>
+                <div className="timeline-card glass">
+                  <h3>{evt.title}</h3>
+                  <p>{evt.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Team */}
+      <section className="about-team-section overflow-hidden">
+        <div className="container">
+          <h2 className="text-center section-title">Meet The Experts</h2>
+          <div className="team-grid">
+            {team.map((member, idx) => (
+              <div key={idx} className="team-card glass text-center">
+                <img src={member.img} alt={member.name} className="team-avatar" />
+                <h3>{member.name}</h3>
+                <p className="team-role">{member.role}</p>
+                <p className="team-company">{member.company}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Styles inline helpers for uniqueness */}
       <style>{`
-        .about-story-section{
-        padding:60px 0px
-      }
-        .clr-black{
-          color: black!important;
+        .about-story-section {
+          padding: 60px 0px;
+          background: #000000 !important;
         }
         .about-hero-section {
-          padding: 80px 0 40px;
+          padding: 120px 0 80px;
+          background: #000000 !important;
+          min-height: 50vh;
+          display: flex;
+          align-items: center;
         }
         .about-hero-title {
-          font-size: 3.5rem;
+          font-size: 3.8rem;
           font-weight: 800;
           line-height: 1.2;
           margin-bottom: 20px;
         }
         .about-hero-title span {
           display: inline-block;
-           color: black;
+          color: #ffffff;
         }
         .hero-content-container {
           text-align: right;
+          position: relative;
+          z-index: 2;
         }
         .about-hero-sub {
-          color: #252424;
-          font-weight: 600;
-          font-size: 1.2rem;
+          color: #cccccc !important;
+          font-weight: 500;
+          font-size: 1.25rem;
           max-width: 600px;
           margin: 0 0 0 auto;
         }
         .text-gradient {
-          background: linear-gradient(134deg, #df830d, #6e3517);
+          background: linear-gradient(134deg, #df830d, #f59e0b);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
         }
@@ -207,35 +292,32 @@ const About = () => {
         .about-card {
           width: 100%;
           max-width: 650px;
-          padding: 30px;
+          padding: 35px;
           border-radius: var(--radius-lg);
-          border: 1px solid rgba(255, 255, 255, 0.25);
-          background: rgb(255 255 255) !important;
-          backdrop-filter: blur(10px);
-          -webkit-backdrop-filter: blur(10px);
-          box-shadow: var(--shadow-md);
+          border: 1px solid rgba(255, 255, 255, 0.12) !important;
+          background: rgba(255, 255, 255, 0.05) !important;
+          backdrop-filter: blur(12px) !important;
+          -webkit-backdrop-filter: blur(12px) !important;
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
         }
         .about-card h2 {
           font-size: 1.8rem;
           margin-bottom: 20px;
-          color: #0f172a !important;
+          color: #ffffff !important;
         }
         .about-card p {
-          color: #334155 !important;
+          color: #cccccc !important;
           line-height: 1.6;
         }
         .about-achievements {
-          background: var(--bg-soft);
-          padding: 80px 0;
-          // margin: 60px 0;
+          background: #1e2630ff !important;
+          padding: 100px 0;
         }
         .section-title {
-          font-size: 2.2rem;
+          font-size: 2.5rem;
           margin-bottom: 50px;
-          color: #ffffffff;
-        }
-        [data-theme='dark'] .section-title {
-          color: #f8fafc;
+          color: #ffffff !important;
+          font-weight: 700;
         }
         .achievements-row {
           display: grid;
@@ -244,18 +326,10 @@ const About = () => {
           text-align: center;
         }
         .ach-item {
-          --gh-bg: var(--white);
-          --gh-br: var(--radius-md);
-          --gh-border: var(--border);
-          --gh-angle: -30deg;
-          --gh-duration: 800ms;
-          --gh-size: 300%;
-          --gh-rgba: rgba(72, 201, 44, 0.25);
-          
-          background: var(--gh-bg);
-          border-radius: var(--gh-br);
-          border: 1px solid var(--gh-border);
-          padding: 40px 20px;
+          background: rgba(255, 255, 255, 0.05) !important;
+          border-radius: var(--radius-md);
+          border: 1px solid rgba(255, 255, 255, 0.12) !important;
+          padding: 45px 20px;
           overflow: hidden;
           position: relative;
           display: flex;
@@ -263,63 +337,55 @@ const About = () => {
           justify-content: center;
           align-items: center;
           cursor: pointer;
-          box-shadow: var(--shadow-sm);
+          backdrop-filter: blur(12px) !important;
+          -webkit-backdrop-filter: blur(12px) !important;
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
         }
         
-        [data-theme='dark'] .ach-item {
-          --gh-bg: var(--bg-soft);
-          --gh-rgba: rgba(255,255,255, 0.1);
-        }
-
         .ach-item::before {
           content: "";
           position: absolute;
           inset: 0;
           background: linear-gradient(
-              var(--gh-angle),
+              -30deg,
               transparent 60%,
-              var(--gh-rgba) 70%,
+              rgba(223, 189, 105, 0.15) 70%,
               transparent 80%,
               transparent 100%
           );
-          background-size: var(--gh-size) var(--gh-size);
+          background-size: 300% 300%;
           background-repeat: no-repeat;
           background-position: -100% -100%;
-          transition: background-position var(--gh-duration) ease;
+          transition: background-position 800ms ease;
           pointer-events: none;
           z-index: 1;
         }
-
+        
         .ach-item:hover::before {
           background-position: 100% 100%;
         }
 
         .ach-icon {
           font-size: 3rem;
-          color: var(--primary);
+          color: #DFBD69 !important;
           margin-bottom: 20px;
           position: relative;
           z-index: 2;
         }
         .ach-item h3 {
-          font-size: 2.2rem;
+          font-size: 2.4rem;
           font-weight: 700;
           margin-bottom: 8px;
           position: relative;
           z-index: 2;
-          color: #0f172a !important;
+          color: #ffffff !important;
         }
         .ach-item p {
           position: relative;
           z-index: 2;
-          color: #475569 !important;
+          color: #cccccc !important;
         }
-        [data-theme='dark'] .ach-item h3 {
-          color: #f8fafc !important;
-        }
-        [data-theme='dark'] .ach-item p {
-          color: #cbd5e1 !important;
-        }
+
         /* Why Choose Section */
         .about-why-section {
           position: relative;
@@ -335,7 +401,7 @@ const About = () => {
         .about-why-overlay {
           position: absolute;
           inset: 0;
-          background: linear-gradient(135deg, rgba(15, 18, 17, 0.93) 0%, rgba(223, 131, 13, 0.65) 100%);
+          background: linear-gradient(135deg, rgba(15, 18, 17, 0.93) 0%, rgba(223, 189, 105, 0.5) 100%);
           z-index: 2;
         }
 
@@ -368,27 +434,29 @@ const About = () => {
         }
 
         .why-card-item {
-          background: rgba(255, 255, 255, 0.08);
-          backdrop-filter: blur(12px);
-          -webkit-backdrop-filter: blur(12px);
+          background: rgba(255, 255, 255, 0.05) !important;
+          backdrop-filter: blur(12px) !important;
+          -webkit-backdrop-filter: blur(12px) !important;
           padding: 50px 30px;
           border-radius: var(--radius-lg);
-          border: 1px solid rgba(255, 255, 255, 0.15);
+          border: 1px solid rgba(255, 255, 255, 0.12) !important;
+          overflow: hidden;
           transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
           cursor: pointer;
         }
 
         .why-card-item:hover {
           transform: translateY(-8px) scale(1.03);
-          background: rgba(255, 255, 255, 0.15);
-          border-color: rgba(255, 255, 255, 0.3);
-          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+          border-color: #DFBD69 !important;
+          box-shadow: 
+            0 0 20px rgba(223, 189, 105, 0.15),
+            0 0 60px rgba(223, 189, 105, 0.08) !important;
         }
 
         .why-icon-wrap {
           width: 80px;
           height: 80px;
-          background: var(--primary);
+          background: #DFBD69 !important;
           border-radius: 50%;
           display: flex;
           align-items: center;
@@ -403,7 +471,7 @@ const About = () => {
 
         .why-icon-svg {
           font-size: 2rem;
-          color: #0f1211;
+          color: #000000 !important;
         }
 
         .why-card-item h3 {
@@ -415,17 +483,102 @@ const About = () => {
 
         .why-card-item p {
           font-size: 0.95rem;
-          color: #e2e8f0;
+          color: #cccccc;
           line-height: 1.6;
         }
 
-        .about-card {
+        .about-timeline-section {
+          padding: 100px 0;
+          background-color: #000000 !important;
+        }
+        .timeline-flow {
+          display: flex;
+          flex-direction: column;
+          gap: 30px;
+          max-width: 800px;
+          margin: 0 auto;
+        }
+        .timeline-item-row {
+          display: flex;
+          gap: 25px;
+          align-items: center;
+        }
+        .timeline-badge {
+          background: #DFBD69 !important;
+          color: #000000 !important;
+          font-weight: 700;
+          padding: 8px 18px;
+          border-radius: var(--radius-full);
+          font-size: 0.95rem;
+          box-shadow: 0 0 15px rgba(223, 189, 105, 0.3);
+        }
+        .timeline-card {
+          flex: 1;
+          padding: 28px;
+          border-radius: var(--radius-sm);
+          border: 1px solid rgba(255, 255, 255, 0.12) !important;
+          background: rgba(255, 255, 255, 0.05) !important;
+          backdrop-filter: blur(12px) !important;
+          -webkit-backdrop-filter: blur(12px) !important;
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+        .timeline-card h3 {
+          font-size: 1.35rem;
+          margin-bottom: 8px;
+          color: #ffffff !important;
+        }
+        .timeline-card p {
+          color: #cccccc !important;
+        }
+        .about-team-section {
+          padding: 100px 0;
+          background: #1e2630ff !important;
+        }
+        .team-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 40px;
+        }
+        .team-card {
+          padding: 45px 25px;
+          border-radius: var(--radius-lg);
+          border: 1px solid rgba(255, 255, 255, 0.12) !important;
+          background: rgba(255, 255, 255, 0.05) !important;
+          backdrop-filter: blur(12px) !important;
+          -webkit-backdrop-filter: blur(12px) !important;
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+        .team-card h3 {
+          color: #ffffff !important;
+          font-size: 1.4rem;
+        }
+        .team-avatar {
+          width: 120px;
+          height: 120px;
+          border-radius: 50%;
+          object-fit: cover;
+          margin: 0 auto 20px;
+          border: 3px solid #DFBD69 !important;
+        }
+        .team-role {
+          font-weight: 600;
+          color: #DFBD69 !important;
+          margin-top: 8px;
+        }
+        .team-company {
+          font-size: 0.9rem;
+          color: #cccccc !important;
+          margin-top: 4px;
+        }
+
+        .about-card, .timeline-card, .team-card {
           position: relative;
           overflow: hidden;
+          transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
           cursor: pointer;
         }
 
-        .about-card::after {
+        .about-card::after, .timeline-card::after, .team-card::after {
           content: '';
           position: absolute;
           top: -150%;
@@ -435,7 +588,7 @@ const About = () => {
           background: linear-gradient(
             120deg,
             transparent 35%,
-            rgba(72, 201, 44, 0.15) 50%,
+            rgba(255, 255, 255, 0.1) 50%,
             transparent 65%
           );
           transform: rotate(25deg);
@@ -444,16 +597,16 @@ const About = () => {
           z-index: 1;
         }
 
-        .about-card:hover::after {
+        .about-card:hover::after, .timeline-card:hover::after, .team-card:hover::after {
           left: 100%;
           top: 100%;
         }
 
-        .about-card:hover {
-          border-color: var(--primary) !important;
+        .about-card:hover, .timeline-card:hover, .team-card:hover {
+          border-color: #DFBD69 !important;
           box-shadow:
-            0 0 20px rgba(72, 201, 44, 0.08),
-            0 0 60px rgba(72, 201, 44, 0.05) !important;
+            0 0 20px rgba(223, 189, 105, 0.15),
+            0 0 60px rgba(223, 189, 105, 0.08) !important;
           transform: translateY(-8px);
         }
 
@@ -461,6 +614,9 @@ const About = () => {
           .achievements-row {
             grid-template-columns: 1fr 1fr;
             row-gap: 40px;
+          }
+          .team-grid {
+            grid-template-columns: 1fr 1fr;
           }
           .about-hero-title {
             font-size: 2.8rem;
@@ -487,18 +643,22 @@ const About = () => {
           .about-card h2 {
             font-size: 1.5rem;
           }
-          .achievements-row {
+          .achievements-row, .team-grid {
             grid-template-columns: 1fr;
           }
           .about-hero-title {
             font-size: 2.2rem;
           }
-          .about-hero-section {
-            padding: 60px 0 40px;
+          .timeline-item-row {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 12px;
           }
-          .about-achievements {
+          .about-hero-section {
+            padding: 80px 0 40px;
+          }
+          .about-achievements, .about-timeline-section, .about-team-section {
             padding: 60px 0;
-            background-color: #F9C33A;
           }
           .about-why-section {
             padding: 80px 0;

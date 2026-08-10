@@ -289,7 +289,7 @@ const Industries = () => {
                     </ul>
                   </div>
                   <div className="ind-skills">
-                    <h4>Skills</h4>
+                    {/* <h4>Skills</h4> */}
                     <div className="skill-tags">
                       {ind.skills?.map((skill, i) => (
                         <span key={i} className="skill-tag">{skill}</span>

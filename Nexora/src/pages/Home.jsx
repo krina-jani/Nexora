@@ -15,7 +15,6 @@ import {
   WhyChooseNexora,
   OurCoreServices,
   TargetPlacementsBySector,
-  FeaturedCareerPathways,
   OurPlacedCandidates,
   PlacementWorkflow,
   FAQ
@@ -174,7 +173,7 @@ const Home = () => {
               & Placements
             </h1>
             <p className="hero-subtext">
-              Connect with top global companies, build high-converting ATS portfolios, and refine your technical interview loops.
+              From resume writing to recruitment process outsourcing, Nexora Career builds the bridge between your skills and the world's top hiring teams.
             </p>
             <div className="hero-cta-group">
               <Link to="/contact" className="btn-primary-pill">
@@ -196,7 +195,7 @@ const Home = () => {
                 <span className="testimonial-company-name">Google</span>
               </div>
               <p className="testimonial-quote">
-                "With Nexora we went from sending cold resumes to landing direct loops at Google, Amazon, and Microsoft."
+                "Nexora Career's vetted talent pipeline made hiring faster and more reliable for our team."
               </p>
               <div className="testimonial-user">
                 <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=80&auto=format&fit=crop&q=80" alt="Sarah Jenkins" className="testimonial-avatar" />
@@ -257,7 +256,7 @@ const Home = () => {
       {/* SECTION 4: OUR SUCCESS JOURNEY */}
       <OurSuccessJourney />
 
-      {/* SECTION 5: WHY CHOOSE NEXORA */}
+      {/* SECTION 5: Why Nexora Career Leads in RPO & Career Coaching*/}
       <WhyChooseNexora />
 
       {/* SECTION 6: SERVICES */}
@@ -265,7 +264,6 @@ const Home = () => {
 
       {/* SECTION 7: INDUSTRIES */}
       <TargetPlacementsBySector />
-
 
       {/* SECTION 10: SUCCESS STORIES */}
       <OurPlacedCandidates />
@@ -585,22 +583,6 @@ const Home = () => {
           color: #000000 !important;
         }
 
-        /* 8. Statistics Section -> Black #000000 */
-        .stats-counters-section {
-          background: #000000 !important;
-          color: #ffffff !important;
-          border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
-          border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
-        }
-        .stat-counter-box h3 {
-          text-shadow: none !important;
-          color: #DFBD69 !important;
-        }
-        .stat-counter-box p {
-          color: #cccccc !important;
-        }
-
-        /* 9. Success Stories -> Dark Wave Background */
         .success-stories-section {
           background: transparent !important;
         }
@@ -1187,30 +1169,6 @@ const Home = () => {
           position: absolute;
           inset: 0;
           background: radial-gradient(circle at center, transparent 30%, rgba(255,255,255,0.8) 100%);
-        }
-
-        /* Stats Counters */
-        .stats-counters-section {
-          padding: 80px 0;
-          background: var(--primary);
-          color: var(--white);
-        }
-        .stats-flex-grid {
-          display: flex;
-          justify-content: space-around;
-          flex-wrap: wrap;
-          gap: 40px;
-        }
-        .stat-counter-box h3 {
-          font-size: 3rem;
-          font-weight: 800;
-          margin-bottom: 8px;
-          text-shadow: 0 0 15px rgba(255,255,255,0.3);
-        }
-        .stat-counter-box p {
-          margin: 0;
-          font-size: 1.1rem;
-          opacity: 0.9;
         }
 
         /* CTA Mask Effect */

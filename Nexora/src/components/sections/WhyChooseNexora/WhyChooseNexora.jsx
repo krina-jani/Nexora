@@ -100,7 +100,7 @@ const WhyChooseNexora = () => {
 
   return (
     <section className="why-choose-parent-section" ref={containerRef}>
-      <h2 className="why-choose-title text-center">Why Choose Nexora</h2>
+      <h2 className="why-choose-title text-center">Why Nexora Career Leads in RPO & Career Coaching</h2>
       <div className="why-choose-gallery-wrap">
         <div className="why-choose-gallery gallery--bento" ref={galleryRef}>
           {features.map((feat, index) => (

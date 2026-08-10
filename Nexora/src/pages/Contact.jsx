@@ -3,7 +3,6 @@ import gsap from "gsap";
 import Accordion from "../components/common/Accordion";
 import faq from "../data/faq";
 import { FaPaperPlane } from "react-icons/fa";
-import contactBg from "../assets/images/contact-backg.png";
 
 const Contact = () => {
   const pageRef = useRef(null);
@@ -47,13 +46,14 @@ const Contact = () => {
       <div 
         className="contact-hero-form-wrapper"
         style={{ 
-          backgroundImage: `url(${contactBg})`, 
+          backgroundImage: `url('https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=1920&auto=format&fit=crop')`, 
           backgroundSize: 'cover', 
           backgroundPosition: 'center', 
           backgroundRepeat: 'no-repeat',
           position: 'relative'
         }}
       >
+        <div className="contact-hero-overlay"></div>
         <div className="container contact-grid-layout">
           {/* Left Column (Empty to keep background image visible) */}
           <div className="contact-left-spacer"></div>
@@ -202,21 +202,28 @@ const Contact = () => {
 
       {/* Styles */}
       <style>{`
-        .mar{
+        .mar {
           margin-left: 117px;
         }
-        .contact-hero {
-          padding: 80px 0 40px;
+        .contact-hero-form-wrapper {
+          position: relative;
+          width: 100%;
+          min-height: 100vh;
+        }
+        .contact-hero-overlay {
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(135deg, rgba(15, 18, 17, 0.85) 0%, rgba(110, 53, 23, 0.65) 100%);
+          z-index: 1;
         }
         .contact-hero-title {
           font-size: 3.5rem;
           font-weight: 800;
           line-height: 1.2;
-          color: #0f172a !important;
-          
+          color: #ffffff !important;
         }
         .text-gradient {
-          background: linear-gradient(134deg, #df830d, #6e3517);
+          background: linear-gradient(134deg, #df830d, #F9C33A);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
         }
@@ -226,6 +233,8 @@ const Contact = () => {
           gap: 60px;
           padding: 80px 0 100px;
           align-items: flex-start;
+          position: relative;
+          z-index: 2;
         }
         .contact-right-content {
           display: flex;
@@ -239,21 +248,21 @@ const Contact = () => {
           font-size: 2.5rem;
           font-weight: 800;
           margin-bottom: 10px;
-          color: #0f172a !important;
+          color: #ffffff !important;
         }
         .contact-header-new p {
-          color: #334155 !important;
+          color: #e2e8f0 !important;
           font-size: 1.1rem;
         }
 
         .new-contact-form-container {
           padding: 50px;
           border-radius: var(--radius-xl);
-          border: 1px solid rgba(255, 255, 255, 0.25) !important;
-          background: rgba(255, 255, 255, 0.85) !important;
-          backdrop-filter: blur(10px);
-          -webkit-backdrop-filter: blur(10px);
-          box-shadow: var(--shadow-lg);
+          border: 1px solid rgba(255, 255, 255, 0.2) !important;
+          background: rgba(255, 255, 255, 0.08) !important;
+          backdrop-filter: blur(16px);
+          -webkit-backdrop-filter: blur(16px);
+          box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
           margin-left: 91px;
           margin-right: -105px;
         }
@@ -269,7 +278,7 @@ const Contact = () => {
           grid-template-columns: 1fr 1fr;
           gap: 24px;
         }
-        .mar-b{
+        .mar-b {
           margin-bottom: 22px;
         }
         .form-row-1col {
@@ -286,7 +295,7 @@ const Contact = () => {
         .form-group-new label {
           font-size: 0.95rem;
           font-weight: 600;
-          color: #0f172a !important;
+          color: #ffffff !important;
         }
 
         .req-star {
@@ -298,39 +307,36 @@ const Contact = () => {
           width: 100%;
           padding: 14px 16px;
           border-radius: var(--radius-sm);
-          border: 1px solid rgba(0, 0, 0, 0.15) !important;
-          background: rgba(255, 255, 255, 0.9) !important;
-          color: #0f172a !important;
+          border: 1px solid rgba(255, 255, 255, 0.2) !important;
+          background: rgba(255, 255, 255, 0.06) !important;
+          color: #ffffff !important;
           font-family: inherit;
           font-size: 1rem;
           transition: all 0.3s ease;
         }
         
-        [data-theme="dark"] .glass-input-new {
-          background: rgba(0, 0, 0, 0.2);
+        .glass-input-new::placeholder {
+          color: rgba(255, 255, 255, 0.45);
         }
 
         .glass-input-new:focus {
           outline: none;
-          border-color: var(--primary);
-          background: rgba(255, 255, 255, 0.8);
-          box-shadow: 0 0 0 4px rgba(72, 201, 44, 0.1);
-        }
-        
-        [data-theme="dark"] .glass-input-new:focus {
-          background: rgba(0, 0, 0, 0.4);
+          border-color: var(--primary) !important;
+          background: rgba(255, 255, 255, 0.15) !important;
+          box-shadow: 0 0 0 4px rgba(223, 131, 13, 0.2);
         }
         
         .select-new {
           appearance: none;
-          background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23333%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+          background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23fff%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
           background-repeat: no-repeat;
           background-position: right 16px center;
           background-size: 10px auto;
         }
-        
-        [data-theme="dark"] .select-new {
-          background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23fff%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+
+        .select-new option {
+          background: #181a19;
+          color: #ffffff;
         }
 
         .checkbox-row {
@@ -343,7 +349,7 @@ const Contact = () => {
           gap: 12px;
           cursor: pointer;
           font-size: 0.95rem;
-          color: #334155 !important;
+          color: #e2e8f0 !important;
         }
 
         .checkbox-label input {
@@ -392,25 +398,6 @@ const Contact = () => {
         }
         .contact-faq-section {
           padding: 100px 0;
-        }
-        /* Dark mode overrides */
-        [data-theme='dark'] .new-contact-form-container {
-          background: rgba(15, 23, 42, 0.85) !important;
-          border: 1px solid rgba(255, 255, 255, 0.1) !important;
-        }
-        [data-theme='dark'] .contact-hero-title,
-        [data-theme='dark'] .contact-header-new h2,
-        [data-theme='dark'] .form-group-new label {
-          color: #f8fafc !important;
-        }
-        [data-theme='dark'] .contact-header-new p,
-        [data-theme='dark'] .checkbox-label {
-          color: #cbd5e1 !important;
-        }
-        [data-theme='dark'] .glass-input-new {
-          background: rgba(0, 0, 0, 0.3) !important;
-          color: #f8fafc !important;
-          border: 1px solid rgba(255, 255, 255, 0.1) !important;
         }
 
         @media (max-width: 991px) {

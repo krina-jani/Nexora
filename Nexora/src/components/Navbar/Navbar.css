@@ -471,3 +471,77 @@
     font-size: 1rem;
   }
 }
+
+/* Live Cam status badge in navbar */
+.navbar-cam-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 6px 14px;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+}
+
+.navbar-cam-status:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.navbar-cam-img {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1.5px solid var(--primary);
+}
+
+.navbar-cam-pulse {
+  width: 6px;
+  height: 6px;
+  background-color: #10b981;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  box-shadow: 0 0 8px #10b981;
+  animation: navbarCamPulseAnim 1.8s infinite;
+}
+
+.navbar-cam-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+@keyframes navbarCamPulseAnim {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 6px rgba(16, 185, 129, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+  }
+}
+
+@media (max-width: 991px) {
+  .navbar-cam-status {
+    padding: 6px 10px;
+  }
+  .navbar-cam-label {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .navbar-cam-status {
+    display: none;
+  }
+}

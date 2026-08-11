@@ -9,6 +9,7 @@ import empowermentImg from "../assets/images/empowerment.png";
 // Common Components
 import Marquee from "../components/common/Marquee";
 import GradientWaves from "../components/common/GradientWaves";
+import ScrollExpand from "../components/common/ScrollExpand/ScrollExpand";
 
 // Sections
 import {
@@ -68,17 +69,18 @@ const Typewriter = ({ texts, typingSpeed = 75, deletingSpeed = 50, pauseDuration
 
 const Home = () => {
   const homeRef = useRef(null);
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [isMobile, setIsMobile] = useState(false);
+  const [isTablet, setIsTablet] = useState(false);
 
   useEffect(() => {
-    const handleMouseMove = (e) => {
-      const x = (e.clientX - window.innerWidth / 2) / 30;
-      const y = (e.clientY - window.innerHeight / 2) / 30;
-      setMousePos({ x, y });
+    const handleResize = () => {
+      const w = window.innerWidth;
+      setIsMobile(w <= 480);
+      setIsTablet(w > 480 && w <= 991);
     };
-
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   useEffect(() => {
@@ -127,45 +129,37 @@ const Home = () => {
     "Google", "Amazon", "Infosys", "TCS", "IBM", "Deloitte", "Microsoft", "Accenture", "Oracle", "Adobe"
   ];
 
+  const startWidth = isMobile ? 85 : (isTablet ? 60 : 30);
+  const startHeight = isMobile ? 65 : (isTablet ? 50 : 30);
+  const mediaZoom = isMobile ? 1.4 : (isTablet ? 2.0 : 4.20);
+
   return (
     <div ref={homeRef} className="home-container">
       {/* SECTION 1: HERO */}
-      <section className="hero-section" >
-        <div style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", zIndex: 1 }}>
-          <GradientWaves
-            horizonColor="#000000ff"
-            waveColor="#2D5C9D"
-            crestColor="#ffffffff"
-            speed={0.4}
-
-            amplitude={2.5}
-            waveScale={0.6}
-            waveRatio={0.9}
-            swell={35}
-            turbulence={20}
-            tilt={1.11}
-            zoom={1.0}
-            height={5.5}
-            fogDepth={15}
-            detail="medium"
-            brightness={1.0}
-            opacity={1.0}
-            mouseInteraction={true}
-            parallaxStrength={0.5}
-            grain={true}
-            grainIntensity={0.05}
-          />
-        </div>
-        <div className="hero-bg-glow"></div>
-        <div className="container hero-grid">
-          {/* Left Column */}
-          <div className="hero-left">
+      <div className="home-scroll-expand-hero">
+        <ScrollExpand
+          mediaType="gradient"
+          src="linear-gradient(135deg, #10151d 0%, #1e2630 50%, #6e3517 100%)"
+          title="Nexora Career acceleration"
+          useWindowScroll
+          reverse
+          startWidth={startWidth}
+          startHeight={startHeight}
+          startRadius={8}
+          endRadius={0}
+          mediaZoom={mediaZoom}
+          scrollDistance={1.65}
+          holdDistance={0.25}
+          overlayScrim={0.85}
+        >
+          {/* Overlay content – fades in when fully expanded */}
+          <div className="se-overlay-content">
             <span className="hero-badge">GLOBAL PLACEMENT ENGINE</span>
-            <h1 className="hero-title">
+            <h1 className="hero-title text-center">
               Let's Build Your <span className="text-gradient">Career with</span> <br />
               Nexora Career
             </h1>
-            <p className="hero-subtext">
+            <p className="hero-subtext text-center">
               From resume writing to recruitment process outsourcing, Nexora Career builds the bridge between your skills and the world's top hiring teams.
             </p>
             <div className="hero-cta-group">
@@ -174,15 +168,10 @@ const Home = () => {
               </Link>
             </div>
           </div>
+        </ScrollExpand>
+      </div>
 
-        </div>
 
-        {/* Scroll Indicator */}
-        {/* <div className="hero-scroll-indicator-new">
-          <span>SCROLL</span>
-          <div className="scroll-line"></div>
-        </div> */}
-      </section>
 
       {/* SECTION 2: TRUSTED BY MARQUEE */}
       <section className="marquee-section text-center">
@@ -594,7 +583,7 @@ const Home = () => {
 
         /* 10. Placement Workflow -> Slate #1e2630ff */
         .placement-process-section {
-          background: #1e2630ff !important;
+          // background: #1e2630ff !important;
         }
         .timeline-track-bg {
           background: rgba(255, 255, 255, 0.15) !important;
@@ -825,25 +814,22 @@ const Home = () => {
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
-        .hero-section {
-          min-height: 100vh;
+        .home-scroll-expand-hero {
+          width: 100%;
+          height: 100vh;
+          position: relative;
+        }
+
+        .se-overlay-content {
           display: flex;
           flex-direction: column;
-          justify-content: center;
-          position: relative;
-          padding: 80px 0;
-          background: #000000;
-          
-          overflow: hidden;
-        }
-        .hero-bg-glow {
-          position: absolute;
-          width: 500px;
-          height: 500px;
-          background: radial-gradient(circle, rgba(72, 201, 44, 0.05) 0%, transparent 70%);
-          top: 10%;
-          left: -10%;
-          pointer-events: none;
+          align-items: center;
+          gap: 18px;
+          max-width: 800px;
+          margin: 0 auto;
+          padding: 120px 24px 0;
+          color: #fff;
+          z-index: 10;
         }
         .hero-grid {
           display: flex;
@@ -1248,14 +1234,12 @@ const Home = () => {
 
         /* Responsive Breakpoints */
         @media (max-width: 1024px) {
-          .hero-section {
-            min-height: auto;
-            padding: 140px 0 80px;
+          .home-scroll-expand-hero {
+            height: 100vh;
           }
-          .hero-grid {
-            grid-template-columns: 1fr;
-            text-align: center;
-            gap: 40px;
+          .se-overlay-content {
+            padding: 80px 20px 0;
+            gap: 15px;
           }
           .hero-title {
             font-size: 3.5rem;
@@ -1301,6 +1285,10 @@ const Home = () => {
         }
 
         @media (max-width: 768px) {
+          .se-overlay-content {
+            padding: 60px 16px 0;
+            gap: 12px;
+          }
           .hero-title {
             font-size: 2.8rem;
           }

@@ -3,14 +3,9 @@ import { FaUserPlus, FaChartLine, FaBookOpen, FaFileAlt, FaCalendarAlt, FaBriefc
 import "./PlacementWorkflow.css";
 
 const PlacementWorkflow = () => {
-  const [activeStep, setActiveStep] = useState(0);
+  const [activeStep, setActiveStep] = useState(null);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveStep((prev) => (prev + 1) % 6);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
+
 
   const steps = [
     {
@@ -65,7 +60,8 @@ const PlacementWorkflow = () => {
             className="timeline-track-progress"
             style={{
               "--progress-width": `${(activeStep / 5) * 100}%`,
-              "--progress-height": `${(activeStep / 5) * 100}%`
+              "--progress-height": `${(activeStep / 5) * 100}%`,
+              "--active-step-val": activeStep ?? 0
             }}
           ></div>
 
@@ -82,7 +78,6 @@ const PlacementWorkflow = () => {
                   onClick={() => setActiveStep(index)}
                 >
                   <div className="node-dot-wrap">
-                    {isActive && <div className="node-glow-ring"></div>}
                     <div className="node-dot">
                       {step.icon}
                     </div>

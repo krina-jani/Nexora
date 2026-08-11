@@ -9,7 +9,8 @@ gsap.registerPlugin(ScrollTrigger);
 
 const FinalCTA = () => {
   const sectionRef = useRef(null);
-  const bgTextRef = useRef(null);
+  const bgLine1Ref = useRef(null);
+  const bgLine2Ref = useRef(null);
   const ctaBoxRef = useRef(null);
   const ctaContentRef = useRef(null);
   const glowRef = useRef(null);
@@ -17,32 +18,38 @@ const FinalCTA = () => {
   useGSAP(
     () => {
       const section = sectionRef.current;
-      const bgText = bgTextRef.current;
+      const bgLine1 = bgLine1Ref.current;
+      const bgLine2 = bgLine2Ref.current;
       const ctaBox = ctaBoxRef.current;
       const ctaContent = ctaContentRef.current;
       const glow = glowRef.current;
 
-      if (!section || !bgText || !ctaBox || !ctaContent) return;
+      if (!section || !bgLine1 || !bgLine2 || !ctaBox || !ctaContent) return;
 
-      // Calculate dynamic horizontal translation distance for kinetic typography
-      const calculateScrollX = () => {
-        const textWidth = bgText.scrollWidth;
+      const getScrollX1 = () => {
+        const textWidth = bgLine1.scrollWidth;
         const viewportWidth = window.innerWidth;
         return -(textWidth - viewportWidth + viewportWidth * 0.15);
       };
 
-      // 1. Explicitly set initial hidden states BEFORE ScrollTrigger initializes
-      // to prevent pre-render flash or duplicate rendering appearance
+      const getScrollX2 = () => {
+        const textWidth = bgLine2.scrollWidth;
+        const viewportWidth = window.innerWidth;
+        return (textWidth - viewportWidth + viewportWidth * 0.15);
+      };
+
+      // Explicitly set initial states before ScrollTrigger initializes
       gsap.set(ctaBox, { scale: 0.88, opacity: 0, y: 60 });
       gsap.set(ctaContent, { opacity: 0, y: 80, scale: 0.92 });
-      gsap.set(bgText, { x: window.innerWidth });
+      gsap.set(bgLine1, { x: window.innerWidth, y: 0 });
+      gsap.set(bgLine2, { x: -window.innerWidth, y: 0 });
 
-      // 2. Create ONE master timeline with single ScrollTrigger pinning instance
+      // Master ScrollTrigger timeline
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: section,
           start: "top top",
-          end: () => `+=${Math.max(window.innerHeight * 2, bgText.scrollWidth - window.innerWidth + 300)}`,
+          end: () => `+=${Math.max(window.innerHeight * 2.2, bgLine1.scrollWidth + 400)}`,
           scrub: 1,
           pin: true,
           anticipatePin: 1,
@@ -50,31 +57,71 @@ const FinalCTA = () => {
         },
       });
 
-      // Oversized Kinetic Typography horizontal movement (Right -> Left)
+      // 1. Line 1: Right -> Left + Zig-Zag Wave Y & Rotation
       tl.to(
-        bgText,
+        bgLine1,
         {
-          x: calculateScrollX,
+          x: getScrollX1,
           ease: "none",
         },
         0
       );
+      tl.to(
+        bgLine1,
+        {
+          keyframes: [
+            { y: -75, rotation: -5, duration: 1 },
+            { y: 65, rotation: 4, duration: 1 },
+            { y: -80, rotation: -4, duration: 1 },
+            { y: 60, rotation: 3, duration: 1 },
+            { y: -45, rotation: -2, duration: 1 },
+            { y: 0, rotation: 0, duration: 1 }
+          ],
+          ease: "sine.inOut"
+        },
+        0
+      );
 
-      // Background Glow movement
+      // 2. Line 2: Left -> Right + Inverted Zig-Zag Wave Y & Rotation
+      tl.to(
+        bgLine2,
+        {
+          x: getScrollX2,
+          ease: "none",
+        },
+        0
+      );
+      tl.to(
+        bgLine2,
+        {
+          keyframes: [
+            { y: 75, rotation: 5, duration: 1 },
+            { y: -65, rotation: -4, duration: 1 },
+            { y: 80, rotation: 4, duration: 1 },
+            { y: -60, rotation: -3, duration: 1 },
+            { y: 45, rotation: 2, duration: 1 },
+            { y: 0, rotation: 0, duration: 1 }
+          ],
+          ease: "sine.inOut"
+        },
+        0
+      );
+
+      // 3. Radial Glow movement
       if (glow) {
         tl.to(
           glow,
           {
-            scale: 1.35,
+            scale: 1.4,
             opacity: 0.85,
-            x: "20%",
+            x: "25%",
             ease: "power1.inOut",
           },
           0
         );
       }
 
-      // CTA Box card entrance
+      // 4. CTA Box card entrance
       tl.to(
         ctaBox,
         {
@@ -87,7 +134,7 @@ const FinalCTA = () => {
         0.1
       );
 
-      // CTA Content inner reveal
+      // 5. CTA Content inner reveal
       tl.to(
         ctaContent,
         {
@@ -100,13 +147,13 @@ const FinalCTA = () => {
         0.25
       );
 
-      // Subtle mouse movement / parallax on background text
+      // Subtle mouse parallax
       const handleMouseMove = (e) => {
-        if (!bgText) return;
+        if (!bgLine1 || !bgLine2) return;
         const { clientY } = e;
-        const moveY = (clientY / window.innerHeight - 0.5) * -12;
-        gsap.to(bgText, {
-          y: moveY,
+        const moveY = (clientY / window.innerHeight - 0.5) * -14;
+        gsap.to([bgLine1, bgLine2], {
+          y: (i) => (i === 0 ? moveY : -moveY),
           duration: 1.2,
           ease: "power2.out",
           overwrite: "auto",
@@ -126,10 +173,13 @@ const FinalCTA = () => {
       {/* Background Radial Glow */}
       <div ref={glowRef} className="kinetic-cta-glow"></div>
 
-      {/* Oversized Kinetic Background Typography */}
+      {/* Oversized Kinetic Background Typography (Dual Zig-Zag Lines) */}
       <div className="kinetic-bg-typography-wrapper">
-        <div ref={bgTextRef} className="kinetic-bg-typography">
-          SO, ARE YOU READY TO STAND OUT?
+        <div ref={bgLine1Ref} className="kinetic-bg-typography line-top">
+          SO, ARE YOU READY
+        </div>
+        <div ref={bgLine2Ref} className="kinetic-bg-typography line-bottom">
+          TO STAND OUT?
         </div>
       </div>
 

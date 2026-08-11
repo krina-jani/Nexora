@@ -1,4 +1,5 @@
 import { Outlet, useLocation } from "react-router-dom";
+import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Loader from "../common/Loader/Loader";
 import Navbar from "../Navbar/Navbar";
@@ -7,6 +8,8 @@ import Background from "../Background/Background";
 import CustomCursor from "../common/CustomCursor";
 import { useState, useEffect, useRef } from "react";
 import Lenis from "lenis";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Layout = () => {
   const [loading, setLoading] = useState(true);
@@ -22,7 +25,7 @@ const Layout = () => {
     }
     const timer1 = setTimeout(() => ScrollTrigger.refresh(), 100);
     const timer2 = setTimeout(() => ScrollTrigger.refresh(), 500);
-    
+
     return () => {
       clearTimeout(timer1);
       clearTimeout(timer2);
@@ -42,18 +45,22 @@ const Layout = () => {
     });
     lenisRef.current = lenis;
 
+    // Synchronize Lenis scroll events with GSAP ScrollTrigger
+    lenis.on("scroll", ScrollTrigger.update);
+
+    const updateTicker = (time) => {
+      lenis.raf(time * 1000);
+    };
+
+    gsap.ticker.add(updateTicker);
+    gsap.ticker.lagSmoothing(0);
+
     if (loading) {
       lenis.stop();
     }
 
-    function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-
-    requestAnimationFrame(raf);
-
     return () => {
+      gsap.ticker.remove(updateTicker);
       lenis.destroy();
       lenisRef.current = null;
     };
@@ -75,7 +82,7 @@ const Layout = () => {
   return (
     <>
       <CustomCursor />
-      
+
       {loading && (
         <Loader onComplete={() => setLoading(false)} />
       )}

@@ -72,7 +72,7 @@ const Contact = () => {
               <span className="text-gradient">Our Career Advisors</span>
             </h1>
             <p className="contact-hero-desc" style={{ marginTop: "30px", color: "#e2e8f0", fontSize: "1.15rem", lineHeight: "1.7", maxWidth: "480px" }}>
-              Whether you require Recruitment Process Outsourcing, Career Support Services, Career Growth Packages , Custom Services team provides dependable solutions tailored to your specific business needs.
+              Whether you need guidance on US resume standards, help with interview preparation, profile optimization, or strategic career consultation, our advisors are here to help.
             </p>
           </div>
 
@@ -180,7 +180,7 @@ const Contact = () => {
                         rows="5"
                         value={formData.message}
                         onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                        placeholder="Tell us about your recruitment needs or career goals..."
+                        placeholder="Tell us about your career goals and target roles..."
                         className="glass-input-new"
                       />
                     </div>

@@ -60,7 +60,7 @@ const Footer = () => {
             </NavLink>
             
             <p className="footer-desc-text">
-              Connecting talent with American opportunities through comprehensive career services.
+              Connecting talent with US career opportunities through professional career support services.
             </p>
             
             <div className="social-links-container">
@@ -149,7 +149,7 @@ const Footer = () => {
               <li>
                 <NavLink to="/services#rpo" className="link-item group">
                   <span className="bullet-dot group-hover:opacity-100 group-hover:translate-x-0"></span>
-                  <span className="link-text-label group-hover:translate-x-2">Recruitment Process Outsourcing</span>
+                  <span className="link-text-label group-hover:translate-x-2">Profile & Resume Optimization</span>
                 </NavLink>
               </li>
               <li>

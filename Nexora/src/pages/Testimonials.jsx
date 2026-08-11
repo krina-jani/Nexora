@@ -108,38 +108,38 @@ const Testimonials = () => {
   }, []);
 
   const stats = [
-    { label: "Avg. Salary Hike", val: "68%" },
-    { label: "Highest Package", val: "64 LPA" },
-    { label: "Placement Rate", val: "98.2%" },
-    { label: "Mentors from FAANG", val: "140+" }
+    { label: "US Market Focus", val: "Targeted" },
+    { label: "ATS-Ready Profiles", val: "Optimized" },
+    { label: "Mock Interview Prep", val: "Rigorous" },
+    { label: "Career Consultation", val: "1-on-1" }
   ];
 
   const honestFeedbackData = [
     {
       type: "praise",
-      client: "Sarah J., Frontend Dev",
+      client: "Software Engineer",
       image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&q=80",
-      content: "Nexora's mentorship completely changed my approach. The mock interviews were rigorous and prepared me perfectly for my role at Amazon."
+      content: "Nexora's guidance completely changed my approach. The mock interviews were rigorous and prepared me well for speaking with US recruiters."
     },
     {
       type: "constructive",
-      client: "Michael T., Data Analyst",
+      client: "Data Analyst",
       image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80",
-      content: "Initially, I felt the pace of the curriculum was too fast and overwhelming.",
-      resolution: "I brought this up with my mentor, and they immediately adjusted my timeline, adding 1-on-1 sessions to help me catch up. The support was incredible!"
+      content: "Initially, I felt the timeline for resume preparation was tight and challenging.",
+      resolution: "I brought this up with my consultant, and they adjusted our milestones, giving me more time to review my project descriptions and technical terms."
     },
     {
       type: "praise",
-      client: "Elena R., UX Designer",
+      client: "UX Designer",
       image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80",
-      content: "The portfolio reviews were brutal but necessary. Thanks to the honest feedback, my case studies now attract recruiters automatically."
+      content: "The portfolio reviews were detailed and honest. Thanks to the feedback, I was able to structure my design case studies to highlight my actual process."
     },
     {
       type: "constructive",
-      client: "David K., Backend Engineer",
+      client: "Backend Engineer",
       image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80",
-      content: "There was a delay in getting my resume reviewed during the holiday season, which frustrated me.",
-      resolution: "Nexora's team apologized and assigned a senior FAANG engineer to do a deep-dive review over the weekend to make up for the lost time. Got an offer 3 weeks later!"
+      content: "There was a delay in getting my second resume draft reviewed during a busy period.",
+      resolution: "The support team apologized and scheduled an extra session with a senior advisor to do a deep-dive walkthrough of my resume and LinkedIn layout."
     }
   ];
 
@@ -149,11 +149,11 @@ const Testimonials = () => {
       <section className="testimonials-hero text-center">
         <div className="container">
           <h1 className="test-hero-title">
-            Student Success <br />
-            <span className="text-gradient">Stories & Reviews</span>
+            Candidate Preparation <br />
+            <span className="text-gradient">Experiences & Feedback</span>
           </h1>
           <p className="test-hero-sub text-light">
-            Real stories from real graduates who switched domains, negotiated higher salaries, and secured roles in world-class companies.
+            Feedback from qualified professionals who prepared their profiles and navigated the US hiring process with our support.
           </p>
         </div>
       </section>
@@ -187,7 +187,7 @@ const Testimonials = () => {
                 </div>
                 <p className="candidate-feedback">"{test.text}"</p>
                 <div className="candidate-placement-footer">
-                  <span className="placed-at">Placed at: <strong>{test.company}</strong></span>
+                  <span className="placed-at">Pathway: <strong>{test.company}</strong></span>
                   <span className="candidate-pkg">{test.package}</span>
                 </div>
               </div>
@@ -199,21 +199,21 @@ const Testimonials = () => {
       {/* Video review placeholder section */}
       <section className="video-reviews-section">
         <div className="container">
-          <h2 className="text-center" style={{ color: "#ffffffff" }}>Watch Alumni Video Reviews </h2>
+          <h2 className="text-center" style={{ color: "#ffffffff" }}>US Market Preparation Resources</h2>
           <div className="video-grid">
             <div className="video-card glass">
               <div className="video-thumbnail-mock">
                 <div className="play-button-accent">▶</div>
               </div>
-              <h3>Priya Nair | Landing Microsoft</h3>
-              <p>Hear Priya describe her transition from non-technical business developer to UX architect in 12 weeks.</p>
+              <h3>Preparing for US Technical Interviews</h3>
+              <p>An overview of how we guide candidates through mock interviews, coding exercises, and behavioral questions.</p>
             </div>
             <div className="video-card glass">
               <div className="video-thumbnail-mock">
                 <div className="play-button-accent">▶</div>
               </div>
-              <h3>Aarav Sharma | Crack Google SDE</h3>
-              <p>Aarav details the coding mock loops, technical roadmaps, and behavioral rounds that got him into Google.</p>
+              <h3>Optimizing Resumes for ATS Systems</h3>
+              <p>Learn how applicant tracking systems parse your background, and how to structure your experience to stand out.</p>
             </div>
           </div>
         </div>

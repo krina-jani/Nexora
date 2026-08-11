@@ -140,7 +140,7 @@ const Home = () => {
         <ScrollExpand
           mediaType="gradient"
           src="linear-gradient(135deg, #10151d 0%, #1e2630 50%, #6e3517 100%)"
-          title="Nexora Career acceleration"
+          title="Nexora Career Preparation"
           useWindowScroll
           reverse
           startWidth={startWidth}
@@ -154,17 +154,17 @@ const Home = () => {
         >
           {/* Overlay content – fades in when fully expanded */}
           <div className="se-overlay-content">
-            <span className="hero-badge">GLOBAL PLACEMENT ENGINE</span>
+            <span className="hero-badge">US CAREER TRANSITION BRIDGE</span>
             <h1 className="hero-title text-center">
               Let's Build Your <span className="text-gradient">Career with</span> <br />
               Nexora Career
             </h1>
             <p className="hero-subtext text-center">
-              From resume writing to recruitment process outsourcing, Nexora Career builds the bridge between your skills and the world's top hiring teams.
+              From resume optimization to interview preparation, Nexora Career builds the bridge between your qualifications and the US job market.
             </p>
             <div className="hero-cta-group">
               <Link to="/contact" className="btn-primary-pill">
-                Explore Careers <FaArrowRight style={{ marginLeft: "8px", fontSize: "14px" }} />
+                Explore Services <FaArrowRight style={{ marginLeft: "8px", fontSize: "14px" }} />
               </Link>
             </div>
           </div>
@@ -175,7 +175,7 @@ const Home = () => {
 
       {/* SECTION 2: TRUSTED BY MARQUEE */}
       <section className="marquee-section text-center">
-        <p className="marquee-intro">Nexora Graduates Placed at Global Leaders</p>
+        <p className="marquee-intro">Reframing Profiles for Standard US Hiring Formats</p>
         <Marquee items={companiesList} />
       </section>
 
@@ -183,18 +183,18 @@ const Home = () => {
       <section className="about-intro-section">
         <div className="container about-intro-grid">
           <div className="about-intro-left">
-            <h2 className="section-title-reveal">Bridging Talent with Borderless Careers</h2>
+            <h2 className="section-title-reveal">Bridging Talent with the US Job Market</h2>
             <p>
-              Nexora Career is a career preparation hub designed to align your technical capacities with the standards of the world's most innovative teams. We strip away the ambiguity of tech application pipelines and replace it with structured mentorship.
+              Nexora Career is a career support and preparation bridge designed to align your technical experience with the hiring standards of US employers. We clarify the job-search journey and replace ambiguity with structured, practical preparation.
             </p>
             <div className="about-stats-deck">
               <div className="about-stat-item glass">
-                <h3>5,000+</h3>
-                <p>Grads Coached</p>
+                <h3>US Market</h3>
+                <p>Strategic Focus</p>
               </div>
               <div className="about-stat-item glass">
-                <h3>20+</h3>
-                <p>Global Countries</p>
+                <h3>Tailored</h3>
+                <p>Profile Optimization</p>
               </div>
             </div>
             <Link to="/about" className="btn-primary learn-more-btn">
@@ -203,10 +203,10 @@ const Home = () => {
           </div>
           <div className="about-intro-right">
             <div className="visual-media-box glass">
-              <img src={empowermentImg} alt="Empowering Placements" className="visual-box-image" />
+              <img src={empowermentImg} alt="US Career Bridge" className="visual-box-image" />
               <div className="overlay-radial"></div>
-              <h3>Empowering Placements</h3>
-              <p>98% Successful domain migrations.</p>
+              <h3>US Career Bridge</h3>
+              <p>Positioning your skills for US opportunities.</p>
             </div>
           </div>
         </div>
@@ -215,7 +215,7 @@ const Home = () => {
       {/* SECTION 4: OUR SUCCESS JOURNEY */}
       <OurSuccessJourney />
 
-      {/* SECTION 5: Why Nexora Career Leads in RPO & Career Coaching*/}
+      {/* SECTION 5: Why Nexora Career Leads in Career Support & Alignment */}
       <WhyChooseNexora />
 
       {/* SECTION 6: SERVICES */}
@@ -240,17 +240,17 @@ const Home = () => {
             <h2 className="cta-heading">
               <Typewriter
                 texts={[
-                  "Are you ready to launch your career in Nexora ?",
-                  "Join the world's most innovative teams.",
+                  "Ready to optimize your US job search?",
+                  "Align your profile with US standards.",
                 ]}
               />
             </h2>
             <p className="cta-subheading">
-              Join thousands of professionals who have transformed their careers with our global placement engine.
+              Join ambitious professionals who have optimized their profiles and navigated the US hiring process with our support.
             </p>
             <div className="cta-buttons">
               <Link to="/contact" className="btn-primary cta-btn-main">
-                Book Free Consultation
+                Start Career Consultation
               </Link>
               <Link to="/services" className="btn-primary cta-btn-outline">
                 Explore Services

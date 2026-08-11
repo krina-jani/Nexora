@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import gsap from "gsap";
 import services from "../data/services";
 import Accordion from "../components/common/Accordion";
@@ -139,83 +139,34 @@ const Services = () => {
           <div className="container">
             <div className="text-center section-header">
               <h1 className="section-title">Our Proven Process</h1>
-              <p className="text-light">A strategic, step-by-step approach to elevate your career.</p>
+              <p className="text-light">A strategic, step-by-step approach to align your career with US standards.</p>
             </div>
             
             <div className="process-grid">
               <div className="process-step">
-                <h4>Discovery & Audit</h4>
-                <p>We analyze your current profile, skills, and career goals to identify gaps and opportunities.</p>
+                <h4>STEP 1: Profile Review</h4>
+                <p>Understand your experience, career goals, target roles, and US-market readiness.</p>
               </div>
               <div className="process-step">
-                <h4>Strategic Planning</h4>
-                <p>Our experts craft a personalized roadmap, including resume revamps and upskilling plans.</p>
+                <h4>STEP 2: Career Profile Prep</h4>
+                <p>Improve resume, LinkedIn positioning, and supporting career materials to meet US standards.</p>
               </div>
               <div className="process-step">
-                <h4>Execution & Prep</h4>
-                <p>You undergo rigorous mock interviews, branding exercises, and technical assessments.</p>
+                <h4>STEP 3: Opportunity Alignment</h4>
+                <p>Identify relevant roles and opportunities based on your background and target direction.</p>
               </div>
               <div className="process-step">
-                <h4>Placement & Growth</h4>
-                <p>We leverage our network to land you interviews and help negotiate your best offer.</p>
+                <h4>STEP 4: Application & Interview Support</h4>
+                <p>Provide structured guidance through applications, mock interviews, and communication.</p>
+              </div>
+              <div className="process-step">
+                <h4>STEP 5: Ongoing Guidance</h4>
+                <p>Provide appropriate coaching and support as you navigate the US hiring process.</p>
               </div>
             </div>
           </div>
         </section>
       </div>
-
-      {/* Why Choose Us Section */}
-              {/* <h2 className="section-title">Why Professionals Choose Nexora</h2>
-      <section className="why-choose-us">
-        <div className="container">
-          <div className="why-grid">
-            <div className="why-content">
-              <p className="text-light">
-                We don't just give advice; we partner with you to achieve tangible results. Our data-driven methodologies and exclusive industry connections give you an unfair advantage in the job market.
-              </p>
-              <ul className="why-list">
-                <li>
-                  <span className="check-icon">✓</span>
-                  <div>
-                    <strong>Elite Industry Mentors</strong>
-                    <p>Learn directly from professionals at top-tier global companies.</p>
-                  </div>
-                </li>
-                <li>
-                  <span className="check-icon">✓</span>
-                  <div>
-                    <strong>Data-Driven Strategies</strong>
-                    <p>We use market analytics to position you exactly where demand is highest.</p>
-                  </div>
-                </li>
-                <li>
-                  <span className="check-icon">✓</span>
-                  <div>
-                    <strong>Global Hiring Network</strong>
-                    <p>Direct referrals to fast-growing startups and Fortune 500 enterprises.</p>
-                  </div>
-                </li>
-              </ul>
-            <div className="why-image-wrapper">
-              <div className="glass why-image-card">
-                <div className="stat-item">
-                  <h3 className="text-gradient">93%</h3>
-                  <p>Placement Rate</p>
-                </div>
-                <div className="stat-item">
-                  <h3 className="text-gradient">40%</h3>
-                  <p>Average Salary Hike</p>
-                </div>
-                <div className="stat-item">
-                  <h3 className="text-gradient">500+</h3>
-                  <p>Hiring Partners</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-        </div> */}
 
       {/* Detailed Services Sections (Mapped to Dropdown IDs) */}
       <div className="detailed-services-wrapper" style={{ background: "#000000" }}>
@@ -230,13 +181,33 @@ const Services = () => {
                   </div>
                   <h2 className="service-title txt-white">{svc.title}</h2>
                   <p className="service-desc txt-white">{svc.description}</p>
-                  <ul className="service-benefits-list ">
-                    <li className="txt-white"><span className="check txt-white" >✓</span> Comprehensive Analysis & Strategy</li>
-                    <li className="txt-white"><span className="check txt-white">✓</span> Dedicated Expert Support</li>
-                    <li className="txt-white"><span className="check txt-white">✓</span> Result-Oriented Execution</li>
-                  </ul>
+                  
+                  {svc.whatWeHelpWith && (
+                    <div style={{ marginBottom: "20px" }}>
+                      <h4 className="txt-white" style={{ fontSize: "1.0rem", fontWeight: "700", marginBottom: "10px", color: "#DFBD69" }}>WHAT WE HELP WITH:</h4>
+                      <ul className="service-benefits-list" style={{ gap: "10px", marginBottom: "20px" }}>
+                        {svc.whatWeHelpWith.map((item, idx) => (
+                          <li key={idx} className="txt-white" style={{ fontSize: "0.95rem" }}>
+                            <span className="check txt-white">✓</span> {item}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
 
-                  <button className="btn-primary mt-4">Get Started</button>
+                  {svc.whoItsFor && (
+                    <p className="txt-white" style={{ fontSize: "0.95rem", marginBottom: "15px", opacity: 0.9 }}>
+                      <strong>WHO IT'S FOR:</strong> {svc.whoItsFor}
+                    </p>
+                  )}
+
+                  {svc.expectedValue && (
+                    <p className="txt-white" style={{ fontSize: "0.95rem", marginBottom: "25px", opacity: 0.9 }}>
+                      <strong>EXPECTED VALUE:</strong> {svc.expectedValue}
+                    </p>
+                  )}
+
+                  <Link to="/contact" className="btn-primary mt-2" style={{ display: "inline-block" }}>Get Started &rarr;</Link>
                 </div>
                 
                 <div className="detailed-service-image-col">
@@ -491,7 +462,7 @@ const Services = () => {
         
         .process-grid {
           display: grid;
-          grid-template-columns: repeat(4, 1fr);
+          grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
           gap: 30px;
           position: relative;
         }

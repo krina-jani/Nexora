@@ -51,7 +51,7 @@ const OurPlacedCandidates = () => {
           <div className="testimonial-active-content">
             <div className="active-candidate-details">
               <h3 style={{ color: "#ffffff" }}>{testimonials[activeTestimonial].name}</h3>
-              <p className="candidate-role-text" style={{ color: "#cccccc" }}>{testimonials[activeTestimonial].role} at {testimonials[activeTestimonial].company}</p>
+              <p className="candidate-role-text" style={{ color: "#cccccc" }}>{testimonials[activeTestimonial].role} — {testimonials[activeTestimonial].company}</p>
               <p className="feedback-body" style={{ color: "#dddddd" }}>"{testimonials[activeTestimonial].text}"</p>
             </div>
           </div>

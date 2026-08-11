@@ -13,8 +13,8 @@ const WhyChooseNexora = () => {
 
   const features = [
     {
-      title: "Career Experts",
-      desc: "Coaching by FAANG SDEs and tech leaders.",
+      title: "Career Advisors",
+      desc: "Coaching by experienced tech leaders and industry experts.",
       img: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=600&q=80"
     },
     {
@@ -23,33 +23,33 @@ const WhyChooseNexora = () => {
       img: "https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&w=600&q=80"
     },
     {
-      title: "Industry Connections",
-      desc: "Direct referrals to 250+ global hiring teams.",
+      title: "Industry Focus",
+      desc: "Support and advice tailored to US market standards.",
       img: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=600&q=80"
     },
     {
       title: "ATS Friendly Resume",
-      desc: "AI-enhanced parsing templates to double callbacks.",
+      desc: "ATS-optimized layouts focused on recruiter readability.",
       img: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&w=600&q=80"
     },
     {
       title: "Mock Interviews",
-      desc: "Live practice matching real tech board loops.",
+      desc: "Practice loops matching modern technical assessments.",
       img: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=600&q=80"
     },
     {
-      title: "Placement Cell",
-      desc: "Aggressive outreach support until you sign.",
+      title: "Profile Alignment",
+      desc: "Mapping your skills to active US role listings.",
       img: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=600&q=80"
     },
     {
       title: "Career Roadmap",
-      desc: "Personalized trackers structured for major roles.",
+      desc: "Personalized milestone trackers structured for US roles.",
       img: "https://images.unsplash.com/photo-1507537297725-24a1c029d3ca?auto=format&fit=crop&w=600&q=80"
     },
     {
-      title: "Global Reach",
-      desc: "Avenue pipelines targeting visa sponsor firms.",
+      title: "Sponsorship Guidance",
+      desc: "Support on how to present your profile to sponsor firms.",
       img: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600&q=80"
     }
   ];
@@ -100,7 +100,7 @@ const WhyChooseNexora = () => {
 
   return (
     <section className="why-choose-parent-section" ref={containerRef}>
-      <h2 className="why-choose-title text-center">Why Nexora Career Leads in RPO & Career Coaching</h2>
+      <h2 className="why-choose-title text-center">Why Nexora Career Leads in Career Support & Alignment</h2>
       <div className="why-choose-gallery-wrap">
         <div className="why-choose-gallery gallery--bento" ref={galleryRef}>
           {features.map((feat, index) => (

@@ -10,38 +10,32 @@ const PlacementWorkflow = () => {
   const steps = [
     {
       id: 1,
-      title: "Registration",
-      desc: "Submit your profile and initiate your onboarding consultation.",
+      title: "Profile Review",
+      desc: "Understand your experience, career goals, target roles, and US-market readiness.",
       icon: <FaUserPlus />
     },
     {
       id: 2,
-      title: "Career Assessment",
-      desc: "Define your career goals, target domains, and skill gaps.",
-      icon: <FaChartLine />
-    },
-    {
-      id: 3,
-      title: "Training",
-      desc: "Learn high-demand skills, AWS, Java, Python, and tools.",
-      icon: <FaBookOpen />
-    },
-    {
-      id: 4,
-      title: "Resume Preparation",
-      desc: "Build ATS-compliant, recruiter-ready professional resumes.",
+      title: "Career Profile Prep",
+      desc: "Improve resume, professional positioning, and supporting career materials.",
       icon: <FaFileAlt />
     },
     {
-      id: 5,
-      title: "Interview Scheduling",
-      desc: "Connect with hiring managers and schedule direct rounds.",
+      id: 3,
+      title: "Opportunity Alignment",
+      desc: "Identify relevant roles and opportunities based on your background and target direction.",
+      icon: <FaChartLine />
+    },
+    {
+      id: 4,
+      title: "Application & Interview Support",
+      desc: "Provide guidance through applications, mock interviews, and technical communication.",
       icon: <FaCalendarAlt />
     },
     {
-      id: 6,
-      title: "Placement",
-      desc: "Secure your US offer letter and begin your onboarding journey.",
+      id: 5,
+      title: "Ongoing Guidance",
+      desc: "Provide appropriate guidance and support as you navigate the US hiring process.",
       icon: <FaBriefcase />
     }
   ];
@@ -50,7 +44,7 @@ const PlacementWorkflow = () => {
     <section className="placement-process-section">
       <div className="container">
         <h1 className="text-center section-title-reveal" style={{ color: "white" }}>
-          The Placement Workflow
+          The Candidate Journey
         </h1>
 
         <div className="workflow-timeline-container">
@@ -59,8 +53,8 @@ const PlacementWorkflow = () => {
           <div 
             className="timeline-track-progress"
             style={{
-              "--progress-width": `${(activeStep / 5) * 100}%`,
-              "--progress-height": `${(activeStep / 5) * 100}%`,
+              "--progress-width": `${(activeStep / (steps.length - 1)) * 100}%`,
+              "--progress-height": `${(activeStep / (steps.length - 1)) * 100}%`,
               "--active-step-val": activeStep ?? 0
             }}
           ></div>

@@ -27,7 +27,7 @@ const iconMap = {
   health: <FaHeartbeat />,
   ecommerce: <FaShoppingCart />,
   manufacturing: <FaIndustry />,
-  gcc: <FaGlobe />,
+  finance: <FaGlobe />,
   "digital-marketing": <FaBullhorn />
 };
 
@@ -39,7 +39,7 @@ const imageMap = {
   health: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=300&q=80",
   ecommerce: "https://images.unsplash.com/photo-1557821314-4b9644db218e?auto=format&fit=crop&w=300&q=80",
   manufacturing: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=300&q=80",
-  gcc: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=300&q=80",
+  finance: "https://images.unsplash.com/photo-1501167786227-4cba60f6d58f?w=800&auto=format&fit=crop&q=80",
   "digital-marketing": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=300&q=80"
 };
 

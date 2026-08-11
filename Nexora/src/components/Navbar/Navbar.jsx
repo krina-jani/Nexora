@@ -113,7 +113,7 @@ const Navbar = () => {
               <ul className={`simple-dropdown ${dropdownOpen ? "show" : ""}`}>
                 <li>
                   <Link to="/services#rpo" onClick={(e) => handleDropdownClick(e, '#rpo')}>
-                    Recruitment Process <span className="hide-on-mobile">Outsourcing</span>
+                    Profile & Resume <span className="hide-on-mobile">Optimization</span>
                   </Link>
                 </li>
                 <li>

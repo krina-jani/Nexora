@@ -135,27 +135,27 @@ const About = () => {
       {/* Stats/Achievements */}
       <section className="about-achievements overflow-hidden">
         <div className="container">
-          <h2 className="text-center section-title">Key Milestones</h2>
+          <h2 className="text-center section-title">Our Focus Areas</h2>
           <div className="achievements-row">
             <div className="ach-item glass">
               <FaGraduationCap className="ach-icon" />
-              <h3>5000+</h3>
-              <p>Graduates Coached</p>
+              <h3>US Market</h3>
+              <p>Targeted Specialization</p>
             </div>
             <div className="ach-item glass">
               <FaBriefcase className="ach-icon" />
-              <h3>250+</h3>
-              <p>Hiring Partners</p>
+              <h3>ATS-Ready</h3>
+              <p>Profile Optimization</p>
             </div>
             <div className="ach-item glass">
               <FaGlobe className="ach-icon" />
-              <h3>20+</h3>
-              <p>Countries Reached</p>
+              <h3>Rigorous</h3>
+              <p>Interview Preparation</p>
             </div>
             <div className="ach-item glass">
               <FaTrophy className="ach-icon" />
-              <h3>98%</h3>
-              <p>Placement Success</p>
+              <h3>1-on-1</h3>
+              <p>Expert Consultation</p>
             </div>
           </div>
         </div>
@@ -167,7 +167,7 @@ const About = () => {
         <div className="container why-content-wrap">
           <h2 className="why-title">Why Choose Nexora Career?</h2>
           <p className="why-sub">
-            We bridge the gap between talent and American opportunities with personalized career solutions that get results.
+            We bridge the gap between talent and US opportunities with personalized career solutions that help you navigate the hiring process.
           </p>
           <div className="why-cards-grid">
             <div className="why-card-item glass">
@@ -175,23 +175,23 @@ const About = () => {
                 <FaGlobeAmericas className="why-icon-svg" />
               </div>
               <h3>US Market Expertise</h3>
-              <p>Deep understanding of American hiring practices and cultural expectations.</p>
+              <p>Deep understanding of US hiring practices and professional expectations.</p>
             </div>
             
             <div className="why-card-item glass">
               <div className="why-icon-wrap">
                 <FaUserTie className="why-icon-svg" />
               </div>
-              <h3>End-to-End Support</h3>
-              <p>From resume to relocation, we handle every step of your career transition.</p>
+              <h3>Structured Preparation</h3>
+              <p>From profile review to interview prep, we support your career transition milestones.</p>
             </div>
             
             <div className="why-card-item glass">
               <div className="why-icon-wrap">
                 <FaHandshake className="why-icon-svg" />
               </div>
-              <h3>Success-Based Model</h3>
-              <p>We only succeed when you do, with fees based on your placement success.</p>
+              <h3>Transparent Pricing</h3>
+              <p>Clear consultation packages tailored to your target roles and experience level.</p>
             </div>
           </div>
         </div>

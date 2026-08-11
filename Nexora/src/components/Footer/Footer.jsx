@@ -1,7 +1,15 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { FaInstagram, FaLinkedin, FaFacebook, FaGithub, FaVideo } from "react-icons/fa";
+import { 
+  FaFacebookF, 
+  FaTwitter, 
+  FaLinkedinIn, 
+  FaInstagram, 
+  FaMapMarkerAlt, 
+  FaEnvelope, 
+  FaPhoneAlt 
+} from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import logo from "../../assets/icons/nexoralogo.png";
 import "./Footer.css";
@@ -10,41 +18,6 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Footer = () => {
   const footerRef = useRef(null);
-  const contentRef = useRef(null);
-  const [activeLoc, setActiveLoc] = useState("singapore");
-
-  const locations = [
-    {
-      id: "singapore",
-      name: "SINGAPORE",
-      address: "Level 30, Marina Bay Financial Centre, 10 Marina Blvd, Singapore 018983",
-      phone: "+65 6789 0123",
-      hours: "Monday to Friday: 9:00 am to 6:00 pm"
-    },
-    {
-      id: "bangalore",
-      name: "BENGALURU",
-      address: "8th Floor, WeWork Galaxy, 43 Residency Rd, Ashok Nagar, Bengaluru 560025",
-      phone: "+91 80 4995 5747",
-      hours: "Monday to Saturday: 10:00 am to 7:00 pm"
-    },
-    {
-      id: "san-francisco",
-      name: "SAN FRANCISCO",
-      address: "Suite 400, 535 Mission St, San Francisco, CA 94105, United States",
-      phone: "+1 415 555 0199",
-      hours: "Monday to Friday: 9:00 am to 5:00 pm"
-    },
-    {
-      id: "london",
-      name: "LONDON",
-      address: "30 St Mary Axe (The Gherkin), London EC3A 8EP, United Kingdom",
-      phone: "+44 20 7946 0958",
-      hours: "Monday to Friday: 9:00 am to 5:30 pm"
-    }
-  ];
-
-  const currentLocData = locations.find((l) => l.id === activeLoc) || locations[0];
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -71,114 +44,167 @@ const Footer = () => {
 
   return (
     <footer ref={footerRef} className="premium-footer">
-      <div ref={contentRef} className="container premium-footer-container">
-        
-        {/* Left Column: Navigation Links */}
-        <div className="footer-column-nav footer-content-element">
-          <div className="nav-block">
-            <h4 className="footer-col-title">NAVIGATION</h4>
-            <ul className="footer-links-list">
-              <li><NavLink to="/">Home</NavLink></li>
-              <li><NavLink to="/about">Why Choose Us</NavLink></li>
-              <li><NavLink to="/services">Our Services</NavLink></li>
-              <li><NavLink to="/industries">Industries</NavLink></li>
-              <li><NavLink to="/contact">Contact</NavLink></li>
-            </ul>
-          </div>
+      <div className="footer-watermark">NEXORA</div>
+      <div className="container mx-auto footer-content-element">
+        <div className="grid-container">
           
-          <div className="nav-block">
-            <h4 className="footer-col-title">CANDIDATES</h4>
-            <ul className="footer-links-list">
-              <li><NavLink to="/about">Success Stories</NavLink></li>
-              <li><NavLink to="/services">Career Coaching</NavLink></li>
-              <li><NavLink to="/services">RPO Solutions</NavLink></li>
-              <li><NavLink to="/contact">Book Consultation</NavLink></li>
-            </ul>
-          </div>
-        </div>
-
-        {/* Center/Right Combined Section */}
-        <div className="footer-main-details footer-content-element">
-          
-          {/* Logo & Description */}
-          <div className="footer-brand-header">
-            <NavLink to="/" className="footer-logo-wrap">
-              <img src={logo} alt="Nexora Logo" className="footer-favicon" />
-              <div className="footer-logo-text">
-                <span className="logo-title-main">NEXORA CAREER</span>
-                <span className="logo-title-sub">Recruitment Process Outsourcing & Career Coaching</span>
+          {/* Company Info */}
+          <div className="company-info-col">
+            <NavLink to="/" className="footer-logo-link group">
+              <div className="footer-logo-container transition-all duration-500 group-hover:rotate-12">
+                <img src={logo} alt="Nexora Career" className="hover:scale-110 transition-transform duration-300 footer-logo-img" />
               </div>
+              <span className="logo-text">
+                Nexora <span className="logo-text-highlight">Career</span>
+              </span>
             </NavLink>
-            <p className="footer-description">
-              Nexora Career is a revolutionary name when people think about recruitment process outsourcing and career coaching. A prestigious partner guiding you directly to global opportunities.
-            </p>
-          </div>
-
-          {/* Locations Tab Section */}
-          <div className="footer-tabs-wrapper">
-            <div className="footer-tabs-header">
-              {locations.map((loc) => (
-                <button
-                  key={loc.id}
-                  onClick={() => setActiveLoc(loc.id)}
-                  className={`footer-tab-btn ${activeLoc === loc.id ? "active" : ""}`}
-                >
-                  {loc.name}
-                </button>
-              ))}
-            </div>
             
-            <div className="footer-tab-panel">
-              <div className="panel-grid">
-                <div className="panel-item">
-                  <h5>Get in Touch</h5>
-                  <p>{currentLocData.address}</p>
-                </div>
-                <div className="panel-item">
-                  <h5>Call For Consultation</h5>
-                  <p>{currentLocData.phone}</p>
-                </div>
-                <div className="panel-item">
-                  <h5>Opening Hours</h5>
-                  <p>{currentLocData.hours}</p>
-                </div>
-                <div className="panel-item virtual-tour">
-                  <div className="tour-badge">
-                    <FaVideo className="tour-icon" />
-                    <span>Video Consultation Active</span>
-                  </div>
-                </div>
-              </div>
+            <p className="footer-desc-text">
+              Connecting talent with American opportunities through comprehensive career services.
+            </p>
+            
+            <div className="social-links-container">
+              <a href="#"
+                 className="social-icon-btn facebook-btn"
+                 aria-label="Facebook">
+                <FaFacebookF className="icon" />
+              </a>
+              <a href="#"
+                 className="social-icon-btn twitter-btn"
+                 aria-label="Twitter">
+                <FaTwitter className="icon" />
+              </a>
+              <a href="#"
+                 className="social-icon-btn linkedin-btn"
+                 aria-label="LinkedIn">
+                <FaLinkedinIn className="icon" />
+              </a>
+              <a href="#"
+                 className="social-icon-btn instagram-btn"
+                 aria-label="Instagram">
+                <FaInstagram className="icon" />
+              </a>
             </div>
           </div>
 
-          {/* Social media icons below the locations tab section */}
-          <div className="footer-socials-colorful-wrap">
-            <div className="footer-socials-colorful">
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="social-fb" aria-label="Facebook"><FaFacebook /></a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="social-li" aria-label="LinkedIn"><FaLinkedin /></a>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="social-ig" aria-label="Instagram"><FaInstagram /></a>
-              <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="social-gh" aria-label="GitHub"><FaGithub /></a>
-            </div>
+          {/* Quick Links */}
+          <div className="links-col">
+            <h3 className="section-title">
+              Quick Links
+            </h3>
+            <ul className="links-list">
+              <li>
+                <NavLink to="/" className="link-item group">
+                  <span className="bullet-dot group-hover:opacity-100 group-hover:translate-x-0"></span>
+                  <span className="link-text-label group-hover:translate-x-2">Home</span>
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/about" className="link-item group">
+                  <span className="bullet-dot group-hover:opacity-100 group-hover:translate-x-0"></span>
+                  <span className="link-text-label group-hover:translate-x-2">About Us</span>
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/services" className="link-item group">
+                  <span className="bullet-dot group-hover:opacity-100 group-hover:translate-x-0"></span>
+                  <span className="link-text-label group-hover:translate-x-2">Services</span>
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/industries" className="link-item group">
+                  <span className="bullet-dot group-hover:opacity-100 group-hover:translate-x-0"></span>
+                  <span className="link-text-label group-hover:translate-x-2">Demanded IT Roles</span>
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/about" className="link-item group">
+                  <span className="bullet-dot group-hover:opacity-100 group-hover:translate-x-0"></span>
+                  <span className="link-text-label group-hover:translate-x-2">Blog</span>
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/contact" className="link-item group">
+                  <span className="bullet-dot group-hover:opacity-100 group-hover:translate-x-0"></span>
+                  <span className="link-text-label group-hover:translate-x-2">Contact</span>
+                </NavLink>
+              </li>
+            </ul>
+          </div>
+
+          {/* Services */}
+          <div className="links-col">
+            <h3 className="section-title">
+              Services
+            </h3>
+            <ul className="links-list">
+              <li>
+                <NavLink to="/services#rpo" className="link-item group">
+                  <span className="bullet-dot group-hover:opacity-100 group-hover:translate-x-0"></span>
+                  <span className="link-text-label group-hover:translate-x-2">Recruitment Process Outsourcing</span>
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/services#career-support" className="link-item group">
+                  <span className="bullet-dot group-hover:opacity-100 group-hover:translate-x-0"></span>
+                  <span className="link-text-label group-hover:translate-x-2">Career Support Services</span>
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/services#career-growth" className="link-item group">
+                  <span className="bullet-dot group-hover:opacity-100 group-hover:translate-x-0"></span>
+                  <span className="link-text-label group-hover:translate-x-2">Career Growth Packages</span>
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/services#pro-services" className="link-item group">
+                  <span className="bullet-dot group-hover:opacity-100 group-hover:translate-x-0"></span>
+                  <span className="link-text-label group-hover:translate-x-2">Pro Services</span>
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/services#custom-services" className="link-item group">
+                  <span className="bullet-dot group-hover:opacity-100 group-hover:translate-x-0"></span>
+                  <span className="link-text-label group-hover:translate-x-2">Custom Services</span>
+                </NavLink>
+              </li>
+            </ul>
+          </div>
+
+          {/* Contact Us */}
+          <div className="contact-col">
+            <h3 className="section-title">
+              Contact Us
+            </h3>
+            <ul className="contact-info-list">
+              <li className="contact-info-item group">
+                <FaMapMarkerAlt className="contact-icon text-primary group-hover:scale-110" />
+                <span className="contact-text">
+                  8 The Green, STE R, Dover, DE 19901, USA
+                </span>
+              </li>
+              <li className="contact-info-item group">
+                <FaEnvelope className="contact-icon text-primary group-hover:scale-110" />
+                <a href="mailto:Info@nexoracareer.com" className="contact-text-link">
+                  Info@nexoracareer.com
+                </a>
+              </li>
+              <li className="contact-info-item group">
+                <FaPhoneAlt className="contact-icon text-primary group-hover:scale-110" />
+                <a href="tel:+13023642356" className="contact-text-link">
+                  +1 (302) 364- 2356
+                </a>
+              </li>
+            </ul>
           </div>
 
         </div>
 
-      </div>
-
-      <div className="footer-bottom-bar container footer-content-element">
-        
-        <div className="footer-bottom-meta">
-          <p className="footer-copy-text">
-            NEXORA CAREER © 2026 | All Rights Reserved
+        {/* Bottom copyright bar */}
+        <div className="footer-bottom-bar">
+          <p className="copyright-text">
+            &copy; 2025 Nexora Career. All rights reserved.
           </p>
-          <div className="footer-legal-links">
-            <NavLink to="/about">Terms of Use</NavLink>
-            <span className="divider">|</span>
-            <NavLink to="/contact">Privacy Policy</NavLink>
-            <span className="divider">|</span>
-            <NavLink to="/about">Disclaimer</NavLink>
-          </div>
         </div>
       </div>
     </footer>

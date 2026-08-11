@@ -185,7 +185,7 @@ const Contact = () => {
           <h2 className="section-title text-white mb-4 mar-b">Where to Find Us</h2>
           <div className="map-mock-box glass">
             <iframe 
-              src="https://maps.google.com/maps?q=Orchard%20Road,%20Singapore&t=&z=13&ie=UTF8&iwloc=&output=embed" 
+              src="https://maps.google.com/maps?q=8%20The%20Green,%20STE%20R,%20Dover,%20DE%2019901,%20USA&t=&z=13&ie=UTF8&iwloc=&output=embed" 
               width="100%" 
               height="100%" 
               style={{ border: 0, borderRadius: 'inherit' }} 

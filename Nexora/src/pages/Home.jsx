@@ -169,9 +169,8 @@ const Home = () => {
           <div className="hero-left">
             <span className="hero-badge">GLOBAL PLACEMENT ENGINE</span>
             <h1 className="hero-title">
-              Hello, We're <span className="text-gradient">Nexora</span> <br />
-              Global Careers <br />
-              & Placements
+              Let's Build Your <span className="text-gradient">Career with</span> <br />
+              Nexora Career
             </h1>
             <p className="hero-subtext">
               From resume writing to recruitment process outsourcing, Nexora Career builds the bridge between your skills and the world's top hiring teams.

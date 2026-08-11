@@ -13,48 +13,60 @@ const About = () => {
   useEffect(() => {
     const ctx = gsap.context(() => {
       // Hero entrance
-      gsap.from(".about-hero-title span", {
-        y: 80,
-        opacity: 0,
-        stagger: 0.15,
-        duration: 1,
-        ease: "power4.out"
-      });
+      gsap.fromTo(".about-hero-title span", 
+        { y: 80, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          stagger: 0.15,
+          duration: 1,
+          ease: "power4.out"
+        }
+      );
 
       // Cards staggered fade-in (on page load to ensure visibility)
-      gsap.from(".about-card", {
-        y: 50,
-        // opacity: 0,
-        stagger: 0.15,
-        duration: 0.8,
-        ease: "power2.out"
-      });
+      gsap.fromTo(".about-card", 
+        { y: 50, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          stagger: 0.15,
+          duration: 0.8,
+          ease: "power2.out"
+        }
+      );
 
       // Why choose cards staggered reveal
-      gsap.from(".why-card-item", {
-        scrollTrigger: {
-          trigger: ".why-cards-grid",
-          start: "top 85%"
-        },
-        y: 40,
-        opacity: 0,
-        stagger: 0.2,
-        duration: 0.8,
-        ease: "power3.out"
-      });
+      gsap.fromTo(".why-card-item", 
+        { y: 40, opacity: 0 },
+        {
+          scrollTrigger: {
+            trigger: ".why-cards-grid",
+            start: "top 85%"
+          },
+          y: 0,
+          opacity: 1,
+          stagger: 0.2,
+          duration: 0.8,
+          ease: "power3.out"
+        }
+      );
 
       // Timeline items trigger
-      gsap.from(".timeline-card", {
-        scrollTrigger: {
-          trigger: ".timeline-flow",
-          start: "top 75%"
-        },
-        x: (index) => (index % 2 === 0 ? -60 : 60),
-        opacity: 0,
-        stagger: 0.2,
-        duration: 1,
-        ease: "power3.out"
-      });
+      gsap.fromTo(".timeline-card", 
+        { x: (index) => (index % 2 === 0 ? -60 : 60), opacity: 0 },
+        {
+          scrollTrigger: {
+            trigger: ".timeline-flow",
+            start: "top 75%"
+          },
+          x: 0,
+          opacity: 1,
+          stagger: 0.2,
+          duration: 1,
+          ease: "power3.out"
+        }
+      );
     }, pageRef);
 
     return () => ctx.revert();
@@ -383,7 +395,7 @@ const About = () => {
         .about-why-overlay {
           position: absolute;
           inset: 0;
-          background: rgba(0, 0, 0, 0);
+          background: rgba(0, 0, 0, 0.6);
           z-index: 2;
         }
 
@@ -619,7 +631,7 @@ const About = () => {
             font-size: 2.8rem;
           }
           .why-cards-grid {
-            grid-template-columns: 1fr;
+            grid-template-columns: repeat(2, 1fr);
             gap: 24px;
           }
         }
@@ -639,7 +651,7 @@ const About = () => {
             align-items: center;
           }
           .about-card {
-            padding: 20px;
+            padding: 25px 20px;
           }
           .about-card h2 {
             font-size: 1.5rem;
@@ -663,10 +675,46 @@ const About = () => {
           }
           .about-why-section {
             padding: 80px 0;
-            background-attachment: fixed;
+            background-attachment: scroll;
           }
           .why-title {
             font-size: 2.3rem;
+          }
+          .why-cards-grid {
+            grid-template-columns: 1fr;
+            gap: 20px;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .about-hero-title {
+            font-size: 1.8rem;
+          }
+          .why-title {
+            font-size: 1.8rem;
+          }
+          .why-sub {
+            font-size: 1rem;
+            margin-bottom: 40px;
+          }
+          .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+          }
+          .about-story-section {
+            padding: 40px 0;
+          }
+          .why-card-item {
+            padding: 35px 20px;
+          }
+          .ach-item {
+            padding: 30px 15px;
+          }
+          .about-achievements {
+            padding: 40px 0;
+          }
+          .about-why-section {
+            padding: 60px 0;
           }
         }
       `}</style>

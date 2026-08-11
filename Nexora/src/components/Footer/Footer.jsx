@@ -64,22 +64,30 @@ const Footer = () => {
             </p>
             
             <div className="social-links-container">
-              <a href="#"
+              <a href="https://www.facebook.com/nexoracareer"
+                 target="_blank"
+                 rel="noopener noreferrer"
                  className="social-icon-btn facebook-btn"
                  aria-label="Facebook">
                 <FaFacebookF className="icon" />
               </a>
-              <a href="#"
+              <a href="https://x.com/nexoracareer"
+                 target="_blank"
+                 rel="noopener noreferrer"
                  className="social-icon-btn twitter-btn"
                  aria-label="Twitter">
                 <FaTwitter className="icon" />
               </a>
-              <a href="#"
+              <a href="https://www.linkedin.com/company/nexora-career/"
+                 target="_blank"
+                 rel="noopener noreferrer"
                  className="social-icon-btn linkedin-btn"
                  aria-label="LinkedIn">
                 <FaLinkedinIn className="icon" />
               </a>
-              <a href="#"
+              <a href="https://www.instagram.com/nexoracareer?igsh=OG0zN3k5NGV2c3h1"
+                 target="_blank"
+                 rel="noopener noreferrer"
                  className="social-icon-btn instagram-btn"
                  aria-label="Instagram">
                 <FaInstagram className="icon" />

@@ -118,22 +118,6 @@ const Industries = () => {
           });
         });
 
-        // Alternating slide-in animations for case study cards
-        const caseStudyCards = gsap.utils.toArray(".case-study-card");
-        caseStudyCards.forEach((card, index) => {
-          const isLeft = index % 2 === 0;
-          gsap.from(card, {
-            scrollTrigger: {
-              trigger: card,
-              start: "top 88%",
-              toggleActions: "play none none none"
-            },
-            x: isLeft ? -80 : 80,
-            opacity: 0,
-            duration: 1.0,
-            ease: "power2.out"
-          });
-        });
 
         // Alternating slide-in animation for CTA box
         gsap.from(".ind-cta-box", {
@@ -167,21 +151,6 @@ const Industries = () => {
           }
         );
 
-        // Case studies slide in
-        gsap.fromTo(".case-study-card", 
-          { x: -50, opacity: 0 },
-          {
-            scrollTrigger: {
-              trigger: ".case-studies-section",
-              start: "top 75%"
-            },
-            x: 0,
-            opacity: 1,
-            stagger: 0.15,
-            duration: 0.8,
-            ease: "power2.out"
-          }
-        );
 
         // CTA Box slide up
         gsap.from(".ind-cta-box", {
@@ -200,22 +169,6 @@ const Industries = () => {
     return () => ctx.revert();
   }, []);
 
-  const caseStudies = [
-    {
-      title: "Transition to Fintech SDE",
-      student: "Arjun Mehta",
-      details: "Switched from a traditional chemical engineering role to a Senior Java developer position at a top-tier European fintech firm.",
-      package: "€78,000 / Year",
-      badge: "Fintech Switch"
-    },
-    {
-      title: "AI Researcher Placement",
-      student: "Sara Vance",
-      details: "Guided a graduate student through research paper presentation and advanced ML coding mock loops, landing an offer in Silicon Valley.",
-      package: "$145,000 / Year",
-      badge: "AI & Data Science"
-    }
-  ];
 
   return (
     <div ref={pageRef} className="industries-page-wrapper" style={{ background: "#000000" }}>
@@ -303,25 +256,6 @@ const Industries = () => {
         </div>
       </section>
 
-      {/* Case Studies */}
-      <section className="case-studies-section">
-        <div className="container">
-          <h2 className="text-center section-title txt-white">Domain Switch Success Stories</h2>
-          <div className="case-studies-grid">
-            {caseStudies.map((cs, idx) => (
-              <div key={idx} className="case-study-card glass">
-                <span className="case-badge">{cs.badge}</span>
-                <h3>{cs.title}</h3>
-                <p className="case-student">Candidate: <strong>{cs.student}</strong></p>
-                <p className="case-text">{cs.details}</p>
-                <div className="case-footer">
-                  <span className="case-pkg">Compensation: {cs.package}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Global CTA */}
       <section className="ind-cta-section text-center">
@@ -496,73 +430,6 @@ const Industries = () => {
           border: 1px solid rgba(255, 255, 255, 0.15) !important;
           font-weight: 500;
         }
-        .case-studies-section {
-          padding: 100px 0;
-          background: #1e2630ff !important;
-        }
-        .case-studies-grid {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 40px;
-          margin-top: 40px;
-        }
-        .case-study-card {
-          padding: 40px;
-          border-radius: var(--radius-lg);
-          border: 1px solid rgba(255, 255, 255, 0.12) !important;
-          background: rgba(255, 255, 255, 0.05) !important;
-          backdrop-filter: blur(12px) !important;
-          -webkit-backdrop-filter: blur(12px) !important;
-          display: flex;
-          flex-direction: column;
-          gap: 16px;
-          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-          transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-          cursor: pointer;
-        }
-        .case-study-card:hover {
-          transform: translateY(-8px);
-          border-color: #DFBD69 !important;
-          box-shadow:
-            0 0 20px rgba(223, 189, 105, 0.15),
-            0 0 60px rgba(223, 189, 105, 0.08) !important;
-        }
-        .case-badge {
-          align-self: flex-start;
-          background: #DFBD69 !important;
-          color: #000000 !important;
-          padding: 4px 12px;
-          border-radius: var(--radius-full);
-          font-size: 0.8rem;
-          font-weight: 600;
-          box-shadow: 0 0 10px rgba(223, 189, 105, 0.2);
-        }
-        .case-study-card h3 {
-          font-size: 1.4rem;
-          font-weight: 700;
-          color: #ffffff !important;
-        }
-        .case-student {
-          font-size: 0.95rem;
-          color: #cccccc !important;
-        }
-        .case-student strong {
-          color: #ffffff !important;
-        }
-        .case-text {
-          font-size: 1rem;
-          line-height: 1.6;
-          color: #cccccc !important;
-        }
-        .case-footer {
-          margin-top: auto;
-          padding-top: 20px;
-          border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
-        }
-        .case-pkg {
-          font-weight: 700;
-          color: #DFBD69 !important;
-        }
         .ind-cta-section {
           padding: 100px 0;
           background: #000000 !important;
@@ -634,9 +501,6 @@ const Industries = () => {
         @media (max-width: 991px) {
           .industries-grid {
             grid-template-columns: repeat(2, 1fr);
-          }
-          .case-studies-grid {
-            grid-template-columns: 1fr;
           }
         }
         @media (max-width: 576px) {

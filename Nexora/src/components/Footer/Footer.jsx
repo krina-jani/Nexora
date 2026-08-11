@@ -114,15 +114,15 @@ const Footer = () => {
               <li>
                 <NavLink to="/industries" className="link-item group">
                   <span className="bullet-dot group-hover:opacity-100 group-hover:translate-x-0"></span>
-                  <span className="link-text-label group-hover:translate-x-2">Demanded IT Roles</span>
+                  <span className="link-text-label group-hover:translate-x-2">Industries</span>
                 </NavLink>
               </li>
-              <li>
+              {/* <li>
                 <NavLink to="/about" className="link-item group">
                   <span className="bullet-dot group-hover:opacity-100 group-hover:translate-x-0"></span>
                   <span className="link-text-label group-hover:translate-x-2">Blog</span>
                 </NavLink>
-              </li>
+              </li> */}
               <li>
                 <NavLink to="/contact" className="link-item group">
                   <span className="bullet-dot group-hover:opacity-100 group-hover:translate-x-0"></span>

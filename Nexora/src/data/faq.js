@@ -1,9 +1,9 @@
 export const faq = [
-  {
-    id: 1,
-    question: "How does Nexora Career's success fee model work?",
-    answer: "Our success fee model means you only pay when you secure a job in the US. We charge a percentage (typically 10-15%) of your first year's salary, payable after you start working. This aligns our incentives with your success - we're motivated to help you get the best possible position and compensation."
-  },
+  // {
+  //   id: 1,
+  //   question: "How does Nexora Career's success fee model work?",
+  //   answer: "Our success fee model means you only pay when you secure a job in the US. We charge a percentage (typically 10-15%) of your first year's salary, payable after you start working. This aligns our incentives with your success - we're motivated to help you get the best possible position and compensation."
+  // },
   {
     id: 2,
     question: "What makes your resume services different from others?",

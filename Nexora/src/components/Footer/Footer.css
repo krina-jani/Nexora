@@ -17,9 +17,9 @@
 
 .footer-watermark {
   position: absolute;
-  bottom: 0;
+  bottom: 45px;
   left: 50%;
-  transform: translate(-50%, 18%);
+  transform: translate(-50%, 0);
   font-size: 14vw;
   font-weight: 900;
   font-family: Georgia, "Playfair Display", "Times New Roman", serif;
@@ -354,5 +354,11 @@
 
   .company-info-col {
     grid-column: span 1;
+  }
+
+  .footer-watermark {
+    font-size: 12vw;
+    bottom: 35px;
+    letter-spacing: 0.08em;
   }
 }

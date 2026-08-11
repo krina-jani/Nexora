@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { NavLink, Link, useLocation, useNavigate } from "react-router-dom";
-import { FaBars, FaTimes } from "react-icons/fa";
+import { FaBars, FaTimes, FaSun, FaMoon } from "react-icons/fa";
 import { LuChevronDown } from "react-icons/lu";
 import logo from "../../assets/icons/nexoralogo.png";
 import "./Navbar.css";
@@ -9,6 +9,9 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [theme, setTheme] = useState(() => {
+    return localStorage.getItem("theme") || "dark";
+  });
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -29,9 +32,14 @@ const Navbar = () => {
     }
   };
 
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+  }, [theme]);
 
-
-
+  const toggleTheme = () => {
+    setTheme((prev) => (prev === "dark" ? "light" : "dark"));
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -93,15 +101,10 @@ const Navbar = () => {
               <NavLink 
                 to="/services"
                 className={`dropdown-trigger ${location.pathname === "/services" ? "active" : ""}`}
-                onClick={(e) => {
-                  if (window.innerWidth <= 1024) {
-                    e.preventDefault();
-                    setDropdownOpen(!dropdownOpen);
-                  } else {
-                    setDropdownOpen(!dropdownOpen);
-                    navigate("/services");
-                    window.scrollTo({ top: 0, behavior: "smooth" });
-                  }
+                onClick={() => {
+                  setDropdownOpen(false);
+                  setMenuOpen(false);
+                  window.scrollTo({ top: 0, behavior: "smooth" });
                 }}
               >
                 Services <LuChevronDown className={`chevron ${dropdownOpen ? "open" : ""}`} />
@@ -140,11 +143,6 @@ const Navbar = () => {
                 Industries
               </NavLink>
             </li>
-            {/* <li>
-              <NavLink to="/testimonials" className={({ isActive }) => (isActive ? "active" : "")}>
-                Success Stories
-              </NavLink>
-            </li> */}
             <li>
               <NavLink to="/contact" className={({ isActive }) => (isActive ? "active" : "")}>
                 Contact
@@ -159,15 +157,9 @@ const Navbar = () => {
         </nav>
 
         <div className="navbar-actions">
-          {/* <div className="navbar-cam-status">
-            <img 
-              src="https://images.unsplash.com/photo-1616469829581-73993eb86b02?q=80&w=80&auto=format&fit=crop" 
-              alt="Live Advisor" 
-              className="navbar-cam-img" 
-            />
-            <span className="navbar-cam-pulse"></span>
-            <span className="navbar-cam-label">Advisors Live</span>
-          </div> */}
+          <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle Theme">
+            {theme === "dark" ? <FaSun /> : <FaMoon />}
+          </button>
 
           <NavLink to="/contact" className="btn-primary navbar-cta">
             Book Free Consultation

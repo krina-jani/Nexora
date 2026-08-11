@@ -100,14 +100,7 @@ const Home = () => {
         ease: "power3.out"
       });
 
-      gsap.from(".floating-card", {
-        scale: 0.8,
-        opacity: 0,
-        stagger: 0.2,
-        duration: 1.4,
-        delay: 0.3,
-        ease: "elastic.out(1, 0.75)"
-      });
+
 
       // 2. Section Title Reveals
       gsap.utils.toArray(".section-title-reveal").forEach((title) => {
@@ -183,31 +176,7 @@ const Home = () => {
             </div>
           </div>
 
-          {/* Right Column */}
-          <div className="hero-right">
-            <div className="hero-glass-card hero-stat-card">
-              <h2>5,000+</h2>
-              <p>Candidates placed at leading tech companies worldwide.</p>
-            </div>
-
-            <div className="hero-glass-card hero-testimonial-card">
-              <div className="testimonial-header">
-                <span className="testimonial-company-icon">G</span>
-                <span className="testimonial-company-name">Google</span>
-              </div>
-              <p className="testimonial-quote">
-                "Nexora Career's vetted talent pipeline made hiring faster and more reliable for our team."
-              </p>
-              <div className="testimonial-user">
-                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=80&auto=format&fit=crop&q=80" alt="Sarah Jenkins" className="testimonial-avatar" />
-                <div className="testimonial-user-info">
-                  <h4>Sarah Jenkins</h4>
-                  <p>FAANG Recruiter & Advisor</p>
-                </div>
-              </div>
-          </div>
         </div>
-      </div>
 
         {/* Scroll Indicator */}
         {/* <div className="hero-scroll-indicator-new">
@@ -878,12 +847,20 @@ const Home = () => {
           pointer-events: none;
         }
         .hero-grid {
-          display: grid;
-          grid-template-columns: 1.1fr 0.9fr;
-          gap: 60px;
+          display: flex;
+          flex-direction: column;
           align-items: center;
+          text-align: center;
           position: relative;
           z-index: 2;
+        }
+        .hero-left {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+          max-width: 800px;
+          margin: 0 auto;
         }
         .hero-badge {
           display: inline-block;
@@ -913,7 +890,9 @@ const Home = () => {
           line-height: 1.6;
           color: #cbd5e1;
           margin-bottom: 40px;
-          max-width: 540px;
+          max-width: 680px;
+          margin-left: auto;
+          margin-right: auto;
         }
         .btn-primary-pill {
           display: inline-flex;

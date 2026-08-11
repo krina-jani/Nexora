@@ -9,6 +9,7 @@
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
+  isolation: isolate;
 }
 
 /* Background Radial Glow */
@@ -66,7 +67,6 @@
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-stroke: 1px rgba(255, 255, 255, 0.15);
-  transform: translateX(100vw);
 }
 
 /* Foreground Container Card */

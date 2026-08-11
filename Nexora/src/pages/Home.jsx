@@ -239,12 +239,6 @@ const Home = () => {
 
       {/* Inline styles for Home Page elements (Remaining main sections) */}
       <style>{`
-        .final-cta-section {
-          padding: 80px 0 120px 0;
-          position: relative;
-          background: #1e2630 !important;
-        }
-
         /* 3-Color Alternating Theme Overrides for Home Page (Blue #2D5C9D, Black #000000, White #ffffff) */
         
         /* 1. Marquee Section -> Blue #3a3f46ff */

@@ -1,7 +1,8 @@
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { Link } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
 import "./FinalCTA.css";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -13,35 +14,43 @@ const FinalCTA = () => {
   const ctaContentRef = useRef(null);
   const glowRef = useRef(null);
 
-  useEffect(() => {
-    const section = sectionRef.current;
-    const bgText = bgTextRef.current;
-    const ctaBox = ctaBoxRef.current;
-    const ctaContent = ctaContentRef.current;
-    const glow = glowRef.current;
+  useGSAP(
+    () => {
+      const section = sectionRef.current;
+      const bgText = bgTextRef.current;
+      const ctaBox = ctaBoxRef.current;
+      const ctaContent = ctaContentRef.current;
+      const glow = glowRef.current;
 
-    if (!section || !bgText || !ctaBox || !ctaContent) return;
+      if (!section || !bgText || !ctaBox || !ctaContent) return;
 
-    const ctx = gsap.context(() => {
-      // Pin section and handle horizontal kinetic typography + content entrance on scroll
+      // Calculate dynamic horizontal translation distance for kinetic typography
+      const calculateScrollX = () => {
+        const textWidth = bgText.scrollWidth;
+        const viewportWidth = window.innerWidth;
+        return -(textWidth - viewportWidth + viewportWidth * 0.15);
+      };
+
+      // 1. Explicitly set initial hidden states BEFORE ScrollTrigger initializes
+      // to prevent pre-render flash or duplicate rendering appearance
+      gsap.set(ctaBox, { scale: 0.88, opacity: 0, y: 60 });
+      gsap.set(ctaContent, { opacity: 0, y: 80, scale: 0.92 });
+      gsap.set(bgText, { x: window.innerWidth });
+
+      // 2. Create ONE master timeline with single ScrollTrigger pinning instance
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: section,
           start: "top top",
-          end: "+=2200",
+          end: () => `+=${Math.max(window.innerHeight * 2, bgText.scrollWidth - window.innerWidth + 300)}`,
           scrub: 1,
           pin: true,
+          anticipatePin: 1,
           invalidateOnRefresh: true,
         },
       });
 
-      // 1. Oversized background kinetic text movement (RIGHT to LEFT)
-      const calculateScrollX = () => {
-        const textWidth = bgText.scrollWidth;
-        const viewportWidth = window.innerWidth;
-        return -(textWidth - viewportWidth + viewportWidth * 0.25);
-      };
-
+      // Oversized Kinetic Typography horizontal movement (Right -> Left)
       tl.to(
         bgText,
         {
@@ -51,7 +60,7 @@ const FinalCTA = () => {
         0
       );
 
-      // 2. Subtle radial glow movement during scroll
+      // Background Glow movement
       if (glow) {
         tl.to(
           glow,
@@ -65,32 +74,22 @@ const FinalCTA = () => {
         );
       }
 
-      // 3. CTA Box card entrance animation
-      tl.fromTo(
+      // CTA Box card entrance
+      tl.to(
         ctaBox,
-        {
-          scale: 0.88,
-          opacity: 0,
-          y: 60,
-        },
         {
           scale: 1,
           opacity: 1,
           y: 0,
           ease: "power2.out",
-          duration: 0.6,
+          duration: 0.5,
         },
-        0.12
+        0.1
       );
 
-      // 4. CTA inner content elegant reveal
-      tl.fromTo(
+      // CTA Content inner reveal
+      tl.to(
         ctaContent,
-        {
-          opacity: 0,
-          y: 80,
-          scale: 0.92,
-        },
         {
           opacity: 1,
           y: 0,
@@ -98,32 +97,29 @@ const FinalCTA = () => {
           ease: "power3.out",
           duration: 0.5,
         },
-        0.3
+        0.25
       );
-    }, section);
 
-    // Subtle mouse parallax micro-interaction on background text
-    const handleMouseMove = (e) => {
-      if (!bgText) return;
-      const { clientX, clientY } = e;
-      const moveX = (clientX / window.innerWidth - 0.5) * -20;
-      const moveY = (clientY / window.innerHeight - 0.5) * -12;
+      // Subtle mouse movement / parallax on background text
+      const handleMouseMove = (e) => {
+        if (!bgText) return;
+        const { clientY } = e;
+        const moveY = (clientY / window.innerHeight - 0.5) * -12;
+        gsap.to(bgText, {
+          y: moveY,
+          duration: 1.2,
+          ease: "power2.out",
+          overwrite: "auto",
+        });
+      };
 
-      gsap.to(bgText, {
-        y: moveY,
-        duration: 1.2,
-        ease: "power2.out",
-        overwrite: "auto",
-      });
-    };
-
-    window.addEventListener("mousemove", handleMouseMove);
-
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-      ctx.revert();
-    };
-  }, []);
+      window.addEventListener("mousemove", handleMouseMove);
+      return () => {
+        window.removeEventListener("mousemove", handleMouseMove);
+      };
+    },
+    { scope: sectionRef }
+  );
 
   return (
     <section ref={sectionRef} className="kinetic-cta-section">

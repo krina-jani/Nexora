@@ -20,30 +20,38 @@ import {
 gsap.registerPlugin(ScrollTrigger);
 
 const iconMap = {
-  it: <FaLaptopCode />,
-  ai: <FaBrain />,
-  cloud: <FaCloud />,
-  cyber: <FaShieldAlt />,
-  health: <FaHeartbeat />,
-  ecommerce: <FaShoppingCart />,
-  manufacturing: <FaIndustry />,
-  finance: <FaGlobe />,
-  "digital-marketing": <FaBullhorn />
+  "software-engineering": <FaLaptopCode />,
+  "data-ai": <FaBrain />,
+  "cloud-devops": <FaCloud />,
+  cybersecurity: <FaShieldAlt />,
+  "it-infrastructure": <FaLaptopCode />,
+  "qa-testing": <FaLaptopCode />,
+  "business-ops": <FaIndustry />,
+  "finance-accounting": <FaGlobe />,
+  "hr-talent": <FaGlobe />,
+  "sales-bd": <FaBullhorn />,
+  "marketing-digital": <FaBullhorn />,
+  "healthcare-admin": <FaHeartbeat />,
+  "supply-chain": <FaIndustry />
 };
 
 const imageMap = {
-  it: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=300&q=80",
-  ai: "https://images.unsplash.com/photo-1677442136019-21780efad99a?auto=format&fit=crop&w=300&q=80",
-  cloud: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=300&q=80",
-  cyber: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=300&q=80",
-  health: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=300&q=80",
-  ecommerce: "https://images.unsplash.com/photo-1557821314-4b9644db218e?auto=format&fit=crop&w=300&q=80",
-  manufacturing: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=300&q=80",
-  finance: "https://images.unsplash.com/photo-1501167786227-4cba60f6d58f?w=800&auto=format&fit=crop&q=80",
-  "digital-marketing": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=300&q=80"
+  "software-engineering": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=300&q=80",
+  "data-ai": "https://images.unsplash.com/photo-1677442136019-21780efad99a?auto=format&fit=crop&w=300&q=80",
+  "cloud-devops": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=300&q=80",
+  cybersecurity: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=300&q=80",
+  "it-infrastructure": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=300&q=80",
+  "qa-testing": "https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&w=300&q=80",
+  "business-ops": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=300&q=80",
+  "finance-accounting": "https://images.unsplash.com/photo-1501167786227-4cba60f6d58f?w=800&auto=format&fit=crop&q=80",
+  "hr-talent": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=300&q=80",
+  "sales-bd": "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=300&q=80",
+  "marketing-digital": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=300&q=80",
+  "healthcare-admin": "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=300&q=80",
+  "supply-chain": "https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=800&auto=format&fit=crop&q=80"
 };
 
-const Typewriter = ({ texts, typingSpeed = 75, deletingSpeed = 50, pauseDuration = 1500, loop = true }) => {
+const Typewriter = ({ texts, typingSpeed = 75, deletingSpeed = 50, pauseDuration = 1500 }) => {
   const [text, setText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
   const [loopNum, setLoopNum] = useState(0);
@@ -101,7 +109,6 @@ const Industries = () => {
 
       // Mobile layout animations (screens <= 991px)
       mm.add("(max-width: 991px)", () => {
-        // Alternating slide-in animations for industry cards
         const industryCards = gsap.utils.toArray(".industry-card");
         industryCards.forEach((card, index) => {
           const isLeft = index % 2 === 0;
@@ -118,8 +125,6 @@ const Industries = () => {
           });
         });
 
-
-        // Alternating slide-in animation for CTA box
         gsap.from(".ind-cta-box", {
           scrollTrigger: {
             trigger: ".ind-cta-box",
@@ -135,24 +140,21 @@ const Industries = () => {
 
       // Desktop layout animations (screens > 991px)
       mm.add("(min-width: 992px)", () => {
-        // Cards staggered reveal
         gsap.fromTo(".industry-card", 
           { y: 40, opacity: 0 },
           {
             scrollTrigger: {
-              trigger: ".industries-grid",
+              trigger: ".industries-grid-section",
               start: "top 80%"
             },
             y: 0,
             opacity: 1,
-            stagger: 0.08,
+            stagger: 0.05,
             duration: 0.8,
             ease: "power2.out"
           }
         );
 
-
-        // CTA Box slide up
         gsap.from(".ind-cta-box", {
           scrollTrigger: {
             trigger: ".ind-cta-box",
@@ -169,6 +171,15 @@ const Industries = () => {
     return () => ctx.revert();
   }, []);
 
+  const scrollToSection = (id) => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const techIndustries = industries.filter(ind => ind.category === "tech");
+  const nonTechIndustries = industries.filter(ind => ind.category === "non-tech");
 
   return (
     <div ref={pageRef} className="industries-page-wrapper" style={{ background: "#000000" }}>
@@ -186,17 +197,37 @@ const Industries = () => {
       >
         <div className="container" style={{ position: "relative", zIndex: 1 }}>
           <h1 className="ind-hero-title">
-            Global Placement <span className="text-gradient">By Industry</span>
+            Career Opportunities <span className="text-gradient">Across Tech & Non-Tech</span>
           </h1>
           <p className="ind-hero-sub text-light">
-            We support career trajectories across massive global domains. Our mentors specialize in training for specific technical interviews.
+            Nexora Career supports qualified professionals targeting opportunities in the US job market across technology, business, and other professional functions.
           </p>
         </div>
       </section>
 
-      {/* Industry Grid */}
-      <section className="industries-grid-section" style={{ position: "relative", overflow: "hidden" }}>
-        <div style={{ position: "absolute", inset: 0, zIndex: 0, opacity: 0.2 }}>
+      {/* Category Index Selector */}
+      <section className="category-selector-section">
+        <div className="container">
+          <div className="category-cards-grid">
+            <div className="cat-select-card glass" onClick={() => scrollToSection("tech-careers")}>
+              <div className="cat-icon-wrap"><FaLaptopCode /></div>
+              <h2>Technology Careers</h2>
+              <p>Prepare for software engineering, data, cloud, cybersecurity, IT, and QA/testing roles.</p>
+              <span className="cat-arrow">Explore Tech Paths &darr;</span>
+            </div>
+            <div className="cat-select-card glass" onClick={() => scrollToSection("non-tech-careers")}>
+              <div className="cat-icon-wrap"><FaIndustry /></div>
+              <h2>Professional Careers</h2>
+              <p>Explore business, finance, accounting, HR, marketing, operations, and logistics paths.</p>
+              <span className="cat-arrow">Explore Non-Tech Paths &darr;</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Technology Section */}
+      <section id="tech-careers" className="industries-grid-section" style={{ position: "relative", overflow: "hidden" }}>
+        <div style={{ position: "absolute", inset: 0, zIndex: 0, opacity: 0.15 }}>
           <LineWaves
             speed={0.15}
             innerLineCount={36}
@@ -214,8 +245,15 @@ const Industries = () => {
           />
         </div>
         <div className="container" style={{ position: "relative", zIndex: 1 }}>
+          <div className="section-header-wrap">
+            <h2 className="section-title">Technology Careers</h2>
+            <p className="section-desc text-light">
+              Technology careers span software engineering, data, cloud, cybersecurity, IT infrastructure, and QA testing. Nexora Career helps professionals prepare and position their experience for relevant opportunities in the US job market.
+            </p>
+          </div>
+          
           <div className="industries-grid">
-            {industries.map((ind) => (
+            {techIndustries.map((ind) => (
               <div key={ind.id} className="industry-card glass">
                 <div 
                   className="card-bg-image" 
@@ -234,7 +272,7 @@ const Industries = () => {
                 
                 <div className="ind-details">
                   <div className="ind-roles">
-                    <h4>Popular Roles</h4>
+                    <h4>Example Career Paths</h4>
                     <ul>
                       {ind.roles?.map((role, i) => (
                         <li key={i}>{role}</li>
@@ -242,7 +280,6 @@ const Industries = () => {
                     </ul>
                   </div>
                   <div className="ind-skills">
-                    {/* <h4>Skills</h4> */}
                     <div className="skill-tags">
                       {ind.skills?.map((skill, i) => (
                         <span key={i} className="skill-tag">{skill}</span>
@@ -256,6 +293,56 @@ const Industries = () => {
         </div>
       </section>
 
+      {/* Non-Tech Section */}
+      <section id="non-tech-careers" className="industries-grid-section" style={{ position: "relative", overflow: "hidden", borderTop: "1px solid rgba(255, 255, 255, 0.08)" }}>
+        <div className="container" style={{ position: "relative", zIndex: 1 }}>
+          <div className="section-header-wrap">
+            <h2 className="section-title">Professional & Business Careers (Non-Tech)</h2>
+            <p className="section-desc text-light">
+              US employers hire professionals across business, finance, operations, marketing, HR, healthcare administration, and supply chain functions. Nexora Career helps candidates present their experience clearly and prepare for relevant opportunities.
+            </p>
+          </div>
+          
+          <div className="industries-grid">
+            {nonTechIndustries.map((ind) => (
+              <div key={ind.id} className="industry-card glass">
+                <div 
+                  className="card-bg-image" 
+                  style={{ backgroundImage: `url(${imageMap[ind.id]})` }}
+                ></div>
+                
+                <div className="card-top-row">
+                  <div className="ind-icon-box">
+                    {iconMap[ind.id]}
+                  </div>
+                  <div className="ind-dot-accent"></div>
+                </div>
+
+                <h3>{ind.title}</h3>
+                <p className="ind-desc">{ind.description}</p>
+                
+                <div className="ind-details">
+                  <div className="ind-roles">
+                    <h4>Example Career Paths</h4>
+                    <ul>
+                      {ind.roles?.map((role, i) => (
+                        <li key={i}>{role}</li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div className="ind-skills">
+                    <div className="skill-tags">
+                      {ind.skills?.map((skill, i) => (
+                        <span key={i} className="skill-tag">{skill}</span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* Global CTA */}
       <section className="ind-cta-section text-center">
@@ -263,16 +350,16 @@ const Industries = () => {
           <h2 className="ind-cta-heading">
             <Typewriter 
               texts={[
-                "Ready to switch your industry?",
-                "Explore new career horizons.",
+                "Ready to Explore Your Next Career Move?",
+                "Discuss your career goals with us.",
               ]} 
             />
           </h2>
           <p>
-            Book a 1-on-1 diagnostic call with our specialists. We'll map your transferable skills and build your personalized transition roadmap.
+            Discuss your experience, target roles, and goals with a Nexora Career specialist. We'll help you understand the next steps for pursuing relevant opportunities in the US job market.
           </p>
           <Link to="/contact" className="btn-primary">
-            Schedule Diagnostic Session
+            Schedule a Career Consultation
           </Link>
         </div>
       </section>
@@ -289,10 +376,6 @@ const Industries = () => {
 
         .text-type {
           white-space: pre-wrap;
-        }
-
-        .txt-white{
-          color: white !important;
         }
 
         .cursor {
@@ -312,10 +395,10 @@ const Industries = () => {
         }
         .industries-grid-section {
           background: #000000 !important;
-          padding: 60px 0 100px;
+          padding: 80px 0 100px;
         }
         .ind-hero-title {
-          font-size: 3.8rem;
+          font-size: 3.5rem;
           font-weight: 800;
           margin-bottom: 20px;
           color: #ffffff !important;
@@ -323,20 +406,93 @@ const Industries = () => {
          
         .ind-hero-sub {
           font-size: 1.25rem;
-          max-width: 650px;
+          max-width: 750px;
           margin: 0 auto;
           color: #cccccc !important;
+          line-height: 1.6;
         }
         .text-gradient {
           background: linear-gradient(134deg, #df830d, #f59e0b);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
         }
+        
+        /* Category index styling */
+        .category-selector-section {
+          background: #000000;
+          padding: 40px 0;
+        }
+        .category-cards-grid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 30px;
+          max-width: 900px;
+          margin: 0 auto;
+        }
+        .cat-select-card {
+          padding: 30px;
+          border-radius: var(--radius-md);
+          border: 1px solid rgba(255, 255, 255, 0.12) !important;
+          background: rgba(255, 255, 255, 0.05) !important;
+          backdrop-filter: blur(12px) !important;
+          cursor: pointer;
+          transition: all 0.35s ease;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+        }
+        .cat-select-card:hover {
+          border-color: #DFBD69 !important;
+          transform: translateY(-5px);
+          box-shadow: 0 10px 30px rgba(223, 189, 105, 0.15);
+        }
+        .cat-icon-wrap {
+          font-size: 2.2rem;
+          color: #DFBD69;
+          margin-bottom: 15px;
+        }
+        .cat-select-card h2 {
+          font-size: 1.5rem;
+          color: #ffffff;
+          margin-bottom: 10px;
+          font-weight: 700;
+        }
+        .cat-select-card p {
+          color: #cccccc;
+          font-size: 0.95rem;
+          line-height: 1.5;
+          margin-bottom: 20px;
+        }
+        .cat-arrow {
+          font-weight: 600;
+          color: #DFBD69;
+          font-size: 0.9rem;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+        }
+
+        .section-header-wrap {
+          max-width: 800px;
+          margin: 0 auto 50px auto;
+          text-align: center;
+        }
+        .section-title {
+          font-size: 2.5rem;
+          font-weight: 700;
+          color: #ffffff;
+          margin-bottom: 15px;
+        }
+        .section-desc {
+          font-size: 1.1rem;
+          line-height: 1.6;
+          color: #cccccc !important;
+        }
+
         .industries-grid {
           display: grid;
           grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
           gap: 30px;
-          margin-top: 40px;
         }
         .industry-card {
           padding: 35px 24px;
@@ -490,7 +646,7 @@ const Industries = () => {
           background-size: cover;
           background-repeat: no-repeat;
           background-position: center;
-          opacity: 0.08; /* Subtle background image integration */
+          opacity: 0.08;
           pointer-events: none;
           z-index: 1;
           border-bottom-right-radius: var(--radius-md);
@@ -501,6 +657,22 @@ const Industries = () => {
         @media (max-width: 991px) {
           .industries-grid {
             grid-template-columns: repeat(2, 1fr);
+          }
+          .ind-hero-title {
+            font-size: 2.8rem;
+          }
+          .category-cards-grid {
+            gap: 20px;
+            padding: 0 20px;
+          }
+        }
+        @media (max-width: 768px) {
+          .category-cards-grid {
+            grid-template-columns: 1fr;
+            max-width: 480px;
+          }
+          .section-title {
+            font-size: 2rem;
           }
         }
         @media (max-width: 576px) {

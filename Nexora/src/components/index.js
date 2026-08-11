@@ -6,3 +6,4 @@ export { default as FeaturedCareerPathways } from "./sections/FeaturedCareerPath
 export { default as OurPlacedCandidates } from "./sections/OurPlacedCandidates/OurPlacedCandidates";
 export { default as PlacementWorkflow } from "./sections/PlacementWorkflow/PlacementWorkflow";
 export { default as FAQ } from "./sections/FAQ/FAQ";
+export { default as FinalCTA } from "./sections/FinalCTA/FinalCTA";

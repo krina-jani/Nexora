@@ -19,7 +19,8 @@ import {
   TargetPlacementsBySector,
   OurPlacedCandidates,
   PlacementWorkflow,
-  FAQ
+  FAQ,
+  FinalCTA
 } from "../components";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -234,31 +235,7 @@ const Home = () => {
       <FAQ />
 
       {/* SECTION 13: FINAL CTA */}
-      <section className="final-cta-section">
-        <div className="container">
-          <div className="cta-box glass text-center">
-            <h2 className="cta-heading">
-              <Typewriter
-                texts={[
-                  "Ready to optimize your US job search?",
-                  "Align your profile with US standards.",
-                ]}
-              />
-            </h2>
-            <p className="cta-subheading">
-              Join ambitious professionals who have optimized their profiles and navigated the US hiring process with our support.
-            </p>
-            <div className="cta-buttons">
-              <Link to="/contact" className="btn-primary cta-btn-main">
-                Start Career Consultation
-              </Link>
-              <Link to="/services" className="btn-primary cta-btn-outline">
-                Explore Services
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+      <FinalCTA />
 
       {/* Inline styles for Home Page elements (Remaining main sections) */}
       <style>{`
@@ -620,192 +597,30 @@ const Home = () => {
         .faq-section-box {
           background: #000000 !important;
         }
-        .accordion-item-box {
+        .faq-section-box .accordion-item-box {
           background: rgba(255, 255, 255, 0.05) !important;
           border: 1px solid rgba(255, 255, 255, 0.12) !important;
           backdrop-filter: blur(12px) !important;
           -webkit-backdrop-filter: blur(12px) !important;
         }
-        .accordion-item-box.active {
+        .faq-section-box .accordion-item-box.active {
           border-color: rgba(255, 255, 255, 0.3) !important;
           box-shadow: 0 10px 30px rgba(255, 255, 255, 0.05) !important;
         }
-        .accordion-trigger {
+        .faq-section-box .accordion-trigger {
           color: #ffffff !important;
         }
-        .accordion-trigger:hover {
+        .faq-section-box .accordion-trigger:hover {
           color: #cccccc !important;
         }
-        .accordion-icon {
+        .faq-section-box .accordion-icon {
           color: #ffffff !important;
         }
-        .accordion-item-box.active .accordion-icon {
+        .faq-section-box .accordion-item-box.active .accordion-icon {
           color: #ffffff !important;
         }
-        .accordion-content-inner {
+        .faq-section-box .accordion-content-inner {
           color: #dddddd !important;
-        }
-        
-        .cta-box {
-          padding: 80px 60px;
-          border-radius: var(--radius-xl);
-          max-width: 1100px;
-          margin: 0 auto;
-          border: 1px solid rgba(255, 255, 255, 0.12) !important;
-          position: relative;
-          overflow: hidden;
-          background: rgba(255, 255, 255, 0.05) !important;
-          backdrop-filter: blur(12px) !important;
-          -webkit-backdrop-filter: blur(12px) !important;
-          transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .cta-box:hover {
-          border-color: #DFBD69 !important;
-          box-shadow:
-            0 0 20px rgba(223, 189, 105, 0.15),
-            0 0 60px rgba(223, 189, 105, 0.08);
-          transform: translateY(-8px);
-        }
-
-        .cta-box::after {
-          content: "";
-          position: absolute;
-          top: -150%;
-          left: -150%;
-          width: 250%;
-          height: 250%;
-          background: linear-gradient(
-            120deg,
-            transparent 35%,
-            rgba(223, 189, 105, 0.15) 50%,
-            transparent 65%
-          );
-          transform: rotate(25deg);
-          transition: all 1s ease;
-          pointer-events: none;
-          z-index: 1;
-        }
-
-        .cta-box:hover::after {
-          left: 100%;
-          top: 100%;
-        }
-
-        .cta-box::before {
-          content: "";
-          position: absolute;
-          top: -50%;
-          left: -50%;
-          width: 200%;
-          height: 200%;
-          background: radial-gradient(circle at center, rgba(223, 189, 105, 0.05), transparent 70%);
-          z-index: 0;
-          pointer-events: none;
-        }
-
-        .cta-heading {
-          font-size: clamp(2.5rem, 5vw, 3.5rem);
-          font-weight: 800;
-          margin-bottom: 24px;
-          color: #ffffff !important;
-          position: relative;
-          z-index: 2;
-          min-height: 120px; /* Prevent layout shift during typing */
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-
-        .text-type {
-          white-space: pre-wrap;
-        }
-
-        .cursor {
-          display: inline-block;
-          margin-left: 5px;
-          animation: blink 0.75s infinite;
-          color: #DFBD69 !important;
-        }
-
-        @keyframes blink {
-          0%, 100% { opacity: 1; }
-          50% { opacity: 0; }
-        }
-
-        .cta-subheading {
-          font-size: 1.1rem;
-          color: #cccccc !important;
-          margin: 0 auto 40px;
-          max-width: 600px;
-          position: relative;
-          z-index: 2;
-        }
-
-        .cta-buttons {
-          display: flex;
-          gap: 20px;
-          justify-content: center;
-          position: relative;
-          z-index: 2;
-        }
-        
-        .cta-btn-main {
-          padding: 16px 32px !important;
-          font-size: 1.1rem !important;
-        }
-
-        .cta-btn-outline {
-          padding: 16px 32px !important;
-          font-size: 1.1rem !important;
-          border: 2px solid #ffffff !important;
-          background: transparent !important;
-          color: #ffffff !important;
-          transition: all 0.3s ease !important;
-        }
-
-        .cta-btn-outline:hover {
-          background: #ffffff !important;
-          color: #000000 !important;
-        }
-
-        @media (max-width: 1024px) {
-          .cta-box {
-            padding: 60px 40px;
-          }
-          .cta-heading {
-            font-size: 2.8rem;
-            min-height: 110px;
-          }
-        }
-
-        @media (max-width: 768px) {
-          .final-cta-section {
-            padding: 60px 0 80px 0;
-          }
-          .cta-box {
-            padding: 40px 24px;
-            border-radius: var(--radius-lg);
-          }
-          .cta-heading {
-            font-size: 2.2rem;
-            min-height: 120px;
-          }
-          .cta-subheading {
-            font-size: 1rem;
-            margin-bottom: 30px;
-          }
-          .cta-buttons {
-            flex-direction: column;
-            gap: 16px;
-          }
-        }
-
-        @media (max-width: 480px) {
-          .cta-heading {
-            font-size: 1.8rem;
-            min-height: 100px;
-          }
         }
 
         .home-container {

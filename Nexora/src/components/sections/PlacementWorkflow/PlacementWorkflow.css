@@ -1,7 +1,10 @@
 /* Placement Workflow Section Styles */
 .placement-process-section {
   padding: 100px 0;
-  background: var(--bg-soft);
+  background-image: linear-gradient(rgba(15, 18, 17, 0.5), rgba(15, 18, 17, 0.5)), url('https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1920&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
   position: relative;
   overflow: hidden;
 }
@@ -16,8 +19,8 @@
 .timeline-track-bg {
   position: absolute;
   top: 48px; /* Centered with the 56px dot (20px padding + 28px half-height) */
-  left: 0;
-  right: 0;
+  left: 28px;
+  right: 28px;
   height: 4px;
   background: rgba(255, 255, 255, 0.25);
   border-radius: 2px;
@@ -28,14 +31,14 @@
 .timeline-track-progress {
   position: absolute;
   top: 48px;
-  left: 0;
+  left: 28px;
   height: 4px;
-  width: var(--progress-width);
+  width: calc((100% - 56px) * (var(--active-step-val) / 5));
   background: linear-gradient(90deg, var(--accent), #ffffff);
   border-radius: 2px;
   z-index: 2;
   box-shadow: 0 0 15px var(--accent);
-  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: none;
 }
 
 /* Nodes Container */
@@ -80,7 +83,7 @@
   display: grid;
   place-items: center;
   font-size: 1.35rem;
-  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: none;
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
 }
@@ -106,25 +109,13 @@
   inset: -8px;
   border: 2px solid var(--accent);
   border-radius: 50%;
-  animation: pulseGlow 2s ease-out infinite;
   pointer-events: none;
-}
-
-@keyframes pulseGlow {
-  0% {
-    transform: scale(0.9);
-    opacity: 1;
-  }
-  100% {
-    transform: scale(1.4);
-    opacity: 0;
-  }
 }
 
 /* Node Text Styles */
 .node-text {
   color: rgba(255, 255, 255, 0.7);
-  transition: all 0.4s ease;
+  transition: none;
 }
 
 .workflow-node.active .node-text {
@@ -137,7 +128,7 @@
   font-size: 1.1rem;
   font-weight: 700;
   margin: 0 0 10px 0;
-  transition: color 0.4s ease;
+  transition: none;
 }
 
 .workflow-node.active .node-text h4 {
@@ -161,20 +152,20 @@
 
   /* Vertical Background Track */
   .timeline-track-bg {
-    top: 0;
-    bottom: 0;
-    left: 48px; /* Align with node dot centers */
+    top: 29px;
+    bottom: 29px;
+    left: 68px; /* Align with node dot centers (padding-left 40px + dot radius 28px) */
     width: 4px;
-    height: 100%;
+    height: calc(100% - 56px);
     transform: none;
   }
 
   /* Vertical Progress Indicator */
   .timeline-track-progress {
-    top: 0;
-    left: 48px;
+    top: 22px;
+    left: 68px;
     width: 4px;
-    height: var(--progress-height);
+    height: calc((100% - 5px) * (var(--active-step-val) / 5));
     background: linear-gradient(180deg, var(--accent), #ffffff);
     transform: none;
     transition: height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
@@ -215,11 +206,11 @@
   }
 
   .timeline-track-bg {
-    left: 28px;
+    left: 48px; /* Align with node dot centers (padding-left 20px + dot radius 28px) */
   }
 
   .timeline-track-progress {
-    left: 28px;
+    left: 48px;
   }
 
   .workflow-node {

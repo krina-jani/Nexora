@@ -210,7 +210,21 @@ const ScrollExpand = ({
   }, [applyProgress, useWindowScroll]);
 
   const media =
-    mediaType === 'video' ? (
+    mediaType === 'gradient' ? (
+      <div 
+        ref={mediaRef} 
+        className="scroll-expand__media scroll-expand__gradient-bg" 
+        style={{
+          background: src || 'linear-gradient(135deg, #1e2630, #000000)',
+          width: '100%',
+          height: '100%',
+          position: 'relative'
+        }}
+      >
+        <div className="se-grid-overlay" />
+        <div className="se-glow-orb" />
+      </div>
+    ) : mediaType === 'video' ? (
       <video
         ref={mediaRef}
         className="scroll-expand__media"

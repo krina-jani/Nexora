@@ -8,13 +8,16 @@
 
 .navbar-header {
   position: fixed;
-  top: 24px;
+  top: 0;
   left: 0;
   width: 100%;
   z-index: 1000;
   padding: 0 4%;
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  
+  background: rgba(0, 0, 0, 0.85) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+  transition: all 0.3s ease;
 
   /* Core navigation colors mapped to theme */
   --nav-text: #ffffff;
@@ -32,11 +35,6 @@
   --nav-mobile-bg: rgba(0, 0, 0, 0.98);
 }
 
-/* On scroll down, maintain same positioning to prevent shrink/grow jump */
-.navbar-header.scrolled {
-  top: 24px;
-}
-
 .navbar-glass-container {
   position: relative;
   display: flex;
@@ -45,29 +43,13 @@
   max-width: var(--container);
   margin: 0 auto;
   height: 80px;
-  padding: 0 40px;
+  padding: 0 10px;
   background: transparent !important;
-  border: 1px solid transparent !important;
-  backdrop-filter: blur(0px) !important;
-  -webkit-backdrop-filter: blur(0px) !important;
-  border-radius: 50px !important;
+  border: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
   box-shadow: none !important;
-  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.navbar-header.scrolled .navbar-glass-container {
-  height: 80px;
-  max-width: 80%;
-  background: rgba(255, 255, 255, 0.08) !important;
-  border: 1px solid rgb(209, 180, 180) !important;
-  backdrop-filter: blur(20px) !important;
-  -webkit-backdrop-filter: blur(20px) !important;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3) !important;
-}
-
-[data-theme='dark'] .navbar-header.scrolled .navbar-glass-container {
-  background: rgba(255, 255, 255, 0.08) !important;
-  border: 1px solid rgb(209, 180, 180) !important;
+  transition: all 0.3s ease;
 }
 
 /* Logo */
@@ -346,6 +328,7 @@
   }
 
   /* Full screen mobile nav drawer with smooth hardware-accelerated transitions */
+  /* Full screen mobile nav drawer with smooth hardware-accelerated transitions */
   .navbar-nav {
     display: block;
     position: absolute;
@@ -356,7 +339,7 @@
     background: #ffffff; /* Solid white background */
     border: none;
     border-radius: 0;
-    padding: 30px 24px;
+    padding: 30px 20px;
     box-shadow: none;
     z-index: 1001;
     overflow-y: auto;
@@ -367,7 +350,7 @@
   }
 
   [data-theme='dark'] .navbar-nav {
-    background: var(--nav-mobile-bg);
+    background: #000000 !important;
   }
 
   .navbar-nav.open {
@@ -379,9 +362,9 @@
   .navbar-links {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 16px;
-    text-align: center;
+    align-items: flex-start;
+    gap: 12px;
+    text-align: left;
     width: 100%;
   }
 
@@ -390,21 +373,30 @@
   }
 
   .navbar-links a {
-    font-size: 1.15rem;
+    font-size: 2.2rem;
+    font-weight: 700;
+    text-transform: uppercase;
     display: block;
     width: 100%;
-    color: var(--nav-text);
-    font-weight: 600;
-    padding: 12px 16px;
-    border-radius: var(--radius-sm);
+    color: #cccccc !important;
+    padding: 6px 0;
+    border-radius: 0;
     transition: all 0.25s ease;
-    text-align: center;
+    text-align: left;
   }
 
-  .navbar-links a:hover,
   .navbar-links a.active {
-    color: var(--primary) !important;
+    color: #000000 !important;
+    font-weight: 900;
     background: transparent;
+  }
+
+  [data-theme='dark'] .navbar-links a.active {
+    color: #ffffff !important;
+  }
+
+  [data-theme='dark'] .navbar-links a {
+    color: rgba(255, 255, 255, 0.35) !important;
   }
 
   .navbar-links a.active::after {
@@ -418,16 +410,18 @@
   .dropdown-trigger {
     display: flex !important;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     width: 100%;
-    font-size: 1.15rem;
-    color: var(--nav-text);
-    padding: 12px 16px;
-    border-radius: var(--radius-sm);
+    font-size: 2.2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #cccccc !important;
+    padding: 6px 0;
+    border-radius: 0;
   }
 
-  .dropdown-trigger:hover {
-    color: var(--primary);
+  .dropdown-trigger .chevron {
+    display: none !important;
   }
 
   .simple-dropdown {
@@ -436,33 +430,94 @@
     visibility: visible;
     transform: none;
     padding: 0;
-    margin-top: 5px;
-    margin-bottom: 10px;
-    display: none;
+    margin: 8px 0 16px 12px;
+    display: flex !important;
+    flex-direction: column;
+    gap: 8px;
     box-shadow: none;
     border: none;
     background: transparent;
     pointer-events: auto;
   }
   
-  .simple-dropdown.show {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
-  
   .simple-dropdown a {
-    text-align: center;
-    padding: 12px 16px !important;
-    font-size: 1.05rem;
-    color: var(--nav-text) !important;
-    opacity: 0.85;
-    border-radius: var(--radius-sm);
+    text-align: left;
+    padding: 4px 0 !important;
+    font-size: 1rem !important;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #888888 !important;
+    opacity: 1;
+    border-radius: 0;
+    white-space: normal !important;
+    line-height: 1.3;
+    display: block;
+  }
+
+  [data-theme='dark'] .simple-dropdown a {
+    color: rgba(255, 255, 255, 0.5) !important;
+  }
+
+  .simple-dropdown a.active {
+    color: #000000 !important;
+  }
+
+  [data-theme='dark'] .simple-dropdown a.active {
+    color: #ffffff !important;
   }
 
   .simple-dropdown a:hover {
     background: transparent;
-    color: var(--primary, #48C92C) !important;
+    color: #666666 !important;
+  }
+
+  [data-theme='dark'] .simple-dropdown a:hover {
+    color: rgba(255, 255, 255, 0.8) !important;
+  }
+
+  /* menu-open header transformations */
+  .navbar-header.menu-open {
+    background: #ffffff !important;
+    border-bottom: none !important;
+    box-shadow: none !important;
+  }
+
+  [data-theme='dark'] .navbar-header.menu-open {
+    background: #000000 !important;
+  }
+
+  .navbar-header.menu-open .logo-image {
+    display: none !important;
+  }
+
+  .navbar-header.menu-open .logo-main {
+    text-transform: uppercase;
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #000000 !important;
+    letter-spacing: -0.5px;
+  }
+
+  [data-theme='dark'] .navbar-header.menu-open .logo-main {
+    color: #ffffff !important;
+  }
+
+  .navbar-header.menu-open .logo-sub {
+    display: none !important;
+  }
+
+  .navbar-header.menu-open .mobile-toggle,
+  .navbar-header.menu-open .theme-toggle {
+    color: #000000 !important;
+  }
+
+  [data-theme='dark'] .navbar-header.menu-open .mobile-toggle,
+  [data-theme='dark'] .navbar-header.menu-open .theme-toggle {
+    color: #ffffff !important;
+  }
+
+  .mobile-cta-item {
+    display: none !important;
   }
 }
 

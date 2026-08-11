@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Renderer, Program, Mesh, Triangle } from 'ogl';
 import './GradientWaves.css';
 
@@ -153,8 +153,21 @@ const GradientWaves = ({
 }) => {
   const containerRef = useRef(null);
   const enableMouseRef = useRef(mouseInteraction);
+  const [isMobile, setIsMobile] = useState(() => {
+    return typeof window !== 'undefined' && window.innerWidth <= 768;
+  });
 
   useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  useEffect(() => {
+    if (isMobile) return;
     const container = containerRef.current;
     if (!container) return;
 
@@ -163,7 +176,7 @@ const GradientWaves = ({
       alpha: true,
       premultipliedAlpha: true,
       antialias: false,
-      dpr: Math.min(window.devicePixelRatio || 1, 2)
+      dpr: 1.0 // Capped at 1.0 for better GPU performance
     });
 
     const gl = renderer.gl;
@@ -191,7 +204,7 @@ const GradientWaves = ({
         uZoom: { value: 1.0 },
         uHeight: { value: 5.5 },
         uFogDepth: { value: 15 },
-        uSteps: { value: 70.0 },
+        uSteps: { value: 50.0 }, // Reduced max step count for massive speed boost
         uBrightness: { value: 1.0 },
         uOpacity: { value: 1.0 },
         uGrain: { value: 1.0 },
@@ -238,10 +251,15 @@ const GradientWaves = ({
     canvas.addEventListener('pointermove', onPointerMove);
     canvas.addEventListener('pointerleave', onPointerLeave);
 
+    let isIntersecting = false;
     let raf = 0;
     const t0 = performance.now();
 
     const loop = t => {
+      if (!isIntersecting) {
+        raf = 0;
+        return;
+      }
       program.uniforms.iTime.value = (t - t0) * 0.001;
       const tx = enableMouseRef.current ? targetMouse[0] : 0.5;
       const ty = enableMouseRef.current ? targetMouse[1] : 0.5;
@@ -253,10 +271,18 @@ const GradientWaves = ({
       raf = requestAnimationFrame(loop);
     };
 
-    raf = requestAnimationFrame(loop);
+    const io = new IntersectionObserver(([entry]) => {
+      isIntersecting = entry.isIntersecting;
+      if (isIntersecting && raf === 0) {
+        raf = requestAnimationFrame(loop);
+      }
+    }, { threshold: 0.01 });
+
+    io.observe(container);
 
     return () => {
       if (raf !== 0) cancelAnimationFrame(raf);
+      io.disconnect();
       ro.disconnect();
       canvas.removeEventListener('pointermove', onPointerMove);
       canvas.removeEventListener('pointerleave', onPointerLeave);
@@ -266,9 +292,10 @@ const GradientWaves = ({
       } catch {}
       gl.getExtension('WEBGL_lose_context')?.loseContext();
     };
-  }, []);
+  }, [isMobile]);
 
   useEffect(() => {
+    if (isMobile) return;
     const container = containerRef.current;
     if (!container) return;
     const ctx = ctxMap.get(container);
@@ -311,6 +338,7 @@ const GradientWaves = ({
     cc[1] = cr[1];
     cc[2] = cr[2];
   }, [
+    isMobile,
     horizonColor,
     waveColor,
     crestColor,
@@ -332,6 +360,19 @@ const GradientWaves = ({
     mouseInteraction,
     parallaxStrength
   ]);
+
+  if (isMobile) {
+    return (
+      <div
+        ref={containerRef}
+        className={`gradient-waves-fallback ${className}`}
+        style={{
+          background: `linear-gradient(135deg, ${horizonColor}, ${waveColor})`,
+          opacity: opacity,
+        }}
+      />
+    );
+  }
 
   return <div ref={containerRef} className={`gradient-waves-container ${className}`.trim()} />;
 };

@@ -383,7 +383,7 @@ const About = () => {
         .about-why-overlay {
           position: absolute;
           inset: 0;
-          background: rgba(255, 251, 251, 0);
+          background: rgba(0, 0, 0, 0);
           z-index: 2;
         }
 
@@ -595,6 +595,19 @@ const About = () => {
         }
 
         @media (max-width: 1024px) {
+          .about-grid-two-column {
+            grid-template-columns: 1fr;
+            gap: 40px;
+          }
+          .about-hero-content-left {
+            text-align: center;
+          }
+          .about-hero-sub {
+            margin: 0 auto;
+          }
+          .about-cards-grid-stacked {
+            align-items: center;
+          }
           .achievements-row {
             grid-template-columns: 1fr 1fr;
             row-gap: 40px;
@@ -612,7 +625,11 @@ const About = () => {
         }
         
         @media (max-width: 768px) {
-          .hero-content-container {
+          .about-grid-two-column {
+            grid-template-columns: 1fr;
+            gap: 30px;
+          }
+          .about-hero-content-left {
             text-align: center;
           }
           .about-hero-sub {
@@ -646,7 +663,7 @@ const About = () => {
           }
           .about-why-section {
             padding: 80px 0;
-            background-attachment: scroll;
+            background-attachment: fixed;
           }
           .why-title {
             font-size: 2.3rem;

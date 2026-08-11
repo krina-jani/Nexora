@@ -6,7 +6,10 @@ import { FaPaperPlane } from "react-icons/fa";
 
 const Contact = () => {
   const pageRef = useRef(null);
+  const formContainerRef = useRef(null);
   const [formData, setFormData] = useState({ name: "", email: "", phone: "", company: "", role: "", message: "", agree: false });
+  const [submitted, setSubmitted] = useState(false);
+  const [submittedName, setSubmittedName] = useState("");
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -37,8 +40,15 @@ const Contact = () => {
       alert("Please agree to the Privacy Policy before submitting.");
       return;
     }
-    alert(`Thank you, ${formData.name}! We will contact you soon.`);
+    setSubmittedName(formData.name);
+    setSubmitted(true);
     setFormData({ name: "", email: "", phone: "", company: "", role: "", message: "", agree: false });
+    
+    if (formContainerRef.current) {
+      setTimeout(() => {
+        formContainerRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 50);
+    }
   };
 
   return (
@@ -69,111 +79,131 @@ const Contact = () => {
           {/* Right Column (Contains Form) */}
           <div className="contact-right-content">
 
-            <div className="new-contact-form-container glass">
-              <div className="contact-header-new ">
-                <h2>Contact Form</h2>
-                <p>For the fastest response, please fill out the form below.</p>
+            <div ref={formContainerRef} className="new-contact-form-container glass">
+              
+              <div className={`contact-success-message text-center ${submitted ? 'active' : ''}`}>
+                <div className="success-icon-wrap" style={{ fontSize: "3.5rem", color: "#DFBD69", marginBottom: "20px" }}>
+                  ✓
+                </div>
+                <h2 style={{ color: "#ffffff", marginBottom: "15px" }}>Thank you, {submittedName}!</h2>
+                <p style={{ color: "#cccccc", lineHeight: "1.6", marginBottom: "30px" }}>
+                  Your message has been submitted successfully. A Nexora Career advisor will contact you soon.
+                </p>
+                <button 
+                  onClick={() => setSubmitted(false)} 
+                  className="btn-primary"
+                  style={{ margin: "0 auto" }}
+                >
+                  Send Another Message
+                </button>
               </div>
 
-              <form onSubmit={handleSubmit} className="new-contact-form">
-                
-                <div className="form-row-2col">
-                  <div className="form-group-new">
-                    <label>Full Name <span className="req-star">*</span></label>
-                    <input
-                      type="text"
-                      required
-                      value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      placeholder="John Doe"
-                      className="glass-input-new"
-                    />
-                  </div>
-                  <div className="form-group-new">
-                    <label>Email Address <span className="req-star">*</span></label>
-                    <input
-                      type="email"
-                      required
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      placeholder="john@company.com"
-                      className="glass-input-new"
-                    />
-                  </div>
+              <div className={`contact-form-inner ${!submitted ? 'active' : ''}`}>
+                <div className="contact-header-new ">
+                  <h2>Contact Form</h2>
+                  <p>For the fastest response, please fill out the form below.</p>
                 </div>
 
-                <div className="form-row-2col">
-                  <div className="form-group-new">
-                    <label>Phone Number</label>
-                    <input
-                      type="tel"
-                      value={formData.phone}
-                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      placeholder="+91 7634897546"
-                      className="glass-input-new"
-                    />
+                <form onSubmit={handleSubmit} className="new-contact-form">
+                  
+                  <div className="form-row-2col">
+                    <div className="form-group-new">
+                      <label>Full Name <span className="req-star">*</span></label>
+                      <input
+                        type="text"
+                        required
+                        value={formData.name}
+                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                        placeholder="John Doe"
+                        className="glass-input-new"
+                      />
+                    </div>
+                    <div className="form-group-new">
+                      <label>Email Address <span className="req-star">*</span></label>
+                      <input
+                        type="email"
+                        required
+                        value={formData.email}
+                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        placeholder="john@company.com"
+                        className="glass-input-new"
+                      />
+                    </div>
                   </div>
-                  <div className="form-group-new">
-                    <label>Company/Organization (if applicable)</label>
-                    <input
-                      type="text"
-                      value={formData.company}
-                      onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                      placeholder="Your Company"
-                      className="glass-input-new"
-                    />
+
+                  <div className="form-row-2col">
+                    <div className="form-group-new">
+                      <label>Phone Number</label>
+                      <input
+                        type="tel"
+                        value={formData.phone}
+                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                        placeholder="+91 7634897546"
+                        className="glass-input-new"
+                      />
+                    </div>
+                    <div className="form-group-new">
+                      <label>Company/Organization (if applicable)</label>
+                      <input
+                        type="text"
+                        value={formData.company}
+                        onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                        placeholder="Your Company"
+                        className="glass-input-new"
+                      />
+                    </div>
                   </div>
-                </div>
 
-                <div className="form-row-1col">
-                  <div className="form-group-new">
-                    <label>I am: <span className="req-star">*</span></label>
-                    <select 
-                      required
-                      value={formData.role}
-                      onChange={(e) => setFormData({ ...formData, role: e.target.value })}
-                      className="glass-input-new select-new"
-                    >
-                      <option value="" disabled>Select one</option>
-                      <option value="student">Student / Job Seeker</option>
-                      <option value="employer">Employer / Hiring Manager</option>
-                      <option value="partner">Potential Partner</option>
-                      <option value="other">Other</option>
-                    </select>
+                  <div className="form-row-1col">
+                    <div className="form-group-new">
+                      <label>I am: <span className="req-star">*</span></label>
+                      <select 
+                        required
+                        value={formData.role}
+                        onChange={(e) => setFormData({ ...formData, role: e.target.value })}
+                        className="glass-input-new select-new"
+                      >
+                        <option value="" disabled>Select one</option>
+                        <option value="student">Student / Job Seeker</option>
+                        <option value="employer">Employer / Hiring Manager</option>
+                        <option value="partner">Potential Partner</option>
+                        <option value="other">Other</option>
+                      </select>
+                    </div>
                   </div>
-                </div>
 
-                <div className="form-row-1col">
-                  <div className="form-group-new">
-                    <label>Message <span className="req-star">*</span></label>
-                    <textarea
-                      required
-                      rows="5"
-                      value={formData.message}
-                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      placeholder="Tell us about your recruitment needs or career goals..."
-                      className="glass-input-new"
-                    />
+                  <div className="form-row-1col">
+                    <div className="form-group-new">
+                      <label>Message <span className="req-star">*</span></label>
+                      <textarea
+                        required
+                        rows="5"
+                        value={formData.message}
+                        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                        placeholder="Tell us about your recruitment needs or career goals..."
+                        className="glass-input-new"
+                      />
+                    </div>
                   </div>
-                </div>
 
-                <div className="form-row-1col checkbox-row">
-                  <label className="checkbox-label">
-                    <input 
-                      type="checkbox" 
-                      required 
-                      checked={formData.agree}
-                      onChange={(e) => setFormData({ ...formData, agree: e.target.checked })}
-                    />
-                    <span>I have read and agree to the Nexora Privacy Policy and Terms of Service.</span>
-                  </label>
-                </div>
+                  <div className="form-row-1col checkbox-row">
+                    <label className="checkbox-label">
+                      <input 
+                        type="checkbox" 
+                        required 
+                        checked={formData.agree}
+                        onChange={(e) => setFormData({ ...formData, agree: e.target.checked })}
+                      />
+                      <span>I have read and agree to the Nexora Privacy Policy and Terms of Service.</span>
+                    </label>
+                  </div>
 
-                <button type="submit" className="btn-primary form-submit-btn-new">
-                  <FaPaperPlane className="submit-icon" /> Submit Message &rarr;
-                </button>
+                  <button type="submit" className="btn-primary form-submit-btn-new">
+                    <FaPaperPlane className="submit-icon" /> Submit Message &rarr;
+                  </button>
 
-              </form>
+                </form>
+              </div>
             </div>
           </div>
         </div>
@@ -207,6 +237,39 @@ const Contact = () => {
 
       {/* Styles */}
       <style>{`
+        .contact-success-message {
+          opacity: 0;
+          visibility: hidden;
+          height: 0;
+          overflow: hidden;
+          transform: translateY(15px);
+          transition: opacity 0.4s ease, transform 0.4s ease, padding 0.4s ease;
+          padding: 0 !important;
+        }
+        .contact-success-message.active {
+          opacity: 1;
+          visibility: visible;
+          height: auto;
+          overflow: visible;
+          transform: translateY(0);
+          padding: 40px 20px !important;
+        }
+        .contact-form-inner {
+          opacity: 0;
+          visibility: hidden;
+          height: 0;
+          overflow: hidden;
+          transform: translateY(15px);
+          transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+        .contact-form-inner.active {
+          opacity: 1;
+          visibility: visible;
+          height: auto;
+          overflow: visible;
+          transform: translateY(0);
+        }
+
         .contact-left-content {
           text-align: left;
           padding-bottom: 150px;

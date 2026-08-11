@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import gsap from "gsap";
 import services from "../data/services";
@@ -10,6 +10,19 @@ import ScrollExpand from "../components/common/ScrollExpand/ScrollExpand";
 const Services = () => {
   const pageRef = useRef(null);
   const location = useLocation();
+  const [isMobile, setIsMobile] = useState(false);
+  const [isTablet, setIsTablet] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      const w = window.innerWidth;
+      setIsMobile(w <= 480);
+      setIsTablet(w > 480 && w <= 991);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   // Scroll to hash on mount
   useEffect(() => {
@@ -71,6 +84,10 @@ const Services = () => {
   }, []);
 
 
+  const startWidth = isMobile ? 85 : (isTablet ? 60 : 30);
+  const startHeight = isMobile ? 65 : (isTablet ? 50 : 30);
+  const mediaZoom = isMobile ? 1.4 : (isTablet ? 2.0 : 4.20);
+
   return (
     <div ref={pageRef} className="services-page-wrapper" style={{ background: "#000000" }}>
 
@@ -82,11 +99,11 @@ const Services = () => {
           title="Our Elite Career Services"
           useWindowScroll
           reverse
-          startWidth={30}
-          startHeight={30}
+          startWidth={startWidth}
+          startHeight={startHeight}
           startRadius={8}
           endRadius={0}
-          mediaZoom={4.20}
+          mediaZoom={mediaZoom}
           scrollDistance={1.65}
           holdDistance={0.25}
           overlayScrim={0.85}
@@ -542,8 +559,6 @@ const Services = () => {
         }
 
         .process-section .text-light {
-
-        [data-theme='dark'] .process-section .text-light {
           color: #cbd5e1 !important;
         }
         
@@ -701,6 +716,44 @@ const Services = () => {
           }
           .services-list-grid {
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+          }
+        }
+        @media (max-width: 768px) {
+          .se-overlay-content {
+            padding: 60px 16px 0;
+            gap: 12px;
+          }
+          .se-overlay-heading {
+            font-size: 1.8rem;
+          }
+          .se-overlay-sub {
+            font-size: 0.95rem;
+          }
+          .se-overlay-cta {
+            padding: 12px 28px;
+            font-size: 0.9rem;
+          }
+          .service-title {
+            font-size: 1.75rem;
+            text-align: center;
+          }
+          .service-desc {
+            font-size: 1rem;
+            text-align: center;
+          }
+          .service-benefits-list {
+            align-items: center;
+          }
+          .detailed-service-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          }
+          .process-section {
+            padding: 60px 0;
+          }
+          .detailed-services-wrapper {
+            padding: 30px 0;
           }
         }
         @media (max-width: 576px) {

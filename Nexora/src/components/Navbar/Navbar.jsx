@@ -8,7 +8,8 @@ import "./Navbar.css";
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
+  const [industriesDropdownOpen, setIndustriesDropdownOpen] = useState(false);
   const [theme, setTheme] = useState(() => {
     return localStorage.getItem("theme") || "dark";
   });
@@ -16,19 +17,35 @@ const Navbar = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const handleDropdownClick = (e, hash) => {
-    setDropdownOpen(false);
-    setMenuOpen(false); // close mobile menu too just in case
+  const handleServicesDropdownClick = (e, hash) => {
+    setServicesDropdownOpen(false);
+    setMenuOpen(false);
     
     if (location.pathname === "/services") {
       e.preventDefault();
-      // change URL hash without jumping instantly
       window.history.pushState(null, '', `/services${hash}`);
       const el = document.getElementById(hash.replace('#', ''));
       if (el) {
         const y = el.getBoundingClientRect().top + window.scrollY - 120;
         window.scrollTo({ top: y, behavior: 'smooth' });
       }
+    }
+  };
+
+  const handleIndustriesDropdownClick = (e, hash) => {
+    setIndustriesDropdownOpen(false);
+    setMenuOpen(false);
+
+    if (location.pathname === "/industries") {
+      e.preventDefault();
+      window.history.pushState(null, '', `/industries${hash}`);
+      const el = document.getElementById(hash.replace('#', ''));
+      if (el) {
+        const y = el.getBoundingClientRect().top + window.scrollY - 120;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      }
+    } else {
+      navigate(`/industries${hash}`);
     }
   };
 
@@ -77,72 +94,106 @@ const Navbar = () => {
       <div className="navbar-glass-container">
         <NavLink to="/" className="navbar-logo">
           <img src={logo} alt="Nexora Logo" className="logo-image" />
-           <span className="logo-main">Nexora</span>
+          <span className="logo-main">Nexora</span>
           <span className="logo-sub">Career</span>
         </NavLink>
 
         <nav className={`navbar-nav ${menuOpen ? "open" : ""}`}>
           <ul className="navbar-links">
+            {/* 1. Home */}
             <li>
               <NavLink to="/" end className={({ isActive }) => (isActive ? "active" : "")}>
                 Home
               </NavLink>
             </li>
+
+            {/* 2. About */}
             <li>
               <NavLink to="/about" className={({ isActive }) => (isActive ? "active" : "")}>
                 About
               </NavLink>
             </li>
+
+            {/* 3. Industries Dropdown */}
             <li 
               className="navbar-item-dropdown"
-              onMouseEnter={() => setDropdownOpen(true)}
-              onMouseLeave={() => setDropdownOpen(false)}
+              onMouseEnter={() => setIndustriesDropdownOpen(true)}
+              onMouseLeave={() => setIndustriesDropdownOpen(false)}
+            >
+              <NavLink 
+                to="/industries"
+                className={`dropdown-trigger ${location.pathname === "/industries" ? "active" : ""}`}
+                onClick={() => {
+                  setIndustriesDropdownOpen(false);
+                  setMenuOpen(false);
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }}
+              >
+                Industries <LuChevronDown className={`chevron ${industriesDropdownOpen ? "open" : ""}`} />
+              </NavLink>
+              
+              <ul className={`simple-dropdown ${industriesDropdownOpen ? "show" : ""}`}>
+                <li>
+                  <Link to="/industries#tech-careers" onClick={(e) => handleIndustriesDropdownClick(e, '#tech-careers')}>
+                    Tech
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/industries#non-tech-careers" onClick={(e) => handleIndustriesDropdownClick(e, '#non-tech-careers')}>
+                    Non-Tech
+                  </Link>
+                </li>
+              </ul>
+            </li>
+
+            {/* 4. Services Dropdown */}
+            <li 
+              className="navbar-item-dropdown"
+              onMouseEnter={() => setServicesDropdownOpen(true)}
+              onMouseLeave={() => setServicesDropdownOpen(false)}
             >
               <NavLink 
                 to="/services"
                 className={`dropdown-trigger ${location.pathname === "/services" ? "active" : ""}`}
                 onClick={() => {
-                  setDropdownOpen(false);
+                  setServicesDropdownOpen(false);
                   setMenuOpen(false);
                   window.scrollTo({ top: 0, behavior: "smooth" });
                 }}
               >
-                Services <LuChevronDown className={`chevron ${dropdownOpen ? "open" : ""}`} />
+                Services <LuChevronDown className={`chevron ${servicesDropdownOpen ? "open" : ""}`} />
               </NavLink>
               
-              <ul className={`simple-dropdown ${dropdownOpen ? "show" : ""}`}>
+              <ul className={`simple-dropdown ${servicesDropdownOpen ? "show" : ""}`}>
                 <li>
-                  <Link to="/services#rpo" onClick={(e) => handleDropdownClick(e, '#rpo')}>
+                  <Link to="/services#rpo" onClick={(e) => handleServicesDropdownClick(e, '#rpo')}>
                     Profile & Resume <span className="hide-on-mobile">Optimization</span>
                   </Link>
                 </li>
                 <li>
-                  <Link to="/services#career-support" onClick={(e) => handleDropdownClick(e, '#career-support')}>
+                  <Link to="/services#career-support" onClick={(e) => handleServicesDropdownClick(e, '#career-support')}>
                     Career Support Services
                   </Link>
                 </li>
                 <li>
-                  <Link to="/services#career-growth" onClick={(e) => handleDropdownClick(e, '#career-growth')}>
+                  <Link to="/services#career-growth" onClick={(e) => handleServicesDropdownClick(e, '#career-growth')}>
                     Career Growth Packages
                   </Link>
                 </li>
                 <li>
-                  <Link to="/services#pro-services" onClick={(e) => handleDropdownClick(e, '#pro-services')}>
+                  <Link to="/services#pro-services" onClick={(e) => handleServicesDropdownClick(e, '#pro-services')}>
                     Pro Services
                   </Link>
                 </li>
                 <li>
-                  <Link to="/services#custom-services" onClick={(e) => handleDropdownClick(e, '#custom-services')}>
+                  <Link to="/services#custom-services" onClick={(e) => handleServicesDropdownClick(e, '#custom-services')}>
                     Custom Services
                   </Link>
                 </li>
               </ul>
             </li>
-            <li>
-              <NavLink to="/industries" className={({ isActive }) => (isActive ? "active" : "")}>
-                Industries
-              </NavLink>
-            </li>
+
+            {/* 5. Contact */}
             <li>
               <NavLink to="/contact" className={({ isActive }) => (isActive ? "active" : "")}>
                 Contact
@@ -174,4 +225,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default Navbar;

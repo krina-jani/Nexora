@@ -20,6 +20,7 @@ import {
   OurPlacedCandidates,
   PlacementWorkflow,
   FAQ,
+  KineticTextBanner,
   FinalCTA
 } from "../components";
 
@@ -234,8 +235,18 @@ const Home = () => {
       {/* SECTION 12: FAQ */}
       <FAQ />
 
+      {/* SECTION 12.5: PINNED KINETIC SCROLL TEXT BANNER */}
+      <KineticTextBanner text="BUILD YOUR CAREER • WITH NEXORA CAREER" />
+
       {/* SECTION 13: FINAL CTA */}
-      <FinalCTA />
+      <FinalCTA 
+        heading="Ready to Accelerate Your US Career Journey?"
+        subheading="Take the next step in aligning your experience with US hiring standards. Book a consultation with our career advisors today."
+        primaryBtnText="Book Free Consultation"
+        primaryBtnLink="/contact"
+        secondaryBtnText="Explore All Services"
+        secondaryBtnLink="/services"
+      />
 
       {/* Inline styles for Home Page elements (Remaining main sections) */}
       <style>{`

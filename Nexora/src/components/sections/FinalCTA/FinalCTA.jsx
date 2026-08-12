@@ -8,7 +8,7 @@ import "./FinalCTA.css";
 gsap.registerPlugin(ScrollTrigger);
 
 const FinalCTA = ({
-  scrollText = "So, are you ready to stand out?",
+  heading = "Ready to Explore Your Next Career Move?",
   subheading = "Join ambitious professionals who have optimized their profiles and navigated the US hiring process with our support.",
   primaryBtnText = "Start Career Consultation",
   primaryBtnLink = "/contact",
@@ -16,76 +16,42 @@ const FinalCTA = ({
   secondaryBtnLink = "/services"
 }) => {
   const sectionRef = useRef(null);
-  const textTrackRef = useRef(null);
-  const actionsRef = useRef(null);
+  const containerRef = useRef(null);
 
   useGSAP(
     () => {
       const section = sectionRef.current;
-      const textTrack = textTrackRef.current;
-      const actions = actionsRef.current;
+      const container = containerRef.current;
 
-      if (!section || !textTrack || !actions) return;
+      if (!section || !container) return;
 
-      // Master Pinned ScrollTrigger Timeline matching DZ!NR
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: section,
-          start: "top top",
-          end: "+=160%",
-          pin: true,
-          scrub: 1,
-          anticipatePin: 1,
-          refreshPriority: 1,
-          invalidateOnRefresh: true,
-        },
-      });
-
-      // 1. Text track glides from 100% off-screen right to -100% off-screen left
-      tl.fromTo(
-        textTrack,
-        { xPercent: 100 },
-        {
-          xPercent: -100,
-          ease: "none",
-          duration: 1,
-        },
-        0
-      );
-
-      // 2. Action buttons & subtitle fade up smoothly in the middle of the scroll reveal
-      tl.fromTo(
-        actions,
-        { opacity: 0, y: 40, scale: 0.92 },
+      gsap.fromTo(
+        container,
+        { opacity: 0, y: 35, scale: 0.96 },
         {
           opacity: 1,
           y: 0,
           scale: 1,
-          ease: "power2.out",
-          duration: 0.45,
-        },
-        0.4
+          duration: 0.8,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: section,
+            start: "top 85%",
+          },
+        }
       );
     },
-    { scope: sectionRef }
+    { scope: sectionRef, dependencies: [heading, subheading] }
   );
 
   return (
-    <section ref={sectionRef} className="kinetic-cta-section">
-      {/* Background Radial Glow */}
-      <div className="kinetic-cta-glow"></div>
-
-      {/* Oversized Horizontal Scroll Text Reveal (Single Continuous Line like DZ!NR) */}
-      <div className="kinetic-text-wrapper">
-        <div ref={textTrackRef} className="kinetic-text-track">
-          <h2 className="kinetic-text">{scrollText}</h2>
-        </div>
-      </div>
-
-      {/* Action Buttons & Subheading (Reveals cleanly during scroll) */}
-      <div ref={actionsRef} className="kinetic-actions-container">
-        <p className="kinetic-actions-sub">{subheading}</p>
-        <div className="kinetic-actions-buttons">
+    <section ref={sectionRef} className="final-cta-section">
+      <div className="final-cta-glow"></div>
+      <div ref={containerRef} className="final-cta-container">
+        <span className="final-cta-badge">CAREER TRANSITION BRIDGE</span>
+        {heading && <h2 className="final-cta-heading">{heading}</h2>}
+        {subheading && <p className="final-cta-subheading">{subheading}</p>}
+        <div className="final-cta-buttons">
           {primaryBtnText && primaryBtnLink && (
             <Link to={primaryBtnLink} className="cta-btn-gold">
               {primaryBtnText}
@@ -103,3 +69,8 @@ const FinalCTA = ({
 };
 
 export default FinalCTA;
+
+
+
+
+

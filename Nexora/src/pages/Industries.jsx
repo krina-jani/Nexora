@@ -2,10 +2,10 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import industries from "../data/industries";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import LineWaves from "../components/common/LineWaves/LineWaves";
 import industriesHeroBg from "../assets/images/industries-hero.jpg";
-import { FinalCTA } from "../components";
+import { FinalCTA, KineticTextBanner } from "../components";
 import { 
   FaLaptopCode, 
   FaBrain, 
@@ -97,6 +97,21 @@ const Typewriter = ({ texts, typingSpeed = 75, deletingSpeed = 50, pauseDuration
 
 const Industries = () => {
   const pageRef = useRef(null);
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      const id = location.hash.replace("#", "");
+      const timer = setTimeout(() => {
+        const el = document.getElementById(id);
+        if (el) {
+          const y = el.getBoundingClientRect().top + window.scrollY - 100;
+          window.scrollTo({ top: y, behavior: "smooth" });
+        }
+      }, 350);
+      return () => clearTimeout(timer);
+    }
+  }, [location.hash, location.pathname]);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -322,6 +337,9 @@ const Industries = () => {
         </div>
       </section>
 
+      {/* Pinned Kinetic Scroll Banner */}
+      <KineticTextBanner text="DISCOVER OPPORTUNITIES • WITH NEXORA CAREER" />
+
       {/* Global CTA */}
       <FinalCTA 
         heading="Ready to Explore Your Next Career Move?"
@@ -330,8 +348,6 @@ const Industries = () => {
         primaryBtnLink="/contact"
         secondaryBtnText="Explore Services"
         secondaryBtnLink="/services"
-        bgTextLine1="DISCOVER OPPORTUNITIES"
-        bgTextLine2="WITH NEXORA CAREER"
       />
 
       {/* Styles */}

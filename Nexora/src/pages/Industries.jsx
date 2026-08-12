@@ -5,6 +5,7 @@ import industries from "../data/industries";
 import { Link } from "react-router-dom";
 import LineWaves from "../components/common/LineWaves/LineWaves";
 import industriesHeroBg from "../assets/images/industries-hero.jpg";
+import { FinalCTA } from "../components";
 import { 
   FaLaptopCode, 
   FaBrain, 
@@ -124,18 +125,6 @@ const Industries = () => {
             ease: "power2.out"
           });
         });
-
-        gsap.from(".ind-cta-box", {
-          scrollTrigger: {
-            trigger: ".ind-cta-box",
-            start: "top 88%",
-            toggleActions: "play none none none"
-          },
-          x: -80,
-          opacity: 0,
-          duration: 1.0,
-          ease: "power2.out"
-        });
       });
 
       // Desktop layout animations (screens > 991px)
@@ -154,17 +143,6 @@ const Industries = () => {
             ease: "power2.out"
           }
         );
-
-        gsap.from(".ind-cta-box", {
-          scrollTrigger: {
-            trigger: ".ind-cta-box",
-            start: "top 85%"
-          },
-          y: 40,
-          opacity: 0,
-          duration: 0.8,
-          ease: "power2.out"
-        });
       });
     }, pageRef);
 
@@ -345,24 +323,16 @@ const Industries = () => {
       </section>
 
       {/* Global CTA */}
-      <section className="ind-cta-section text-center">
-        <div className="container ind-cta-box glass">
-          <h2 className="ind-cta-heading">
-            <Typewriter 
-              texts={[
-                "Ready to Explore Your Next Career Move?",
-                "Discuss your career goals with us.",
-              ]} 
-            />
-          </h2>
-          <p>
-            Discuss your experience, target roles, and goals with a Nexora Career specialist. We'll help you understand the next steps for pursuing relevant opportunities in the US job market.
-          </p>
-          <Link to="/contact" className="btn-primary">
-            Schedule a Career Consultation
-          </Link>
-        </div>
-      </section>
+      <FinalCTA 
+        heading="Ready to Explore Your Next Career Move?"
+        subheading="Discuss your experience, target roles, and goals with a Nexora Career specialist. We'll help you understand the next steps for pursuing relevant opportunities in the US job market."
+        primaryBtnText="Schedule Career Consultation"
+        primaryBtnLink="/contact"
+        secondaryBtnText="Explore Services"
+        secondaryBtnLink="/services"
+        bgTextLine1="DISCOVER OPPORTUNITIES"
+        bgTextLine2="WITH NEXORA CAREER"
+      />
 
       {/* Styles */}
       <style>{`
@@ -586,36 +556,6 @@ const Industries = () => {
           border: 1px solid rgba(255, 255, 255, 0.15) !important;
           font-weight: 500;
         }
-        .ind-cta-section {
-          padding: 100px 0;
-          background: #000000 !important;
-        }
-        .ind-cta-box {
-          padding: 60px 40px;
-          border-radius: var(--radius-lg);
-          border: 1px solid rgba(255, 255, 255, 0.12) !important;
-          background: rgba(255, 255, 255, 0.05) !important;
-          backdrop-filter: blur(12px) !important;
-          -webkit-backdrop-filter: blur(12px) !important;
-          max-width: 900px;
-          margin: 0 auto;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 20px;
-          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-        }
-        .ind-cta-box h2 {
-          font-size: 2.2rem;
-          font-weight: 700;
-          color: #ffffff !important;
-        }
-        .ind-cta-box p {
-          max-width: 600px;
-          color: #cccccc !important;
-          line-height: 1.6;
-        }
- 
         .card-top-row {
           display: flex;
           justify-content: space-between;
@@ -684,12 +624,6 @@ const Industries = () => {
           }
           .ind-hero-sub {
             font-size: 1.05rem !important;
-          }
-          .ind-cta-box h2 {
-            font-size: 1.6rem !important;
-          }
-          .ind-cta-box {
-            padding: 40px 20px !important;
           }
         }
       `}</style>

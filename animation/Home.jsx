@@ -961,6 +961,75 @@ const Home = () => {
           background: radial-gradient(circle at center, transparent 30%, rgba(255,255,255,0.8) 100%);
         }
 
+        /* CTA Mask Effect */
+        .global-cta-section {
+          position: relative;
+          width: 100%;
+          height: 450px;
+          overflow: hidden;
+          background: #ffffff;
+          cursor: crosshair;
+        }
+        .cta-reveal-layer {
+          position: absolute;
+          inset: 0;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          background: #ffffff;
+          color: #0f172a;
+          text-align: center;
+          padding: 40px;
+        }
+        .cta-reveal-layer h2 {
+          font-size: 2.8rem;
+          font-weight: 800;
+          color: #0f172a;
+          margin-bottom: 16px;
+        }
+        .cta-reveal-layer p {
+          max-width: 600px;
+          font-size: 1.1rem;
+          color: #475569;
+          line-height: 1.6;
+          margin-bottom: 24px;
+        }
+        .cta-mask-layer {
+          position: absolute;
+          inset: 0;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          background: #090d16;
+          color: #ffffff;
+          text-align: center;
+          padding: 40px;
+        }
+        .cta-mask-layer h2 {
+          font-size: 2.8rem;
+          font-weight: 800;
+          color: #ffffff;
+          margin-bottom: 16px;
+        }
+        .cta-mask-layer p {
+          max-width: 600px;
+          font-size: 1.1rem;
+          color: #94a3b8;
+          line-height: 1.6;
+          margin-bottom: 24px;
+        }
+        .cta-mask-layer .text-gradient-mask {
+          background: linear-gradient(90deg, #48C92C, #00d2ff);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+        .cta-buttons-wrapper {
+          display: flex;
+          gap: 20px;
+          z-index: 10;
+        }
         .btn-secondary {
           background: transparent !important;
           border: 1.5px solid var(--primary) !important;
@@ -1201,7 +1270,7 @@ const Home = () => {
           color: rgba(255, 255, 255, 0.5) !important;
         }
 
-        /* Hero Gold Overrides */
+        /* Hero and Final CTA Gold Overrides */
         .btn-primary-pill {
           background: #DFBD69 !important;
           color: #000000 !important;
@@ -1209,6 +1278,24 @@ const Home = () => {
         }
         .btn-primary-pill:hover {
           background: #ffffff !important;
+          color: #000000 !important;
+        }
+        .cta-btn-main {
+          background: #DFBD69 !important;
+          color: #000000 !important;
+          border: none !important;
+        }
+        .cta-btn-main:hover {
+          background: #ffffff !important;
+          color: #000000 !important;
+        }
+        .cta-btn-outline {
+          border: 2px solid #DFBD69 !important;
+          color: #DFBD69 !important;
+          background: transparent !important;
+        }
+        .cta-btn-outline:hover {
+          background: #DFBD69 !important;
           color: #000000 !important;
         }
       `}</style>

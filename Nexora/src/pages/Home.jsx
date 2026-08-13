@@ -10,6 +10,7 @@ import empowermentImg from "../assets/images/empowerment.png";
 import Marquee from "../components/common/Marquee";
 import GradientWaves from "../components/common/GradientWaves";
 import ScrollExpand from "../components/common/ScrollExpand/ScrollExpand";
+import Beams from "../components/common/Beams/Beams";
 
 // Sections
 import {
@@ -137,28 +138,28 @@ const Home = () => {
 
   return (
     <div ref={homeRef} className="home-container">
-      {/* SECTION 1: HERO */}
-      <div className="home-scroll-expand-hero">
-        <ScrollExpand
-          mediaType="gradient"
-          src="linear-gradient(135deg, #10151d 0%, #1e2630 50%, #6e3517 100%)"
-          title="Nexora Career Preparation"
-          useWindowScroll
-          reverse
-          startWidth={startWidth}
-          startHeight={startHeight}
-          startRadius={8}
-          endRadius={0}
-          mediaZoom={mediaZoom}
-          scrollDistance={1.65}
-          holdDistance={0.25}
-          overlayScrim={0.85}
-        >
-          {/* Overlay content – fades in when fully expanded */}
-          <div className="se-overlay-content">
+      {/* SECTION 1: HERO WITH REACT BITS BEAMS ANIMATION */}
+      <section className="home-hero-beams-section">
+        {/* Beams Animation Background */}
+        <div className="hero-beams-bg">
+          <Beams
+            beamWidth={0.9}
+            beamHeight={30}
+            beamNumber={24}
+            lightColor="#ffffff"
+            speed={7.3}
+            noiseIntensity={0}
+            scale={0.27}
+            rotation={30}
+          />
+        </div>
+
+        {/* Hero Content Overlay */}
+        <div className="container hero-beams-content-wrap">
+          <div className="se-overlay-content text-center">
             <span className="hero-badge">US CAREER TRANSITION BRIDGE</span>
             <h1 className="hero-title text-center">
-              Let's Build Your <span className="text-gradient">Career with</span> <br />
+              Let's Build Your <span className="text-gradient">Career with</span> <br className="hero-br" />
               Nexora Career
             </h1>
             <p className="hero-subtext text-center">
@@ -170,8 +171,8 @@ const Home = () => {
               </Link>
             </div>
           </div>
-        </ScrollExpand>
-      </div>
+        </div>
+      </section>
 
 
 
@@ -1049,53 +1050,125 @@ const Home = () => {
           }
         }
 
-        @media (max-width: 480px) {
+        /* Hero Beams Base & Responsive Styles */
+        .home-hero-beams-section {
+          position: relative;
+          width: 100%;
+          min-height: 650px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          overflow: hidden;
+          background: #000000;
+        }
+        .hero-beams-bg {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          z-index: 0;
+        }
+        .hero-beams-content-wrap {
+          position: relative;
+          z-index: 2;
+          padding-top: 130px;
+          padding-bottom: 100px;
+        }
+        .hero-title {
+          font-size: 3.8rem;
+          font-weight: 800;
+          line-height: 1.2;
+          color: #ffffff;
+          margin-bottom: 20px;
+        }
+        .hero-subtext {
+          font-size: 1.1rem;
+          line-height: 1.65;
+          color: #dddddd;
+          max-width: 720px;
+          margin: 0 auto 32px;
+        }
+        .hero-badge {
+          display: inline-block;
+          font-size: 0.8rem;
+          font-weight: 700;
+          letter-spacing: 2px;
+          padding: 6px 16px;
+          border-radius: 50px;
+          background: rgba(223, 189, 105, 0.15);
+          color: #DFBD69;
+          border: 1px solid rgba(223, 189, 105, 0.3);
+          margin-bottom: 16px;
+        }
+        .hero-cta-group {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 16px;
+        }
+
+        @media (max-width: 991px) {
+          .home-hero-beams-section {
+            min-height: 560px;
+          }
+          .hero-beams-content-wrap {
+            padding-top: 110px;
+            padding-bottom: 80px;
+          }
           .hero-title {
-            font-size: 2.2rem;
+            font-size: 3.0rem;
+          }
+          .hero-subtext {
+            font-size: 1.05rem;
+            max-width: 600px;
+          }
+        }
+
+        @media (max-width: 768px) {
+          .home-hero-beams-section {
+            min-height: 500px;
+          }
+          .hero-beams-content-wrap {
+            padding-top: 90px;
+            padding-bottom: 60px;
+          }
+          .hero-title {
+            font-size: 2.3rem;
+          }
+          .hero-subtext {
+            font-size: 0.98rem;
+            padding: 0 10px;
+          }
+          .hero-badge {
+            font-size: 0.72rem;
+            letter-spacing: 1.5px;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .home-hero-beams-section {
+            min-height: 460px;
+          }
+          .hero-beams-content-wrap {
+            padding-top: 80px;
+            padding-bottom: 50px;
+          }
+          .hero-title {
+            font-size: 1.85rem;
+            margin-bottom: 16px;
+          }
+          .hero-br {
+            display: none;
+          }
+          .hero-subtext {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 24px;
           }
           .hero-badge {
             font-size: 0.65rem;
-          }
-          .hero-subtext {
-            font-size: 1rem;
-          }
-        }
-
-        @media (max-width: 576px) {
-          .global-cta-section {
-            height: 400px;
-          }
-          .cta-reveal-layer h2,
-          .cta-mask-layer h2 {
-            font-size: 1.7rem;
-            margin-bottom: 12px;
-          }
-          .cta-reveal-layer p,
-          .cta-mask-layer p {
-            font-size: 0.95rem;
-            margin-bottom: 20px;
-            padding: 0 10px;
-          }
-          .cta-buttons-wrapper {
-            flex-direction: column;
-            width: 100%;
-            gap: 12px;
-            align-items: center;
-          }
-          .cta-buttons-wrapper a {
-            width: 80%;
-            max-width: 280px;
-            text-align: center;
-            justify-content: center;
-          }
-        }
-
-        @media (max-width: 480px) {
-          .hero-title {
-            font-size: 2.2rem;
-          }
-          .hero-subtext {
-            font-size: 1rem;
+            padding: 4px 12px;
+            letter-spacing: 1px;
           }
         }
 

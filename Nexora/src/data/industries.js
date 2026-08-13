@@ -98,14 +98,14 @@ export const industries = [
     roles: ["Healthcare Analyst", "Health Information Specialist", "Clinical Data Analyst", "Healthcare Operations Analyst"],
     skills: ["EMR Systems", "HIPAA", "Healthcare Analytics", "SQL", "Clinical Data"]
   },
-  {
-    id: "supply-chain",
-    category: "non-tech",
-    title: "Supply Chain & Logistics",
-    description: "Align your profile for roles managing materials planning, coordination, and procurement analytics.",
-    roles: ["Supply Chain Analyst", "Logistics Coordinator", "Procurement Analyst", "Supply Chain Specialist"],
-    skills: ["SAP", "Logistics", "Inventory Management", "Procurement", "Excel"]
-  }
+  // {
+  //   id: "supply-chain",
+  //   category: "non-tech",
+  //   title: "Supply Chain & Logistics",
+  //   description: "Align your profile for roles managing materials planning, coordination, and procurement analytics.",
+  //   roles: ["Supply Chain Analyst", "Logistics Coordinator", "Procurement Analyst", "Supply Chain Specialist"],
+  //   skills: ["SAP", "Logistics", "Inventory Management", "Procurement", "Excel"]
+  // }
 ];
 
 export default industries;

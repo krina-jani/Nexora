@@ -290,7 +290,7 @@ const Industries = () => {
       <section id="non-tech-careers" className="industries-grid-section" style={{ position: "relative", overflow: "hidden", borderTop: "1px solid rgba(255, 255, 255, 0.08)" }}>
         <div className="container" style={{ position: "relative", zIndex: 1 }}>
           <div className="section-header-wrap">
-            <h2 className="section-title">Professional & Business Careers (Non-Tech)</h2>
+            <h2 className="section-title">Professional & Business Careers <br />(Non-Tech)</h2>
             <p className="section-desc text-light">
               US employers hire professionals across business, finance, operations, marketing, HR, healthcare administration, and supply chain functions. Nexora Career helps candidates present their experience clearly and prepare for relevant opportunities.
             </p>

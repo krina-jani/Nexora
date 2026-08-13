@@ -64,7 +64,7 @@ const Footer = () => {
             </p>
             
             <div className="social-links-container">
-              <a href="https://www.facebook.com/nexoracareer"
+              {/* <a href="https://www.facebook.com/nexoracareer"
                  target="_blank"
                  rel="noopener noreferrer"
                  className="social-icon-btn facebook-btn"
@@ -77,7 +77,7 @@ const Footer = () => {
                  className="social-icon-btn twitter-btn"
                  aria-label="Twitter">
                 <FaTwitter className="icon" />
-              </a>
+              </a> */}
               <a href="https://www.linkedin.com/company/nexora-career/"
                  target="_blank"
                  rel="noopener noreferrer"

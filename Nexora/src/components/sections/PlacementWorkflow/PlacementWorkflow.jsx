@@ -1,38 +1,51 @@
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { FaUserPlus, FaFileAlt, FaChartLine, FaCalendarAlt, FaBriefcase, FaHandshake } from "react-icons/fa";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./PlacementWorkflow.css";
+
+// Register ScrollTrigger plugin
+gsap.registerPlugin(ScrollTrigger);
 
 const PlacementWorkflow = () => {
   const sectionRef = useRef(null);
-  const [translateY, setTranslateY] = useState(0);
+  const centerCardRef = useRef(null);
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (!sectionRef.current) return;
-      const rect = sectionRef.current.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
-      
-      // Calculate how far the section is relative to the viewport
-      if (rect.top < windowHeight && rect.bottom > 0) {
-        const total = windowHeight + rect.height;
-        const current = windowHeight - rect.top;
-        const ratio = current / total; // 0 to 1
-        
-        // Translate from -130px to +130px for faster, more dramatic motion
-        const maxTranslate = 130;
-        const translation = (ratio - 0.5) * 2 * maxTranslate;
-        setTranslateY(translation);
-      }
-    };
+    // Add a short delay to ensure DOM is fully painted and heights are correct
+    const timer = setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 150);
 
-    window.addEventListener("scroll", handleScroll);
-    // Initial check on mount
-    handleScroll();
-    
+    const ctx = gsap.context(() => {
+      let mm = gsap.matchMedia();
+      
+      mm.add("(min-width: 992px)", () => {
+        // Center Column: slides DOWN (moves down relative to section)
+        if (centerCardRef.current) {
+          gsap.fromTo(centerCardRef.current, 
+            { y: -200 },
+            {
+              y: 200,
+              ease: "none",
+              scrollTrigger: {
+                trigger: sectionRef.current,
+                start: "top bottom",
+                end: "bottom top",
+                scrub: 1.0, // Smooth interpolation with scroll velocity
+              }
+            }
+          );
+        }
+      });
+    }, sectionRef);
+
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      clearTimeout(timer);
+      ctx.revert();
     };
   }, []);
+
   const leftSteps = [
     {
       id: 1,
@@ -109,7 +122,7 @@ const PlacementWorkflow = () => {
 
           {/* Center Column: Scrolled Nexora Card */}
           <div className="journey-column center-column">
-            <div className="journey-center-card" style={{ transform: `translateY(${translateY}px)` }}>
+            <div className="journey-center-card" ref={centerCardRef}>
               <div className="sticky-glow"></div>
               <div className="sticky-card-badge">CORE PROGRAM</div>
               <h2>Nexora Career Bridge</h2>

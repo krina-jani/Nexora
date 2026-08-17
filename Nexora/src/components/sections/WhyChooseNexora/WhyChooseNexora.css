@@ -75,6 +75,7 @@
   line-height: 1.4;
   margin: 0;
   opacity: 0.9;
+  color: #ffffff !important;
 }
 
 /* ==========================================
@@ -183,10 +184,12 @@
     flex-direction: column;
     gap: 20px;
     padding: 0 20px;
+    height: auto !important;
   }
   .gallery--final.gallery--bento {
     display: flex;
     flex-direction: column;
+    height: auto !important;
   }
   .why-choose-gallery__item {
     width: 100%;

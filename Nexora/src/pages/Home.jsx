@@ -315,13 +315,13 @@ const Home = () => {
           background: radial-gradient(circle at center, transparent 30%, rgba(0,0,0,0.8) 100%) !important;
         }
         .learn-more-btn {
-          background: transparent !important;
-          color: #DFBD69 !important;
+          background: #DFBD69 !important;
+          color: #000000 !important;
           border: 1px solid #DFBD69 !important;
         }
         .learn-more-btn:hover {
-          background: #DFBD69 !important;
-          color: #000000 !important;
+          background: transparent !important;
+          color: #DFBD69 !important;
         }
 
         /* 3. Timeline Section -> Black #000000 with Full WebGL Waves Background */
@@ -1028,8 +1028,16 @@ const Home = () => {
             justify-content: center;
             margin-top: 20px;
           }
+          .about-intro-section {
+            padding: 80px 0;
+          }
           .about-intro-grid {
             grid-template-columns: 1fr;
+            gap: 40px;
+          }
+          .visual-media-box {
+            height: 340px;
+            padding: 30px;
           }
           .process-timeline-flex {
             justify-content: center;
@@ -1047,6 +1055,31 @@ const Home = () => {
           .cta-reveal-layer h2,
           .cta-mask-layer h2 {
             font-size: 2rem;
+          }
+          .about-intro-section {
+            padding: 60px 0;
+          }
+          .about-intro-grid {
+            gap: 30px;
+          }
+          .about-intro-left h2 {
+            font-size: 2rem;
+            margin-bottom: 16px;
+          }
+          .about-stats-deck {
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 25px;
+          }
+          .about-stat-item {
+            padding: 20px;
+          }
+          .about-stat-item h3 {
+            font-size: 1.6rem;
+          }
+          .visual-media-box {
+            height: 280px;
+            padding: 24px;
           }
         }
 

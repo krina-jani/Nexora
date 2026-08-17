@@ -403,6 +403,7 @@ const About = () => {
           position: relative;
           z-index: 10;
           text-align: center;
+          padding: 0 20px;
         }
 
         .why-title {
@@ -633,6 +634,10 @@ const About = () => {
           .why-cards-grid {
             grid-template-columns: repeat(2, 1fr);
             gap: 24px;
+          }
+          .about-why-section {
+            background-image: none !important;
+            background-color: #000000 !important;
           }
         }
         

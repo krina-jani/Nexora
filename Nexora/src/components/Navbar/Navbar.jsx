@@ -49,6 +49,22 @@ const Navbar = () => {
     }
   };
 
+  const handleTriggerClick = (e, path, dropdownOpen, setDropdownOpen) => {
+    if (window.innerWidth <= 1024) {
+      if (!dropdownOpen) {
+        e.preventDefault();
+        setDropdownOpen(true);
+      } else {
+        setDropdownOpen(false);
+        setMenuOpen(false);
+      }
+    } else {
+      setDropdownOpen(false);
+      setMenuOpen(false);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
     localStorage.setItem("theme", theme);
@@ -114,7 +130,7 @@ const Navbar = () => {
               </NavLink>
             </li>
 
-            {/* 3. Industries Dropdown */}
+             {/* 3. Industries Dropdown */}
             <li 
               className="navbar-item-dropdown"
               onMouseEnter={() => setIndustriesDropdownOpen(true)}
@@ -123,16 +139,17 @@ const Navbar = () => {
               <NavLink 
                 to="/industries"
                 className={`dropdown-trigger ${location.pathname === "/industries" ? "active" : ""}`}
-                onClick={() => {
-                  setIndustriesDropdownOpen(false);
-                  setMenuOpen(false);
-                  window.scrollTo({ top: 0, behavior: "smooth" });
-                }}
+                onClick={(e) => handleTriggerClick(e, "/industries", industriesDropdownOpen, setIndustriesDropdownOpen)}
               >
                 Industries <LuChevronDown className={`chevron ${industriesDropdownOpen ? "open" : ""}`} />
               </NavLink>
               
               <ul className={`simple-dropdown ${industriesDropdownOpen ? "show" : ""}`}>
+                <li className="mobile-only-link">
+                  <Link to="/industries" onClick={() => setMenuOpen(false)}>
+                    Overview
+                  </Link>
+                </li>
                 <li>
                   <Link to="/industries#tech-careers" onClick={(e) => handleIndustriesDropdownClick(e, '#tech-careers')}>
                    Technology Careers
@@ -155,16 +172,17 @@ const Navbar = () => {
               <NavLink 
                 to="/services"
                 className={`dropdown-trigger ${location.pathname === "/services" ? "active" : ""}`}
-                onClick={() => {
-                  setServicesDropdownOpen(false);
-                  setMenuOpen(false);
-                  window.scrollTo({ top: 0, behavior: "smooth" });
-                }}
+                onClick={(e) => handleTriggerClick(e, "/services", servicesDropdownOpen, setServicesDropdownOpen)}
               >
                 Services <LuChevronDown className={`chevron ${servicesDropdownOpen ? "open" : ""}`} />
               </NavLink>
               
               <ul className={`simple-dropdown ${servicesDropdownOpen ? "show" : ""}`}>
+                <li className="mobile-only-link">
+                  <Link to="/services" onClick={() => setMenuOpen(false)}>
+                    Overview
+                  </Link>
+                </li>
                 <li>
                   <Link to="/services#rpo" onClick={(e) => handleServicesDropdownClick(e, '#rpo')}>
                     Profile & Resume <span className="hide-on-mobile">Optimization</span>
@@ -208,10 +226,6 @@ const Navbar = () => {
         </nav>
 
         <div className="navbar-actions">
-          <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle Theme">
-            {theme === "dark" ? <FaSun /> : <FaMoon />}
-          </button>
-
           <NavLink to="/contact" className="btn-primary navbar-cta">
             Book Free Consultation
           </NavLink>

@@ -268,7 +268,7 @@ const Testimonials = () => {
           margin: 0 auto;
         }
         .text-gradient {
-          background: linear-gradient(134deg, #df830d, #6e3517);
+          background: linear-gradient(134deg, #F9C33A, #b88d14);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
         }

@@ -4,10 +4,10 @@
      PRIMARY BRAND COLORS
   =========================== */
 
-  --primary: #df830d;
-  --primary-hover: #b96a09;
-  --primary-dark: #6e3517;
-  --primary-light: #F9C33A;
+  --primary: #F9C33A;
+  --primary-hover: #e0ac1b;
+  --primary-dark: #b88d14;
+  --primary-light: #fff0c2;
 
   /* ===========================
      ACCENT COLORS
@@ -15,15 +15,15 @@
 
   --accent: #F9C33A;
   --accent-light: rgba(249, 195, 58, 0.2);
-  --accent-dark: #df830d;
+  --accent-dark: #e0ac1b;
 
   /* ===========================
      BACKGROUND COLORS
   =========================== */
 
-  --bg: linear-gradient(134deg, #df830d, #6e3517, #F9C33A);
-  --bg-soft: linear-gradient(134deg, rgba(223, 131, 13, 0.9), rgba(110, 53, 23, 0.9), rgba(249, 195, 58, 0.9));
-  --bg-secondary: linear-gradient(134deg, rgba(223, 131, 13, 0.8), rgba(110, 53, 23, 0.8), rgba(249, 195, 58, 0.8));
+  --bg: linear-gradient(134deg, #F9C33A, #b88d14, #fff0c2);
+  --bg-soft: linear-gradient(134deg, rgba(249, 195, 58, 0.9), rgba(184, 141, 20, 0.9), rgba(255, 240, 194, 0.9));
+  --bg-secondary: linear-gradient(134deg, rgba(249, 195, 58, 0.8), rgba(184, 141, 20, 0.8), rgba(255, 240, 194, 0.8));
   --bg-dark: #0F1211;
 
   /* ===========================
@@ -64,9 +64,9 @@
   =========================== */
 
   --glow:
-      0 0 15px rgba(223, 131, 13, 0.2),
-      0 0 30px rgba(223, 131, 13, 0.15),
-      0 0 60px rgba(223, 131, 13, 0.1);
+      0 0 15px rgba(249, 195, 58, 0.2),
+      0 0 30px rgba(249, 195, 58, 0.15),
+      0 0 60px rgba(249, 195, 58, 0.1);
 
   /* ===========================
      GLASS

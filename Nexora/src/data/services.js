@@ -1,10 +1,17 @@
+import rpoImg from "../assets/images/rpo.png";
+import careerSupportImg from "../assets/images/mock-interviews.jpg";
+import careerGrowthImg from "../assets/images/career-growth.png";
+import proServicesImg from "../assets/images/pro-services.png";
+import customServicesImg from "../assets/images/custom-services.png";
+import globalPlacementImg from "../assets/images/global-placement.png";
+
 export const services = [
   {
     id: "rpo",
     title: "Profile & Resume Optimization",
     description: "Your resume and professional profiles are your introduction to the US job market. We help format and rewrite your materials so they meet US recruiting expectations and clear automated ATS filters.",
     icon: "rpo",
-    image: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?q=80&w=1000&auto=format&fit=crop",
+    image: rpoImg,
     whatWeHelpWith: [
       "Structuring resumes to meet US industry standards",
       "Optimizing technical content for Applicant Tracking Systems (ATS)",
@@ -18,7 +25,7 @@ export const services = [
     title: "US Market Interview Preparation",
     description: "Preparing for US-style interviews requires a clear understanding of technical loops and behavioral standards. We help you practice structured communication to confidently speak with hiring teams.",
     icon: "counseling",
-    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1000&auto=format&fit=crop",
+    image: careerSupportImg,
     whatWeHelpWith: [
       "1-on-1 mock interviews tailored to your target technical roles",
       "Structuring behavioral answers using the STAR format",
@@ -32,7 +39,7 @@ export const services = [
     title: "Career Strategy & Consultation",
     description: "Navigating the US job market requires a clear direction. We provide structured guidance to help you assess your experience, target the right roles, and outline clear career milestones.",
     icon: "brand",
-    image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1000&auto=format&fit=crop",
+    image: careerGrowthImg,
     whatWeHelpWith: [
       "Mapping your professional skills to relevant US job markets",
       "Identifying skill gaps and recommended upskilling paths",
@@ -46,7 +53,7 @@ export const services = [
     title: "Professional Profile Positioning",
     description: "Mid-level and senior roles require strategic positioning to stand out. We guide you in highlighting your leadership, project ownership, and technical authority to US decision-makers.",
     icon: "overseas",
-    image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=1000&auto=format&fit=crop",
+    image: proServicesImg,
     whatWeHelpWith: [
       "Reframing complex international projects for US business contexts",
       "Showcasing leadership experience and system-design capabilities",
@@ -60,7 +67,7 @@ export const services = [
     title: "Custom Career Services",
     description: "Every career transition is unique. Whether you are changing technical domains or require ad-hoc advice, we provide personalized support to address your specific questions.",
     icon: "skill",
-    image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1000&auto=format&fit=crop",
+    image: customServicesImg,
     whatWeHelpWith: [
       "Personalized discussions on switching technical roles",
       "Ad-hoc resume and portfolio reviews for niche positions",
@@ -74,7 +81,7 @@ export const services = [
     title: "US Career Bridge Assistance",
     description: "Connecting qualified talent with relevant opportunities. We support you in identifying, tracking, and applying to roles that match your professional qualifications.",
     icon: "placement",
-    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1000&auto=format&fit=crop",
+    image: globalPlacementImg,
     whatWeHelpWith: [
       "Identifying open positions in the US market matching your skills",
       "Guidance on professional outreach and application processes",

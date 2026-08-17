@@ -36,7 +36,7 @@ const Loader = ({ onComplete }) => {
 
     // Spawn splashes more frequently with corner offsets
     const interval = setInterval(() => {
-      const colors = ["#df830d", "#F9C33A", "#6e3517", "#ff4500", "#ffffff"];
+      const colors = ["#F9C33A", "#F9C33A", "#b88d14", "#e0ac1b", "#ffffff"];
       const newDrops = [
         // Middle splashes
         {

@@ -295,7 +295,7 @@ const Contact = () => {
         .contact-hero-overlay {
           position: absolute;
           inset: 0;
-          background: linear-gradient(135deg, rgba(15, 18, 17, 0.85) 0%, rgba(110, 53, 23, 0.65) 100%);
+          background: linear-gradient(135deg, rgba(15, 18, 17, 0.85) 0%, rgba(184, 141, 20, 0.65) 100%);
           z-index: 1;
         }
         .contact-hero-title {
@@ -305,7 +305,7 @@ const Contact = () => {
           color: #ffffff !important;
         }
         .text-gradient {
-          background: linear-gradient(134deg, #df830d, #F9C33A);
+          background: linear-gradient(134deg, #F9C33A, #fff0c2);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
         }
@@ -581,11 +581,62 @@ const Contact = () => {
             margin-right: 0 !important;
             padding: 30px 20px;
           }
+          .integration-logo-img {
+            filter: grayscale(0%) brightness(1) opacity(1) !important;
+          }
+          .integration-box.naukri-box {
+            border-color: rgba(74, 144, 226, 0.45) !important;
+            background: rgba(74, 144, 226, 0.08) !important;
+          }
+          .integration-box.linkedin-box {
+            border-color: rgba(0, 119, 181, 0.45) !important;
+            background: rgba(0, 119, 181, 0.08) !important;
+          }
+          .integration-box.zoho-box {
+            border-color: rgba(255, 204, 0, 0.45) !important;
+            background: rgba(255, 204, 0, 0.08) !important;
+          }
+          .integration-box.googlemeet-box {
+            border-color: rgba(0, 172, 71, 0.45) !important;
+            background: rgba(0, 172, 71, 0.08) !important;
+          }
         }
         @media (max-width: 768px) {
           .form-row-2col {
             grid-template-columns: 1fr;
-            gap: 20px;
+            gap: 16px;
+          }
+          .new-contact-form {
+            gap: 16px !important;
+          }
+          .form-group-new {
+            gap: 6px !important;
+          }
+          .form-group-new label {
+            font-size: 0.9rem !important;
+          }
+          .glass-input-new {
+            padding: 11px 14px !important;
+            font-size: 0.95rem !important;
+          }
+          .new-contact-form textarea {
+            height: 110px !important;
+          }
+          .contact-header-new h2 {
+            font-size: 1.8rem !important;
+          }
+          .contact-header-new p {
+            font-size: 0.95rem !important;
+          }
+          .new-contact-form-container {
+            padding: 24px 16px !important;
+          }
+          .form-submit-btn-new {
+            padding: 12px !important;
+            font-size: 1rem !important;
+          }
+          .checkbox-label {
+            font-size: 0.85rem !important;
           }
         }
       `}</style>

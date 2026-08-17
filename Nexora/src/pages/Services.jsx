@@ -5,6 +5,7 @@ import services from "../data/services";
 import Accordion from "../components/common/Accordion";
 import faq from "../data/faq";
 import servicesHeroBgImage from "../assets/images/services-bg.png";
+import servicesHeroImg from "../assets/images/services-hero.jpg";
 import ScrollExpand from "../components/common/ScrollExpand/ScrollExpand";
 
 const Services = () => {
@@ -94,7 +95,7 @@ const Services = () => {
       {/* ── ScrollExpand Hero ── */}
       <div className="services-scroll-expand-hero">
         <ScrollExpand
-          src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=2400&q=85"
+          src={servicesHeroImg}
           alt="Team of professionals collaborating in a modern office"
           title="Our Elite Career Services"
           useWindowScroll
@@ -104,8 +105,8 @@ const Services = () => {
           startRadius={8}
           endRadius={0}
           mediaZoom={mediaZoom}
-          scrollDistance={1.65}
-          holdDistance={0.25}
+          scrollDistance={isMobile || isTablet ? 0.75 : 1.65}
+          holdDistance={isMobile || isTablet ? 0.15 : 0.25}
           overlayScrim={0.85}
         >
           {/* Overlay content – fades in when fully expanded */}
@@ -259,8 +260,9 @@ const Services = () => {
           font-weight: 600;
           letter-spacing: 0.18em;
           text-transform: uppercase;
-          color: rgba(249, 195, 58, 0.9);
+          color: #F9C33A !important;
           margin: 0;
+          text-shadow: 0 2px 10px rgba(0,0,0,0.8) !important;
         }
 
         .se-overlay-heading {
@@ -271,43 +273,46 @@ const Services = () => {
           letter-spacing: -0.03em;
           margin: 0;
           color: #fff;
-          text-shadow: 0 2px 32px rgba(0,0,0,0.45);
+          text-shadow: 0 4px 16px rgba(0,0,0,0.9), 0 2px 4px rgba(0,0,0,0.9) !important;
         }
 
         .se-overlay-accent {
-          background: linear-gradient(134deg, #df830d, #F9C33A);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
+          color: #F9C33A !important;
+          -webkit-text-fill-color: #F9C33A !important;
+          background: none !important;
+          text-shadow: 0 4px 16px rgba(0,0,0,0.9), 0 2px 4px rgba(0,0,0,0.9) !important;
         }
 
         .se-overlay-sub {
           font-size: 1.05rem;
           line-height: 1.65;
-          color: rgba(255,255,255,0.78);
+          color: #ffffff !important;
           margin: 0;
           max-width: 520px;
           text-align: center;
+          text-shadow: 0 2px 10px rgba(0,0,0,0.9), 0 1px 3px rgba(0,0,0,0.9) !important;
         }
 
         .se-overlay-cta {
           display: inline-block;
           margin-top: 8px;
           padding: 14px 36px;
-          background: linear-gradient(134deg, #df830d, #6e3517);
-          color: #fff;
+          background: #F9C33A !important;
+          color: #000000 !important;
           font-weight: 700;
           font-size: 0.95rem;
           border-radius: 999px;
           text-decoration: none;
           letter-spacing: 0.04em;
-          box-shadow: 0 8px 32px rgba(223,131,13,0.35);
+          box-shadow: 0 8px 32px rgba(249,195,58,0.25);
           transition: transform 0.25s ease, box-shadow 0.25s ease;
         }
 
         .se-overlay-cta:hover {
           transform: translateY(-2px);
-          box-shadow: 0 12px 40px rgba(223,131,13,0.5);
+          background: #ffffff !important;
+          color: #000000 !important;
+          box-shadow: 0 12px 40px rgba(255,255,255,0.4);
         }
 
         /* ── end ScrollExpand Hero styles ── */
@@ -331,7 +336,7 @@ const Services = () => {
           color: #334155 !important;
         }
         .text-gradient {
-          background: linear-gradient(134deg, #df830d, #6e3517);
+          background: linear-gradient(134deg, #F9C33A, #b88d14);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
         }
@@ -667,6 +672,9 @@ const Services = () => {
           color: #ffffff !important;
         }
         @media (max-width: 991px) {
+          .services-scroll-expand-hero {
+            height: 75vh !important;
+          }
           .why-grid {
             grid-template-columns: 1fr;
             gap: 40px;
@@ -690,19 +698,25 @@ const Services = () => {
           }
         }
         @media (max-width: 768px) {
+          .services-scroll-expand-hero {
+            height: 65vh !important;
+          }
           .se-overlay-content {
-            padding: 60px 16px 0;
-            gap: 12px;
+            padding: 40px 16px 0 !important;
+            gap: 10px !important;
           }
           .se-overlay-heading {
-            font-size: 1.8rem;
+            font-size: 1.6rem !important;
+            margin-bottom: 4px !important;
           }
           .se-overlay-sub {
-            font-size: 0.95rem;
+            font-size: 0.9rem !important;
+            line-height: 1.5 !important;
           }
           .se-overlay-cta {
-            padding: 12px 28px;
-            font-size: 0.9rem;
+            padding: 11px 24px !important;
+            font-size: 0.85rem !important;
+            margin-top: 4px !important;
           }
           .service-title {
             font-size: 1.75rem;

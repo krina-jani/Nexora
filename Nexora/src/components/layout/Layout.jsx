@@ -5,7 +5,6 @@ import Loader from "../common/Loader/Loader";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 import Background from "../Background/Background";
-import CustomCursor from "../common/CustomCursor";
 import { useState, useEffect, useRef } from "react";
 import Lenis from "lenis";
 
@@ -81,8 +80,6 @@ const Layout = () => {
 
   return (
     <>
-      <CustomCursor />
-
       {loading && (
         <Loader onComplete={() => setLoading(false)} />
       )}

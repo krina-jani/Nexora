@@ -4,6 +4,13 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Flip } from "gsap/Flip";
 import "./WhyChooseNexora.css";
 
+// Import local image assets
+import industryFocusImg from "../../../assets/images/industry-focus.png";
+import atsResumeImg from "../../../assets/images/ats-resume.jpg";
+import mockInterviewsImg from "../../../assets/images/mock-interviews.jpg";
+import careerRoadmapImg from "../../../assets/images/career-roadmap.png";
+import profileAlignmentImg from "../../../assets/images/profile-alignment.png";
+
 // Register plugins
 gsap.registerPlugin(ScrollTrigger, Flip);
 
@@ -25,27 +32,27 @@ const WhyChooseNexora = () => {
     {
       title: "Industry Focus",
       desc: "Support and advice tailored to US market standards.",
-      img: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=600&q=80"
+      img: industryFocusImg
     },
     {
       title: "ATS Friendly Resume",
       desc: "ATS-optimized layouts focused on recruiter readability.",
-      img: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&w=600&q=80"
+      img: atsResumeImg
     },
     {
       title: "Mock Interviews",
       desc: "Practice loops matching modern technical assessments.",
-      img: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=600&q=80"
+      img: mockInterviewsImg
     },
     {
       title: "Profile Alignment",
       desc: "Mapping your skills to active US role listings.",
-      img: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=600&q=80"
+      img: profileAlignmentImg
     },
     {
       title: "Career Roadmap",
       desc: "Personalized milestone trackers structured for US roles.",
-      img: "https://images.unsplash.com/photo-1507537297725-24a1c029d3ca?auto=format&fit=crop&w=600&q=80"
+      img: careerRoadmapImg
     },
     {
       title: "Sponsorship Guidance",

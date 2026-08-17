@@ -20,7 +20,9 @@ const AccordionItem = ({ question, answer, isOpen, onClick }) => {
         }}
       >
         <div ref={contentRef} className="accordion-content-inner">
-          <p>{answer}</p>
+          {answer.split("\n").filter(p => p.trim() !== "").map((para, i) => (
+            <p key={i} style={i > 0 ? { marginTop: "12px" } : {}}>{para}</p>
+          ))}
         </div>
       </div>
     </div>

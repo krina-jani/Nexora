@@ -129,7 +129,7 @@ const Home = () => {
   }, []);
 
   const companiesList = [
-    "Google", "Amazon", "Infosys", "TCS", "IBM", "Deloitte", "Microsoft", "Accenture", "Oracle", "Adobe"
+    "PepsiCo", "Tyson Foods", "Nestlé USA", "Conagra Brands", "Kellanova", "McCormick & Company", "Smithfield Foods", "Bimbo Bakeries USA", "Rich Products", "Ventura Foods", "Griffith Foods"
   ];
 
   const startWidth = isMobile ? 85 : (isTablet ? 60 : 30);
@@ -166,7 +166,7 @@ const Home = () => {
               From resume optimization to interview preparation, Nexora Career builds the bridge between your qualifications and the US job market.
             </p>
             <div className="hero-cta-group">
-              <Link to="/contact" className="btn-primary-pill">
+              <Link to="/services" className="btn-primary-pill">
                 Explore Services <FaArrowRight style={{ marginLeft: "8px", fontSize: "14px" }} />
               </Link>
             </div>

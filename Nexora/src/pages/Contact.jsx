@@ -209,20 +209,33 @@ const Contact = () => {
         </div>
       </div>
 
-      {/* Map Section */}
-      <section className="map-placeholder-section">
-        <div className="container text-center">
-          <h2 className="section-title text-white mb-4 mar-b">Where to Find Us</h2>
-          <div className="map-mock-box glass">
-            <iframe 
-              src="https://maps.google.com/maps?q=8%20The%20Green,%20STE%20R,%20Dover,%20DE%2019901,%20USA&t=&z=13&ie=UTF8&iwloc=&output=embed" 
-              width="100%" 
-              height="100%" 
-              style={{ border: 0, borderRadius: 'inherit' }} 
-              allowFullScreen="" 
-              loading="lazy" 
-              referrerPolicy="no-referrer-when-downgrade"
-            ></iframe>
+      {/* Integrations Section */}
+      <section className="integrations-section">
+        <div className="container">
+          <h2 className="section-title text-white mb-2">Works Seamlessly with Your Existing Stack</h2>
+          <p className="section-desc text-light max-w-2xl mx-auto" style={{ maxWidth: '650px', margin: '0 auto 40px auto' }}>
+            Connect Nexora with the tools you already use to create a unified hiring workflow.
+          </p>
+          <div className="integrations-grid">
+            {/* Naukri */}
+            <div className="integration-box naukri-box">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/f/fc/Naukri.png" alt="Naukri" className="integration-logo-img" />
+            </div>
+
+            {/* LinkedIn */}
+            <div className="integration-box linkedin-box">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/LinkedIn_Logo_2013_%282%29.svg" alt="LinkedIn" className="integration-logo-img" />
+            </div>
+
+            {/* Zoho */}
+            <div className="integration-box zoho-box">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/ZOHO_logo_2023.svg" alt="Zoho" className="integration-logo-img" />
+            </div>
+
+            {/* Google Meet */}
+            <div className="integration-box googlemeet-box">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/9/9b/Google_Meet_icon_%282020%29.svg" alt="Google Meet" className="integration-logo-img" style={{ maxHeight: '80px' }} />
+            </div>
           </div>
         </div>
       </section>
@@ -443,22 +456,92 @@ const Contact = () => {
           font-size: 1rem;
         }
 
-        .map-placeholder-section {
+        /* Integrations Section */
+        .integrations-section {
           padding: 100px 0;
-          background: #1e2630 !important;
+          background: #1e2630ff !important;
+          border-top: 1px solid rgba(255, 255, 255, 0.08);
+          border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+          text-align: center;
         }
-        .map-mock-box {
-          height: 500px;
-          border-radius: var(--radius-lg);
-          border: 2px solid rgba(255, 255, 255, 0.2);
-          box-shadow: var(--shadow-lg);
+
+        .integrations-grid {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 28px;
+          max-width: 1100px;
+          margin: 40px auto 0 auto;
+        }
+
+        @media (max-width: 991px) {
+          .integrations-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+          }
+        }
+        @media (max-width: 480px) {
+          .integrations-grid {
+            grid-template-columns: 1fr;
+          }
+        }
+
+        .integration-box {
+          background: rgba(0, 0, 0, 0.45) !important;
+          border: 1px solid rgba(255, 255, 255, 0.1) !important;
+          border-radius: 24px;
+          padding: 70px 40px;
+          min-height: 200px;
           display: flex;
-          flex-direction: column;
           align-items: center;
           justify-content: center;
-          color: var(--text-light);
-          padding: 0;
+          transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+          cursor: pointer;
+          position: relative;
           overflow: hidden;
+        }
+
+        /* Default state for logo images (Grey/Muted) */
+        .integration-logo-img {
+          max-height: 70px;
+          max-width: 90%;
+          object-fit: contain;
+          filter: grayscale(100%) brightness(0.85) opacity(0.65);
+          transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Hover states (Colorful transition) */
+        .integration-box:hover {
+          background: rgba(255, 255, 255, 0.05);
+          transform: translateY(-5px);
+          box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .integration-box:hover .integration-logo-img {
+          filter: grayscale(0%) brightness(1) opacity(1);
+        }
+
+        /* Naukri Hover */
+        .integration-box.naukri-box:hover {
+          border-color: #4a90e2 !important;
+          box-shadow: 0 12px 30px rgba(74, 144, 226, 0.15);
+        }
+
+        /* LinkedIn Hover */
+        .integration-box.linkedin-box:hover {
+          border-color: #0077b5 !important;
+          box-shadow: 0 12px 30px rgba(0, 119, 181, 0.15);
+        }
+
+        /* Zoho Hover */
+        .integration-box.zoho-box:hover {
+          border-color: #ffcc00 !important;
+          box-shadow: 0 12px 30px rgba(255, 204, 0, 0.15);
+        }
+
+        /* Google Meet Hover */
+        .integration-box.googlemeet-box:hover {
+          border-color: #00ac47 !important;
+          box-shadow: 0 12px 30px rgba(0, 172, 71, 0.15);
         }
         .section-title {
           font-size: 2.5rem;

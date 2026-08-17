@@ -109,7 +109,7 @@ const About = () => {
                 <span className="sk">Through Innovation</span>
               </h1>
               <p className="about-hero-sub text-light">
-                We bridge the gap between skilled individuals and international opportunity hubs.
+                We bridge the gap between skilled individuals and UAS opportunity hubs.
               </p>
             </div>
 

@@ -15,7 +15,8 @@ import {
   FaShoppingCart, 
   FaIndustry, 
   FaGlobe, 
-  FaBullhorn 
+  FaBullhorn,
+  FaUtensils 
 } from "react-icons/fa";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -31,7 +32,7 @@ const iconMap = {
   "finance-accounting": <FaGlobe />,
   "hr-talent": <FaGlobe />,
   "sales-bd": <FaBullhorn />,
-  "marketing-digital": <FaBullhorn />,
+  "food-beverage": <FaUtensils />,
   "healthcare-admin": <FaHeartbeat />,
   "supply-chain": <FaIndustry />
 };
@@ -47,7 +48,7 @@ const imageMap = {
   "finance-accounting": "https://images.unsplash.com/photo-1501167786227-4cba60f6d58f?w=800&auto=format&fit=crop&q=80",
   "hr-talent": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=300&q=80",
   "sales-bd": "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=300&q=80",
-  "marketing-digital": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=300&q=80",
+  "food-beverage": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=300&q=80",
   "healthcare-admin": "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=300&q=80",
   "supply-chain": "https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=800&auto=format&fit=crop&q=80"
 };
@@ -190,7 +191,7 @@ const Industries = () => {
       >
         <div className="container" style={{ position: "relative", zIndex: 1 }}>
           <h1 className="ind-hero-title">
-            Career Opportunities <span className="text-gradient">Across Tech & Non-Tech</span>
+            Career Opportunities <span className="text-gradient">Across Tech Careers, Professional & Business Careers</span>
           </h1>
           <p className="ind-hero-sub text-light">
             Nexora Career supports qualified professionals targeting opportunities in the US job market across technology, business, and other professional functions.
@@ -265,7 +266,7 @@ const Industries = () => {
                 
                 <div className="ind-details">
                   <div className="ind-roles">
-                    <h4>Example Career Paths</h4>
+                    <h4>{ind.rolesLabel || "Example Career Paths"}</h4>
                     <ul>
                       {ind.roles?.map((role, i) => (
                         <li key={i}>{role}</li>
@@ -290,7 +291,7 @@ const Industries = () => {
       <section id="non-tech-careers" className="industries-grid-section" style={{ position: "relative", overflow: "hidden", borderTop: "1px solid rgba(255, 255, 255, 0.08)" }}>
         <div className="container" style={{ position: "relative", zIndex: 1 }}>
           <div className="section-header-wrap">
-            <h2 className="section-title">Professional & Business Careers <br />(Non-Tech)</h2>
+            <h2 className="section-title">Professional & Business Careers Across Tech </h2>
             <p className="section-desc text-light">
               US employers hire professionals across business, finance, operations, marketing, HR, healthcare administration, and supply chain functions. Nexora Career helps candidates present their experience clearly and prepare for relevant opportunities.
             </p>
@@ -316,7 +317,7 @@ const Industries = () => {
                 
                 <div className="ind-details">
                   <div className="ind-roles">
-                    <h4>Example Career Paths</h4>
+                    <h4>{ind.rolesLabel || "Example Career Paths"}</h4>
                     <ul>
                       {ind.roles?.map((role, i) => (
                         <li key={i}>{role}</li>
@@ -523,7 +524,6 @@ const Industries = () => {
           z-index: 2;
         }
         .ind-details {
-          margin-top: auto;
           display: flex;
           flex-direction: column;
           gap: 20px;
@@ -531,6 +531,10 @@ const Industries = () => {
           border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
           position: relative;
           z-index: 2;
+          flex-grow: 1;
+        }
+        .ind-skills {
+          margin-top: auto;
         }
         .ind-roles h4, .ind-skills h4 {
           font-size: 0.9rem;

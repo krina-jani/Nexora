@@ -135,12 +135,12 @@ const Navbar = () => {
               <ul className={`simple-dropdown ${industriesDropdownOpen ? "show" : ""}`}>
                 <li>
                   <Link to="/industries#tech-careers" onClick={(e) => handleIndustriesDropdownClick(e, '#tech-careers')}>
-                    Tech
+                   Technology Careers
                   </Link>
                 </li>
                 <li>
                   <Link to="/industries#non-tech-careers" onClick={(e) => handleIndustriesDropdownClick(e, '#non-tech-careers')}>
-                    Non-Tech
+                    Professional & Business Careers
                   </Link>
                 </li>
               </ul>
@@ -225,4 +225,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default Navbar;

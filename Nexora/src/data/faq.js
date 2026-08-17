@@ -7,7 +7,9 @@ export const faq = [
   {
     id: 2,
     question: "What types of roles do you support?",
-    answer: "We primarily support technology roles (such as software development, data science, DevOps, cloud engineering, and product design), but we also assist professionals in finance, analytics, and other high-demand fields where US employers seek specialized talent."
+    answer: `We primarily support technology roles (such as software development, data science, DevOps, cloud engineering, and product design), but we also assist professionals in finance, analytics, and other high-demand fields where US employers seek specialized talent.
+
+We support placements at leading food and beverage companies, including PepsiCo, Tyson Foods, Nestlé USA, Conagra Brands, Kellanova, McCormick & Company, Smithfield Foods, Bimbo Bakeries USA, Rich Products, Ventura Foods, and Griffith Foods.`
   },
   {
     id: 3,

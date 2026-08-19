@@ -129,7 +129,7 @@ const Home = () => {
   }, []);
 
   const companiesList = [
-    "PepsiCo", "Tyson Foods", "Nestlé USA", "Conagra Brands", "Kellanova", "McCormick & Company", "Smithfield Foods", "Bimbo Bakeries USA", "Rich Products", "Ventura Foods", "Griffith Foods"
+    "TCS", "Infosys", "Wipro", "Accenture", "Cognizant", "Capgemini", "HCLTech", "Tech Mahindra", "LTIMindtree", "Deloitte"
   ];
 
   const startWidth = isMobile ? 85 : (isTablet ? 60 : 30);

@@ -21,12 +21,12 @@ const PlacementWorkflow = () => {
       let mm = gsap.matchMedia();
       
       mm.add("(min-width: 992px)", () => {
-        // Center Column: slides DOWN (moves down relative to section)
+        // Center Column: slides DOWN (moves down relative to section) with a subtle parallax to keep it centered nicely
         if (centerCardRef.current) {
           gsap.fromTo(centerCardRef.current, 
-            { y: -200 },
+            { y: -50 },
             {
-              y: 200,
+              y: 50,
               ease: "none",
               scrollTrigger: {
                 trigger: sectionRef.current,

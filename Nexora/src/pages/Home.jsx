@@ -129,7 +129,28 @@ const Home = () => {
   }, []);
 
   const companiesList = [
-    "TCS", "Infosys", "Wipro", "Accenture", "Cognizant", "Capgemini", "HCLTech", "Tech Mahindra", "LTIMindtree", "Deloitte"
+    { name: "TCS", domain: "tcs.com" },
+    { name: "Infosys", domain: "infosys.com" },
+    { name: "Google", domain: "google.com" },
+    { name: "IBM", domain: "ibm.com" },
+    { name: "microsoft", domain: "microsoft.com" },
+    { name: "Meta", domain: "meta.com" },
+    { name: "Amazon", domain: "amazon.com" },
+    { name: "Wipro", domain: "wipro.com" },
+    { name: "Accenture", domain: "accenture.com" },
+    { name: "Cognizant", domain: "cognizant.com" },
+    { name: "Capgemini", domain: "capgemini.com" },
+    { name: "HCLTech", domain: "hcltech.com" },
+    { name: "Tech Mahindra", domain: "techmahindra.com" },
+    { name: "LTIMindtree", domain: "ltimindtree.com" },
+    { name: "Deloitte", domain: "deloitte.com" },
+    { name: "Apple", domain: "apple.com" },
+    { name: "pepsiCo", domain: "pepsico.com" },
+    { name: "Intel", domain: "intel.com" },
+    { name: "Tyson Food", domain: "tysonfoods.com" },
+    { name: "Walmart", domain: "walmart.com" },
+    { name: "Nestlé USA", domain: "nestle.com" },
+    { name: "Kellanova", domain: "kellanova.com" }
   ];
 
   const startWidth = isMobile ? 85 : (isTablet ? 60 : 30);
@@ -157,7 +178,7 @@ const Home = () => {
         {/* Hero Content Overlay */}
         <div className="container hero-beams-content-wrap">
           <div className="se-overlay-content text-center">
-            <span className="hero-badge">US CAREER TRANSITION BRIDGE</span>
+            <span className="hero-badge">Building Pathways to USA Careers</span>
             <h1 className="hero-title text-center">
               Let's Build Your <span className="text-gradient">Career with</span> <br className="hero-br" />
               Nexora Career

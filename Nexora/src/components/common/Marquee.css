@@ -20,7 +20,7 @@
   margin-inline: clamp(2rem, 5vw, 4rem);
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
   letter-spacing: 1px;
   user-select: none;
   opacity: 0.75;
@@ -30,6 +30,19 @@
 .marquee-item:hover {
   color: var(--primary);
   opacity: 1;
+}
+
+.marquee-logo {
+  height: clamp(24px, 4vw, 32px);
+  width: clamp(24px, 4vw, 32px);
+  object-fit: contain;
+  transition: all 0.3s ease;
+  vertical-align: middle;
+  border-radius: 4px;
+}
+
+.marquee-item:hover .marquee-logo {
+  transform: scale(1.1);
 }
 
 @keyframes marqueeLoop {

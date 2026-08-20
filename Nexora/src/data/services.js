@@ -7,6 +7,20 @@ import globalPlacementImg from "../assets/images/global-placement.png";
 
 export const services = [
   {
+    id: "custom-services",
+    title: "Custom Career Services",
+    description: "Every career transition is unique. Whether you are changing technical domains or require ad-hoc advice, we provide personalized support to address your specific questions.",
+    icon: "skill",
+    image: customServicesImg,
+    whatWeHelpWith: [
+      "Personalized discussions on switching technical roles",
+      "Ad-hoc resume and portfolio reviews for niche positions",
+      "General guidance on job search strategies and market trends"
+    ],
+    whoItsFor: "Professionals with non-standard career trajectories or specific career transition questions.",
+    expectedValue: "Honest, direct guidance and resources tailored to your personal job-search context."
+  },
+  {
     id: "rpo",
     title: "Profile & Resume Optimization",
     description: "Your resume and professional profiles are your introduction to the US job market. We help format and rewrite your materials so they meet US recruiting expectations and clear automated ATS filters.",
@@ -19,20 +33,6 @@ export const services = [
     ],
     whoItsFor: "Qualified professionals looking to align their resumes and LinkedIn profiles with US employer expectations.",
     expectedValue: "An ATS-optimized, professionally structured profile that clearly communicates your value to recruiters."
-  },
-  {
-    id: "career-support",
-    title: "US Market Interview Preparation",
-    description: "Preparing for US-style interviews requires a clear understanding of technical loops and behavioral standards. We help you practice structured communication to confidently speak with hiring teams.",
-    icon: "counseling",
-    image: careerSupportImg,
-    whatWeHelpWith: [
-      "1-on-1 mock interviews tailored to your target technical roles",
-      "Structuring behavioral answers using the STAR format",
-      "Improving verbal communication, tone, and professional presentation"
-    ],
-    whoItsFor: "Candidates looking to build confidence and polish their communication for US technical and behavioral loops.",
-    expectedValue: "Increased fluency and structured communication strategies to handle diverse interview questions."
   },
   {
     id: "career-growth",
@@ -49,32 +49,18 @@ export const services = [
     expectedValue: "A clear, personalized roadmap that aligns your skills with the requirements of US employers."
   },
   {
-    id: "pro-services",
-    title: "Professional Profile Positioning",
-    description: "Mid-level and senior roles require strategic positioning to stand out. We guide you in highlighting your leadership, project ownership, and technical authority to US decision-makers.",
-    icon: "overseas",
-    image: proServicesImg,
+    id: "career-support",
+    title: "US Market Interview Preparation",
+    description: "Preparing for US-style interviews requires a clear understanding of technical loops and behavioral standards. We help you practice structured communication to confidently speak with hiring teams.",
+    icon: "counseling",
+    image: careerSupportImg,
     whatWeHelpWith: [
-      "Reframing complex international projects for US business contexts",
-      "Showcasing leadership experience and system-design capabilities",
-      "Optimizing your digital footprint to establish professional credibility"
+      "1-on-1 mock interviews tailored to your target technical roles",
+      "Structuring behavioral answers using the STAR format",
+      "Improving verbal communication, tone, and professional presentation"
     ],
-    whoItsFor: "Experienced developers, tech leads, and managers aiming for senior-level opportunities in the US.",
-    expectedValue: "A sophisticated professional brand that highlights your expertise and leadership capabilities."
-  },
-  {
-    id: "custom-services",
-    title: "Custom Career Services",
-    description: "Every career transition is unique. Whether you are changing technical domains or require ad-hoc advice, we provide personalized support to address your specific questions.",
-    icon: "skill",
-    image: customServicesImg,
-    whatWeHelpWith: [
-      "Personalized discussions on switching technical roles",
-      "Ad-hoc resume and portfolio reviews for niche positions",
-      "General guidance on job search strategies and market trends"
-    ],
-    whoItsFor: "Professionals with non-standard career trajectories or specific career transition questions.",
-    expectedValue: "Honest, direct guidance and resources tailored to your personal job-search context."
+    whoItsFor: "Candidates looking to build confidence and polish their communication for US technical and behavioral loops.",
+    expectedValue: "Increased fluency and structured communication strategies to handle diverse interview questions."
   },
   {
     id: "global-placement",
@@ -89,6 +75,20 @@ export const services = [
     ],
     whoItsFor: "Qualified professionals ready to actively apply to US career opportunities.",
     expectedValue: "Structured support and guidance throughout the application and placement journey."
+  },
+  {
+    id: "pro-services",
+    title: "Career Advancement & Offer Negotiation",
+    description: "We help professionals position themselves for better career opportunities, evaluate job offers, and negotiate compensation with confidence.",
+    icon: "overseas",
+    image: proServicesImg,
+    whatWeHelpWith: [
+      "Career positioning & professional branding — Present your experience, leadership, and achievements in a way that resonates with US employers.",
+      "Opportunity & role evaluation — Assess roles based on responsibilities, career growth, company fit, and long-term potential.",
+      "Job offer evaluation — Review salary, bonuses, equity, benefits, relocation support, and other important components of an offer."
+    ],
+    whoItsFor: "Mid-level and senior professionals seeking career advancement, US opportunities, leadership roles, or stronger compensation packages.",
+    expectedValue: "Greater career clarity, stronger professional positioning, informed offer decisions, and the confidence to negotiate salary, benefits, and growth opportunities effectively."
   }
 ];
 

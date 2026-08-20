@@ -98,7 +98,7 @@ const FinalCTA = ({
 
       {/* Single Cohesive Foreground Content Container */}
       <div ref={contentRef} className="kinetic-content-box">
-        <span className="kinetic-badge">CAREER TRANSITION BRIDGE</span>
+        <span className="kinetic-badge">Building Pathways to USA Careers</span>
         {heading && <h2 className="kinetic-heading">{heading}</h2>}
         {subheading && <p className="kinetic-actions-sub">{subheading}</p>}
         <div className="kinetic-actions-buttons">

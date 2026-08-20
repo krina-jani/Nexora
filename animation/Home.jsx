@@ -155,7 +155,7 @@ const Home = () => {
         >
           {/* Overlay content – fades in when fully expanded */}
           <div className="se-overlay-content">
-            <span className="hero-badge">US CAREER TRANSITION BRIDGE</span>
+            <span className="hero-badge">Building Pathways to USA Careers</span>
             <h1 className="hero-title text-center">
               Let's Build Your <span className="text-gradient">Career with</span> <br />
               Nexora Career

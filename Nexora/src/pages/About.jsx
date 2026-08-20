@@ -118,7 +118,7 @@ const About = () => {
               <div className="about-card glass">
                 <h2>Our Vision & Mission</h2>
                 <p>
-                  Our vision is to build a borderless world where exceptional talent meets limitless opportunity. We are on a mission to empower over 100,000 professionals by 2030, equipping them with the premium skills and global connections needed to land their dream careers, regardless of where they call home.
+                  Our vision is to become a trusted bridge between global talent and opportunities across the United States. We are committed to preparing professionals with practical skills, career guidance, and meaningful industry connections that help transform ambition into real career opportunities.
                 </p>
               </div>
               <div className="about-card glass">

@@ -48,7 +48,7 @@ const FinalCTA = ({
     <section ref={sectionRef} className="final-cta-section">
       <div className="final-cta-glow"></div>
       <div ref={containerRef} className="final-cta-container">
-        <span className="final-cta-badge">CAREER TRANSITION BRIDGE</span>
+        <span className="final-cta-badge">Building Pathways to USA Careers</span>
         {heading && <h2 className="final-cta-heading">{heading}</h2>}
         {subheading && <p className="final-cta-subheading">{subheading}</p>}
         <div className="final-cta-buttons">

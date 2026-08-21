@@ -4,7 +4,6 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SplitType from "split-type";
 import { FaArrowRight, FaGithub, FaLinkedin, FaEnvelope, FaInstagram } from "react-icons/fa";
-import heroBgImage from "../assets/images/perfect-hero.png";
 import empowermentImg from "../assets/images/empowerment.png";
 // Common Components
 import Marquee from "../components/common/Marquee";

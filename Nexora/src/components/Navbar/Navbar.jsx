@@ -157,7 +157,7 @@ const Navbar = () => {
                 </li>
                 <li>
                   <Link to="/industries#non-tech-careers" onClick={(e) => handleIndustriesDropdownClick(e, '#non-tech-careers')}>
-                    Professional & Business Careers
+                    Non-Tech Careers
                   </Link>
                 </li>
               </ul>

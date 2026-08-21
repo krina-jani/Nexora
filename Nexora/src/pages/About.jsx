@@ -2,7 +2,6 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { FaGraduationCap, FaBriefcase, FaGlobe, FaTrophy, FaGlobeAmericas, FaUserTie, FaHandshake } from "react-icons/fa";
-import aboutBgImage from "../assets/images/about.png";
 import GradientWaves from "../components/common/GradientWaves";
 
 gsap.registerPlugin(ScrollTrigger);

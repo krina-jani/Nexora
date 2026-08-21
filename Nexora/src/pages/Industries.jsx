@@ -16,7 +16,10 @@ import {
   FaIndustry, 
   FaGlobe, 
   FaBullhorn,
-  FaUtensils 
+  FaUtensils,
+  FaBolt,
+  FaMicrochip,
+  FaNetworkWired
 } from "react-icons/fa";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -32,9 +35,13 @@ const iconMap = {
   "finance-accounting": <FaGlobe />,
   "hr-talent": <FaGlobe />,
   "sales-bd": <FaBullhorn />,
-  "food-beverage": <FaUtensils />,
+  "beverage-industry": <FaUtensils />,
+  "food-industry": <FaUtensils />,
   "healthcare-admin": <FaHeartbeat />,
-  "supply-chain": <FaIndustry />
+  "supply-chain": <FaIndustry />,
+  "electrical-engineering": <FaBolt />,
+  "vlsi-semiconductor": <FaMicrochip />,
+  "network-engineering": <FaNetworkWired />
 };
 
 const imageMap = {
@@ -48,9 +55,13 @@ const imageMap = {
   "finance-accounting": "https://images.unsplash.com/photo-1501167786227-4cba60f6d58f?w=800&auto=format&fit=crop&q=80",
   "hr-talent": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=300&q=80",
   "sales-bd": "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=300&q=80",
-  "food-beverage": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=300&q=80",
+  "beverage-industry": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=300&q=80",
+  "food-industry": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=300&q=80",
   "healthcare-admin": "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=300&q=80",
-  "supply-chain": "https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=800&auto=format&fit=crop&q=80"
+  "supply-chain": "https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=800&auto=format&fit=crop&q=80",
+  "electrical-engineering": "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&auto=format&fit=crop&q=80",
+  "vlsi-semiconductor": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&auto=format&fit=crop&q=80",
+  "network-engineering": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&auto=format&fit=crop&q=80"
 };
 
 const Typewriter = ({ texts, typingSpeed = 75, deletingSpeed = 50, pauseDuration = 1500 }) => {
@@ -249,10 +260,7 @@ const Industries = () => {
           <div className="industries-grid">
             {techIndustries.map((ind) => (
               <div key={ind.id} className="industry-card glass">
-                <div 
-                  className="card-bg-image" 
-                  style={{ backgroundImage: `url(${imageMap[ind.id]})` }}
-                ></div>
+                {/* background image removed */}
                 
                 <div className="card-top-row">
                   <div className="ind-icon-box">
@@ -291,7 +299,7 @@ const Industries = () => {
       <section id="non-tech-careers" className="industries-grid-section" style={{ position: "relative", overflow: "hidden", borderTop: "1px solid rgba(255, 255, 255, 0.08)" }}>
         <div className="container" style={{ position: "relative", zIndex: 1 }}>
           <div className="section-header-wrap">
-            <h2 className="section-title">Professional & Business Careers Across Tech </h2>
+            <h2 className="section-title">Professional & Business Careers Across Tech(Non Tech) </h2>
             <p className="section-desc text-light">
               US employers hire professionals across business, finance, operations, marketing, HR, healthcare administration, and supply chain functions. Nexora Career helps candidates present their experience clearly and prepare for relevant opportunities.
             </p>
@@ -300,10 +308,7 @@ const Industries = () => {
           <div className="industries-grid">
             {nonTechIndustries.map((ind) => (
               <div key={ind.id} className="industry-card glass">
-                <div 
-                  className="card-bg-image" 
-                  style={{ backgroundImage: `url(${imageMap[ind.id]})` }}
-                ></div>
+                {/* background image removed */}
                 
                 <div className="card-top-row">
                   <div className="ind-icon-box">

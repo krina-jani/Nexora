@@ -127,13 +127,26 @@ export const industries = [
     // skills: ["Salesforce", "CRM", "Lead Generation", "Client Relations", "Negotiation"]
   },
   {
-    id: "food-beverage",
+    id: "beverage-industry",
     category: "non-tech",
-    title: "Food & Beverage Industry",
-    description: "Align your profile for opportunities with leading US food manufacturing, processing, and consumer packaged goods companies.",
+    title: "Beverage Industry",
+    description: "Align your profile for opportunities with leading US beverage manufacturing, processing, and distribution companies.",
     rolesLabel: "Target Companies",
     roles: [
       "PepsiCo",
+      "Coca-Cola",
+      "Keurig Dr Pepper",
+      "Anheuser-Busch",
+      "Molson Coors"
+    ]
+  },
+  {
+    id: "food-industry",
+    category: "non-tech",
+    title: "Food Industry",
+    description: "Align your profile for opportunities with leading US food manufacturing, processing, and consumer packaged goods companies.",
+    rolesLabel: "Target Companies",
+    roles: [
       "Tyson Foods",
       "Nestlé USA",
       "Conagra Brands",
@@ -144,8 +157,7 @@ export const industries = [
       "Rich Products",
       "Ventura Foods",
       "Griffith Foods"
-    ],
-    // skills: ["Food Safety", "Quality Assurance", "Regulatory Compliance", "Product Development", "Supply Chain"]
+    ]
   },
   {
     id: "healthcare-admin",
@@ -165,6 +177,64 @@ export const industries = [
       "Medical Billing Specialist"
     ],
     // skills: ["EMR Systems", "HIPAA", "Healthcare Analytics", "SQL", "Clinical Data"]
+  },
+  {
+    id: "electrical-engineering",
+    category: "non-tech",
+    title: "Electrical Engineering",
+    description: "Build on electrical engineering expertise for opportunities across power, electrical systems, automation, controls, and industrial applications.",
+    roles: [
+      "Electrical Engineer",
+      "Electrical Design Engineer",
+      "Power Systems Engineer",
+      "Control Systems Engineer",
+      "Automation Engineer",
+      "Instrumentation Engineer",
+      "Electrical Project Engineer",
+      "Protection Engineer",
+      "Power Distribution Engineer",
+      "Electrical Maintenance Engineer"
+    ]
+  },
+  {
+    id: "vlsi-semiconductor",
+    category: "non-tech",
+    title: "VLSI & Semiconductor",
+    description: "Apply electronics and semiconductor expertise across chip design, verification, physical design, embedded hardware, and semiconductor development.",
+    roles: [
+      "VLSI Design Engineer",
+      "RTL Design Engineer",
+      "Verification Engineer",
+      "Physical Design Engineer",
+      "DFT Engineer",
+      "ASIC Design Engineer",
+      "FPGA Engineer",
+      "Analog Design Engineer",
+      "Digital Design Engineer",
+      "STA Engineer",
+      "Semiconductor Engineer",
+      "EDA/CAD Engineer"
+    ]
+  },
+  {
+    id: "network-engineering",
+    category: "non-tech",
+    title: "Network Engineering",
+    description: "Leverage networking expertise across enterprise infrastructure, telecommunications, cloud connectivity, network operations, and security.",
+    roles: [
+      "Network Engineer",
+      "Network Administrator",
+      "Network Architect",
+      "Network Security Engineer",
+      "Infrastructure Engineer",
+      "Systems & Network Engineer",
+      "NOC Engineer",
+      "Telecom Engineer",
+      "Wireless Network Engineer",
+      "Cloud Network Engineer",
+      "Network Operations Engineer",
+      "Infrastructure Architect"
+    ]
   },
   // {
   //   id: "supply-chain",

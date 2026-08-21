@@ -232,9 +232,9 @@ const Contact = () => {
               <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/ZOHO_logo_2023.svg" alt="Zoho" className="integration-logo-img" />
             </div>
 
-            {/* Google Meet */}
-            <div className="integration-box googlemeet-box">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/9/9b/Google_Meet_icon_%282020%29.svg" alt="Google Meet" className="integration-logo-img" style={{ maxHeight: '80px' }} />
+            {/* Microsoft Teams */}
+            <div className="integration-box microsoftteams-box">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/0/07/Microsoft_Office_Teams_%282025%E2%80%93present%29.svg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original" alt="Microsoft Teams" className="integration-logo-img" style={{ maxHeight: '80px' }} />
             </div>
           </div>
         </div>
@@ -538,10 +538,10 @@ const Contact = () => {
           box-shadow: 0 12px 30px rgba(255, 204, 0, 0.15);
         }
 
-        /* Google Meet Hover */
-        .integration-box.googlemeet-box:hover {
-          border-color: #00ac47 !important;
-          box-shadow: 0 12px 30px rgba(0, 172, 71, 0.15);
+        /* Microsoft Teams Hover */
+        .integration-box.microsoftteams-box:hover {
+          border-color: #5b5fc7 !important;
+          box-shadow: 0 12px 30px rgba(91, 95, 199, 0.15);
         }
         .section-title {
           font-size: 2.5rem;
@@ -596,9 +596,9 @@ const Contact = () => {
             border-color: rgba(255, 204, 0, 0.45) !important;
             background: rgba(255, 204, 0, 0.08) !important;
           }
-          .integration-box.googlemeet-box {
-            border-color: rgba(0, 172, 71, 0.45) !important;
-            background: rgba(0, 172, 71, 0.08) !important;
+          .integration-box.microsoftteams-box {
+            border-color: rgba(91, 95, 199, 0.45) !important;
+            background: rgba(91, 95, 199, 0.08) !important;
           }
         }
         @media (max-width: 768px) {

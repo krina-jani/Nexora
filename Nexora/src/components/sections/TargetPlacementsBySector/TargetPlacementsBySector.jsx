@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 import { Camera, Mesh, Plane, Program, Renderer, Texture, Transform } from "ogl";
 import industries from "../../../data/industries";
 import "./TargetPlacementsBySector.css";
+import beverageImg from "../../../assets/images/beverage-industry.jpg";
+import foodImg from "../../../assets/images/food-industry.jpg";
+import businessOpsImg from "../../../assets/images/business-ops.png";
 
 function debounce(func, wait) {
     let timeout;
@@ -503,12 +506,14 @@ const TargetPlacementsBySector = () => {
       "cybersecurity": "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&auto=format&fit=crop&q=80",
       "it-infrastructure": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&auto=format&fit=crop&q=80",
       "qa-testing": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&auto=format&fit=crop&q=80",
-      "business-ops": "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&auto=format&fit=crop&q=80",
-      "finance-accounting": "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=800&auto=format&fit=crop&q=80"
+      "business-ops": businessOpsImg,
+      "finance-accounting": "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=800&auto=format&fit=crop&q=80",
+      "beverage-industry": beverageImg,
+      "food-industry": foodImg
     };
 
-    const items = industries.slice(0, 8).map(ind => ({
-      image: sectorImages[ind.id] || "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&auto=format&fit=crop&q=80",
+    const items = industries.filter(ind => sectorImages[ind.id]).map(ind => ({
+      image: sectorImages[ind.id],
       text: ind.title
     }));
 

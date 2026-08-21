@@ -21,22 +21,7 @@ const PlacementWorkflow = () => {
       let mm = gsap.matchMedia();
       
       mm.add("(min-width: 992px)", () => {
-        // Center Column: slides DOWN (moves down relative to section) with a subtle parallax to keep it centered nicely
-        if (centerCardRef.current) {
-          gsap.fromTo(centerCardRef.current, 
-            { y: -50 },
-            {
-              y: 50,
-              ease: "none",
-              scrollTrigger: {
-                trigger: sectionRef.current,
-                start: "top bottom",
-                end: "bottom top",
-                scrub: 1.0, // Smooth interpolation with scroll velocity
-              }
-            }
-          );
-        }
+        // No parallax animation for the center column so it stays perfectly vertically centered
       });
     }, sectionRef);
 

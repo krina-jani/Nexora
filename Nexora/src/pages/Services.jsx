@@ -4,7 +4,6 @@ import gsap from "gsap";
 import services from "../data/services";
 import Accordion from "../components/common/Accordion";
 import faq from "../data/faq";
-import servicesHeroBgImage from "../assets/images/services-bg.png";
 import servicesHeroImg from "../assets/images/services-hero.jpg";
 import ScrollExpand from "../components/common/ScrollExpand/ScrollExpand";
 

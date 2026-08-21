@@ -192,6 +192,12 @@ const Footer = () => {
                 </span>
               </li>
               <li className="contact-info-item group">
+                <FaMapMarkerAlt className="contact-icon text-primary group-hover:scale-110" />
+                <span className="contact-text">
+                  B/709, 7th Floor, Mondeal Square, Nr.Prahladnagar Cross Road, Ahmedabad, Gujarat, India
+                </span>
+              </li>
+              <li className="contact-info-item group">
                 <FaEnvelope className="contact-icon text-primary group-hover:scale-110" />
                 <a href="mailto:Info@nexoracareer.com" className="contact-text-link">
                   Info@nexoracareer.com

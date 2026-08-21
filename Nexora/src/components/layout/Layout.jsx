@@ -5,6 +5,7 @@ import Loader from "../common/Loader/Loader";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 import Background from "../Background/Background";
+import EVerifyBadge from "../common/EVerifyBadge/EVerifyBadge";
 import { useState, useEffect, useRef } from "react";
 import Lenis from "lenis";
 
@@ -87,6 +88,8 @@ const Layout = () => {
       <Background />
 
       <Navbar />
+
+      <EVerifyBadge />
 
       <main style={{ minHeight: "80vh", paddingTop: (location.pathname === "/" || location.pathname === "/services" || location.pathname === "/contact" || location.pathname === "/industries") ? "0px" : "120px" }}>
         <Outlet />
